@@ -1,0 +1,25 @@
+# Proposal draft — review before merging to content/companies/iren/
+
+slug: iren
+legal_name: IREN Ltd
+
+tickers:
+  - symbol: IREN
+    exchange: NASDAQ
+
+summary: |
+  IREN Ltd builds and operates large-scale data centers, with a stated focus on
+  renewable power and power-market integration. The company’s investor materials
+  describe expansion into AI / high-performance compute alongside digital asset
+  compute operations. Quantitative results belong in financials/*.yaml with sources.
+
+links:
+  investor_relations: https://www.iren.com/investors
+  press_releases_index: https://www.iren.com/investors/news
+  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001878848&owner=include&count=40
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes: []

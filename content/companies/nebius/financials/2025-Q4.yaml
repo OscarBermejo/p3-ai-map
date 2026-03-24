@@ -1,0 +1,200 @@
+# 2025 Q4 — three months ended 2025-12-31 (Form 6-K filed 2026-02-12, accession 0001104659-26-013946).
+# Amounts in USD; filing tables in millions → scaled to whole dollars in metrics.
+
+period:
+  label: "2025 Q4"
+  start: "2025-10-01"
+  end: "2025-12-31"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  revenue: 227700000
+  cost_of_revenue: 68500000
+  gross_profit: 159200000
+  research_and_development: 53100000
+  selling_general_administrative: 159900000
+  depreciation_and_amortization: 180700000
+  operating_income: -234500000
+  interest_expense: 38300000
+  interest_income: 13500000
+  other_income_expense_net: 21400000
+  income_tax_expense_benefit: 2600000
+  net_income: -249600000
+  operating_cash_flow: 834300000
+  stock_based_compensation: 24900000
+  capital_expenditures_cash: 2056000000
+  investing_cash_flow_net: -2131000000
+  financing_cash_flow_net: 106400000
+  cash_and_equivalents: 3678100000
+  current_assets: 4711400000
+  current_liabilities: 1527800000
+  property_plant_equipment_net: 5572500000
+  total_assets: 12449800000
+  total_liabilities: 7836600000
+  long_term_debt: 4103200000
+  current_portion_of_long_term_debt: 24500000
+  total_debt: 4127700000
+  stockholders_equity: 4613200000
+  shares_outstanding_basic: 253016971
+  shares_outstanding_diluted: null
+  market_cap: null
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/0001104659-26-013946-index.htm
+    kind: sec_6k
+    description: "Direct from SEC filing: Form 6-K accession 0001104659-26-013946; filing index; filing date 2026-02-12; Exhibit 99.1 fourth quarter and full-year 2025 results with unaudited condensed consolidated statements."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [revenue]
+    supports_derivation_of: [gross_profit]
+    description: "Direct from SEC filing: Exhibit 99.1; unaudited condensed consolidated statements of operations; line Revenues; column three months ended December 31, 2025; USD 227.7 million → 227,700,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [cost_of_revenue]
+    supports_derivation_of: [gross_profit]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Cost of revenues(1); column three months ended December 31, 2025; USD 68.5 million → 68,500,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [gross_profit]
+    description: "Derived: gross_profit = Revenues − Cost of revenues = 227,700,000 − 68,500,000 = 159,200,000; same statement column (three months ended 2025-12-31)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [research_and_development]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Product development(1); column three months ended December 31, 2025; USD 53.1 million → 53,100,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [selling_general_administrative]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Sales, general and administrative(1); column three months ended December 31, 2025; USD 159.9 million → 159,900,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [depreciation_and_amortization]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Depreciation and amortization; column three months ended December 31, 2025; USD 180.7 million → 180,700,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [interest_income]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Interest income; column three months ended December 31, 2025; USD 13.5 million → 13,500,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [interest_expense]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Interest expense; column three months ended December 31, 2025; filing USD (38.3) million → stored as 38,300,000 (positive = expense per repo convention)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [other_income_expense_net]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Other income / (loss), net; column three months ended December 31, 2025; USD 21.4 million → 21,400,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [income_tax_expense_benefit]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Income tax expense / (benefit); column three months ended December 31, 2025; USD 2.6 million → 2,600,000 (positive = expense)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [stock_based_compensation]
+    description: "Direct from SEC filing: Exhibit 99.1; unaudited condensed consolidated statements of cash flows; line Share-based compensation; column three months ended December 31, 2025; USD 24.9 million → 24,900,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [operating_income]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Loss from operations; column three months ended December 31, 2025; USD (234.5) million → −234,500,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [net_income]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of operations; line Net income / (loss) from continuing operations; column three months ended December 31, 2025; USD (249.6) million → −249,600,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [operating_cash_flow]
+    description: "Direct from SEC filing: Exhibit 99.1; unaudited condensed consolidated statements of cash flows; line Net cash provided by / (used in) operating activities – continuing operations; column three months ended December 31, 2025; USD 834.3 million → 834,300,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [capital_expenditures_cash]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of cash flows; line Purchases of property and equipment and intangible assets; column three months ended December 31, 2025; filing USD (2,056.0) million (outflow). Stored as 2,056,000,000 (non-negative = cash paid; repo convention)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [investing_cash_flow_net]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of cash flows; line Net cash provided by / (used in) investing activities – continuing operations; column three months ended December 31, 2025; filing USD (2,131.0) million (outflow) → −2,131,000,000 (filing sign for net cash flow)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [financing_cash_flow_net]
+    description: "Direct from SEC filing: Exhibit 99.1; statements of cash flows; line Net cash provided by financing activities – continuing operations; column three months ended December 31, 2025; USD 106.4 million → 106,400,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [total_assets]
+    description: "Direct from SEC filing: Exhibit 99.1; unaudited condensed consolidated balance sheets; line TOTAL ASSETS; column as of December 31, 2025; USD 12,449.8 million → 12,449,800,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [total_liabilities]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Total liabilities; column as of December 31, 2025; USD 7,836.6 million → 7,836,600,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [stockholders_equity]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Total shareholders’ equity; column as of December 31, 2025; USD 4,613.2 million → 4,613,200,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [current_portion_of_long_term_debt]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Debt, current; column as of December 31, 2025; USD 24.5 million → 24,500,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [long_term_debt]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Debt, non-current; column as of December 31, 2025; USD 4,103.2 million → 4,103,200,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [total_debt]
+    description: "Derived: total_debt = Debt, current + Debt, non-current = 24,500,000 + 4,103,200,000 = 4,127,700,000 as of 2025-12-31."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [cash_and_equivalents]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Cash and cash equivalents; column as of December 31, 2025; USD 3,678.1 million → 3,678,100,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [current_assets]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Total current assets; column as of December 31, 2025; USD 4,711.4 million → 4,711,400,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [current_liabilities]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Total current liabilities; column as of December 31, 2025; USD 1,527.8 million → 1,527,800,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [property_plant_equipment_net]
+    description: "Direct from SEC filing: Exhibit 99.1; balance sheets; line Property and equipment; column as of December 31, 2025; USD 5,572.5 million → 5,572,500,000."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    covers: [shares_outstanding_basic]
+    description: "Direct from SEC filing: Exhibit 99.1; Outstanding Shares; period-end shares issued and outstanding 253,016,971 as of December 31, 2025 (not weighted-average for the quarter)."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: documentation
+    covers: [shares_outstanding_diluted]
+    description: "shares_outstanding_diluted null: Exhibit 99.1 does not state weighted-average diluted shares for the three months ended 2025-12-31 in the reviewed tables."
+    retrieved_at: "2026-03-24"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: documentation
+    covers: [market_cap]
+    description: "market_cap null: not computed in this file (would require closing price × shares and a defined quote timestamp)."
+    retrieved_at: "2026-03-24"

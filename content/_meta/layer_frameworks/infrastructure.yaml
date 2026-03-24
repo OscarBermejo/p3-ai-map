@@ -1,0 +1,91 @@
+# Infrastructure layer — business mental model + ordered financial snapshot for this layer.
+# Product canon under content/_meta/ (not agent/instructions/). Map UI can read financial_snapshot
+# for rows when infrastructure is selected; humans read `about` and `questions` for intent.
+
+layer: infrastructure
+
+about: |
+  Business mental model for the infrastructure slice of the AI value chain: how we compare companies
+  in this layer and which numbers matter. Lives under content/_meta/ (product meaning), not under
+  agent/instructions/ (how agents work).
+
+data_sources:
+  financials: "content/companies/<slug>/financials/*.yaml → metrics (keys match content/_meta/companies/_example/financials/_template.quarter.yaml)"
+  business_profile: "content/companies/<slug>/business/business.yaml from content/_meta/business_templates/infrastructure.yaml — capacity, contracts, deals; connects story to financials, not a substitute for them."
+
+questions_we_answer:
+  - "Direct economics — after cost of delivering the service, is there real gross margin, or do direct costs + depreciation eat revenue?"
+  - "Operating result (accrual) — after opex (including D&A on the P&L), is the operating business profitable? Cash capex is not inside operating income (investing cash flow); D&A is in operating income."
+  - "Cash from operations — does the business generate cash from operations before building more capacity?"
+  - "Capex vs that cash — how much cash goes to PP&E this period? Can operating cash cover it, or does growth depend on debt, equity, or other financing?"
+  - "Obligations — cash vs debt, and roughly interest as the price of financing; can they fund near-term needs?"
+  - "Bottom line — net income after tax and non-operating items (often weak even when gross looks fine)."
+  - "Transparency (reconciling headline deals to line items) is qualitative — notes and sources in business and filings, not a single metric here."
+
+period_rules: |
+  Read metrics for the same quarter: period.start / period.end for flows; balance sheet as of period.end.
+  For latest views, use the financials file with the latest period.end per company.
+
+# Ordered list: main side-by-side snapshot when infrastructure is selected (metrics keys → quarter YAML).
+financial_snapshot:
+  - key: revenue
+    label: Revenue
+    why: Scale (context only — pair with margins and cash).
+  - key: gross_profit
+    label: Gross profit
+    why: Room after direct costs.
+  - key: operating_income
+    label: Operating income
+    why: Operating profit incl. D&A; excludes cash capex.
+  - key: net_income
+    label: Net income
+    why: Full GAAP bottom line.
+  - key: operating_cash_flow
+    label: Operating cash flow
+    why: Cash from operations before PP&E investing.
+  - key: capital_expenditures_cash
+    label: CapEx (cash)
+    why: Cash paid for PP&E this period; normalize in data so this is >= 0 meaning cash out for equipment/build.
+  - key: cash_and_equivalents
+    label: Cash & equivalents
+    why: Liquidity (instant).
+  - key: total_debt
+    label: Total debt
+    why: Leverage (instant).
+
+derived_views:
+  - id: gross_margin
+    description: gross_profit / revenue (when revenue non-zero).
+  - id: operating_margin
+    description: operating_income / revenue (when revenue non-zero).
+  - id: cash_after_capex_paid
+    description: operating_cash_flow - capital_expenditures_cash when capex is stored as cash paid (non-negative).
+
+# Same quarter, same file — optional extra metrics for deeper views (not necessarily every UI).
+extended_metrics:
+  - group: Direct stack vs revenue
+    keys:
+      - cost_of_revenue
+      - depreciation_and_amortization
+  - group: Opex
+    keys:
+      - research_and_development
+      - selling_general_administrative
+  - group: Financing
+    keys:
+      - interest_expense
+      - interest_income
+      - financing_cash_flow_net
+  - group: Full investing
+    keys:
+      - investing_cash_flow_net
+  - group: Liquidity and structure
+    keys:
+      - current_assets
+      - current_liabilities
+      - stockholders_equity
+      - property_plant_equipment_net
+
+other_layers: |
+  Infrastructure is capex- and asset-heavy. Other layers (chips, models, applications) should get their
+  own framework file under content/_meta/layer_frameworks/ — do not reuse this metric set blindly.

@@ -1,0 +1,176 @@
+# Cipher Digital Inc. — infrastructure business profile (profile_version 4: online / contracted / secured + guidance).
+# Tier 1: Form 10-K accession 0001819989-26-000009 (period ended 2025-12-31, filed 2026-02-24).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2025-12-31"
+
+capacity:
+  online:
+    value: 207
+    notes: |
+      Issuer: operates approximately **207 MW** of power at one **Bitcoin mining** data center in Texas (Odessa Facility) as of the annual report period. Distinct from HPC / tenant sites still in development.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — portfolio overview; ~207 MW operating Bitcoin mining site."
+        retrieved_at: "2026-03-23"
+  contracted:
+    value: 600
+    notes: |
+      Issuer: **developing 600 MW** of **HPC** data center facilities across **two sites** for **hyperscaler tenants** (in progress; not fully online). Maps to “committed / under development” MW separate from the 207 MW live mining load.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — 600 MW HPC development across two hyperscaler sites."
+        retrieved_at: "2026-03-23"
+  secured:
+    value: 4200
+    notes: |
+      Issuer: data center portfolio **4.2 GW** across **10 sites** at **various stages of interconnection** (not all energized). Value stored as **4,200 MW**; not additive to **online** 207 MW — different bucket per template (pipeline / interconnection stage).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — 4.2 GW, 10 sites, interconnection stages."
+        retrieved_at: "2026-03-23"
+
+gpus:
+  online:
+    value: null
+    notes: |
+      Bitcoin mining fleet is **ASIC**-based; issuer does not file a consolidated “GPU online” count comparable to AI-cloud peers. HPC sites may use accelerators; refresh when a filing states an aggregate GPU or HPC accelerator count.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — business description (mining vs HPC context)."
+        retrieved_at: "2026-03-23"
+  contracted:
+    value: null
+    notes: null
+    sources: []
+  secured:
+    value: null
+    notes: null
+    sources: []
+  by_model: []
+
+contracts_usd:
+  online:
+    value: null
+    notes: |
+      Template expects **annual rent / ARR** from **customer compute contracts** in service. Primary revenue in the period remains **self-mining** and related activities; **Black Pearl** AWS lease **rent not yet commenced** (issuer targets initial subphase rent Q4 2026 / ramp into 2027). No clean filed “live tenant rental ARR” scalar mapped here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — Black Pearl lease timing and revenue model context."
+        retrieved_at: "2026-03-23"
+  contracted:
+    value: null
+    notes: |
+      Forward rent under **15-year AWS** lease for **~300 MW** turnkey capacity at Black Pearl — **not yet in revenue** per filing (construction / phased delivery). TCV / annualized rent not taken as **contracts_usd** without a filed run-rate.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — Amazon Web Services lease, Black Pearl Facility."
+        retrieved_at: "2026-03-23"
+  secured:
+    value: null
+    notes: null
+    sources: []
+
+deals_and_contracts:
+  summary:
+    value: |
+      **Amazon Web Services** — through Cipher Black Pearl LLC, **15-year lease** to deliver approximately **300 MW** gross turnkey data center capacity at **Black Pearl** (Wink, Texas); phased delivery expected to commence **2026**; retrofit/development commenced **2025**.
+      **Colchis** — November **2025**: majority interest in JV to develop a new **HPC** site in **West Texas**; filing cites capability up to **1 GW** (see Item 1 / business narrative).
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — AWS Black Pearl lease; Colchis JV / 1 GW HPC site."
+        retrieved_at: "2026-03-23"
+  highlights: []
+
+platform:
+  offers_managed_platform:
+    value: false
+    notes: |
+      Issuer is principally **data center owner/operator** and **self-mining**; HPC build-out is **tenant/lease** oriented rather than a filed first-party GPU cloud ARR platform like pure-play AI clouds.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — business model overview."
+        retrieved_at: "2026-03-23"
+  summary:
+    value: null
+    notes: null
+    sources: []
+
+datacenters:
+  reported_count:
+    value: 10
+    notes: |
+      **10 sites** in portfolio narrative (**4.2 GW** capacity statement). Plus pipeline sites discussed separately (**3.4 GW** across seven Texas + one Ohio — see guidance).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — 10 sites, 4.2 GW."
+        retrieved_at: "2026-03-23"
+  sites_or_regions:
+    value:
+      - "Odessa, Texas — Bitcoin mining (Odessa Facility)"
+      - "Wink, Texas — Black Pearl (AWS lease / under development)"
+      - "West Texas — Colchis HPC JV site"
+      - "Ohio — additional pipeline site (issuer narrative)"
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — property and development sites."
+        retrieved_at: "2026-03-23"
+
+integration:
+  model:
+    value: own_build_operate
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001819989-26-000009 — owned sites, development, and operations."
+        retrieved_at: "2026-03-23"
+  summary:
+    value: null
+    notes: null
+    sources: []
+
+guidance:
+  summary:
+    value: null
+    notes: null
+    sources: []
+  targets:
+    - kind: capacity_mw_connected
+      horizon: "Black Pearl Phase I initial subphase — Q4 2026 (issuer target for rent commencement)"
+      value_low: null
+      value_high: null
+      value_text: "Initial subphase rent commencement Q4 2026; Phase II initial subphase Q1 2027; full rent ramp Q1 2027 (issuer narrative)."
+      notes: "Forward-looking; AWS lease / Black Pearl construction timeline."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+          kind: sec_10k
+          description: "Form 10-K accession 0001819989-26-000009 — Black Pearl rent commencement targets."
+          retrieved_at: "2026-03-23"
+    - kind: other
+      horizon: "2026–2030"
+      value_low: null
+      value_high: null
+      value_text: "Site pipeline ~3.4 GW issuer anticipates energizing between 2026 and 2030 (seven Texas sites + one Ohio)."
+      notes: "Pipeline GW; not same as 4.2 GW ten-site portfolio statement — both appear in filing."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+          kind: sec_10k
+          description: "Form 10-K accession 0001819989-26-000009 — Site Pipeline section (~3.4 GW)."
+          retrieved_at: "2026-03-23"
+
+sources: []

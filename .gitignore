@@ -1,0 +1,20 @@
+# --- Secrets (never commit) ---
+config/.env
+.env
+.env.local
+.env.*.local
+
+# --- OS / editor ---
+.DS_Store
+
+# --- Python (if you add scripts later) ---
+.venv/
+__pycache__/
+*.pyc
+
+# --- Node (if you add app later) ---
+node_modules/
+
+# --- Local scratch / cache (do not commit) ---
+.cache-*.json
+.tmp_*

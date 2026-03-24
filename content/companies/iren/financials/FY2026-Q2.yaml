@@ -1,0 +1,335 @@
+# FY2026 Q2 — three months ended 31 December 2025 (Form 10-Q filed 5 Feb 2026).
+# Amounts in USD unless noted.
+
+period:
+  label: FY2026 Q2
+  start: "2025-10-01"
+  end: "2025-12-31"
+  fiscal_year: 2026
+
+currency_reporting: USD
+
+metrics:
+  revenue: 184692000
+  cost_of_revenue: 65763000
+  gross_profit: 118929000
+  research_and_development:
+  selling_general_administrative: 100755000
+  depreciation_and_amortization: 99176000
+  operating_income: -116403000
+  interest_expense: 10668000
+  interest_income: 15775000
+  other_income_expense_net: -221524000
+  income_tax_expense_benefit: -182520000
+  net_income: -155407000
+  operating_cash_flow: 71651000
+  stock_based_compensation: 58231000
+  capital_expenditures_cash: 539694000
+  investing_cash_flow_net: -850951000
+  financing_cash_flow_net: 3007598000
+  cash_and_equivalents: 3260589000
+  current_assets: 3383421000
+  current_liabilities: 682131000
+  property_plant_equipment_net: 3170451000
+  total_assets: 7027577000
+  total_liabilities: 4516384000
+  long_term_debt: 3841210000
+  current_portion_of_long_term_debt:
+  total_debt: 3841210000
+  stockholders_equity: 2511193000
+  shares_outstanding_basic: 298027356
+  shares_outstanding_diluted: 298027356
+  market_cap:
+sources:
+- url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/0001878848-26-000015-index.htm
+  kind: sec_10q
+  description: "Direct from SEC filing: Form 10-Q accession 0001878848-26-000015; filing index; period of report 2025-12-31
+    (Q2 FY2026); primary document iren-20251231.htm."
+  retrieved_at: "2026-03-23"
+  excerpt: "Period of Report 2025-12-31; filing date 2026-02-05."
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [revenue]
+  supports_derivation_of: [gross_profit]
+  description: "From SEC company facts API (XBRL): RevenueFromContractWithCustomerExcludingAssessedTax USD 184,692,000; duration
+    start 2025-10-01 end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [cost_of_revenue]
+  supports_derivation_of: [gross_profit]
+  description: "From SEC company facts API (XBRL): CostOfRevenue USD 65,763,000; start 2025-10-01 end 2025-12-31; accession
+    0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [gross_profit]
+  description: "Derived: gross_profit = revenue - CostOfRevenue = 184,692,000 - 65,763,000 = 118,929,000; same accession and
+    period as inputs."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [operating_income]
+  description: "From SEC company facts API (XBRL): OperatingIncomeLoss USD (116,403,000); start 2025-10-01 end 2025-12-31;
+    accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [net_income]
+  description: "From SEC company facts API (XBRL): NetIncomeLoss USD (155,407,000); start 2025-10-01 end 2025-12-31; accession
+    0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [operating_cash_flow]
+  description: "Derived: operating_cash_flow USD 71,651,000 = NetCashProvidedByUsedInOperatingActivities for six months 2025-07-01–2025-12-31
+    (USD 214,004,000) minus same tag for three months 2025-07-01–2025-09-30 (USD 142,353,000); contiguous periods; same cash
+    flow line concept."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [operating_cash_flow]
+  description: "From SEC company facts API (XBRL): input to operating_cash_flow — NetCashProvidedByUsedInOperatingActivities
+    USD 214,004,000; start 2025-07-01 end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [operating_cash_flow]
+  description: "From SEC company facts API (XBRL): input to operating_cash_flow — NetCashProvidedByUsedInOperatingActivities
+    USD 142,353,000; start 2025-07-01 end 2025-09-30; accession 0001878848-25-000081."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [capital_expenditures_cash]
+  description: "Derived: capital_expenditures_cash USD 539,694,000 = PaymentsToAcquirePropertyPlantAndEquipment for six months
+    2025-07-01–2025-12-31 (USD 720,001,000) minus same tag for three months 2025-07-01–2025-09-30 (USD 180,307,000); align
+    sign with Form 10-Q cash flow statement."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [capital_expenditures_cash]
+  description: "From SEC company facts API (XBRL): input to capex — PaymentsToAcquirePropertyPlantAndEquipment USD 720,001,000;
+    start 2025-07-01 end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [capital_expenditures_cash]
+  description: "From SEC company facts API (XBRL): input to capex — PaymentsToAcquirePropertyPlantAndEquipment USD 180,307,000;
+    start 2025-07-01 end 2025-09-30; accession 0001878848-25-000081."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [total_assets]
+  description: "From SEC company facts API (XBRL): Assets USD 7,027,577,000; instant end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [total_liabilities]
+  description: "From SEC company facts API (XBRL): Liabilities USD 4,516,384,000; instant end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [stockholders_equity]
+  description: "From SEC company facts API (XBRL): StockholdersEquity USD 2,511,193,000; instant end 2025-12-31; accession
+    0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [total_debt]
+  description: "Derived: total_debt USD 3,841,210,000 = ConvertibleLongTermNotesPayable USD 3,685,296,000 plus FinanceLeaseLiability
+    USD 155,914,000; both instant end 2025-12-31; not a single “total debt” line in the filing — sum of two carrying amounts
+    per US-GAAP tags."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [total_debt]
+  description: "From SEC company facts API (XBRL): input to total_debt — ConvertibleLongTermNotesPayable USD 3,685,296,000;
+    instant end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  supports_derivation_of: [total_debt]
+  description: "From SEC company facts API (XBRL): input to total_debt — FinanceLeaseLiability USD 155,914,000; instant end
+    2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [cash_and_equivalents]
+  description: "From SEC company facts API (XBRL): CashAndCashEquivalentsAtCarryingValue USD 3,260,589,000; instant end 2025-12-31;
+    accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [shares_outstanding_basic]
+  description: "From SEC company facts API (XBRL): WeightedAverageNumberOfSharesOutstandingBasic 298,027,356 shares; start
+    2025-10-01 end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [shares_outstanding_diluted]
+  description: "From SEC company facts API (XBRL): WeightedAverageNumberOfDilutedSharesOutstanding 298,027,356 shares; start
+    2025-10-01 end 2025-12-31; accession 0001878848-26-000015."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [interest_expense]
+  description: "Direct from SEC filing: Form 10-Q accession 0001878848-26-000015; primary document iren-20251231.htm; us-gaap:InterestExpenseNonoperating
+    USD 10,668,000; iXBRL context c-17; three months ended 2025-12-31."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [interest_income]
+  description: "Direct from SEC filing: same document and period; us-gaap:InvestmentIncomeInterest USD 15,775,000 (iXBRL context
+    c-17)."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [other_income_expense_net]
+  description: "Direct from SEC filing: same document and period; us-gaap:NonoperatingIncomeExpense USD (221,524,000) as filed
+    (sign per iXBRL; context c-17)."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  covers: [property_plant_equipment_net]
+  description: "Direct from SEC filing: condensed consolidated balance sheets; column December 31, 2025; iren:PropertyPlantAndEquipmentAndFinanceLeaseRightOfUseAssetAfterAccumulatedDepreciationAmortizationAndImpairment
+    USD 3,170,451,000 (amounts in thousands in the HTML; iXBRL context c-3)."
+  retrieved_at: "2026-03-23"
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): AssetsCurrent USD 3,383,421,000; instant end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - current_assets
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): LiabilitiesCurrent USD 682,131,000; instant end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - current_liabilities
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'Derived: investing_cash_flow_net USD -850,951,000 = NetCashProvidedByUsedInInvestingActivities for 2025-07-01–2025-12-31
+    (USD -1,131,828,000) minus same tag for 2025-07-01–2025-09-30 (USD -280,877,000); contiguous fiscal YTD; accessions 0001878848-26-000015
+    / 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - investing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to investing_cash_flow_net — NetCashProvidedByUsedInInvestingActivities
+    USD -1,131,828,000; start 2025-07-01 end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - investing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to investing_cash_flow_net — NetCashProvidedByUsedInInvestingActivities
+    USD -280,877,000; start 2025-07-01 end 2025-09-30; accession 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - investing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'Derived: financing_cash_flow_net USD 3,007,598,000 = NetCashProvidedByUsedInFinancingActivities for 2025-07-01–2025-12-31
+    (USD 3,613,735,000) minus same tag for 2025-07-01–2025-09-30 (USD 606,137,000); contiguous fiscal YTD; accessions 0001878848-26-000015
+    / 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - financing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to financing_cash_flow_net — NetCashProvidedByUsedInFinancingActivities
+    USD 3,613,735,000; start 2025-07-01 end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - financing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to financing_cash_flow_net — NetCashProvidedByUsedInFinancingActivities
+    USD 606,137,000; start 2025-07-01 end 2025-09-30; accession 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - financing_cash_flow_net
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'Derived: long_term_debt = ConvertibleLongTermNotesPayable + FinanceLeaseLiability (both non-current components
+    per tags); 3,685,296,000 + 155,914,000 = 3,841,210,000; instant end 2025-12-31; accessions 0001878848-26-000015 / 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - long_term_debt
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to long_term_debt — ConvertibleLongTermNotesPayable USD 3,685,296,000;
+    instant end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - long_term_debt
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input to long_term_debt — FinanceLeaseLiability USD 155,914,000; instant
+    end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - long_term_debt
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): SellingGeneralAndAdministrativeExpense USD 100,755,000; start 2025-10-01
+    end 2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - selling_general_administrative
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'Derived: stock_based_compensation USD 58,231,000 = ShareBasedCompensation YTD diff; accessions 0001878848-26-000015
+    / 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - stock_based_compensation
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input — ShareBasedCompensation USD 130,636,000; start 2025-07-01 end 2025-12-31;
+    accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - stock_based_compensation
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): input — ShareBasedCompensation USD 72,405,000; start 2025-07-01 end 2025-09-30;
+    accession 0001878848-25-000081.'
+  retrieved_at: '2026-03-23'
+  supports_derivation_of:
+  - stock_based_compensation
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): IncomeTaxExpenseBenefit USD -182,520,000; start 2025-10-01 end 2025-12-31;
+    accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - income_tax_expense_benefit
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: sec_companyfacts_json
+  description: 'From SEC company facts API (XBRL): DepreciationDepletionAndAmortization USD 99,176,000; start 2025-10-01 end
+    2025-12-31; accession 0001878848-26-000015.'
+  retrieved_at: '2026-03-23'
+  covers:
+  - depreciation_and_amortization
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: documentation
+  covers:
+  - research_and_development
+  - current_portion_of_long_term_debt
+  description: "research_and_development null: not a separate line item for the quarter in Form 10-Q 0001878848-26-000015.
+    current_portion_of_long_term_debt null: no tagged current-portion line separate from long-term components in the extract
+    used for this file."
+  retrieved_at: '2026-03-23'
+- url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001878848.json
+  kind: documentation
+  covers: [market_cap]
+  description: "market_cap null: not computed here — requires a point-in-time price and share basis; not standardized in this
+    file."
+  retrieved_at: "2026-03-23"
+- url: https://www.iren.com/investors
+  kind: ir_portal
+  description: "From official investor relations: hub for earnings materials (period labels cross-check only; no metric values
+    taken from IR for this file)."
+  retrieved_at: "2026-03-23"

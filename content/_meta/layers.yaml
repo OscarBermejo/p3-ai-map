@@ -1,0 +1,16 @@
+# Layer order and display metadata for the AI value chain (stack order in UIs).
+# These `id` values are the only valid `layer` values in company_index.yaml.
+#
+# Companies are not stored under per-layer folders — see content/companies/<slug>/.
+
+layers:
+  - id: energy
+    title: Energy
+  - id: infrastructure
+    title: Infrastructure
+  - id: chips
+    title: Chips
+  - id: models
+    title: Models
+  - id: applications
+    title: Applications

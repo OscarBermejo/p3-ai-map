@@ -1,0 +1,64 @@
+# Copy to YYYY-Qn.yaml. Nebius: SEC CIK 0001513845; FPI — cite 6-K/20-F primaries per financials/README.md.
+# Monetary amounts: use reporting currency. Use null when unknown.
+#
+# Flow metrics (operating_cash_flow, capital_expenditures_cash) must match period.start / period.end.
+# capital_expenditures_cash: store non-negative = cash paid for PP&E (flip if filing shows negative outflow); same as repo template.
+# If the filing only discloses YTD in structured data, use null for a single-quarter file and say so in sources.
+#
+# sources[] mapping (see agent/instructions/financials.md):
+# - covers: [metric_key, ...]  → primary citation for that metric’s reported value (or the single Derived: row).
+# - supports_derivation_of: [metric_key, ...]  → input row for a derived metric (no covers on pure inputs).
+# - kind: documentation + covers: [metric_key]  → why metrics.<key> is null.
+# Context rows (filing index, IR): omit covers and supports_derivation_of.
+
+period:
+  label: ""
+  start: ""
+  end: ""
+  fiscal_year: null
+
+currency_reporting: USD
+
+metrics:
+  revenue: null
+  gross_profit: null
+  operating_income: null
+  net_income: null
+  operating_cash_flow: null
+  capital_expenditures_cash: null
+  total_assets: null
+  total_liabilities: null
+  stockholders_equity: null
+  total_debt: null
+  cash_and_equivalents: null
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null
+
+sources: []
+# Example shapes:
+# - url: https://www.sec.gov/...
+#   kind: sec_6k
+#   description: "Direct from SEC filing: ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001513845.json
+#   kind: sec_companyfacts_json
+#   covers: [revenue]
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   covers: [gross_profit]
+#   description: "Derived: gross_profit = revenue - CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://www.sec.gov/...
+#   kind: documentation
+#   covers: [market_cap]
+#   description: "market_cap null: ..."
+#   retrieved_at: ""

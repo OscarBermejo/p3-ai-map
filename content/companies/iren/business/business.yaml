@@ -1,0 +1,289 @@
+# IREN Ltd — infrastructure business profile (profile_version 4: online / contracted / secured + guidance).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2026-03-04"
+
+capacity:
+  online:
+    value: 810
+    notes: |
+      As of 2025-12-31 (10-Q): sum of disclosed operating data center MW — Childress TX ~650, Canal Flats BC ~30, Mackenzie BC ~80, Prince George BC ~50.
+      Issuer states over 80% of operating data center capacity is in the United States.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015; period ended 2025-12-31 — operating MW by site."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: null
+    notes: |
+      No issuer-disclosed aggregate “MW under contract but not online” separate from secured grid/LOA MW. Sweetwater 1 (~1,400 MW) and Sweetwater 2 (~600 MW) in development; Horizon 1–4 liquid-cooled IT load up to 200 MW combined at Childress (10-Q).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015 — development MW narrative."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: 4500
+    notes: |
+      Seven sites with executed grid connection agreements or LOAs ~4,500 MW total power capacity (10-Q). Separate ~1,600 MW grid-connected power rights for new Oklahoma site.
+      Feb 2026 PR: secured grid-connected power >4.5 GW; ~1.6 GW Oklahoma campus narrative.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001878848-26-000014, Ex.99.1 (2026-02-05)."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+
+gpus:
+  online:
+    value: null
+    notes: |
+      10-Q gives a single figure ~99,900 GPUs “installed or on order” without splitting in-service vs. not; see gpus.contracted for that disclosure.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: "~99900"
+    notes: |
+      As of 2025-12-31: ~99,900 GPUs installed or on order (issuer single line). Maps to “contracted + pipeline” bucket when online count not split out.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: 150000
+    notes: |
+      Mar 2026 PR: total fleet to expand to 150,000 GPUs; purchase agreements for >50,000 NVIDIA B300; phased H2 2026 deploy at Mackenzie and Childress. Forward-looking; footnotes apply.
+      Feb 2026 PR: ~140k GPU expansion “on track” headline (superseded for fleet size by Mar PR where they differ).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001140361-26-007905, Ex.99.1 (2026-03-04)."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001878848-26-000014, Ex.99.1 (2026-02-05)."
+        retrieved_at: "2026-03-22"
+  by_model: []
+
+contracts_usd:
+  online:
+    value: null
+    notes: |
+      Profile: **annual rental ARR** from tenant/hyperscaler compute deals in service. No clean filed “live rental ARR” scalar separate from illustrative metrics. Mar 2026 8-K: **illustrative** AI Cloud annualized run-rate **>$3.7bn by end of 2026** tied to ~150k GPU fleet — recorded under **`guidance.targets`**, not here (see footnote in primary).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001140361-26-007905, Ex.99.1 — illustrative ARR footnote."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: null
+    notes: |
+      Not rental ARR: Dell GPU **purchase** agreements ~USD 5.8bn (supply / capex, four tranches in 2026 per 10-Q) belong in deals narrative, not tenant yearly rent. No separate filed “signed rental ARR not yet live” scalar used here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015 — Dell purchase agreement; RPO narrative."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: null
+    notes: |
+      Not annual rent: Microsoft Agreement **total contract value** ~USD 9.7bn **over contract term** (10-Q) — TCV, not ARR. Funding ~USD 9.3bn (Mar 2026 PR) and GPU financing ~USD 3.6bn (Feb 2026 PR) are financing, not rental run-rate. Detail under deals_and_contracts.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015 — Microsoft TCV."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001140361-26-007905, Ex.99.1 — funding secured."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001878848-26-000014, Ex.99.1 — GPU financing."
+        retrieved_at: "2026-03-22"
+
+deals_and_contracts:
+  summary:
+    value: |
+      Microsoft — dedicated GPU services at Horizon facilities in Childress, TX; total contract value ~USD 9.7 billion over term; ~20% prepayment prior to each tranche delivery (10-Q). Q2 FY26 PR: ~USD 3.6bn GPU financing secured for Microsoft contract (subject to footnoted terms).
+      Dell — GPU supply ~USD 5.8bn, four tranches in 2026 from Mar 2026 (10-Q). Mar 2026 PR: B300 procurement scaling fleet to 150k GPUs; ~USD 3.5bn incremental capex for orders in H2 2026 (post-shipment payment terms).
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001878848-26-000014, Ex.99.1."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001140361-26-007905, Ex.99.1."
+        retrieved_at: "2026-03-22"
+  highlights:
+    - value: "2026-03-04 — >50k NVIDIA B300 GPU purchase agreements; 150k GPU fleet target; H2 2026 phased deployment (Mackenzie, Childress)."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+          kind: sec_8k
+          description: "Form 8-K accession 0001140361-26-007905, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - value: "2026-02-05 — ~USD 3.6bn GPU financing for Microsoft contract; secured grid power >4.5 GW; ~1.6 GW Oklahoma campus."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+          kind: sec_8k
+          description: "Form 8-K accession 0001878848-26-000014, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - value: "Sweetwater 1 / Sweetwater 2 — substation energization targets Q2 2026 and Q4 2027 (10-Q)."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+          kind: sec_10q
+          description: "Form 10-Q accession 0001878848-26-000015."
+          retrieved_at: "2026-03-22"
+
+platform:
+  offers_managed_platform:
+    value: true
+    notes: "AI Cloud Services — cloud GPU compute for training and inference (business description)."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+  summary:
+    value: "Vertically integrated AI Cloud: data centers plus large-scale GPU clusters; owned miners and GPUs."
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+
+datacenters:
+  reported_count:
+    value: 7
+    notes: "Seven data center sites with executed grid connection agreements or LOAs (~4,500 MW portfolio-level disclosure)."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+  sites_or_regions:
+    value:
+      - "Childress, Texas, United States"
+      - "Sweetwater 1, Texas, United States"
+      - "Sweetwater 2, Texas, United States"
+      - "Canal Flats, British Columbia, Canada"
+      - "Mackenzie, British Columbia, Canada"
+      - "Prince George, British Columbia, Canada"
+      - "Oklahoma, United States"
+    notes: "From 10-Q portfolio list; Oklahoma also ~1,600 MW development rights separately."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+
+integration:
+  model:
+    value: own_build_operate
+    notes: "Vertically integrated: design, build, operate data centers; own compute hardware."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+  summary:
+    value: "Grid-connected renewable-rich sites; GPU finance leases (ASC 842) where applicable."
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015."
+        retrieved_at: "2026-03-22"
+
+guidance:
+  summary:
+    value: null
+    notes: |
+      Mar 2026 8-K (Ex.99.1): **150,000 GPU** fleet target; **>$3.7bn** illustrative AI Cloud **annualized run-rate** by end of 2026 (footnote: internal assumptions; not fully contracted); **~$3.5bn** incremental **capex** for related orders **H2 2026** (post-shipment terms). 10-Q: **Sweetwater** substation energization targets **Q2 2026** (Sweetwater 1) and **Q4 2027** (Sweetwater 2); development sites **~1,400 MW** / **~600 MW** cited in capacity.contracted notes.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Form 8-K accession 0001140361-26-007905, Ex.99.1 (2026-03-04) — GPU fleet, illustrative ARR, capex."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q accession 0001878848-26-000015 — Sweetwater substation timing, development MW."
+        retrieved_at: "2026-03-22"
+  targets:
+    - kind: arr_usd
+      horizon: "by end of 2026"
+      value_low: 3700000000
+      value_high: null
+      value_text: ">$3.7bn illustrative annualized run-rate (AI Cloud)"
+      notes: |
+        8-K body: 150k GPU fleet **expected to support** AI Cloud annualized run-rate revenue of **over $3.7bn** by end of 2026. Footnote (1): illustrative estimate from ~150k GPU deployment; internal assumptions (GPU models, utilization, pricing, term, counterparty); **not fully contracted** — issuer wording.
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+          kind: sec_8k
+          description: "Form 8-K accession 0001140361-26-007905, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - kind: gpu
+      horizon: "phased through H2 2026 (deployment); fleet scale aligned with ARR narrative end-2026"
+      value_low: null
+      value_high: 150000
+      value_text: ">50,000 NVIDIA B300 (purchase agreements per PR)"
+      notes: |
+        Expand total fleet to **150,000 GPUs**; purchase agreements for **>50,000** NVIDIA B300; phased deployment **H2 2026** at Mackenzie, BC and Childress, TX (air-cooled DCs). Feb 2026 PR cited ~140k GPU expansion “on track”; Mar 2026 release states **150k** fleet target.
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+          kind: sec_8k
+          description: "Form 8-K accession 0001140361-26-007905, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - kind: capex_usd
+      horizon: "H2 2026"
+      value_low: null
+      value_high: null
+      value_text: "~$3.5bn additional capex (GPUs, servers, storage, networking, labor, ancillary)"
+      notes: "Issuer expects to finance ~$3.5bn for these orders in H2 2026; post-shipment payment terms (8-K)."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+          kind: sec_8k
+          description: "Form 8-K accession 0001140361-26-007905, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - kind: other
+      horizon: "Sweetwater 1: Q2 2026; Sweetwater 2: Q4 2027"
+      value_low: null
+      value_high: null
+      value_text: "Substation energization targets (issuer)"
+      notes: "10-Q development narrative; see also capacity.contracted for ~1,400 MW / ~600 MW site-level MW."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+          kind: sec_10q
+          description: "Form 10-Q accession 0001878848-26-000015."
+          retrieved_at: "2026-03-22"
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+    kind: sec_8k
+    description: "Form 8-K accession 0001140361-26-007905, Ex.99.1 (2026-03-04)."
+    retrieved_at: "2026-03-22"
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+    kind: sec_8k
+    description: "Form 8-K accession 0001878848-26-000014, Ex.99.1 (2026-02-05)."
+    retrieved_at: "2026-03-22"
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+    kind: sec_10q
+    description: "Form 10-Q accession 0001878848-26-000015; period ended 2025-12-31."
+    retrieved_at: "2026-03-22"

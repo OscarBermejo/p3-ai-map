@@ -1,0 +1,25 @@
+# PLACEHOLDER — copy to content/companies/<slug>/ or inbox/proposals/<date>/companies/<slug>/.
+# Folder name must match slug (kebab-case). Layer is assigned in content/_meta/company_index.yaml when merged to content/ — not in this file.
+
+slug: example-company # folder name should match slug (kebab-case)
+legal_name: Example Corp
+
+tickers:
+  - symbol: EXMPL
+    exchange: NASDAQ
+
+summary: |
+  What the company does in this layer of the AI value chain (qualitative).
+  Put quantitative claims in financials/*.yaml with sources.
+
+links:
+  investor_relations: ""
+  # Optional: official press/news listing or investor hub URL (newest first) — discovery only; see agent/instructions/sources.md
+  press_releases_index: ""
+  sec_cik: ""
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: YYYY-Qn.yaml
+
+notes: []

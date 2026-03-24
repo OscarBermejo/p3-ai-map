@@ -1,0 +1,302 @@
+# Nebius Group N.V. — infrastructure business profile (profile_version 4: + guidance).
+# Updated from Form 6-K accession 0001104659-26-013946 (Ex.99.2 shareholder letter, 2026-02-12) and
+# 0001104659-26-026163 (Ex.99.1 NVIDIA partnership PR, 2026-03-11). Form 20-F accession 0001558370-25-005991
+# retained where superseded metrics are absent (GPU total, Item 4 site names).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2025-12-31"
+
+capacity:
+  online:
+    value: 170
+    notes: |
+      Issuer letter (Feb 2026): “~170 MW of **active power**” at year-end 2025 vs 100 MW target. Letter defines **active power** as power consumed by IT equipment (distinct from **connected** and **contracted** power). Supersedes 20-F “~45 MW connected” as of 2025-03-31 for a current scalar.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — Letter to shareholders (2026-02-12), active power YE 2025."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — prior ~45 MW connected as of 2025-03-31 (superseded for online scalar)."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: null
+    notes: |
+      Issuer discloses aggregate **contracted power** (>2 GW, see capacity.secured) and **connected** targets (800 MW–1 GW by end of 2026); no separate filed scalar for “MW under contract but not yet connected” isolated from those buckets.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — power definitions and capacity narrative."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: 2000
+    notes: |
+      Issuer: “secured **more than 2 GW** of **contracted power**” (letter footnote: power secured by contracts). Expects **>3 GW contracted power by end of 2026**; on track for **800 MW–1 GW connected power** by end of 2026. MW value uses **2,000** as the disclosed “>2 GW” floor; not additive to **active** MW. Mar 2026 NVIDIA PR cites partnership enabling “**more than 5 gigawatts**” of NVIDIA systems **by end of 2030** — different horizon/metric; see deals_and_contracts.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — contracted/connected power targets."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-026163, Ex.99.1 — NVIDIA partnership PR (2026-03-11), >5 GW systems by 2030."
+        retrieved_at: "2026-03-22"
+
+gpus:
+  online:
+    value: 30000
+    notes: |
+      **Stale risk:** last **explicit** GPU fleet total in Tier 1 remains 20-F Item 4: “~30,000 GPUs” as of **2025-03-31** (mostly H200). Feb 2026 shareholder letter updates MW and ARR but **does not** restate a GPU count; operational scale likely higher. Refresh when a newer filing states a total.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — Item 4, ~30,000 GPUs as of 2025-03-31."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — no updated GPU total (context)."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: null
+    notes: |
+      Letter discusses B300 / GB300 NVL72 deployment and capex; no separate “GPUs on order” aggregate filed here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: null
+    notes: |
+      No discrete “secured GPU” count; infrastructure secured via power/GW narrative and NVIDIA partnership (deals).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-026163, Ex.99.1 — strategic partnership narrative."
+        retrieved_at: "2026-03-22"
+  by_model:
+    - "NVIDIA H200 — majority of fleet per 20-F snapshot 2025-03-31 (may be stale)"
+    - "NVIDIA B300 / GB300 NVL72 — deployment started 2025 per Feb 2026 letter"
+    - "NVIDIA Rubin / Vera / BlueField — partnership roadmap Mar 2026 PR"
+
+contracts_usd:
+  online:
+    value: 1250000000
+    notes: |
+      Issuer **ARR $1.25 billion** “as of year-end” (2025), ahead of prior guidance $900m–$1.1b. Footnote: ARR = revenue from **last month of quarter × 12**. This is **issuer-defined** cloud run-rate revenue, not a line-item “hyperscaler-only” rent disclosure; includes diversified customer base per letter.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — ARR $1.25bn year-end 2025 and footnote (1)."
+        retrieved_at: "2026-03-22"
+  contracted:
+    value: null
+    notes: |
+      No separate filed “signed-but-not-live” rental ARR scalar; letter emphasizes execution on **Microsoft** / **Meta** capacity tranches (see deals).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+  secured:
+    value: null
+    notes: |
+      Forward **ARR** outlook lives under **`guidance.targets`** (not a realized secured-rental scalar).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — context."
+        retrieved_at: "2026-03-22"
+
+deals_and_contracts:
+  summary:
+    value: |
+      **2026-03-11:** NVIDIA ~$2bn private placement (pre-funded warrant); strategic partnership to scale full-stack AI cloud — PR cites “more than 5 gigawatts” of NVIDIA systems capacity **by end of 2030** (see capacity.secured notes). **2026-02-12 letter:** first tranche of capacity to **Microsoft** delivered Nov 2025; remaining on track; **Meta** contracted tranches delivered on time; five new locations deployed in 2025 and nine additional secured; Europe first to deploy NVIDIA HGX B300 in Nov 2025 per letter. **2024-12:** Accel, Nvidia, Orbis **$700m** strategic equity (20-F narrative).
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-026163, Ex.99.1 — NVIDIA investment & partnership PR (2026-03-11)."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — Microsoft, Meta, footprint."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — $700m raise Dec 2024."
+        retrieved_at: "2026-03-22"
+  highlights:
+    - value: "2026-03-11 — NVIDIA ~$2bn private placement + strategic partnership (5 GW+ systems by 2030 cited in PR)"
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-026163, Ex.99.1."
+          retrieved_at: "2026-03-22"
+    - value: "Microsoft — first capacity tranche Nov 2025; Meta — contracted tranches delivered (Feb 2026 letter)"
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+          retrieved_at: "2026-03-22"
+    - value: "$700m strategic equity (Accel, Nvidia, Orbis) — Dec 2024"
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+          kind: sec_20f
+          description: "Form 20-F accession 0001558370-25-005991."
+          retrieved_at: "2026-03-22"
+
+platform:
+  offers_managed_platform:
+    value: true
+    notes: |
+      Nebius AI Cloud (Aether 3.0 / 3.1 per letter); **Nebius Token Factory** managed inference called out Feb 2026.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — platform."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — Nebius AI Cloud launch context."
+        retrieved_at: "2026-03-22"
+  summary:
+    value: "Full-stack AI cloud: scaling owned DCs + contracted power; NVIDIA stack; enterprise and frontier customers (letter + 20-F)."
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+
+datacenters:
+  reported_count:
+    value: null
+    notes: |
+      Feb 2026 letter: **five** new locations **deployed** in 2025 and **nine** additional **secured**; 9 new sites across US and EMEA cited in Q4 section — **no** single cumulative “site count.” Item 4 (20-F) listed **five named** footprints as of 2025-03-31; base has expanded — use **sites_or_regions** as partial historical list + narrative here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — footprint expansion."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — Item 4 named sites (older snapshot)."
+        retrieved_at: "2026-03-22"
+  sites_or_regions:
+    value:
+      - "Mäntsälä, Finland (owned) — 20-F Item 4"
+      - "Paris, France (colocation) — 20-F Item 4"
+      - "Iceland (colocation) — 20-F Item 4"
+      - "Kansas City, Missouri, United States (colocation) — 20-F Item 4"
+      - "New Jersey, United States (phased owned build) — 20-F Item 4"
+      - "Letter (2026-02-12): +5 locations deployed in 2025; +9 secured; +9 sites US/EMEA in Q4 narrative (not all named)"
+    notes: "Augment with newer IR/filings when specific new sites are named in Tier 1."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+        kind: sec_20f
+        description: "Form 20-F accession 0001558370-25-005991 — Item 4."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+
+integration:
+  model:
+    value: hybrid
+    notes: "Owned data centers for majority of new capacity (letter); colocation legacy + 20-F footprint."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+  summary:
+    value: "Greenfield owned + contracted power at scale; colocation; in-house hardware — letter + 20-F."
+    notes: null
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+        retrieved_at: "2026-03-22"
+
+guidance:
+  summary:
+    value: null
+    notes: |
+      Feb 2026 letter: on track for **ARR $7b–$9b by end of 2026** (same ARR definition as contracts_usd.online footnote). Power: **>3 GW contracted** by end of 2026; **800 MW–1 GW connected** by end of 2026. Mar 2026 NVIDIA PR: **>5 gigawatts** of NVIDIA systems **by end of 2030** (partnership headline metric).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — letter (guidance narrative)."
+        retrieved_at: "2026-03-22"
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+        kind: sec_6k
+        description: "Form 6-K accession 0001104659-26-026163, Ex.99.1 — partnership PR (2030 systems GW)."
+        retrieved_at: "2026-03-22"
+  targets:
+    - kind: arr_usd
+      horizon: "by end of 2026"
+      value_low: 7000000000
+      value_high: 9000000000
+      value_text: null
+      notes: "Issuer: on track to end 2026 with ARR in this range; same footnote (1) as year-end ARR — last month of quarter × 12."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — ARR outlook."
+          retrieved_at: "2026-03-22"
+    - kind: contracted_power_mw
+      horizon: "by end of 2026"
+      value_low: null
+      value_high: null
+      value_text: ">3 GW contracted power (issuer expects)"
+      notes: "Letter: raised expectation vs prior >2.5 GW by end of 2026."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+          retrieved_at: "2026-03-22"
+    - kind: capacity_mw_connected
+      horizon: "by end of 2026"
+      value_low: 800
+      value_high: 1000
+      value_text: null
+      notes: "Issuer: connected power (letter definition: power connected into data centers)."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-013946, Ex.99.2."
+          retrieved_at: "2026-03-22"
+    - kind: other
+      horizon: "by end of 2030"
+      value_low: null
+      value_high: null
+      value_text: ">5 gigawatts of NVIDIA systems (partnership PR headline)"
+      notes: "Not the same as issuer MW IT load; strategic systems-capacity wording in joint PR."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+          kind: sec_6k
+          description: "Form 6-K accession 0001104659-26-026163, Ex.99.1."
+          retrieved_at: "2026-03-22"
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+    kind: sec_6k
+    description: "Form 6-K accession 0001104659-26-026163, Ex.99.1 — NVIDIA partnership & $2bn placement (2026-03-11)."
+    retrieved_at: "2026-03-22"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+    kind: sec_6k
+    description: "Form 6-K accession 0001104659-26-013946, Ex.99.2 — Letter to shareholders (2026-02-12): ARR, MW, power, customers."
+    retrieved_at: "2026-03-22"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    description: "Form 6-K accession 0001104659-26-013946, Ex.99.1 — Q4/FY2025 unaudited results PR (2026-02-12), companion to letter."
+    retrieved_at: "2026-03-22"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+    kind: sec_20f
+    description: "Form 20-F year ended 2024-12-31, filed 2025-04-30 — accession 0001558370-25-005991 (historical Item 4, GPU count)."
+    retrieved_at: "2026-03-22"

@@ -1,0 +1,123 @@
+# Infrastructure layer — business / capacity profile (not quarterly financials).
+# Copy to companies/<slug>/business/business.yaml (content or inbox).
+#
+# profile_version 4: adds guidance (issuer forward targets). v3: parallel triples for comparability across issuers:
+#   capacity.{ online, contracted, secured }       — MW
+#   gpus.{ online, contracted, secured }            — GPU count (or compact tokens)
+#   contracts_usd.{ online, contracted, secured }   — USD **annual rent / ARR** from **customer** compute contracts
+#       (hyperscalers, enterprises, or others **renting** capacity from the issuer). Scalar = yearly contract value
+#       at run-rate when possible. Exclude GPU/hardware **purchase** agreements, generic multi-year TCV unless you
+#       annualize with term in notes, and financing — put those in deals_and_contracts / notes instead.
+#
+# Semantics (apply per block; map filings into the closest bucket and explain in notes):
+#   online     — in service today (MW; GPUs live; **rental ARR** recognized or running under active tenant deals).
+#   contracted — signed / committed, not fully online (MW & GPU orders; **rental ARR** for capacity not yet live).
+#   secured    — broader pipeline (MW: grid LOAs etc.; GPUs: targets / financing-backed supply; **USD: secured
+#                 rental revenue at ARR** where disclosed; if only TCV or non-rental USD, use null + notes).
+#   guidance   — **Forward** targets (ARR outlook, MW by year-end, GPU fleet goals). Not realized metrics.
+#
+# Per leaf: { value, notes, sources }. Issuer-agnostic keys only; detail in notes. Optional top-level sources[].
+
+layer: infrastructure
+profile_version: 4
+
+# as_of: issuer snapshot date for fast-moving scalars (capacity / gpus / contracts_usd) when disclosed;
+#         if mixed dates across leaves, use latest snapshot or explain per-leaf in notes. See agent/instructions/sources.md
+#         ("Filing age, as_of, and staleness").
+as_of: null
+
+capacity:
+  online:
+    value: null
+    notes: "MW operating / in service (issuer definition)."
+    sources: []
+  contracted:
+    value: null
+    notes: "MW committed but not yet in service, if disclosed separately from online."
+    sources: []
+  secured:
+    value: null
+    notes: "MW under grid LOAs, connection agreements, or similar secured pipeline (not necessarily energized)."
+    sources: []
+
+gpus:
+  online:
+    value: null
+    notes: "GPUs in service / live."
+    sources: []
+  contracted:
+    value: null
+    notes: "GPUs on order or under purchase agreements not yet in service."
+    sources: []
+  secured:
+    value: null
+    notes: "Broader secured GPU position (financing, fleet target, options) — say what the number means in notes."
+    sources: []
+  by_model: []
+
+contracts_usd:
+  online:
+    value: null
+    notes: "Annual rent / ARR from customer compute contracts in service (hyperscalers, tenants — issuer definition)."
+    sources: []
+  contracted:
+    value: null
+    notes: "Annual rent / ARR from signed tenant deals not yet fully in service (ramp, undelivered capacity)."
+    sources: []
+  secured:
+    value: null
+    notes: "Broader secured **rental** ARR (bookings, LOIs with annual run-rate, etc.). If filing only gives TCV, null value and explain."
+    sources: []
+
+deals_and_contracts:
+  summary:
+    value: null
+    notes: "Narrative; multi-line text allowed in value."
+    sources: []
+  # [ { value: "one-line highlight", sources: [ ... ] } ]
+  highlights: []
+
+platform:
+  offers_managed_platform:
+    value: null
+    notes: "true | false | null"
+    sources: []
+  summary:
+    value: null
+    notes: null
+    sources: []
+
+datacenters:
+  reported_count:
+    value: null
+    notes: null
+    sources: []
+  sites_or_regions:
+    value: []
+    notes: "Short strings: site names, cities, regions, or countries."
+    sources: []
+
+integration:
+  model:
+    value: null
+    notes: "own_build_operate | lease_colo | hybrid | other"
+    sources: []
+  summary:
+    value: null
+    notes: null
+    sources: []
+
+# Forward-looking goals the issuer states (guidance, targets, “on track for …”) — Tier 1 only.
+# Do not record here as if realized; keep actual run-rates in contracts_usd.online / capacity / gpus as appropriate.
+guidance:
+  summary:
+    value: null
+    notes: "Optional one-paragraph cross-cutting outlook; prefer targets[] for discrete goals."
+    sources: []
+  # Each target: issuer-stated goal. kind = arr_usd | capacity_mw_active | capacity_mw_connected |
+  #   contracted_power_mw | gpu | revenue_usd | capex_usd | other
+  # horizon = issuer wording (e.g. by end of 2026) or ISO date when given.
+  # Use value_low / value_high (USD or MW) when numeric range; value_text for prose (e.g. >3 GW).
+  targets: []
+
+sources: []

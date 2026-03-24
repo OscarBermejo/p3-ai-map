@@ -1,0 +1,26 @@
+slug: nebius
+legal_name: Nebius Group N.V.
+
+tickers:
+  - symbol: NBIS
+    exchange: NASDAQ
+
+summary: |
+  Nebius Group builds full-stack AI infrastructure—cloud GPU capacity, managed ML
+  platforms, and related services—positioned as infrastructure for model training
+  and inference. SEC lists the registrant as formerly Yandex N.V. (through 2024-08-16);
+  it is a foreign private issuer (Netherlands) filing Form 20-F and 6-K. Put
+  quantitative claims in financials/*.yaml with sources.
+
+links:
+  investor_relations: https://group.nebius.com/investor-hub
+  # Official investor hub / news entry (discovery); cite specific releases or filings in yaml sources[].
+  press_releases_index: https://nebius.com/investor-hub
+  sec_cik: "0001513845"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: YYYY-Qn.yaml
+
+notes:
+  - "SEC EDGAR company filings: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001513845"

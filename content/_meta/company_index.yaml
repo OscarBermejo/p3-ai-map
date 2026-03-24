@@ -1,0 +1,17 @@
+# Human-maintained: maps each canonical company slug to a value-chain layer.
+# Valid `layer` values: `id` entries in layers.yaml (e.g. infrastructure, chips).
+#
+# Add or update a row when a company exists under content/companies/<slug>/.
+# You may also list proposal-only slugs early so agents can resolve which
+# business_templates/<layer>.yaml to use (see agent/instructions/business_add_company.md).
+# If a slug is missing here, the user must pass layer explicitly for that flow.
+#
+# The agent instructions do not require editing this file.
+
+companies:
+  - slug: iren
+    layer: infrastructure
+  - slug: nebius
+    layer: infrastructure
+  - slug: cipher
+    layer: infrastructure

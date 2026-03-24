@@ -1,0 +1,64 @@
+# Copy to YYYY-Qn.yaml (or FY2026-Q1.yaml-style if using fiscal labels). Remove when file is real data.
+# Monetary amounts: use reporting currency. Use null when unknown.
+#
+# Flow metrics (operating_cash_flow, capital_expenditures_cash) must match period.start / period.end.
+# Use the cash flow statement sign convention as reported (cash outflows for capex are often negative).
+# If the filing only discloses YTD in structured data, use null for a single-quarter file and say so in sources.
+#
+# sources[] mapping (see agent/instructions/financials.md):
+# - covers: [metric_key, ...]  → primary citation for that metric’s reported value (or the single Derived: row).
+# - supports_derivation_of: [metric_key, ...]  → input row for a derived metric (no covers on pure inputs).
+# - kind: documentation + covers: [metric_key]  → why metrics.<key> is null.
+# Context rows (filing index, IR): omit covers and supports_derivation_of.
+
+period:
+  label: ""
+  start: ""
+  end: ""
+  fiscal_year: null
+
+currency_reporting: USD
+
+metrics:
+  revenue: null
+  gross_profit: null
+  operating_income: null
+  net_income: null
+  operating_cash_flow: null
+  capital_expenditures_cash: null
+  total_assets: null
+  total_liabilities: null
+  stockholders_equity: null
+  total_debt: null
+  cash_and_equivalents: null
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null
+
+sources: []
+# Example shapes:
+# - url: https://www.sec.gov/...
+#   kind: sec_10q
+#   description: "Direct from SEC filing: ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/api/xbrl/companyfacts/CIK....json
+#   kind: sec_companyfacts_json
+#   covers: [revenue]
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   covers: [gross_profit]
+#   description: "Derived: gross_profit = revenue - CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://www.sec.gov/...
+#   kind: documentation
+#   covers: [market_cap]
+#   description: "market_cap null: ..."
+#   retrieved_at: ""

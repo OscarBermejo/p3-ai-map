@@ -1,0 +1,31 @@
+# Copy to FYyyyy-Qn.yaml. Remove instructional lines when file is real data.
+# Monetary amounts: reporting currency. Use null when unknown.
+#
+# Flow metrics must match period.start / period.end.
+# Capex: align sign with filing (PaymentsToAcquirePropertyPlantAndEquipment often positive = cash paid).
+
+period:
+  label: ""
+  start: ""
+  end: ""
+  fiscal_year: null
+
+currency_reporting: USD
+
+metrics:
+  revenue: null
+  gross_profit: null
+  operating_income: null
+  net_income: null
+  operating_cash_flow: null
+  capital_expenditures_cash: null
+  total_assets: null
+  total_liabilities: null
+  stockholders_equity: null
+  total_debt: null
+  cash_and_equivalents: null
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null
+
+sources: []

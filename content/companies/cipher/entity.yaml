@@ -1,0 +1,27 @@
+# Proposal draft — review before merging to content/companies/cipher/
+
+slug: cipher
+legal_name: Cipher Digital Inc.
+
+tickers:
+  - symbol: CIFR
+    exchange: NASDAQ
+
+summary: |
+  Cipher Digital Inc. (NASDAQ: CIFR; brand “Cipher Mining”) develops and operates
+  data center infrastructure, including Bitcoin mining sites and high-performance
+  compute (HPC) capacity for hyperscaler tenants. SEC lists the registrant as
+  formerly Cipher Mining Inc. (through 2026-02-23). Quantitative results belong in
+  financials/*.yaml with sources.
+
+links:
+  investor_relations: https://investors.ciphermining.com/
+  press_releases_index: https://investors.ciphermining.com/news-events/press-releases
+  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001819989&owner=include&count=40
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes:
+  - "SEC legal name effective 2026-02-23: Cipher Digital Inc.; former name Cipher Mining Inc. (submissions API formerNames)."
