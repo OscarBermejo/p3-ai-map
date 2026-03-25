@@ -1,14 +1,13 @@
 /**
  * Flow metrics where "% of same-period revenue" is shown in the layer financial snapshot.
  * Excludes revenue itself, balance-sheet instants (cash, debt), and other stocks.
+ * Operating cash flow (OCF) and CapEx (capital expenditures) (cash) are omitted: cash metrics vs accrual revenue are easy to misread as margins.
  */
 export const FINANCIAL_METRIC_KEYS_PCT_OF_REVENUE: ReadonlySet<string> =
   new Set([
     "gross_profit",
     "operating_income",
     "net_income",
-    "operating_cash_flow",
-    "capital_expenditures_cash",
   ]);
 
 /** Keys and labels aligned with quarter YAML `metrics` and layer comparison UI. */

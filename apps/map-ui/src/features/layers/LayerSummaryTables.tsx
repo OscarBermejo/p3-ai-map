@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { collectSourceLinksForMetric } from "../../data/financialMetricSources";
 import {
   FINANCIAL_METRIC_KEYS_PCT_OF_REVENUE,
   formatMetricAmount,
@@ -152,13 +153,9 @@ export function LayerSummaryTables({
           Financial snapshot
         </h4>
         <p className="value-chain__summary-lede">
-          Latest quarter file per company in content (may differ by fiscal vs
-          calendar label). Metrics follow{" "}
-          <code className="value-chain__code">
-            content/_meta/layer_frameworks/{layerId}.yaml
-          </code>{" "}
-          when present; otherwise the default snapshot list. Click a company for
-          history charts.
+          Latest quarter on file for each company in this layer, with the same
+          headline metrics side by side. Open the link beside a number for the
+          cited source; open a company name for history charts.
         </p>
         <div className="value-chain__table-scroll">
           <table className="value-chain__compare-table">
@@ -211,15 +208,50 @@ export function LayerSummaryTables({
                       num != null
                         ? formatPctVsRevenue(num, revenue)
                         : null;
+                    const srcLinks = q?.sources?.length
+                      ? collectSourceLinksForMetric(key, q.sources)
+                      : [];
                     return (
                       <td key={slug}>
-                        {formatMetricAmount(num)}
-                        {pct != null ? (
-                          <span className="value-chain__fin-pct">
-                            {" "}
-                            ({pct})
+                        <span className="value-chain__fin-cell">
+                          <span className="value-chain__fin-cell-main">
+                            {formatMetricAmount(num)}
+                            {pct != null ? (
+                              <span className="value-chain__fin-pct">
+                                {" "}
+                                ({pct})
+                              </span>
+                            ) : null}
                           </span>
-                        ) : null}
+                          {srcLinks.length > 0 ? (
+                            <span className="value-chain__fin-sources">
+                              {srcLinks.map((link, i) => {
+                                const aria =
+                                  link.description.length > 0
+                                    ? link.description.slice(0, 240)
+                                    : `Source ${i + 1} for ${label} (new tab)`;
+                                return (
+                                  <a
+                                    key={`${link.url}-${i}`}
+                                    href={link.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="value-chain__fin-source-link"
+                                    title={link.description || undefined}
+                                    aria-label={aria}
+                                  >
+                                    <span
+                                      className="value-chain__fin-source-icon"
+                                      aria-hidden
+                                    >
+                                      ↗
+                                    </span>
+                                  </a>
+                                );
+                              })}
+                            </span>
+                          ) : null}
+                        </span>
                       </td>
                     );
                   })}

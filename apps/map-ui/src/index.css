@@ -500,6 +500,48 @@ body {
   white-space: nowrap;
 }
 
+.value-chain__fin-cell {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.35rem;
+}
+
+.value-chain__fin-cell-main {
+  text-align: right;
+}
+
+.value-chain__fin-sources {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.value-chain__fin-source-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  min-height: 1.1rem;
+  font-size: 0.65rem;
+  line-height: 1;
+  color: var(--color-muted);
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.value-chain__fin-source-link:hover {
+  color: var(--color-fg);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.value-chain__fin-source-icon {
+  font-weight: 400;
+  opacity: 0.85;
+}
+
 .value-chain__biz-cell--has-note {
   position: relative;
   display: inline-block;

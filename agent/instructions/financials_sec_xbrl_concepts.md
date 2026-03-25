@@ -2,7 +2,7 @@
 
 Use this file when you are filling **US SEC filer** quarter YAML from **`data.sec.gov`** using the **per-tag** JSON API (company **concept**), in **focused agent runs** with minimal context.
 
-**Normative rules** (period discipline, provenance lead-ins, `covers` / `supports_derivation_of`, when to prefer filing tables) stay in [financials.md](./financials.md) and [sources.md](./sources.md). This document is a **mechanical recipe** only: tag names, URLs, date logic, and citation shape. If the **filing table** disagrees with the API, **trust the filing** and fix the YAML.
+**Normative rules** (period discipline, provenance lead-ins, `covers` / `supports_derivation_of`, when to prefer filing tables) stay in [financials.md](./financials.md) and [sources.md](./sources.md). This document is a **mechanical recipe** only: tag names, URLs, date logic, and citation shape. If the **filing table** disagrees with the API, **trust the filing** and fix the YAML. When you use this API as a **gap-fill step**, treat one **concept pull** (or one tight batch of tags for the same quarter) as a **source step** in [financials.md](./financials.md) — **write YAML + `sources` before** the next tag or exhibit.
 
 ## When to use
 

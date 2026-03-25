@@ -11,10 +11,20 @@ Use this flow when the user wants to **refresh quarter YAMLs**: **validate numbe
 
 ## Where to read first
 
-1. [financials.md](./financials.md) — quarter shape, flow metrics, filling order, **`Direct from SEC filing:`** / **`From SEC company facts API (XBRL):`** / **`Derived:`**.
-2. [sources.md](./sources.md) — allowed evidence, derived figures, quarter YAML provenance.
+1. [financials.md](./financials.md) — quarter shape, flow metrics, filling order, **`Direct from SEC filing:`** / **`From SEC company facts API (XBRL):`** / **`Derived:`**, and **“Source processing order and incremental writes (agents)”** (priority order + **save YAML after each exhibit**).
+2. [sources.md](./sources.md) — allowed evidence, derived figures, quarter YAML provenance, **default source order** pointer.
 3. [financials_sec_xbrl_concepts.md](./financials_sec_xbrl_concepts.md) — optional **company-concept** API tag ladder and YTD-diff recipe for focused fills.
 4. Company **`financials/README.md`** — fiscal calendar and filename pattern for that issuer.
+
+## Workflow — source-by-source persistence (recommended)
+
+**Do not** accumulate every number in chat and only write YAML at the end. For each quarter file in scope:
+
+1. Walk **primaries** in the **default order** in [financials.md](./financials.md) (“Source processing order and incremental writes (agents)”). Treat **each exhibit URL** (or each discrete API batch) as its own step.
+2. After **each** step, **edit the quarter YAML on disk**: any newly resolved **`metrics`**, matching **`sources[]`** rows (**`covers`** / **`supports_derivation_of`** / **`documentation`**), and **`retrieved_at`** as required.
+3. Run **`scripts/validate_values_file.py`** on that file **after** steps that change it, or at minimum before you declare the quarter done.
+
+**Passes A–C** below still apply; **interleave** them with this habit (e.g. validate non-nulls you already wrote, then open the next exhibit to fill **`null`**s). If a run stops early, the repo should still contain **partial but cited** updates.
 
 ## Scope & write permissions
 
@@ -45,10 +55,11 @@ For each quarter file and each **non-`null`** entry under `metrics:`:
 
 For each **`null`** under `metrics:` (respecting template keys):
 
-1. Apply the **order** in [financials.md](./financials.md) (“Filling flow metrics when data is incomplete”): **direct quarter column in the filing** → **safe contiguous derivation** → **`null` + explanation** in `sources`.
-2. For **balance sheet** gaps, check whether the instant exists in company facts or the filing; use **`null`** only when still not available.
-3. Every new number gets **`sources`** with correct lead-in, **`covers`** / **`supports_derivation_of`** as needed, and **`retrieved_at`** (ISO date of this run).
-4. Every remaining **`null`** gets a **`documentation`** row with **`covers: [metric]`** and the reason.
+1. Prefer the **source-by-source persistence** workflow above: for each exhibit in **priority order**, extract what you can, **write YAML immediately**, then move on — instead of scanning all exhibits before saving.
+2. Apply the **accuracy order** in [financials.md](./financials.md) (“Filling flow metrics when data is incomplete”): **direct quarter column in the filing** → **safe contiguous derivation** → **`null` + explanation** in `sources`.
+3. For **balance sheet** gaps, check whether the instant exists in company facts or the filing; use **`null`** only when still not available.
+4. Every new number gets **`sources`** with correct lead-in, **`covers`** / **`supports_derivation_of`** as needed, and **`retrieved_at`** (ISO date of this run).
+5. Every remaining **`null`** gets a **`documentation`** row with **`covers: [metric]`** and the reason.
 
 ## Pass C — Provenance sweep
 
@@ -68,7 +79,7 @@ Reply (or append a short `README` snippet in the proposal folder **only if the u
 
 ## Checklist before you finish
 
-- [ ] Read [financials.md](./financials.md) and respected period + cash flow rules.
+- [ ] Read [financials.md](./financials.md) and respected period + cash flow rules; used **source-by-source persistence** (write after each exhibit / API step) where applicable.
 - [ ] Pass A done for non-`null` metrics; mismatches flagged or fixed.
 - [ ] Pass B done for `null`s where primaries support a value (including extended P&L, cash-flow, and balance-sheet keys); remaining `null`s explained in `sources`.
 - [ ] Provenance lead-ins correct; no false “direct from filing” for API-only data.

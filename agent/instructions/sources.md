@@ -52,6 +52,10 @@ Use the **issuer’s home regulatory / official filings** and **official IR** th
 
 Normative detail: [financials.md](./financials.md) (periods, cash flow vs P&amp;L, `covers` / `documentation`).
 
+### Default order of sources (financial quarters)
+
+Financial metrics must still trace to **primaries** as above. When an agent (or human) fills or audits a quarter file, **process evidence in priority order** and **write `metrics` + `sources` after each primary document** (exhibit), not only at the end of the session. The **numbered default order**, **definition of one “source step”**, overwrite rules, and validation habit are spelled out in [financials.md](./financials.md) — **“Source processing order and incremental writes (agents)”**. Adapt the list if the issuer uses a different exhibit pattern; keep **filing tables before API** unless the table truly lacks the line.
+
 ### Provenance lead-ins in `sources[].description`
 
 State explicitly: **`Direct from SEC filing:`**, **`From SEC company facts API (XBRL):`**, or **`Derived:`** — see [financials.md](./financials.md) (“Provenance in `sources`”).

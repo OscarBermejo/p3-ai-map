@@ -1,0 +1,191 @@
+# CoreWeave, Inc. — infrastructure business profile (profile_version 4).
+# Tier 1: Form 10-K accession 0001769628-26-000104 (fiscal year ended 2025-12-31, filed 2026-03-02).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2025-12-31"
+
+capacity:
+  online:
+    value: null
+    notes: |
+      Filing describes a **portfolio** of AI data centers across the United States, Europe, and Canada (**six countries**),
+      with facilities designed to scale from **tens to hundreds of megawatts** each—no single consolidated “MW online”
+      scalar mapped to this leaf.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — geographic footprint; MW scale per facility (tens to hundreds of MW)."
+        retrieved_at: "2026-03-24"
+  contracted:
+    value: null
+    notes: "No filed **contracted MW** scalar identified in Item 1 / MD&A for mapping to this leaf."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — reviewed for discrete contracted-MW disclosure; none taken as a scalar here."
+        retrieved_at: "2026-03-24"
+  secured:
+    value: null
+    notes: "No filed **secured / pipeline MW** figure mapped separately from qualitative portfolio description."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — reviewed for grid LOA / secured-MW pipeline scalars; none mapped."
+        retrieved_at: "2026-03-24"
+
+gpus:
+  online:
+    value: null
+    notes: |
+      Issuer emphasizes **first-to-market GPU clusters** and cites deployment of **NVIDIA GB200 and GB300 NVL72** systems;
+      no filed aggregate “GPUs online” count for mapping here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — GPU / NVIDIA GB200 and GB300 NVL72 narrative."
+        retrieved_at: "2026-03-24"
+  contracted:
+    value: null
+    notes: "No aggregate **GPUs on order** count disclosed in the annual report narrative reviewed for this pass."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — reviewed for GPU order / fleet counts."
+        retrieved_at: "2026-03-24"
+  secured:
+    value: null
+    notes: "No separate **secured GPU** pipeline figure filed; hardware supply discussed qualitatively."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — reviewed for secured GPU disclosures."
+        retrieved_at: "2026-03-24"
+  by_model:
+    - value: "NVIDIA GB200 / GB300 NVL72 (narrative; mission-critical AI clusters)"
+      notes: "Marketing / capability statement in annual report; not a counted fleet disclosure."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+          kind: sec_10k
+          description: "Form 10-K accession 0001769628-26-000104 — GB200 and GB300 NVL72 systems."
+          retrieved_at: "2026-03-24"
+
+contracts_usd:
+  online:
+    value: null
+    notes: |
+      Template expects **annual rent / ARR** from tenant compute contracts in service. Revenue is recognized under ASC 606;
+      use **financials** for recognized revenue and **deals_and_contracts** / **guidance** for backlog context.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — revenue / cloud services context."
+        retrieved_at: "2026-03-24"
+  contracted:
+    value: null
+    notes: "Template expects signed tenant **ARR** not yet in service; filing emphasizes **RPO** instead (see deals_and_contracts)."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — revenue / customer contract context."
+        retrieved_at: "2026-03-24"
+  secured:
+    value: null
+    notes: "No filed **secured rental ARR** scalar distinct from **$60.7B RPO** (non-ARR backlog metric)."
+    sources:
+      - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001769628.json
+        kind: sec_companyfacts_json
+        description: "From SEC company facts API (XBRL): RevenueRemainingPerformanceObligation — backlog-style metric, not mapped as contracts_usd.secured."
+        retrieved_at: "2026-03-24"
+
+deals_and_contracts:
+  summary:
+    value: |
+      **Remaining performance obligations (RPO)** — **$60.7 billion** as of **December 31, 2025** per revenue disclosures
+      (iXBRL tag RevenueRemainingPerformanceObligation in company facts). Not annualized ARR; backlog-style obligation.
+    sources:
+      - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001769628.json
+        kind: sec_companyfacts_json
+        description: "From SEC company facts API (XBRL): RevenueRemainingPerformanceObligation USD 60,700,000,000; end 2025-12-31; accession 0001769628-26-000104."
+        retrieved_at: "2026-03-24"
+  highlights: []
+
+platform:
+  offers_managed_platform:
+    value: true
+    notes: |
+      **CoreWeave Cloud** — managed platform for model training, inference, data movement, and related workflows (filing narrative).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — CoreWeave Cloud platform description."
+        retrieved_at: "2026-03-24"
+  summary:
+    value: |
+      Proprietary software and orchestration, **high-density** AI infrastructure, **high-speed interconnects**, and a **global
+      network backbone** linking **purpose-built** data centers (filing overview).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — platform and network backbone overview."
+        retrieved_at: "2026-03-24"
+
+datacenters:
+  reported_count:
+    value: null
+    notes: |
+      Filing states **six countries** and a **distributed** portfolio; no single “data center count” scalar taken from Item 1 here.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — six countries; distributed data center network."
+        retrieved_at: "2026-03-24"
+  sites_or_regions:
+    value:
+      - "United States"
+      - "Canada"
+      - "Europe (incl. UK, Spain, Sweden, Norway per facilities risk disclosure)"
+    notes: |
+      **Item 1:** United States, Europe, and Canada (**six countries**). **Item 2:** facilities including United States, United Kingdom, Spain, Sweden, and Norway.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — geography (Item 1 overview; Item 2 properties)."
+        retrieved_at: "2026-03-24"
+
+integration:
+  model:
+    value: hybrid
+    notes: |
+      Operates **purpose-built** sites and **lease or license** third-party data center space (hybrid colo / lease plus owned stack).
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — purpose-built data centers; lease/license of third-party space (risk factors)."
+        retrieved_at: "2026-03-24"
+  summary:
+    value: null
+    notes: "No additional integration narrative beyond **integration.model** for this pass."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — integration / facilities context."
+        retrieved_at: "2026-03-24"
+
+guidance:
+  summary:
+    value: null
+    notes: "No discrete forward numeric targets extracted into **guidance.targets** for this pass."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K accession 0001769628-26-000104 — reviewed for issuer-stated MW/GPU/ARR goals."
+        retrieved_at: "2026-03-24"
+  targets: []
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    kind: sec_10k
+    description: "Form 10-K accession 0001769628-26-000104 — primary annual report HTML (period ended 2025-12-31)."
+    retrieved_at: "2026-03-24"

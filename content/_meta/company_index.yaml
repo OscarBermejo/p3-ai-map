@@ -15,3 +15,5 @@ companies:
     layer: infrastructure
   - slug: cipher
     layer: infrastructure
+  - slug: coreweave
+    layer: infrastructure

@@ -115,6 +115,35 @@ Goal: **as complete as possible** without mislabeling periods. Apply in **order*
 
 **`data.sec.gov` company facts** is convenient but **incomplete** for some durations; prefer **(1)** or **(2)** over leaving fields empty when the **human-readable** filing clearly contains the quarter.
 
+### Source processing order and incremental writes (agents)
+
+Use this so quarter files **gain durable progress** during a run: **process primaries in a fixed priority order**, and **write the YAML after each source** instead of only at the end.
+
+**What counts as one source step**
+
+One **primary document** you extract from in a single pass — typically **one exhibit URL** (one `.htm` / PDF on a filing), or **one structured API response** you treat as a batch (e.g. one `companyconcept` tag pull). If you open **99.1** and then **99.2**, that is **two** steps; **save the quarter YAML between them**.
+
+**Default order** (adapt to the issuer; skip steps that do not exist)
+
+1. **`financials/README.md`** and **`entity.yaml`** — fiscal pattern, CIK, how the issuer files (e.g. **6-K** vs **10-Q**). Use this to pick the **accession** whose period covers **`period.end`**.
+2. **Filing index** for that accession — confirm exhibit list; optional **context-only** `sources` row (no `covers`).
+3. **Primary earnings / results exhibit** when present — e.g. **Exhibit 99.1** on **Form 6-K**, or the **condensed statements / MD&A tables** in **10-Q** that show **three months ended** matching **`period.end`**. Usually best for **P&L**, summary KPIs, and sometimes partial cash-flow snippets.
+4. **Full financial statements** — e.g. **Exhibit 99.2** (6-K), or the **complete** statement pages in **10-Q** / **10-K**. Prefer this for **balance sheet**, **full cash flow statement**, and anything **99.1** did not disclose.
+5. **Further exhibits** on the **same** accession (e.g. **99.3**, **99.4**, …) **only if** a metric is still missing and the exhibit plausibly contains it.
+6. **`data.sec.gov` company facts** or **`companyconcept`** — **after** filing tables, for **gaps only**, per “Filling flow metrics when data is incomplete” and [financials_sec_xbrl_concepts.md](./financials_sec_xbrl_concepts.md).
+7. **Different accession** (prior quarter / prior YTD) — **only** for **contiguous derivations** explicitly allowed above (e.g. nine months minus six months); cite **both** inputs.
+
+**After each source step**
+
+- Update **`metrics:`** for every key you can populate **without breaking period rules** (flow vs instant; no YTD in a single-quarter field).
+- In the **same edit**, add or adjust **`sources[]`**: correct lead-ins (**`Direct from SEC filing:`** / **`From SEC company facts API (XBRL):`** / **`Derived:`**), **`covers`** / **`supports_derivation_of`** / **`documentation`** per “Source ↔ metric mapping”.
+- **Persist to disk** before opening the next URL or exhibit. Do not keep resolved numbers only in chat.
+- If a metric is **already non-null** from an **earlier** step, **do not overwrite** unless you are **correcting an error** or a **later** document is clearly the **authoritative** restatement; if you replace, fix `sources` and say so in **`description`**.
+
+**Validation**
+
+Run **`scripts/validate_values_file.py`** on the quarter file **after** each source step that changed it, or at minimum **once** before you treat the file as finished.
+
 ### Optional: per-tag company-concept JSON (`companyconcept`)
 
 The bulk **`companyfacts`** JSON is heavy; the SEC also exposes **one tag at a time** at  
@@ -128,6 +157,7 @@ Do **not** silently overwrite **`content/`** unless the user says to apply appro
 ## Checklist
 
 - [ ] Company `financials/README.md` read (fiscal / bookmarks).
+- [ ] Sources processed in **priority order** with **incremental YAML writes** after each exhibit/API step (“Source processing order and incremental writes (agents)”).
 - [ ] Metrics from primaries per [sources.md](./sources.md).
 - [ ] Flow metrics match `period.start`/`period.end` (no accidental YTD in a quarter file).
 - [ ] Cash flow metrics taken from the **cash flow statement** (or valid derivation per above), not from the income statement.

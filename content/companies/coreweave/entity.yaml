@@ -1,0 +1,24 @@
+slug: coreweave
+legal_name: CoreWeave, Inc.
+
+tickers:
+  - symbol: CRWV
+    exchange: NASDAQ
+
+summary: |
+  CoreWeave operates AI-focused cloud infrastructure—GPU-centric clusters, a managed
+  CoreWeave Cloud platform, and related services for training and inference. U.S. domestic
+  issuer filing Form 10-Q and Form 10-K. Put quantitative claims in financials/*.yaml and
+  business/business.yaml with sources.
+
+links:
+  investor_relations: https://investors.coreweave.com/
+  press_releases_index: https://www.coreweave.com/newsroom
+  sec_cik: "0001769628"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: YYYY-Qn.yaml
+
+notes:
+  - "SEC EDGAR company filings: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001769628"

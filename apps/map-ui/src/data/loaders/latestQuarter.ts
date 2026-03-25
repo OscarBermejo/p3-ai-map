@@ -1,5 +1,17 @@
 import { parse } from "yaml";
+import type { QuarterSourceRow } from "../financialMetricSources";
 import type { LatestQuarterView, QuarterFile } from "../types/quarter";
+
+function normalizeSources(raw: unknown): QuarterSourceRow[] | undefined {
+  if (!Array.isArray(raw)) return undefined;
+  const out: QuarterSourceRow[] = [];
+  for (const item of raw) {
+    if (item && typeof item === "object") {
+      out.push(item as QuarterSourceRow);
+    }
+  }
+  return out.length ? out : undefined;
+}
 
 // Paths are relative to this file (Vite), not the project root: map-ui/src/data/loaders → repo root = five ../
 const rawModules = import.meta.glob(
@@ -18,6 +30,7 @@ type ParsedRow = {
   periodEnd: string;
   currency: string;
   metrics: Record<string, number | null>;
+  sources?: QuarterSourceRow[];
 };
 
 function parsePath(path: string): { slug: string; filename: string } | null {
@@ -61,6 +74,7 @@ function collectParsed(): ParsedRow[] {
       periodEnd: end,
       currency: data.currency_reporting?.trim() || "USD",
       metrics,
+      sources: normalizeSources(data.sources),
     });
   }
 
@@ -74,6 +88,7 @@ function rowToView(row: ParsedRow): LatestQuarterView {
     periodEnd: row.periodEnd,
     currency: row.currency,
     metrics: row.metrics,
+    sources: row.sources,
   };
 }
 

@@ -75,4 +75,4 @@ When you add a script under `agent/tools/`, append a one-line description to thi
 | [financials_add_company.md](./financials_add_company.md) | **New company** → scaffold under `inbox/proposals/…/companies/<slug>/`, fill from primaries, do not write `content/` until approved |
 | [business_add_company.md](./business_add_company.md) | **Business profile** → `business/business.yaml` from `content/_meta/business_templates/<layer>.yaml` (`company_index.yaml` or explicit layer) |
 | [business_update.md](./business_update.md) | **Existing business profile** → re-validate scalars, fill `null`s, fix errors; **Pass 0** = newer EDGAR/IR sweep; **staleness** rules in [sources.md](./sources.md) |
-| [financials_update.md](./financials_update.md) | **Existing quarters** → validate / fill `financials/*.yaml`; **writes `inbox/` only** unless user explicitly authorizes **`content/`** |
+| [financials_update.md](./financials_update.md) | **Existing quarters** → validate / fill `financials/*.yaml`; **source-by-source persistence** (save after each exhibit per [financials.md](./financials.md)); **writes `inbox/` only** unless user explicitly authorizes **`content/`** |
