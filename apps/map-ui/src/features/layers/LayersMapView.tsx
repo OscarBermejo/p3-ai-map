@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { getBusinessProfileForSlug } from "../../data/loaders/businessProfile";
+import { getFinancialNarrativeForSlug } from "../../data/loaders/financialNarrative";
 import { getCompaniesByLayer } from "../../data/loaders/companyIndex";
 import {
   getLatestQuarterForSlug,
@@ -9,6 +10,7 @@ import { loadLayers } from "../../data/loaders/layers";
 import type { BusinessProfileView } from "../../data/types/businessProfile";
 import type { LatestQuarterView } from "../../data/types/quarter";
 import { CompanyFinancialEvolution } from "./CompanyFinancialEvolution";
+import { CompanyFinancialNarrative } from "./CompanyFinancialNarrative";
 import { LayerSummaryTables } from "./LayerSummaryTables";
 
 function formatCompanySlug(slug: string): string {
@@ -78,6 +80,11 @@ export function LayersMapView() {
     }
     return m;
   }, [companies]);
+
+  const selectedNarrative =
+    selectedCompanySlug != null
+      ? getFinancialNarrativeForSlug(selectedCompanySlug)
+      : null;
 
   const mapSection = (
     <div className="value-chain__map">
@@ -224,6 +231,12 @@ export function LayersMapView() {
                   No financial quarter files in content for this company yet.
                 </p>
               )}
+              {selectedNarrative ? (
+                <CompanyFinancialNarrative
+                  narrative={selectedNarrative}
+                  displayName={formatCompanySlug(selectedCompanySlug)}
+                />
+              ) : null}
             </div>
           ) : null}
         </>

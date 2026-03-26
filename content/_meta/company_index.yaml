@@ -3,7 +3,7 @@
 #
 # Add or update a row when a company exists under content/companies/<slug>/.
 # You may also list proposal-only slugs early so agents can resolve which
-# business_templates/<layer>.yaml to use (see agent/instructions/business_add_company.md).
+# business_templates/<layer>.yaml to use (see agent/instructions/business.md and business_workflows.md).
 # If a slug is missing here, the user must pass layer explicitly for that flow.
 #
 # The agent instructions do not require editing this file.

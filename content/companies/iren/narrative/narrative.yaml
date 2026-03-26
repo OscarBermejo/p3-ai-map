@@ -1,0 +1,81 @@
+# Interpretation — connects quarterly numbers to Form 10-Q context; not investment advice.
+
+kind: financial_narrative
+schema_version: 1
+
+as_of: "2026-03-29"
+
+based_on_financials:
+  file: financials/FY2026-Q2.yaml
+  period_end: "2025-12-31"
+  period_label: "FY2026 Q2"
+
+business_profile_as_of: "2026-03-04"
+
+central_questions:
+  - "Revenue looks fine on one line — but net result, cash, and financing tell a different story. Where should a careful reader spend time in the filing, not just the income statement headline?"
+
+sections:
+  - id: below_operating_income
+    title: "The loss on operations is not the whole P&L story"
+    body: |
+      For the quarter ended December 31, 2025, IREN reported on the order of **$185M** in **revenue** but roughly **$116M** in **operating loss** — yet **net loss** is only about **$155M** in absolute terms, not multiples of the operating gap. That is a warning sign to **stop at operating income**.
+
+      Between operating loss and the bottom line sit **very large non-operating and tax lines** in the same period: **other income (expense), net** about **−$221.5M** and **income tax expense (benefit)** about **−$182.5M** (a benefit in this presentation), before interest. **Interest expense** about **$10.7M** vs **interest income** about **$15.8M** → **net interest income** about **+$5.1M** this quarter — small next to non-operating and tax. **Net loss** ~**$155M** is not “operating loss plus a little extra”; the condensed statements show **~$116M** operating loss, **~$222M** other expense (net), **~$182M** tax benefit, and the interest lines in the same column. Notes add labels and policy; the magnitudes are on the face.
+
+  - id: cash_vs_loss
+    title: "Positive cash from operations despite an operating loss"
+    body: |
+      **Cash from operations** was roughly **positive $72M** in the same quarter while **operating income** stayed negative — a pattern investors recognize when **depreciation** (~**$99M**), **stock-based compensation** (~**$58M**), and **working capital** moves bridge the gap on the **statement of cash flows** in the 10-Q.
+
+      That does **not** mean the operating business “earned” the quarter in a GAAP sense; it means **cash timing and add-backs** in the filing explain why liquidity can move differently from the income statement. Anyone judging **quality of earnings** from revenue growth alone skips that page.
+
+  - id: financing_and_cap_ex
+    title: "Financing and deployment versus revenue scale"
+    body: |
+      The same quarter’s **cash flow statement** shows **financing** inflows about **$3.01B**, **capital expenditures** about **$540M**, **revenue** about **$185M**, and **investing** cash flows about **$851M** out. Rough ratios from those lines: **financing ~16×** quarterly **revenue**; **CapEx ~2.9×** **revenue** — capital markets and deployment are not the same order of magnitude as sales.
+
+      Footnotes spell out instruments and uses of proceeds; the cash flow statement already shows that funding and build dwarf this quarter’s revenue in dollar terms.
+
+  - id: debt_structure
+    title: "What “debt” means here — not a simple term loan"
+    body: |
+      **Total debt** on the balance sheet is about **$3.84B**; **cash and equivalents** about **$3.26B** → **implied net debt** about **$0.58B** (**$3.84B** − **$3.26B**) on that snapshot. Notes break out convertibles and leases — not one plain term loan. **Interest expense** about **$10.7M** vs **interest income** about **$15.8M** → **net interest income ~$5.1M** this quarter — the P&L interest lines do not by themselves capture conversion, embedded derivatives, or covenants; those are in debt and equity notes.
+
+  - id: segments_and_power
+    title: "One revenue line, two businesses — and power as the real constraint"
+    body: |
+      Consolidated **revenue** **blends** **Bitcoin mining** and **AI cloud–style** activity; the 10-Q **segment** disclosure (and MD&A) split what the single top line **does not**. Strategy and risk differ by segment; **mix shift** changes how you read margins quarter to quarter.
+
+      Separately, IREN’s **operating story** is **power and sites** — the company has disclosed on the order of **~810 MW** operating capacity and named sites / pipeline in **MD&A** (not as P&L rows). Operating and financial risk here ties to energy, interconnection, and execution as much as to revenue growth on one line.
+
+  - id: conclusion
+    title: "Takeaway"
+    body: |
+      **Summary:** **Revenue** ~**$185M**, **gross profit** ~**$119M**, **operating loss** ~**$116M**, **net loss** ~**$155M** — **other income (expense), net** ~**−$222M** and **tax benefit** ~**$182M** (as filed) dominate the path from operating to net. **Cash from operations** ~**$72M** bridges from operating loss via **D&A** ~**$99M**, **SBC** ~**$58M**, and working capital (see the cash flow statement). **Financing** ~**$3.01B**, **CapEx** ~**$540M**, **investing** out ~**$851M** vs **revenue** ~**$185M** — **financing ~16×** revenue, **CapEx ~2.9×** revenue. **Cash** ~**$3.26B** vs **total debt** ~**$3.84B** → ~**$0.58B** implied **net debt**. Segments and **~810 MW** disclosed capacity explain operating risk beyond one revenue line.
+
+      **Financial risks to weigh (numbers from this quarter’s filing):**
+      - **Net income vs operating loss:** ~**$116M** operating loss, ~**$222M** other expense (net), tax and interest lines, and ~**$155M** net loss — bottom-line volatility tracks below-the-line items of similar scale to operating loss, not a simple multiple of operating red ink.
+      - **Funding vs sales:** **Financing** ~**$3.01B** and **CapEx** ~**$540M** against **revenue** ~**$185M** — capital markets and build are the dominant cash story this quarter in dollars.
+      - **Gross vs operating:** **Gross** ~**$119M** on ~**$185M** revenue (~**64%** gross margin); **SG&A** ~**$101M** and **D&A** ~**$100M** (among other costs) explain why operating income stays negative after gross.
+      - **Debt snapshot:** **Gross debt** ~**$3.84B** vs **cash** ~**$3.26B** — **net** ~**$0.58B** before reading conversion and covenant schedules in notes.
+
+      **What also looks resilient in the same filing (not investment advice):**
+      - **Positive cash from operations** ~**$72M** alongside operating loss — reconciliation lines are in the filing, not an opaque gap.
+      - **Large cash** ~**$3.26B** next to **debt** ~**$3.84B** — liquidity vs gross leverage both matter on the snapshot.
+      - **Financing** inflows ~**$3B** this quarter show recent capital markets access — forward terms and dilution are what full notes and subsequent filings clarify.
+
+      **Not fully in condensed statements alone:** covenant tests, full conversion tables, segment breakdowns beyond headlines — use the 10-Q notes and MD&A for those.
+
+disclosure_gaps: |
+  This synthesis tracks the December 2025 quarter **Form 10-Q** and the company’s filed numbers; it does not replace a full read of every **note** (derivatives, Bitcoin, convertible features, segment tables, subsequent events). Anything requiring **legal precision** on covenants or conversion should come from the **filed PDF/HTML** and counsel if needed.
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+    kind: sec_10q
+    description: "Direct from SEC filing: Form 10-Q for period ended 2025-12-31 (filed 2026-02-05); primary document iren-20251231.htm — condensed statements, cash flows, segment disclosure, and notes (reviewed 2026-03-29)."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/0001878848-26-000015-index.htm
+    kind: sec_10q
+    description: "Filing index: Form 10-Q accession 0001878848-26-000015 (filing date 2026-02-05; period ended 2025-12-31)."
+    retrieved_at: "2026-03-29"

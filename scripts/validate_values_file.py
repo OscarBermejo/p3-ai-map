@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """
-Validate YAML in two shapes (auto-detected per file):
+Validate YAML in three shapes (auto-detected per file):
 
   **Quarter financials** (`period` + `metrics`):
   Tier A — offline: structure, metric key set, covers / documentation for nulls,
            provenance lead-ins, and arithmetic replay for common derived patterns
            when amounts and dates can be parsed from descriptions.
+
+  **Financial narrative** (`kind: financial_narrative` + `schema_version`):
+  Tier A — structure, non-empty sections, top-level `sources` with allowed
+  description lead-ins (interpretation track; not metrics).
 
   **Business profile** (`layer` + `profile_version`, e.g. business/business.yaml):
   Tier A — same ideas per *leaf*: each template leaf `{ value, notes, sources }`
@@ -23,6 +27,7 @@ Usage:
   export SEC_EDGAR_USER_AGENT='p3-ai-map-validator/1.0 (obermejo@live.com)'   # required for --verify-sec
   python scripts/validate_values_file.py path/to/financials/*.yaml
   python scripts/validate_values_file.py path/to/companies/foo/business/business.yaml
+  python scripts/validate_values_file.py path/to/companies/foo/narrative/narrative.yaml
   python scripts/validate_values_file.py path/to/financials/ --verify-sec
 
 SEC fair access: https://www.sec.gov/os/accessing-edgar-data
@@ -219,12 +224,115 @@ def _load_yaml_doc(path: Path) -> dict[str, Any]:
 
 
 def detect_yaml_profile(data: dict[str, Any]) -> str:
-    """Return `financial_quarter`, `business_profile`, or `unknown`."""
+    """Return `financial_quarter`, `financial_narrative`, `business_profile`, or `unknown`."""
+    if data.get("kind") == "financial_narrative" and "schema_version" in data:
+        return "financial_narrative"
     if "metrics" in data and "period" in data:
         return "financial_quarter"
     if "layer" in data and "profile_version" in data:
         return "business_profile"
     return "unknown"
+
+
+NARRATIVE_DESC_PREFIXES: tuple[str, ...] = (
+    "Direct from SEC filing:",
+    "From SEC company facts API (XBRL):",
+    "Derived:",
+    "Filing index:",
+    "Primary source:",
+)
+
+
+def validate_financial_narrative(path: Path, data: dict[str, Any]) -> list[Issue]:
+    """Interpretation file — not metrics; requires sections + bibliography."""
+    issues: list[Issue] = []
+
+    if data.get("kind") != "financial_narrative":
+        issues.append(Issue(path, "`kind` must be `financial_narrative`"))
+    sv = data.get("schema_version")
+    if sv != 1:
+        issues.append(
+            Issue(path, f"`schema_version` must be 1 (got {sv!r})"),
+        )
+
+    as_of = str(data.get("as_of") or "").strip()
+    if not as_of:
+        issues.append(Issue(path, "`as_of` must be non-empty (ISO date: narrative review date)"))
+
+    bof = data.get("based_on_financials")
+    if not isinstance(bof, dict):
+        issues.append(Issue(path, "`based_on_financials` must be a mapping"))
+    else:
+        if not str(bof.get("file") or "").strip():
+            issues.append(Issue(path, "`based_on_financials.file` must point to a quarter file (e.g. financials/2025-Q4.yaml)"))
+        if not str(bof.get("period_end") or "").strip():
+            issues.append(Issue(path, "`based_on_financials.period_end` must be non-empty (ISO)"))
+
+    sections = data.get("sections")
+    if not isinstance(sections, list) or len(sections) == 0:
+        issues.append(Issue(path, "`sections` must be a non-empty list"))
+    elif isinstance(sections, list):
+        section_ids: list[str] = []
+        for i, sec in enumerate(sections):
+            if not isinstance(sec, dict):
+                issues.append(Issue(path, f"sections[{i}] must be a mapping"))
+                continue
+            for key in ("id", "title", "body"):
+                if not str(sec.get(key) or "").strip():
+                    issues.append(
+                        Issue(path, f"sections[{i}].{key} must be non-empty"),
+                    )
+            sid = str(sec.get("id") or "").strip()
+            if sid:
+                section_ids.append(sid)
+        if "conclusion" not in section_ids:
+            issues.append(
+                Issue(
+                    path,
+                    "sections must include one block with `id: conclusion` (answers central questions; see narrative.md)",
+                ),
+            )
+
+    cq = data.get("central_questions")
+    if cq is not None:
+        if not isinstance(cq, list):
+            issues.append(Issue(path, "`central_questions` must be a list of strings or be omitted"))
+        else:
+            for i, q in enumerate(cq):
+                if not isinstance(q, str) or not str(q).strip():
+                    issues.append(
+                        Issue(path, f"central_questions[{i}] must be a non-empty string"),
+                    )
+
+    sources = data.get("sources")
+    if not isinstance(sources, list) or len(sources) == 0:
+        issues.append(Issue(path, "`sources` must be a non-empty list (narrative bibliography)"))
+    elif isinstance(sources, list):
+        for i, src in enumerate(sources):
+            if not isinstance(src, dict):
+                issues.append(Issue(path, f"sources[{i}] must be a mapping"))
+                continue
+            url = str(src.get("url") or "").strip()
+            desc = str(src.get("description") or "").strip()
+            if not url:
+                issues.append(Issue(path, f"sources[{i}] must include `url`"))
+            if not desc:
+                issues.append(Issue(path, f"sources[{i}] must include non-empty `description`"))
+                continue
+            if not any(desc.startswith(p) for p in NARRATIVE_DESC_PREFIXES):
+                issues.append(
+                    Issue(
+                        path,
+                        f"sources[{i}] description should start with one of: "
+                        + ", ".join(repr(p) for p in NARRATIVE_DESC_PREFIXES),
+                    ),
+                )
+
+    dg = data.get("disclosure_gaps")
+    if dg is not None and not isinstance(dg, str):
+        issues.append(Issue(path, "`disclosure_gaps` must be a string or null/omitted"))
+
+    return issues
 
 
 def period_window_for_sec(data: dict[str, Any]) -> tuple[str, str]:
@@ -1120,8 +1228,22 @@ def iter_yaml_files(targets: Iterable[str]) -> list[Path]:
     for t in targets:
         p = Path(t)
         if p.is_dir():
-            out.extend(sorted(p.glob("*.yaml")))
-            out.extend(sorted(p.glob("*.yml")))
+            for child in sorted(p.glob("*.yaml")):
+                if child.name == "entity.yaml":
+                    continue
+                out.append(child)
+            for child in sorted(p.glob("*.yml")):
+                if child.name == "entity.yml":
+                    continue
+                out.append(child)
+            for child in sorted(p.rglob("*.yaml")):
+                if child.name == "entity.yaml":
+                    continue
+                out.append(child)
+            for child in sorted(p.rglob("*.yml")):
+                if child.name == "entity.yml":
+                    continue
+                out.append(child)
         elif p.is_file():
             if p.suffix.lower() in (".yaml", ".yml") and not p.name.startswith("_"):
                 out.append(p)
@@ -1139,6 +1261,8 @@ def iter_yaml_files(targets: Iterable[str]) -> list[Path]:
             continue
         if p.name.startswith("_"):
             continue
+        if "_example" in p.parts:
+            continue
         seen.add(rp)
         res.append(p)
     return sorted(res)
@@ -1146,7 +1270,7 @@ def iter_yaml_files(targets: Iterable[str]) -> list[Path]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Validate quarter financial YAML and/or business/business.yaml (auto-detected).",
+        description="Validate quarter financial YAML, narrative/narrative.yaml, and/or business/business.yaml (auto-detected).",
     )
     parser.add_argument(
         "paths",
@@ -1201,13 +1325,16 @@ def main() -> int:
                 validate_arithmetic,
             ):
                 all_issues.extend(fn(path, data))
+        elif profile == "financial_narrative":
+            all_issues.extend(validate_financial_narrative(path, data))
         elif profile == "business_profile":
             all_issues.extend(validate_business_profile(path, data))
         else:
             all_issues.append(
                 Issue(
                     path,
-                    "unknown YAML shape: expected quarter file (`period` + `metrics`) or "
+                    "unknown YAML shape: expected quarter file (`period` + `metrics`), "
+                    "financial narrative (`kind: financial_narrative` + `schema_version`), or "
                     "business profile (`layer` + `profile_version`)",
                 )
             )

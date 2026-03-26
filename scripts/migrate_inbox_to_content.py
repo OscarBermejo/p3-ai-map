@@ -3,7 +3,7 @@
 Promote company folders from inbox proposals to canonical content/companies/<slug>/.
 
 Workflow:
-  1. For each company, collect quarter + business YAML and run validate_values_file.py.
+  1. For each company, collect quarter + business + narrative YAML and run validate_values_file.py.
   2. If validation exits with errors, print output and ask whether to continue that company.
   3. Merge (copy) files into content/companies/<slug>/ (existing files overwritten).
   4. When done, optionally delete the migrated company dir(s) under inbox.
@@ -35,11 +35,14 @@ def validator_script() -> Path:
 
 
 def collect_validatable_yaml(company_dir: Path) -> list[Path]:
-    """YAML files that validate_values_file understands (quarter + business)."""
+    """YAML files that validate_values_file understands (quarter + business + narrative)."""
     out: list[Path] = []
     business = company_dir / "business" / "business.yaml"
     if business.is_file():
         out.append(business)
+    narrative = company_dir / "narrative" / "narrative.yaml"
+    if narrative.is_file():
+        out.append(narrative)
     fin = company_dir / "financials"
     if fin.is_dir():
         for p in sorted(fin.iterdir()):
@@ -88,7 +91,7 @@ def run_validation(company_dir: Path, cwd: Path) -> tuple[int, str]:
     """Run validate_values_file.py on all validatable YAML; return (exit_code, combined_output)."""
     paths = collect_validatable_yaml(company_dir)
     if not paths:
-        return 0, "(no quarter/business YAML to validate — skipped)\n"
+        return 0, "(no quarter/business/narrative YAML to validate — skipped)\n"
 
     cmd = [sys.executable, str(validator_script()), *[str(x) for x in paths]]
     proc = subprocess.run(

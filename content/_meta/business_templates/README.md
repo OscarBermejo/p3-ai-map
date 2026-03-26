@@ -6,7 +6,7 @@ Starter YAML shapes for **non-financial**, **layer-specific** business facts (ca
 |------------------|----------------------|
 | `infrastructure` | [`infrastructure.yaml`](./infrastructure.yaml) |
 
-**Usage:** Copy the template for your layer to **`content/companies/<slug>/business/business.yaml`** (or **`inbox/proposals/<date>/companies/<slug>/business/business.yaml`**). See [business_add_company.md](../../agent/instructions/business_add_company.md).
+**Usage:** Copy the template for your layer to **`content/companies/<slug>/business/business.yaml`** (or **`inbox/proposals/<date>/companies/<slug>/business/business.yaml`**). See [business.md](../../agent/instructions/business.md) and [business_workflows.md](../../agent/instructions/business_workflows.md).
 
 **Shared rules:** **issuer-agnostic** keys; **`{ value, notes, sources }`** on metric leaves; optional top-level **`sources[]`**. Use the **newest Tier 1** that **updates each fact** (not only the annual report); set **`as_of`** to issuer snapshot dates where possible — see [sources.md](../../agent/instructions/sources.md) (**Filing age, `as_of`, and staleness** — business profiles).
 

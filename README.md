@@ -55,7 +55,8 @@ p3-ai-map/
 │   │   ├── AGENT.md          # session entry: goal, layout, workflow, tools
 │   │   ├── sources.md        # what counts as evidence + how to cite
 │   │   ├── financials.md     # quarterly YAML rules
-│   │   ├── business_add_company.md  # business/business.yaml scaffold
+│   │   ├── business.md              # business/business.yaml rules
+│   │   ├── business_workflows.md    # create / update business profiles
 │   │   └── README.md         # index of instruction files
 │   ├── tools/                # Python helpers (e.g. ping_openai.py)
 │   └── requirements.txt
@@ -133,9 +134,9 @@ There is **no** full `runner.py` yet; interactive agent work is primarily **Curs
 | General | `README.md` + `agent/instructions/AGENT.md` |
 | Facts / news / deals | add `agent/instructions/sources.md` |
 | Quarterly / financial YAML | add `agent/instructions/financials.md` + the company folder under `content/` or `inbox/` |
-| **New company** | add `agent/instructions/financials_add_company.md` (proposals under `inbox/proposals/<date>/companies/<slug>/`) |
-| **Business profile** | add `agent/instructions/business_add_company.md` |
-| **Validate / fill quarter YAML** | add `agent/instructions/financials_update.md` (+ `financials.md`, optional `financials_sec_xbrl_concepts.md`, target `financials/` path) |
+| **New company** | add `agent/instructions/company_add_company.md` first, then `agent/instructions/financials_workflows.md` for quarter files (proposals under `inbox/proposals/<date>/companies/<slug>/`) |
+| **Business profile** | add `agent/instructions/business.md` + `agent/instructions/business_workflows.md` |
+| **Validate / fill quarter YAML** | add `agent/instructions/financials_workflows.md` (+ `financials.md`, optional `financials_sec_xbrl_concepts.md`, target `financials/` path) |
 
 ---
 

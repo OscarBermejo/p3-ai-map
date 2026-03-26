@@ -24,8 +24,12 @@ To propose a company (before merge):
 ```text
 content/companies/<slug>/
 ├── entity.yaml
+├── announcements/
+│   └── announcements.yaml        # optional; latest material company announcements (see ../../agent/instructions/announcements.md)
 ├── business/
 │   └── business.yaml             # optional; layer-specific profile (see ../business_templates/)
+├── narrative/
+│   └── narrative.yaml            # optional; interpretive synthesis (see ../../agent/instructions/narrative.md)
 └── financials/
     ├── README.md                 # fiscal calendar + naming rules for this issuer
     ├── _template.quarter.yaml    # optional stencil; remove when unused
@@ -33,6 +37,8 @@ content/companies/<slug>/
 ```
 
 Layer-specific **business** templates (capacity, contracts, platform, etc.) live in [`../business_templates/`](../business_templates/).
+
+Use **`announcements/announcements.yaml`** for the latest material company announcements (deals, raises, ATM programs, major hiring, launches, regulatory items, etc.) from official sources. See [`../../agent/instructions/announcements.md`](../../agent/instructions/announcements.md).
 
 ## `entity.yaml` — `links`
 

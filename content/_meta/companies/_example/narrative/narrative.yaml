@@ -1,0 +1,40 @@
+# Optional: interpretive synthesis (NOT metrics). Remove this folder if unused.
+# Copy to content/companies/<slug>/narrative/narrative.yaml when curating.
+# See agent/instructions/narrative.md and agent/instructions/sources.md (third track).
+
+kind: financial_narrative
+schema_version: 1
+
+as_of: ""
+
+based_on_financials:
+  file: financials/YYYY-Qn.yaml
+  period_end: ""
+  period_label: ""
+
+business_profile_as_of: null
+
+# Optional: one or two short thematic lines for the UI — omit if sections carry the angle alone.
+# central_questions:
+#   - ""
+
+sections:
+  - id: example_angle
+    title: ""
+    body: |
+      Issuer-specific “underneath” insight — not the same section titles for every company.
+      Use any section ids/titles; order by story, not a fixed template.
+
+  - id: conclusion
+    title: "Takeaway"
+    body: |
+      Required id: conclusion. Synthesize how to read the period; separate known vs unknown.
+      Title may be Conclusion, Takeaway, etc.
+
+disclosure_gaps: null
+
+sources:
+  - url: ""
+    kind: sec_10q
+    description: "Direct from SEC filing: …"
+    retrieved_at: ""

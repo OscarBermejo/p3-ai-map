@@ -1,0 +1,86 @@
+# Interpretation — connects Q4 2025 numbers to Form 6-K Exhibit 99.1; not investment advice.
+
+kind: financial_narrative
+schema_version: 1
+
+as_of: "2026-03-29"
+
+based_on_financials:
+  file: financials/2025-Q4.yaml
+  period_end: "2025-12-31"
+  period_label: "2025 Q4"
+
+business_profile_as_of: "2025-12-31"
+
+central_questions:
+  - "Revenue is growing fast, but operating cash, GAAP losses, and infrastructure spend are telling different stories — where does the filing force you past the headline?"
+
+sections:
+  - id: cash_not_earnings
+    title: "Operating cash is not the same as ‘earning’ the quarter"
+    body: |
+      For the three months ended December 31, 2025, Nebius reported about **$228M** in **revenue** but a **net loss** on the order of **$250M** — while **cash from operating activities** was roughly **+$834M** in the same period. That pairing is not an error; it is what the **indirect cash flow statement** in **Form 6-K Exhibit 99.1** is for.
+
+      The bridge from net income to operating cash includes **large working-capital and contract lines**: in particular, the filing shows roughly **+$1,567M** from **deferred revenue** and roughly **−$633M** from **accounts receivable** (amounts in **millions of U.S. dollars** as presented in the exhibit). Those are **timing** effects — they do not move in lockstep with revenue recognition in the income statement. Add **depreciation**, **lease-related amortization**, **share-based compensation**, and other reconciliation items, and it becomes clear why **cash from operations** is a **poor proxy** for “cash profit per dollar of sales.”
+
+  - id: cap_ex_overwhelms_sales
+    title: "Infrastructure spend that revenue does not fund by itself"
+    body: |
+      The same quarter’s **cash flow statement** shows **purchases of property and equipment and intangible assets** on the order of **$2.06 billion** — against **revenue** under **$230 million**. **Investing cash outflows** are on the order of **$2.1 billion** for the period in the same filing.
+
+      **Positive** operating cash **alongside** that level of investing means the quarter is **not** “self-funded” from sales in any simple sense; the company is **deploying capital** at a scale that only makes sense when read next to **financing** and **balance-sheet** context in the notes, not next to revenue alone.
+
+  - id: blended_group
+    title: "One P&L, several businesses — what consolidation hides"
+    body: |
+      **Footnote (2)** to the Q4 2025 highlights in Exhibit 99.1 says consolidated results include **Nebius** (core AI infrastructure), **Avride**, and **TripleTen**, and explains how **Toloka** was deconsolidated and is treated as an **equity-method** stake with prior periods in **discontinued operations** where applicable.
+
+      The **condensed** tables in this release **do not** give **segment revenue** or **segment cash flow** for those pieces — so the **headline revenue number** is a **blend**. Anyone sizing **core cloud** versus **other** businesses needs **segment or management disclosure** elsewhere, not this face statement alone.
+
+  - id: gaap_vs_press_release
+    title: "Press-release EBITDA vs GAAP losses"
+    body: |
+      **Footnote (1)** marks **Adjusted EBITDA** and **Adjusted net loss** as **non-GAAP** and points to reconciliation tables in **Exhibit 99.1**. For the three months ended December 31, 2025, the **same exhibit** shows: **loss from operations** **$234.5 million**; **net loss from continuing operations** **$249.6 million**; and **Adjusted EBITDA** **$15.0 million** — **one column**, **fully reconciled**. So the **question** “how can EBITDA be positive with a big GAAP loss?” is **answered in the table**: the **reconciliation lists every add-back and deduction**; it is not resolved by reading the press headline alone.
+
+      **Footnote (1)** on the **statements of operations** also quantifies **share-based compensation** inside **cost of revenue**, **product development**, and **SG&A** — amounts are **on the face** of the exhibit, not only in a separate note.
+
+  - id: face_sheet_extras
+    title: "Balance sheet: leases, deferred revenue, restricted cash"
+    body: |
+      The **December 31, 2025** condensed **balance sheet** in Exhibit 99.1 shows **accounts receivable** about **$720 million**, which lines up with the **receivable** movement in the cash flow bridge; **operating lease** right-of-use assets about **$919 million** and **operating lease liabilities** about **$760 million**; **deferred revenue** about **$276 million** current and about **$1.30 billion** non-current; and **debt** split between **current** (~**$25 million**) and **non-current** (~**$4.10 billion**).
+
+      The same exhibit **reconciles restricted cash** (about **$44 million**) with **cash and cash equivalents** (about **$3.68 billion**) so that **total** cash and restricted cash is about **$3.72 billion**. **Financing** cash from continuing operations is about **+$106 million** for the quarter. **Total debt** is about **$4.13 billion** vs **cash and equivalents** about **$3.68 billion** — **implied net debt** about **$0.45 billion** (**$4.13B** − **$3.68B**) on that snapshot, **before** restricted cash and **before** reading **maturity and covenant** tables in the **notes** and **Form 20-F**.
+
+      For the **same quarter** on the **income statement**, **interest expense** is about **$38.3 million** and **interest income** about **$13.5 million** — **net interest** about **$24.8 million** **expense** — a **separate** order of magnitude from the **non-operating** and **tax** lines in the filing.
+
+  - id: conclusion
+    title: "Takeaway"
+    body: |
+      **Summary:** Q4 2025 shows **revenue** **$227.7M**, **gross profit** **$159.2M**, but **loss from operations** **$234.5M** and **net loss** **$249.6M**, while **cash from operations** is **$834.3M** — the cash flow bridge explains the gap (**deferred revenue** **+$1,566.5M**, **receivables** **−$632.8M**, plus D&A and SBC, in Exhibit 99.1). **CapEx** ~**$2.06B** and **investing cash flows** ~**$2.13B** dwarf **revenue**. **Adjusted EBITDA** **+$15.0M** vs GAAP losses is fully reconciled in the same exhibit. Footnote **(2)** says **Nebius**, **Avride**, and **TripleTen** are combined in consolidation — no segment revenue in this release.
+
+      **Financial risks to weigh (numbers from this quarter’s filing):**
+      - **Non-GAAP vs GAAP:** **Adjusted EBITDA** **+$15.0M** vs **loss from operations** **$234.5M** — the reconciliation table lists the line-by-line bridge; skipping it means misunderstanding why headline EBITDA and GAAP differ by hundreds of millions.
+      - **OCF vs profitability:** **$834.3M** operating cash vs **$249.6M** net loss — not “hidden”; the indirect cash flow statement shows which working-capital lines moved (deferred revenue and receivables at the top of the change section).
+      - **Scale of build vs sales:** **Capital expenditures** ~**$2.06B** vs **revenue** **$227.7M** (~**9×** revenue in CapEx alone this quarter, same filing) — self-funding from current sales is not what the cash flows show.
+      - **Net debt vs gross:** **Cash and equivalents** ~**$3.68B**; **total debt** ~**$4.13B** → ~**$0.45B** implied **net debt** on the balance sheet snapshot — gross leverage headlines overstate net if you ignore cash.
+      - **Consolidation:** **$227.7M** revenue is one line for three reported businesses (footnote **(2)**) — you cannot allocate growth or risk across Nebius vs Avride vs TripleTen from this table alone.
+
+      **What also looks resilient in the same filing (not investment advice):**
+      - **Gross profit** **$159.2M** on **$227.7M** revenue (~**70%** gross margin in dollar terms) — losses sit below gross, not from zero gross margin.
+      - **Interest** **$38.3M** expense vs **$13.5M** income — **net interest** ~**$24.8M** for the quarter; manageable relative to revenue but not the whole non-operating story.
+      - **Cash** ~**$3.68B** and **financing** cash in ~**$106M** show liquidity and continued capital markets access this period — forward terms are what notes and Form 20-F spell out.
+
+      **Not in the condensed exhibit (read notes / 20-F):** covenant tests, conversion tables, customer concentration — this narrative does not replace those pages.
+
+disclosure_gaps: |
+  This text follows the **Q4 / full-year 2025** **Form 6-K** (Exhibit 99.1) and the company’s filed figures for the quarter. It is not a substitute for reading every **note** (debt, leases, segments, concentration) or the **Form 20-F** referenced in the filing for **risk** and **accounting policy** depth.
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    description: "Direct from SEC filing: Form 6-K Exhibit 99.1 — Q4 and full-year 2025 results (filed 2026-02-12); condensed statements, footnotes (1)–(2), cash flows, non-GAAP reconciliations, balance sheet, restricted cash (reviewed 2026-03-29)."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/0001104659-26-013946-index.htm
+    kind: sec_6k
+    description: "Filing index: Form 6-K accession 0001104659-26-013946 (filing date 2026-02-12; period of report 2026-02-12)."
+    retrieved_at: "2026-03-29"

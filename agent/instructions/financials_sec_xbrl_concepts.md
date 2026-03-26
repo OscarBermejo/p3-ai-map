@@ -130,5 +130,4 @@ Use wording such as: **`Extended template metrics null: not available from SEC c
 ## Related
 
 - [financials.md](./financials.md) — quarter shape, filing-first order, `covers` / `documentation`.
-- [financials_add_company.md](./financials_add_company.md) — new company scaffold.
-- [financials_update.md](./financials_update.md) — validate / fill existing quarters.
+- [financials_workflows.md](./financials_workflows.md) — new company quarter creation and existing-quarter validation workflows.

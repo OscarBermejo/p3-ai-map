@@ -1,0 +1,93 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-26"
+
+items:
+  - date: "2026-03-04"
+    title: "IREN expands AI Cloud capacity to 150,000 GPUs"
+    category: capacity
+    summary: >
+      IREN announced purchase agreements for more than 50,000 NVIDIA B300 GPUs,
+      taking its planned fleet to 150,000 GPUs. The company said it expects to
+      deploy the additional GPUs through H2 2026 across Mackenzie, British
+      Columbia and Childress, Texas, and also disclosed an at-the-market equity
+      program as part of its capital management framework.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Exhibit 99.1 filed March 4, 2026 announcing >50,000 NVIDIA B300 GPU purchase agreements, a 150,000 GPU fleet target, deployment timing, and the establishment of an at-the-market equity program."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-02-17"
+    title: "IREN appoints John Gross as Chief Innovation Officer"
+    category: leadership
+    summary: >
+      IREN announced the appointment of John Gross as Chief Innovation Officer,
+      a newly created role focused on engineering standards, thermal
+      architecture, and commissioning across the company’s next-generation data
+      centers.
+    sources:
+      - url: https://iren.gcs-web.com/static-files/971d2121-d213-4029-9f72-7a41f147efde
+        kind: ir_pdf
+        description: "Primary source: official IREN news release dated February 17, 2026 announcing John Gross as Chief Innovation Officer."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-02-12"
+    title: "IREN added to the MSCI USA Index"
+    category: other
+    summary: >
+      IREN announced that it had been added to the MSCI USA Index, marking an
+      investor-relations milestone highlighted through the company’s official
+      news channel.
+    sources:
+      - url: https://iren.gcs-web.com/static-files/0ae74078-8f0c-4c60-b4fa-3b717b384568
+        kind: ir_pdf
+        description: "Primary source: official IREN news release dated February 12, 2026 titled 'IREN Added to MSCI USA Index'."
+        retrieved_at: "2026-03-26"
+      - url: https://www.iren.com/investors/news
+        kind: ir_html
+        description: "Official IREN investor news index listing the February 12, 2026 announcement 'IREN Added to MSCI USA Index'."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-02-05"
+    title: "IREN reports Q2 FY26 results with GPU financing and new Oklahoma campus"
+    category: other
+    summary: >
+      In its Q2 FY26 results release, IREN said it had secured $3.6 billion of
+      GPU financing for the Microsoft contract, kept its targeted 140,000 GPU
+      expansion on track, and announced a new 1.6 GW data center campus in
+      Oklahoma.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Exhibit 99.1 filed February 5, 2026 reporting Q2 FY26 results, $3.6bn GPU financing, targeted 140k GPU expansion, and a new 1.6 GW Oklahoma campus."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-12-08"
+    title: "IREN closes $2.3 billion convertible notes offering and repurchases existing notes"
+    category: funding
+    summary: >
+      IREN announced the closing of a $2.3 billion convertible senior notes
+      offering and the repurchase of about $544.3 million principal amount of
+      existing convertible notes. The company said the combined transactions
+      generated about $2.27 billion of net proceeds and extended its debt
+      maturities.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036125044888/ef20060782_ex99-1.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Exhibit 99.1 filed December 8, 2025 announcing the closing of the $2.3bn convertible notes offering and repurchase of existing convertible notes."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-11-03"
+    title: "IREN signs a $9.7 billion agreement with Microsoft"
+    category: deal
+    summary: >
+      IREN announced a multi-year agreement with Microsoft valued at about $9.7
+      billion to deliver GPU cloud infrastructure powered by NVIDIA GB300 GPUs.
+      The company said the deployment would roll out in four phases through
+      2026 at its Childress, Texas campus.
+    sources:
+      - url: https://iren.com/resources/blog/iren-signs97-billion-agreement-with-microsoft-to-deploy-ai-cloud-infrastructure
+        kind: company_web
+        description: "Primary source: official IREN company announcement dated November 3, 2025 describing the Microsoft GPU cloud infrastructure agreement."
+        retrieved_at: "2026-03-26"

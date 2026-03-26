@@ -6,8 +6,10 @@
 |------|------|
 | [AGENT.md](./AGENT.md) | **Always first** — entry point |
 | [sources.md](./sources.md) | Evidence and citations |
+| [company_add_company.md](./company_add_company.md) | Create a new company scaffold and fill `entity.yaml` first |
 | [financials.md](./financials.md) | Quarterly / `financials/*.yaml` — includes **source priority order** and **incremental writes** after each exhibit |
-| [financials_add_company.md](./financials_add_company.md) | Add a company → `inbox/proposals/<date>/companies/<slug>/` |
-| [business_add_company.md](./business_add_company.md) | Scaffold / fill `business/business.yaml` (layer from `company_index.yaml` or user) |
-| [business_update.md](./business_update.md) | Refresh / validate `business/business.yaml` — includes **`guidance`** (issuer forward targets) |
-| [financials_update.md](./financials_update.md) | Validate & fill quarter YAML under **`inbox/`** — **save after each exhibit** per [financials.md](./financials.md) (not **`content/`** unless user explicitly allows) |
+| [financials_workflows.md](./financials_workflows.md) | Financial workflows — new company quarter files and existing quarter validation / updates |
+| [business.md](./business.md) | Core business-profile rules — template, layer resolution, metric semantics, `guidance`, and staleness |
+| [business_workflows.md](./business_workflows.md) | Business workflows — create `business/business.yaml` or update / validate an existing profile |
+| [announcements.md](./announcements.md) | **`announcements/announcements.yaml`** — latest material company announcements from official channels; newest first |
+| [narrative.md](./narrative.md) | **`narrative/narrative.yaml`** — questions + conclusion per issuer; cited primaries |
