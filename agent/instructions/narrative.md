@@ -1,5 +1,287 @@
 # Financial narrative (`narrative/narrative.yaml`)
 
+**Purpose:** Produce the **deepest, most useful judgment layer** on the company in this repo: the part that connects **financials**, **business profile**, **announcements**, management framing, products, market position, and competition into a single view of **what is really going on underneath**.
+
+This file should help answer questions like:
+
+- Is management likely to deliver its guidance?
+- What is the market probably missing on first read?
+- What is the company emphasizing, and what is it de-emphasizing?
+- Is the company operating better or worse than peers in ways the headline numbers do not show?
+- What is most likely to matter next?
+
+This is **not** just a filing recap. It is a **thesis-driven synthesis** that should feel like the result of serious study of the company, its history, and its context.
+
+## What this narrative should do
+
+The narrative should:
+
+- connect `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and current-period primary documents
+- connect the current period to prior periods, strategic direction, and disclosed company history where relevant
+- surface what is **non-obvious**, **easy to miss**, or **strategically important**
+- bring **judgment**, not just description
+- make **bounded predictions** when useful
+- remain **evidence-linked**, not speculative fiction
+
+This file is used across companies and value-chain layers. It is **not** tied to a single mental model or a fixed outline.
+
+## Voice and standard
+
+Write as if the reader wants the output of **hundreds of hours of company study** condensed into one sharp memo.
+
+The tone should be:
+
+- confident but not theatrical
+- analytical, not promotional
+- willing to judge management, strategy, and execution
+- willing to make predictions, but explicit about what is fact vs interpretation vs forecast
+
+The best narratives should read like:
+
+- “here is what actually matters”
+- “here is what management is signaling”
+- “here is what the numbers do not tell you on first glance”
+- “here is why the company is better / worse / riskier / stronger than it looks”
+
+Avoid writing like a worksheet, a filing summary, or repo documentation.
+
+## Judgment is required
+
+The narrative must **reach a real view**. It should not stop at “these are the numbers” or “these are some risks.”
+
+It is good to judge things like:
+
+- whether guidance looks believable, stretched, or unlikely
+- whether growth quality is improving or deteriorating
+- whether profitability, cash generation, or capital intensity is better or worse than it first appears
+- whether management framing is clarifying reality or obscuring it
+- whether competitive position looks stronger or weaker than the company is implying
+- what the company is genuinely **good at** and can leverage repeatedly
+- whether the company has a real **advantage** or **moat**, and how durable it looks
+- what the company does **worse** than competitors, and what could become a recurring weakness
+- whether recent announcements support the strategy or mostly support the narrative around the strategy
+
+It is also acceptable to make **predictions**, but only when they are:
+
+- clearly framed as judgment, not disclosed fact
+- tied to real evidence
+- stated with appropriate uncertainty
+
+Bad prediction:
+
+- “the company will definitely beat guidance next quarter”
+
+Better prediction:
+
+- “based on contracted capacity, recent procurement, and management’s latest language, guidance looks achievable but still dependent on financing and deployment timing”
+
+## Guardrails on management judgment
+
+It is valid to ask whether management is **hiding**, **de-emphasizing**, or **strategically framing** something, but do **not** accuse deception without strong evidence.
+
+Prefer formulations like:
+
+- management is emphasizing X, but the more important constraint appears to be Y
+- the release foregrounds A while B is doing more of the explanatory work
+- the quarter looks better or worse after adjusting for C
+- disclosures are thin on D, which limits confidence in E
+
+Do not write unsupported psychoanalysis.
+
+## Evidence standard
+
+This is a judgment-heavy file, but it is still grounded in evidence.
+
+Read with:
+
+- [sources.md](./sources.md) (Financial narratives track)
+- [financials.md](./financials.md)
+- [business.md](./business.md)
+- [announcements.md](./announcements.md) when recent company events are important to the thesis
+- the layer’s `content/_meta/layer_frameworks/<layer>.yaml` when it helps frame what usually matters in that slice
+
+### Open the documents and read deeply (required)
+
+A real narrative is **not** done from YAML fields and URL strings alone.
+
+Open the primaries you rely on and read:
+
+- face statements
+- footnotes / notes
+- accounting policies
+- MD&A
+- earnings materials / shareholder letters
+- official announcement releases
+
+If useful, also read:
+
+- official product pages
+- competitor filings / investor materials
+- official market or regulatory documents
+
+When using peer or market context, prefer **primary or official** sources there too.
+
+If you cannot open an important primary, say so in `disclosure_gaps` or `conclusion` and avoid pretending to know what that document would have shown.
+
+## What readers are trying to understand
+
+The narrative should help answer the real questions an allocator or serious researcher would ask, such as:
+
+- Is the company’s story internally consistent?
+- Are financial results, business metrics, and announcements pointing in the same direction?
+- Is the company building a durable advantage, or just telling a good story?
+- What is the company best at operationally, commercially, or strategically?
+- What is the company structurally weak at?
+- Does the company have a moat, and if so, where does it really come from?
+- Where does the company look better or worse than peers?
+- Are there balance-sheet, execution, concentration, product, or demand risks that the market is underestimating?
+- Is the company operating materially better or worse than peers?
+- What would have to happen for the current strategy to work?
+
+These are examples, not a mandatory list.
+
+## When to create or update
+
+- after a meaningful change to `financials/*.yaml`
+- after a meaningful change to `business/business.yaml`
+- after material additions to `announcements/announcements.yaml`
+- when a new filing, earnings call, investor deck, or official announcement changes the company thesis
+
+Set `as_of` to the date the narrative was written or last reviewed, not the quarter end.
+
+Prefer one canonical narrative file per company:
+
+```text
+content/companies/<slug>/narrative/narrative.yaml
+```
+
+If the thesis changes materially by period, anchor it via `based_on_financials` and make the period explicit inside the narrative bodies.
+
+## How to build the narrative (agent)
+
+1. Read the target period’s `financials/*.yaml`, `business/business.yaml`, and `announcements/announcements.yaml` if present
+2. Open the primary documents behind the core claims you expect to make
+3. Study prior periods and recent changes so you can tell what is changing versus what is just being repeated
+4. Ask:
+   - what is the real story here?
+   - what is non-obvious?
+   - what matters most for the next 1–4 quarters?
+   - what is management saying, and what do the underlying facts say?
+   - where is this company stronger or weaker than peers?
+5. Identify **2–5 issuer-specific angles** that are worth writing about
+6. Draft custom `sections` that reflect those angles
+7. Use `central_questions` only if a short thematic hook helps the UI; otherwise omit it
+8. End with a real `conclusion` that synthesizes the company view, not just the section headings
+
+## What a strong narrative usually contains
+
+Depending on the company, useful angles may include:
+
+- whether reported growth is high quality or low quality
+- whether guidance is realistic
+- whether the company’s capital structure supports the strategy
+- what the company appears to be unusually good at
+- whether the company has a defensible moat or only temporary positioning
+- what part of the business is strongest, and what part is most fragile
+- whether announcements actually move the business forward or mainly support investor messaging
+- whether new products or infrastructure matter economically yet
+- whether peer comparisons make the company look stronger or weaker than management implies
+- whether disclosed risks are manageable or likely to become central
+
+Do **not** force every issuer through the same categories.
+
+## Use numbers, but do not become a spreadsheet
+
+When numbers answer the question, put them in the prose.
+
+Good:
+
+- explain how large the gap is
+- state the ratio, scale, timing, or burden when it is material
+- connect the number to the judgment
+
+Bad:
+
+- vague references like “the answer is in the notes”
+- long numeric dumps without interpretation
+- repeating quarter-file metrics without saying why they matter
+
+## What this file must not do
+
+- **No new authoritative financial metrics** — those belong in `financials/*.yaml`
+- **No unsourced quantitative claims**
+- **No fake precision**
+- **No conclusion-free narrative** — one section with `id: conclusion` is required
+- **No template-thinking** where every company gets the same worries and section titles
+
+## YAML shape (`schema_version: 1`)
+
+| Field | Required | Notes |
+|-------|----------|--------|
+| `kind` | yes | `financial_narrative` |
+| `schema_version` | yes | `1` |
+| `as_of` | yes | ISO date when the narrative was authored or last reviewed |
+| `based_on_financials` | yes | At least `period_end` and `file`; optional `period_label` |
+| `business_profile_as_of` | no | If `business/business.yaml` materially informed the narrative at a specific `as_of` |
+| `central_questions` | no | Optional short thematic hook for the UI; not required |
+| `sections` | yes | List of `{ id, title, body }`; must include exactly one section with `id: conclusion` |
+| `disclosure_gaps` | no | What limits confidence or blocks stronger judgment |
+| `sources` | yes | Non-empty bibliography of important sources consulted |
+
+### Provenance in `sources[].description`
+
+Prefer clear lead-ins such as:
+
+- `Direct from SEC filing:`
+- `From SEC company facts API (XBRL):`
+- `Derived:`
+- `Filing index:`
+- `Primary source:`
+
+### `central_questions`
+
+Optional. Use them only when a short hook improves the UI and sharpens the theme. Do **not** turn them into a repetitive checkbox list that every company uses.
+
+### The `conclusion` section
+
+Required.
+
+The `conclusion` should be the **best short expression of the thesis**. It should answer:
+
+- how to read this company right now
+- what the company's strongest advantage appears to be
+- what its most important weakness appears to be
+- what the most important risk / strength / contradiction is
+- what looks likely next
+- what remains unknown
+
+It can be titled:
+
+- `Conclusion`
+- `Takeaway`
+- `How to read this company`
+- or another issuer-specific label
+
+The validator only requires `id: conclusion`.
+
+## Workflow (agents)
+
+1. Read `financials/README.md`, the target `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and `entity.yaml`
+2. Open every primary you rely on for the main narrative claims
+3. Draft issuer-specific sections with real judgment
+4. Separate clearly in your own reasoning:
+   - disclosed facts
+   - evidence-based interpretation
+   - forward-looking judgment / prediction
+5. Add `disclosure_gaps` where confidence is limited
+6. Run `scripts/validate_values_file.py` on `narrative/narrative.yaml`
+7. Default to proposing under `inbox/` until approved for `content/`
+
+## Relationship to the map UI
+
+Shown when a company is selected, below financial history. It is labeled **interpretation**. `central_questions` render when present, and `conclusion` is visually emphasized.
+# Financial narrative (`narrative/narrative.yaml`)
+
 **Purpose:** Help someone decide whether the **published numbers and filings** support a coherent story — and what **is not obvious** from headline metrics alone. This file is used across **companies and value-chain layers**; it is **not** tied to one mental model (e.g. only infra, only accrual-vs-cash).
 
 **What readers are usually trying to get at (inform your judgment — not a fixed template):**

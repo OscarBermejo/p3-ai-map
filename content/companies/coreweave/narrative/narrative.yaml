@@ -1,0 +1,106 @@
+kind: financial_narrative
+schema_version: 1
+
+as_of: "2026-03-26"
+
+based_on_financials:
+  file: financials/2025-Q4.yaml
+  period_end: "2025-12-31"
+  period_label: "2025 Q4"
+
+business_profile_as_of: "2025-12-31"
+
+central_questions:
+  - "CoreWeave has already proven demand and revenue scale; the harder question is whether its execution edge and backlog can outrun the financing burden and concentration risk embedded in the model."
+
+sections:
+  - id: this_is_not_a_fake_ai_story
+    title: "This is not a fake AI story"
+    body: |
+      The first thing to understand about CoreWeave is that the company is no longer asking investors to believe in a future AI infrastructure business that has not shown up in the numbers. In **Q4 2025**, CoreWeave generated about **$1.57B** of **revenue** and about **$1.06B** of **gross profit**, while the business profile points to about **$60.7B** of **remaining performance obligations** as of year-end. That is not promotional vapor; it is evidence of a company that has already become a major delivery vehicle for AI compute.
+
+      The announcement history reinforces that read. CoreWeave signed an **OpenAI** infrastructure agreement with contract value of up to **$11.9B**, later closed a **$2.6B** delayed-draw financing facility specifically tied to supporting that delivery, and then deepened its strategic relationship with **NVIDIA**, which invested **$2B** and backed a plan to build more than **5 gigawatts** of AI factories by 2030. In other words, CoreWeave is clearly winning real demand, real counterparties, and real capital.
+
+  - id: the_real_strength_is_execution_speed
+    title: "The real strength is execution speed, not just access to GPUs"
+    body: |
+      CoreWeave's most credible advantage appears to be operational and commercial execution rather than a simple hardware arbitrage. The company keeps showing up early on new NVIDIA platforms, from the planned **Rubin** deployment to the March 2026 **HGX B300** launch, and it is trying to combine infrastructure with software and workflow control through **Mission Control**, **Flexible Capacity Plans**, and the **Weights & Biases** acquisition.
+
+      That matters because many competitors can eventually buy hardware, raise money, or sign marketing partnerships. Fewer can repeatedly bring frontier systems into production quickly enough to attract customers like OpenAI and Perplexity while also adding tools that make the platform easier to use in production. This does not prove a durable moat yet, but it does suggest CoreWeave is genuinely good at compressing time-to-capacity and time-to-customer in a market where speed still matters enormously.
+
+  - id: under_the_growth_is_a_heavy_financing_machine
+    title: "Under the growth is a heavy financing machine"
+    body: |
+      The non-obvious part of the CoreWeave story is that spectacular top-line growth does **not** yet mean the model is economically self-supporting. Q4 operating cash flow was about **$1.56B**, which looks strong on first glance, but the same quarter also required about **$4.06B** of **capital expenditures** and about **$3.53B** of **financing cash inflow**. That is the signature of a company still building far ahead of current free-cash-generation capacity.
+
+      The income statement tells the same story in another way. CoreWeave produced about **$1.06B** of gross profit in Q4, but about **$820.5M** of **depreciation and amortization** and about **$351.1M** of **interest expense** still drove about **$451.7M** of **net loss**. So the right way to read CoreWeave is not “high growth cloud, therefore economic leverage is already solved.” It is “high growth cloud with real gross economics, but still carrying a capital structure and depreciation load that can easily consume those economics.”
+
+  - id: backlog_is_powerful_but_quality_matters
+    title: "Backlog is powerful, but backlog quality matters more than headline size"
+    body: |
+      The **$60.7B** remaining performance obligation number is obviously impressive and gives CoreWeave much more visibility than a typical fast-growing infrastructure name. But backlog should not be read as if it were the same thing as revenue already earned, margin already locked, or customer diversification already achieved. The filing and broader disclosure set still suggest a business dependent on a relatively limited number of very large counterparties, even if that mix is improving.
+
+      That distinction matters because CoreWeave's financing strategy depends on those contracts being durable enough to support more debt, more equipment, and more site buildout. If customers remain sticky and utilization stays high, the backlog can justify a lot of capital formation. If contract economics tighten, deployments slip, or large customers reallocate demand, the balance sheet gives management much less room for error than the revenue growth alone might suggest.
+
+  - id: software_and_product_moves_are_strategic_not_yet_proven
+    title: "The software and product moves are strategic, not yet economically proven"
+    body: |
+      CoreWeave's March 2026 announcements are important because they show management trying to become more than a capacity merchant. The **Perplexity** partnership leans into inference, **Flexible Capacity Plans** are an attempt to make AI consumption more cloud-like, and the **B300** / **Rubin** roadmap plus Weights & Biases integration are meant to position CoreWeave as a fuller-stack production platform rather than just a cluster provider.
+
+      Strategically, that is exactly the right direction. It is how CoreWeave might defend itself if raw compute becomes less scarce or if hyperscalers narrow the performance gap. But those product moves should still be treated as evidence of intent and platform progress, not as proof that CoreWeave has already built a software moat. Today the business still looks primarily monetized through infrastructure delivery, with software and workflow layers helping win and retain customers rather than standing alone as a separately demonstrated profit engine.
+
+  - id: conclusion
+    title: "Takeaway"
+    body: |
+      **Core judgment:** CoreWeave looks like one of the most commercially real AI infrastructure companies in the market, but it still behaves financially like a company sprinting to industrial scale before the market normalizes. The demand side of the story is strong: Q4 2025 revenue was about **$1.57B**, remaining performance obligations were about **$60.7B**, and the company continues to attract blue-chip customers, strategic backing from **NVIDIA**, and large financing commitments tied to real delivery programs.
+
+      **What CoreWeave appears genuinely good at:** speed of execution. The company seems unusually strong at turning frontier NVIDIA roadmaps, customer demand, and external capital into live platform capacity quickly enough to matter. That is a real advantage in the current market, and it helps explain why major counterparties keep choosing CoreWeave.
+
+      **What still looks structurally weak:** the capital structure is heavy, and the margin for execution mistakes is thinner than the revenue trajectory implies. Q4 showed about **$4.06B** of capex against about **$1.56B** of operating cash flow, while year-end **total debt** was about **$21.37B** against about **$3.13B** of **cash**, or roughly **$18.2B** of implied net debt. Current liabilities of about **$16.44B** also sat well above current assets of about **$7.49B**. That does not make the company broken, but it does mean the model still depends on continued access to capital and continued clean execution on customer commitments.
+
+      **Best near-term prediction:** CoreWeave is likely to keep looking strategically strong over the next few quarters if demand for frontier AI capacity remains tight and if the company continues converting its backlog into delivered infrastructure without major operational slips. The harder medium-term test is whether this can mature into durable economics once the market becomes less supply-constrained and more competitive. If CoreWeave proves it can keep the execution edge while lowering financing dependence over time, it could emerge as one of the few AI cloud specialists with a real long-term position. If not, investors may eventually decide they were underwriting a very effective buildout engine rather than a durable cloud franchise.
+
+disclosure_gaps: |
+  The biggest unanswered questions are around concentration and unit economics rather than demand existence. CoreWeave clearly has very large customer commitments and backlog, but the disclosures still leave limited visibility into customer mix durability, contract-level margin structure, how quickly product-layer additions become economically meaningful, and what steady-state returns look like after depreciation, interest burden, and ongoing equipment refresh. Those gaps matter because they determine whether CoreWeave is building a lasting AI cloud franchise or a highly effective but financing-intensive bridge into the current shortage cycle.
+
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    kind: sec_10k
+    description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31 (filed 2026-03-02); annual report used for financial statement context, debt structure, and overall company disclosures."
+    retrieved_at: "2026-03-26"
+  - url: https://d18rn0p25nwr6d.cloudfront.net/CIK-0001769628/85549f0b-319d-4440-a131-ab85fd6fbad0.html
+    kind: sec_10k
+    description: "Primary source: CoreWeave 2025 annual report in structured HTML format; reviewed for debt, customer concentration risk, and note structure."
+    retrieved_at: "2026-03-26"
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000044/ex991pressrelease_final.htm
+    kind: sec_8k
+    description: "Primary source: Form 8-K Exhibit 99.1 filed 2026-01-26 announcing the expanded NVIDIA collaboration and $2 billion investment."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-announces-agreement-with-openai-to-deliver-ai-infrastructure
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2025-03-10 announcing the OpenAI infrastructure agreement with contract value up to $11.9 billion and related $350 million equity investment."
+    retrieved_at: "2026-03-26"
+  - url: https://investors.coreweave.com/news/news-details/2025/CoreWeave-Closes-2-6-Billion-Secured-Debt-Financing-Facility-Strengthening-Market-Position-as-AI-Cloud-Leader/default.aspx
+    kind: ir_html
+    description: "Primary source: official CoreWeave investor relations release dated 2025-07-31 announcing the $2.6 billion delayed draw term loan facility tied to the OpenAI delivery program."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-to-acquire-weights-biases---industry-leading-ai-developer-platform-for-building-and-deploying-ai-applications
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2025-03-04 announcing the agreement to acquire Weights & Biases."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-extends-its-cloud-platform-with-nvidia-rubin-platform
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2026-01-05 announcing planned deployment of NVIDIA Rubin on the CoreWeave platform."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-announces-agreement-to-power-perplexitys-ai-inference-workloads
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2026-03-04 announcing the multi-year strategic partnership with Perplexity."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-introduces-flexible-capacity-plans-to-accelerate-ai-innovation
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2026-03-10 announcing Flexible Capacity Plans, including Flex Reservations and Spot."
+    retrieved_at: "2026-03-26"
+  - url: https://www.coreweave.com/news/coreweave-advances-ai-native-cloud-platform-for-the-next-phase-of-production-scale-ai
+    kind: company_web
+    description: "Primary source: official CoreWeave release dated 2026-03-16 announcing NVIDIA HGX B300 availability and new Weights & Biases workflow capabilities."
+    retrieved_at: "2026-03-26"

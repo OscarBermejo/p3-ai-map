@@ -1,0 +1,127 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-26"
+
+items:
+  - date: "2026-03-26"
+    title: "Nebius launches AI Cloud 3.5 with serverless AI"
+    category: product
+    summary: >
+      Nebius introduced AI Cloud 3.5, adding serverless AI capabilities, Data
+      Transfer Service, and support for NVIDIA RTX PRO 6000 Blackwell Server
+      Edition GPUs. The release is positioned as a platform update aimed at
+      reducing infrastructure-management overhead for AI developers.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-ai-cloud-3-5-introduces-serverless-ai-to-give-developers-frictionless-compute-for-real-world-ai
+        kind: company_web
+        description: "Primary source: official Nebius release dated March 26, 2026 announcing AI Cloud 3.5, serverless AI capabilities, and new GPU and data-transfer features."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-20"
+    title: "Nebius closes $4.3375 billion convertible notes offering"
+    category: funding
+    summary: >
+      Nebius said it closed a private offering of 1.250% convertible notes due
+      2031 and 2.625% convertible notes due 2033 with aggregate original
+      principal amount of $4.3375 billion after a partial exercise of the
+      purchaser's option. The company said it intends to use the proceeds for
+      data-center build-out, AI cloud development, footprint expansion, GPU
+      procurement, and general corporate purposes.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-group-announces-closing-of-private-offering-of-convertible-senior-notes-with-aggregate-gross-proceeds-of-approximately-4-3-billion
+        kind: company_web
+        description: "Primary source: official Nebius release dated March 20, 2026 announcing the closing of the convertible senior notes offering and intended use of proceeds."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-16"
+    title: "Nebius signs long-term AI infrastructure agreement with Meta"
+    category: deal
+    summary: >
+      Nebius announced a five-year AI infrastructure supply agreement with Meta
+      under which Nebius will provide $12 billion of dedicated capacity across
+      multiple locations starting in early 2027. Nebius also said Meta committed
+      to purchase additional available compute capacity across certain upcoming
+      clusters up to a total of $15 billion over five years, for a total
+      contract value of up to about $27 billion.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta
+        kind: company_web
+        description: "Primary source: official Nebius release dated March 16, 2026 announcing the new long-term AI infrastructure agreement with Meta."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-11"
+    title: "NVIDIA invests $2 billion and expands strategic partnership with Nebius"
+    category: partnership
+    summary: >
+      NVIDIA and Nebius announced a strategic partnership spanning AI factory
+      design, inference software, infrastructure deployment, and fleet
+      management, alongside a $2 billion NVIDIA investment in Nebius. The
+      announcement said the partnership is intended to support deployment of
+      more than 5 gigawatts of NVIDIA systems capacity by the end of 2030.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+        kind: sec_6k
+        description: "Primary source: Form 6-K Exhibit 99.1 filed March 11, 2026 announcing NVIDIA's $2 billion investment and strategic partnership with Nebius."
+        retrieved_at: "2026-03-26"
+      - url: https://group.nebius.com/newsroom/nvidia-and-nebius-partner-to-scale-full-stack-ai-cloud
+        kind: company_web
+        description: "Primary source: official Nebius newsroom release dated March 11, 2026 covering the same NVIDIA partnership announcement."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-03"
+    title: "Nebius secures approval for first gigawatt-scale AI factory"
+    category: capacity
+    summary: >
+      Nebius said the Independence, Missouri City Council approved the Chapter
+      100 industrial development incentive plan for its planned AI factory
+      campus, allowing the company to proceed with construction. Nebius said the
+      project has potential capacity of up to 1.2 gigawatts.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory
+        kind: company_web
+        description: "Primary source: official Nebius release dated March 3, 2026 announcing approval for the Independence, Missouri AI factory campus."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-02-12"
+    title: "Nebius reports fourth-quarter and full-year 2025 results"
+    category: other
+    summary: >
+      Nebius reported fourth-quarter and full-year 2025 financial results and
+      published its shareholder letter. The announcement accompanied the
+      company's Q4 results materials and investor webcast.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+        kind: sec_6k
+        description: "Primary source: Form 6-K Exhibit 99.1 filed February 12, 2026 reporting fourth-quarter and full-year 2025 financial results."
+        retrieved_at: "2026-03-26"
+      - url: https://group.nebius.com/newsroom/nebius-reports-fourth-quarter-and-full-year-2025-financial-results
+        kind: company_web
+        description: "Primary source: official Nebius newsroom post dated February 12, 2026 linking to the Q4 2025 financial results and shareholder letter."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-02-10"
+    title: "Nebius agrees to acquire Tavily"
+    category: other
+    summary: >
+      Nebius announced an agreement to acquire Tavily, an agentic search
+      provider, to add real-time search infrastructure to its AI cloud platform.
+      Nebius said Tavily would continue operating under its current brand after
+      closing, and said the transaction value was not disclosed.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-announces-agreement-to-acquire-tavily-to-add-agentic-search-to-its-ai-cloud-platform
+        kind: company_web
+        description: "Primary source: official Nebius release dated February 10, 2026 announcing the agreement to acquire Tavily."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-01-05"
+    title: "Nebius says it will offer NVIDIA Vera Rubin NVL72 from H2 2026"
+    category: product
+    summary: >
+      Nebius announced plans to deploy the NVIDIA Rubin platform through Nebius
+      AI Cloud and Nebius Token Factory starting in the second half of 2026. The
+      company said it would offer Vera Rubin NVL72 capacity in the US and Europe.
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-to-offer-nvidia-vera-rubin-nvl-72-in-us-and-europe-from-h2-2026
+        kind: company_web
+        description: "Primary source: official Nebius release dated January 5, 2026 announcing planned availability of NVIDIA Vera Rubin NVL72 through Nebius AI Cloud and Token Factory."
+        retrieved_at: "2026-03-26"

@@ -1,0 +1,138 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-26"
+
+items:
+  - date: "2026-03-16"
+    title: "CoreWeave expands AI cloud platform with NVIDIA HGX B300 and new W&B capabilities"
+    category: product
+    summary: >
+      CoreWeave announced general availability of NVIDIA HGX B300 on its cloud
+      platform and highlighted new Weights & Biases capabilities for
+      reinforcement learning and agent-development workflows. The company also
+      said it expects to be among the first cloud providers to deploy NVIDIA
+      Vera Rubin NVL72 in the second half of 2026.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-advances-ai-native-cloud-platform-for-the-next-phase-of-production-scale-ai
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 16, 2026 announcing NVIDIA HGX B300 availability and new Weights & Biases workflow capabilities."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-10"
+    title: "CoreWeave introduces flexible capacity plans"
+    category: product
+    summary: >
+      CoreWeave introduced Flexible Capacity Plans, including Flex Reservations
+      and Spot, to let customers combine reserved, interruptible, and on-demand
+      AI capacity. The company said Flex Reservations entered preview in
+      eligible regions and Spot became generally available.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-introduces-flexible-capacity-plans-to-accelerate-ai-innovation
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 10, 2026 announcing Flexible Capacity Plans, including Flex Reservations and Spot."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-03-04"
+    title: "CoreWeave signs multi-year inference partnership with Perplexity"
+    category: partnership
+    summary: >
+      CoreWeave announced a multi-year strategic partnership with Perplexity to
+      support inference workloads on CoreWeave Cloud using dedicated NVIDIA
+      GB200 NVL72-powered clusters. CoreWeave also said it would deploy
+      Perplexity Enterprise Max internally as part of the relationship.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-announces-agreement-to-power-perplexitys-ai-inference-workloads
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 4, 2026 announcing the multi-year Perplexity partnership."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-01-26"
+    title: "NVIDIA invests $2 billion and expands collaboration with CoreWeave"
+    category: partnership
+    summary: >
+      NVIDIA and CoreWeave announced an expanded collaboration to accelerate the
+      buildout of more than 5 gigawatts of AI factories by 2030. The
+      announcement also disclosed NVIDIA's $2 billion investment in CoreWeave
+      Class A common stock at $87.20 per share.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000044/ex991pressrelease_final.htm
+        kind: sec_8k
+        description: "Primary source: Form 8-K Exhibit 99.1 filed January 26, 2026 announcing the expanded NVIDIA collaboration and $2 billion equity investment."
+        retrieved_at: "2026-03-26"
+      - url: https://www.coreweave.com/news/nvidia-and-coreweave-strengthen-collaboration-to-accelerate-buildout-of-ai-factories
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated January 26, 2026 covering the same NVIDIA collaboration announcement."
+        retrieved_at: "2026-03-26"
+
+  - date: "2026-01-05"
+    title: "CoreWeave says it will deploy NVIDIA Rubin in H2 2026"
+    category: product
+    summary: >
+      CoreWeave announced plans to add NVIDIA Rubin technology to its AI cloud
+      platform and said it expects to be among the first cloud providers to
+      deploy the platform in the second half of 2026. The company positioned
+      Rubin as support for agentic AI, reasoning, and large-scale inference
+      workloads.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-extends-its-cloud-platform-with-nvidia-rubin-platform
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated January 5, 2026 announcing planned deployment of NVIDIA Rubin on CoreWeave Cloud."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-07-31"
+    title: "CoreWeave closes $2.6 billion delayed draw term loan facility"
+    category: funding
+    summary: >
+      CoreWeave announced the closing of a $2.6 billion delayed draw term loan
+      facility to support equipment, hardware, and cloud infrastructure systems
+      used to deliver services under its long-term agreement with OpenAI. The
+      company said the facility matures on August 21, 2030 and was financed at
+      SOFR plus 4%.
+    sources:
+      - url: https://investors.coreweave.com/news/news-details/2025/CoreWeave-Closes-2-6-Billion-Secured-Debt-Financing-Facility-Strengthening-Market-Position-as-AI-Cloud-Leader/default.aspx
+        kind: ir_html
+        description: "Primary source: official CoreWeave investor relations release dated July 31, 2025 announcing the $2.6 billion delayed draw term loan facility."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-03-10"
+    title: "CoreWeave signs AI infrastructure agreement with OpenAI"
+    category: deal
+    summary: >
+      CoreWeave announced a deal to deliver AI infrastructure to OpenAI with
+      contract value of up to $11.9 billion. The company also said OpenAI would
+      become an investor in CoreWeave through the issuance of $350.0 million of
+      CoreWeave stock.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-announces-agreement-with-openai-to-deliver-ai-infrastructure
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 10, 2025 announcing the OpenAI infrastructure agreement and related $350 million equity investment."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-03-04"
+    title: "CoreWeave agrees to acquire Weights & Biases"
+    category: other
+    summary: >
+      CoreWeave announced an agreement to acquire Weights & Biases to extend its
+      cloud platform with model-training, evaluation, and monitoring workflows.
+      The company said the deal would create an end-to-end platform for AI labs
+      and enterprises and that the transaction was expected to close in the
+      first half of 2025, subject to customary conditions.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-to-acquire-weights-biases---industry-leading-ai-developer-platform-for-building-and-deploying-ai-applications
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 4, 2025 announcing the agreement to acquire Weights & Biases."
+        retrieved_at: "2026-03-26"
+
+  - date: "2025-03-03"
+    title: "CoreWeave files for an initial public offering"
+    category: other
+    summary: >
+      CoreWeave announced that it had filed a registration statement on Form S-1
+      with the SEC for a proposed initial public offering of Class A common
+      stock. The company said it had applied to list its Class A common stock on
+      Nasdaq under the ticker symbol CRWV.
+    sources:
+      - url: https://www.coreweave.com/news/coreweave-files-registration-statement-for-proposed-initial-public-offering
+        kind: company_web
+        description: "Primary source: official CoreWeave release dated March 3, 2025 announcing the filing of a registration statement for a proposed IPO."
+        retrieved_at: "2026-03-26"

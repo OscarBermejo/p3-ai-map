@@ -12,4 +12,4 @@
 | [business.md](./business.md) | Core business-profile rules — template, layer resolution, metric semantics, `guidance`, and staleness |
 | [business_workflows.md](./business_workflows.md) | Business workflows — create `business/business.yaml` or update / validate an existing profile |
 | [announcements.md](./announcements.md) | **`announcements/announcements.yaml`** — latest material company announcements from official channels; newest first |
-| [narrative.md](./narrative.md) | **`narrative/narrative.yaml`** — questions + conclusion per issuer; cited primaries |
+| [narrative.md](./narrative.md) | **`narrative/narrative.yaml`** — thesis-driven company judgment connecting filings, business, announcements, and context |

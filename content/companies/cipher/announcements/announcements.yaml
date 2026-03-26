@@ -1,0 +1,94 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-26"
+
+items:
+  - date: "2026-02-24"
+    title: "Cipher provides fourth quarter and full year 2025 business update"
+    category: other
+    summary: >
+      Cipher's year-end update and annual report framed the company as operating about
+      207 MW of live bitcoin-mining capacity while developing 600 MW of HPC facilities
+      for hyperscaler tenants across two sites. The filing also tied the Black Pearl
+      AWS lease to phased delivery in 2026 with rent commencement expected to ramp
+      from late 2026 into 2027.
+    sources:
+      - url: https://investors.ciphermining.com/news-releases/news-release-details/cipher-digital-provides-fourth-quarter-and-full-year-2025
+        kind: ir_html
+        description: "Primary source: official Cipher investor relations release dated 2026-02-24 for the fourth quarter and full year 2025 business update."
+        retrieved_at: "2026-03-26"
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31, filed 2026-02-24; used for operating MW, HPC development MW, portfolio size, and Black Pearl timing."
+        retrieved_at: "2026-03-26"
+  - date: "2026-02-11"
+    title: "Cipher adds Thomas Duda to its board"
+    category: board
+    summary: >
+      Cipher increased its board from seven to eight directors and appointed Thomas
+      Duda effective immediately. The company said Duda would serve on the compensation
+      committee and the nominating and corporate governance committee.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000002/cifr-20260211.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Form 8-K filed 2026-02-11 announcing the appointment of Thomas Duda as director."
+        retrieved_at: "2026-03-26"
+      - url: https://investors.ciphermining.com/news-releases/news-release-details/cipher-welcomes-thomas-duda-companys-board-directors
+        kind: ir_html
+        description: "Primary source: official Cipher investor relations release dated 2026-02-11 announcing Thomas Duda's appointment to the board."
+        retrieved_at: "2026-03-26"
+  - date: "2025-11-03"
+    title: "Cipher discloses AWS lease and Colchis HPC site in third quarter update"
+    category: deal
+    summary: >
+      Cipher's third quarter 2025 business update said the company had executed a
+      15-year lease with Amazon Web Services to deliver 300 MW of turnkey capacity
+      beginning in 2026, with estimated contract value of about $5.5 billion. The
+      same materials also highlighted the Colchis site, which Cipher said could support
+      1 GW and was expected to energize in 2028 pending ERCOT approval.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+        kind: sec_8k
+        description: "Primary source: Exhibit 99.2 to Cipher's November 2025 business update filing; reviewed for AWS lease terms, estimated contract value, and Colchis site details."
+        retrieved_at: "2026-03-26"
+      - url: https://investors.ciphermining.com/news-releases/news-release-details/cipher-mining-provides-third-quarter-2025-business-update
+        kind: ir_html
+        description: "Primary source: official Cipher investor relations release dated 2025-11-03 for the third quarter 2025 business update."
+        retrieved_at: "2026-03-26"
+  - date: "2025-09-30"
+    title: "Cipher closes $1.3 billion convertible notes financing"
+    category: debt
+    summary: >
+      Cipher issued $1.3 billion of 0.00% convertible senior notes due 2031, including
+      the full exercise of the initial purchasers' option for additional notes. The
+      company linked the financing to Barber Lake construction, expansion of its HPC
+      strategy across the development pipeline, and general corporate purposes, and
+      separately disclosed capped call transactions intended to reduce dilution.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000119312525225645/d52925d8k.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Form 8-K filed 2025-09-30 announcing issuance of $1.3 billion of 0.00% convertible senior notes due 2031 and related capped call transactions."
+        retrieved_at: "2026-03-26"
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000119312525218502/d936051dex991.htm
+        kind: sec_8k
+        description: "Primary source: Exhibit 99.1 filed 2025-09-25 announcing pricing of the upsized convertible notes offering and intended use of proceeds."
+        retrieved_at: "2026-03-26"
+  - date: "2025-09-25"
+    title: "Cipher signs Barber Lake lease with Fluidstack backed by Google"
+    category: deal
+    summary: >
+      Cipher said its Barber Lake subsidiary entered a datacenter lease with Fluidstack
+      for a Colorado City, Texas facility expected to provide 168 MW of critical IT
+      load for HPC operations, with delivery targeted by September 2026 and a 10-year
+      lease term. A related recognition agreement gave Google a backstop role for
+      certain Fluidstack obligations, and Cipher issued warrants to Google as part
+      of the transaction structure.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010325012168/dp234624_8k.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Form 8-K filed 2025-09-25 describing the Fluidstack lease, Google's backstop obligations, and related warrant agreement."
+        retrieved_at: "2026-03-26"
+      - url: https://investors.ciphermining.com/static-files/382f9061-a211-487f-9c57-2131f6c06bd8
+        kind: ir_pdf
+        description: "Primary source: official Cipher Fluidstack deal presentation linked from investor relations; used as supporting company material for Barber Lake capacity framing."
+        retrieved_at: "2026-03-26"
