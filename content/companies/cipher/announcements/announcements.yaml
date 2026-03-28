@@ -4,6 +4,25 @@ as_of: "2026-03-26"
 
 items:
   - date: "2026-02-24"
+    title: "Cipher rebrands as Cipher Digital Inc."
+    category: other
+    summary: >
+      Effective February 23, 2026 Cipher Mining Inc. changed its legal name to
+      Cipher Digital Inc. The rebrand accompanied the company's fourth quarter
+      and full year 2025 business update and was intended to reflect the shift
+      from pure bitcoin mining toward broader digital infrastructure and HPC
+      data center development.
+    sources:
+      - url: https://investors.cipherdigital.com/news-releases/news-release-details/cipher-digital-provides-fourth-quarter-and-full-year-2025/
+        kind: ir_html
+        description: "Primary source: official Cipher Digital investor relations release dated 2026-02-24 covering the name change and Q4/FY2025 update."
+        retrieved_at: "2026-03-28"
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+        kind: sec_10k
+        description: "Form 10-K filed 2026-02-24 under the new legal name Cipher Digital Inc."
+        retrieved_at: "2026-03-28"
+
+  - date: "2026-02-24"
     title: "Cipher provides fourth quarter and full year 2025 business update"
     category: other
     summary: >
@@ -21,6 +40,26 @@ items:
         kind: sec_10k
         description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31, filed 2026-02-24; used for operating MW, HPC development MW, portfolio size, and Black Pearl timing."
         retrieved_at: "2026-03-26"
+  - date: "2026-02-11"
+    title: "Cipher closes $2 billion senior secured notes for Black Pearl"
+    category: debt
+    summary: >
+      Cipher's Black Pearl Compute subsidiary closed $2.0 billion of 6.125%
+      senior secured notes due 2031. Proceeds will fund remaining Black Pearl
+      Facility construction in Wink, Texas and reimburse approximately
+      $232.5 million of Cipher's prior equity investments. The notes are secured
+      by first-priority liens on substantially all assets of the issuer and
+      guarantors, with Cipher providing a completion guarantee for the facility.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010326001966/dp241421_8k.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: Form 8-K filed 2026-02-11 announcing closing of the $2.0 billion senior secured notes offering for Black Pearl Compute LLC."
+        retrieved_at: "2026-03-28"
+      - url: https://investors.ciphermining.com/news-releases/news-release-details/cipher-mining-inc-announces-pricing-of-20-billion-of-senior-secured-notes
+        kind: ir_html
+        description: "Primary source: official Cipher investor relations release announcing pricing of the $2.0 billion notes."
+        retrieved_at: "2026-03-28"
+
   - date: "2026-02-11"
     title: "Cipher adds Thomas Duda to its board"
     category: board

@@ -1,7 +1,10 @@
+# Capstone narrative — thesis-driven judgment synthesizing Cipher's financials, business
+# profile, announcements, and market perception. Not investment advice.
+
 kind: financial_narrative
 schema_version: 1
 
-as_of: "2026-03-26"
+as_of: "2026-03-28"
 
 based_on_financials:
   file: financials/FY2025-Q4.yaml
@@ -9,82 +12,137 @@ based_on_financials:
   period_label: "FY2025 Q4"
 
 business_profile_as_of: "2025-12-31"
+market_perception_as_of: "2026-03-28"
 
 central_questions:
-  - "Cipher is trying to use a still-real bitcoin mining base to fund and validate a much larger HPC landlord strategy; the real question is whether those tenant wins are the start of durable infrastructure economics or just a heavily financed transition story whose revenue has not arrived yet."
+  - "Cipher has signed ~$9.3B of hyperscaler leases and renamed itself 'Digital' — but revenue is still 100% bitcoin mining, operating cash flow is negative, and the company has accumulated $3.2B of debt before a single dollar of hosting rent has been collected. The question is whether this is well-structured project finance against blue-chip leases, or an overleveraged bet where the revenue is always one year away."
 
 sections:
-  - id: cipher_is_no_longer_just_a_bitcoin_miner_on_paper
-    title: "Cipher is no longer just a bitcoin miner on paper"
+  - id: two_companies_in_one_ticker
+    title: "There are two companies inside this ticker and only one has revenue"
     body: |
-      Cipher's strategic shift toward HPC hosting is no longer hypothetical. By year-end the business profile already pointed to about **600 MW** of **HPC facilities under development** for hyperscaler tenants, while the announcements file shows two concrete commercial anchors: the **Fluidstack** lease at Barber Lake with a **Google** backstop, and the later disclosure of a **15-year Amazon Web Services lease** for about **300 MW** of capacity at Black Pearl. Management is clearly trying to turn power access, land control, and construction execution into long-duration tenant contracts rather than stay only a spot-exposed bitcoin miner.
+      The most important thing to understand about Cipher is that its current financial statements and its investment thesis describe two completely different businesses.
 
-      That matters because the market can easily underread Cipher if it looks only at the current mining fleet. The company still operates about **207 MW** of live bitcoin-mining capacity, but the broader portfolio narrative in the 10-K is much larger: **4.2 GW** across **10 sites** at various stages of interconnection, plus the **Colchis** site that management said could support up to **1 GW**. In other words, the company's strategic identity is moving toward power-and-campus development for third-party compute tenants, even if the income statement has not caught up yet.
+      **The business that exists today** is a Texas bitcoin miner with **207 MW** of live capacity, running ASICs at the Odessa facility. In Q4 2025, this business generated **$59.7M** of revenue and **$35.5M** of gross profit — a 59% gross margin. That sounds reasonable until you look at the cash flow statement: operating cash flow was **-$54M** in Q4 and **-$208M** for the full year. Mining is revenue-positive but cash-flow-negative. The difference is overhead, SBC, working capital, and the cost of managing a company that's building something much larger than what it currently runs.
 
-  - id: the_pnl_is_still_mostly_a_mining_pnl
-    title: "The P&L is still mostly a mining P&L"
+      **The business being built** is an HPC data center developer with **$9.3B** of contracted hyperscaler revenue: a **15-year AWS lease** at Black Pearl ($5.5B, 300 MW) and a **10-year Fluidstack/Google lease** at Barber Lake ($3.8B, 168 MW). Behind those sit **4.2 GW** across 10 sites at various stages of interconnection and a **3.4 GW** pipeline of eight more sites. This is one of the largest power portfolios among former bitcoin miners.
+
+      The entire investment case depends on whether Company #2 arrives before Company #1 runs out of runway. The rebrand to **Cipher Digital** (February 2026) was management's way of saying they've chosen which company they want to be. The balance sheet reveals how expensive that choice is.
+
+  - id: the_debt_is_the_thesis
+    title: "The debt is not a side effect — it IS the thesis"
     body: |
-      The non-obvious tension in Cipher is that the commercial HPC story is ahead of the reported revenue story. In **FY2025 Q4**, Cipher generated about **$59.7M** of **revenue** and about **$35.5M** of **gross profit**, but the business profile is explicit that the current period remains primarily **self-mining** and that the major tenant leases are **not yet in revenue**. The Black Pearl AWS lease, for example, was still tied to rent commencement beginning in late **2026** and ramping into **2027**.
+      Cipher went from approximately zero debt to **~$3.2B** in roughly one year. The major instruments:
 
-      That means investors should be careful not to read Cipher today as if it were already reporting mature AI-hosting economics. The contract wins are strategically important because they validate demand and counterparties, but they do not yet prove that Cipher has crossed from miner economics into recurring data-center rental economics. Right now the filings still describe a company whose reported results are driven by bitcoin mining while its future case increasingly depends on infrastructure that is under construction rather than monetized.
+      - **$2.0B** senior secured notes (6.125%, due 2031) — secured against Black Pearl assets, proceeds fund AWS facility construction
+      - **$1.3B** convertible notes (0.00%, due 2031) — zero cash interest, supports Barber Lake and pipeline
+      - **$150M** earlier convertible (2030) — initial HPC financing
 
-  - id: ciphers_real_strength_looks_like_site_development
-    title: "Cipher's real strength looks like site development, not platform software"
+      Annual cash interest on the $2B secured notes alone is **~$122M**. Total FY2025 revenue was **$224M**. The interest burden on the secured notes alone consumes 54% of trailing revenue. Add the other debt servicing costs and the ratio gets worse.
+
+      The market sees this two ways. **Bulls (Morgan Stanley, $38 target)** frame it as project finance: the $2B Black Pearl notes are secured against a 15-year AWS lease, the way a toll road is financed against future tolls. The completion guarantee from Cipher adds a corporate backstop but the structure is sound. **Bears ($6 target)** frame it as a company that has leveraged itself 4:1 (debt-to-equity: $3.2B vs $806M) before earning a single dollar of hosting revenue, with mining cash flow that can't service the interest and a construction timeline that has zero margin for error.
+
+      The honest answer is that both framings are partially correct. The structure is genuinely more sophisticated than a typical miner's equity-funded pivot. The risk is genuinely concentrated in a 6-9 month construction window where cash flows out but rent hasn't started.
+
+  - id: the_mining_bridge_myth
+    title: "The 'mining cash flow bridge' is a myth — look at the actual OCF"
     body: |
-      What Cipher appears genuinely good at is not building a software-heavy AI cloud platform. It looks better understood as a developer and operator of power-rich campuses that can be repurposed or expanded for whichever compute use case has the best economics. The mix of Black Pearl, Barber Lake, AWS, Fluidstack, and Colchis suggests management's comparative advantage is sourcing land and power, navigating development, and signing counterparties before every site is fully built.
+      One of the most common bull arguments is that Cipher's bitcoin mining business provides a cash flow bridge while HPC capacity is being built. The numbers do not support this.
 
-      That is a real strength if hyperscalers and intermediaries keep valuing speed-to-power more than owning every site themselves. It also gives Cipher a more credible transition path than many bitcoin miners that simply talk about AI hosting without disclosed tenants. But it is still a narrower kind of moat than the market sometimes awards to AI infrastructure names. Cipher does not yet look like a differentiated full-stack cloud platform; it looks like an increasingly credible compute-campus developer whose value will depend on execution quality, tenant reliability, and capital discipline.
+      Full-year 2025 operating cash flow was **-$208M**. Q4 alone was **-$54M**. Mining generated $224M of revenue but consumed more cash than it produced at the operating level. The cash position of $628M at year-end was built through **$3.19B of financing inflows** across the year, not through mining profitability.
 
-  - id: the_balance_sheet_is_financing_the_transition
-    title: "The balance sheet is financing the transition"
+      This is the market perception asymmetry that matters most: **the bridge is debt, not mining**. The presence of $60M/quarter in mining revenue creates the appearance of a self-sustaining business funding a transition. In reality, the entire transition is externally financed, and mining contributes top-line revenue without bottom-line cash generation.
+
+      That doesn't mean the strategy is wrong — it means the margin of safety is thinner than it looks. Cipher's actual runway is the $628M cash balance and $125M in bitcoin holdings ($754M total liquidity), not the mining cash flow. If Black Pearl construction delays push rent commencement from Q4 2026 into mid-2027, that liquidity has to cover interest costs with no offsetting HPC revenue.
+
+  - id: what_cipher_is_actually_good_at
+    title: "Cipher's genuine advantage is power-and-site development, not technology"
     body: |
-      Cipher's quarter makes clear that this transition is not being funded from internal cash generation alone. In **FY2025 Q4**, the company posted about **$54.4M** of **negative operating cash flow** while spending about **$225.9M** on **capital expenditures**. That gap was filled by about **$1.70B** of **financing cash inflow**, which aligns with the major 2025 capital raises and debt issuance tied to the HPC build-out.
+      The market perception debate over whether Cipher is a "real AI infrastructure company" misses what the company actually does well. Cipher does **not** operate a managed platform, run a GPU fleet, or offer cloud software. Its business profile explicitly shows `offers_managed_platform: false`. It's not competing with Nebius's Aether or CoreWeave's cloud stack.
 
-      The year-end balance sheet shows both why the strategy is possible and why it carries real risk. Cipher finished the year with about **$628.3M** of **cash and equivalents**, which gives it near-term liquidity, but also about **$3.21B** of **total debt**. That implies roughly **$2.58B** of net debt before considering other liabilities, against a business whose current reported revenue base is still modest. The income statement tells the same story in a different way: about **$35.5M** of gross profit in the quarter still became about **$300.6M** of operating loss and about **$734.2M** of net loss. The point is not that Cipher is broken; it is that the company is using leverage and capital-market access as the bridge between today's mining cash flows and tomorrow's hoped-for hosting rents.
+      What Cipher appears genuinely skilled at is **sourcing, developing, and commercializing power-rich data center campuses**. The Black Pearl site went from concept to a $5.5B AWS lease. The Barber Lake site went from a mining facility to a $3.8B Fluidstack/Google deal with Google providing a credit backstop — which is not a trivial commercial achievement. The Colchis JV adds another potential 1 GW. The total portfolio of 4.2 GW + 3.4 GW pipeline suggests management can repeat the process.
 
-  - id: the_main_unknown_is_contract_quality
-    title: "The main unknown is contract quality, not whether Cipher can find demand"
+      This is a narrower moat than "AI infrastructure company" implies, but it's a real one. In a world where power and interconnection are the binding constraints on data center expansion, a company that can deliver turnkey power-ready campuses to hyperscalers on multi-decade leases has genuine value. The question is whether that value should be priced as a technology company or as a specialized data center developer — closer to a power REIT with construction capability than to a neocloud.
+
+      The competitive comparison with IREN is instructive. IREN has **460 MW energized for AI** and is bringing its 1.4 GW Sweetwater facility online in April 2026. IREN's Microsoft deal ($9.7B) is already generating AI hosting revenue. Cipher's $9.3B in deals is comparable in scale but **6-12 months behind on execution**. The energized capacity gap — IREN at 460 MW vs Cipher at effectively zero for HPC — is the single most important competitive metric right now.
+
+  - id: the_q4_loss_decoded
+    title: "Reading past the $734M headline loss"
     body: |
-      Cipher has already done the harder credibility step that many transitioning miners never achieve: it has disclosed blue-chip counterparties and real lease structures. The more important unanswered question now is whether those agreements will produce attractive, durable economics after construction costs, financing, tenant concentration, and delivery timing are fully felt. The repo's business profile deliberately leaves `contracts_usd` fields mostly null because the company has not yet disclosed a clean live hosting run rate or enough contract detail to translate the wins into reliable annualized economics.
+      The Q4 net loss of **$734M** dominated headlines and spooked investors, but most of it was non-cash. Decomposing the P&L:
 
-      That limits how aggressive the thesis should be. Demand validation is real, and the AWS / Fluidstack relationships suggest Cipher is not simply marketing AI optionality. But the disclosures still leave major gaps around contract margin, tenant concentration, return on capital for each site, and how much additional financing will be needed before the hosting model becomes self-supporting. Until rent actually starts and the statements begin to show tenant revenue at scale, the biggest risk is not demand failure but economic overbuild relative to what those contracts ultimately earn.
+      - **Revenue:** $59.7M, **gross profit:** $35.5M (59% margin) — the mining business is actually healthy at the gross level
+      - **Operating loss:** -$300.6M — driven by D&A ramp from the massive construction capex, SBC ($25M in Q4), and transition overhead far exceeding gross profit
+      - **Net loss:** -$734M — includes mark-to-market losses on bitcoin holdings, interest expense from the new debt, and other below-the-line items
+
+      The useful number is somewhere between gross profit ($35.5M, too generous) and operating loss (-$300.6M, too punitive). The business is profitable at the unit level of mining but deeply unprofitable when you include the cost of building a completely different business on top of it.
+
+      This is actually normal for infrastructure transitions. The problem isn't that Cipher is losing money — any company spending $226M of capex in a quarter while generating $60M of revenue will show losses. The problem is that investors who rely on the headline P&L either over-panic (the net loss is largely non-cash) or under-count (the operating loss is real and structural until HPC rent arrives).
+
+  - id: what_to_watch
+    title: "The three things that determine whether this works"
+    body: |
+      **1. Black Pearl Phase I rent commencement (target: Q4 2026).** This is the single most important milestone. If AWS rent begins on schedule, the debt becomes project-financed against real cash flow. The $2B of secured notes transform from a burden into a conventional infrastructure debt instrument. If construction delays push this to mid-2027, every other metric deteriorates — interest costs continue, liquidity shrinks, and the market narrative shifts from "executing" to "delayed."
+
+      **2. Barber Lake delivery to Fluidstack (target: September 2026).** The second confirmation point. 168 MW of critical IT load with a Google backstop represents the breadth of Cipher's tenant relationships. Delivery on schedule would prove that Cipher can execute two construction projects simultaneously — a necessary capability for the larger pipeline.
+
+      **3. Colchis tenant announcement.** The Colchis JV (up to 1 GW, ERCOT approval pending, target energization 2028) is the test of whether the model repeats. A third blue-chip tenant signing would validate that Cipher's power-development capability is a durable competitive advantage, not a lucky two-deal streak.
 
   - id: conclusion
-    title: "Takeaway"
+    title: "How to think about Cipher right now"
     body: |
-      **Core judgment:** Cipher looks best understood as a bitcoin miner that has already won enough real HPC tenancy to justify taking the transition story seriously, but not yet enough reported hosting revenue to prove the transition economically. The bullish case is straightforward: the company has secured notable counterparties, controls a large power-and-land pipeline, and appears genuinely capable of turning those assets into contractable data-center campuses. That is more substance than many peers in the miner-to-HPC conversion trade can show.
+      **Core judgment:** Cipher is the most leveraged bet in the miner-to-HPC transition space. It has signed bigger deals faster than almost any peer ($9.3B contracted), structured its financing more sophisticatedly (project finance against hyperscaler leases), and committed more completely to the pivot (corporate rebrand, 4:1 debt-to-equity). But it has also created a tighter execution window than any peer — the company must deliver two construction projects on schedule while servicing ~$245M in annual interest on a business that currently generates negative operating cash flow.
 
-      **What Cipher appears genuinely good at:** development and commercialization of compute sites. The company seems able to package power, land, and construction into deals large customers will sign before the sites are fully online. If that remains true, Cipher could become a useful specialist supplier of data-center capacity rather than a pure bitcoin price vehicle.
+      **Where consensus is right:** The deal flow is real and the counterparties are blue-chip. AWS and Google are not signing 10-15 year leases casually. The power portfolio is genuinely large and in a favorable market (Texas/ERCOT). The rebrand signals permanent commitment. 95% equipment procurement for Black Pearl is meaningful progress.
 
-      **What still looks structurally weak:** the model is early, leverage-heavy, and economically under-disclosed. Q4 still showed only about **$59.7M** of revenue, about **$54.4M** of negative operating cash flow, about **$225.9M** of capex, and about **$3.21B** of debt at year-end. That does not mean the strategy fails, but it does mean the company is asking investors to finance a hosting business before the hosting income statement is visible.
+      **Where consensus is incomplete:** The market frames mining as a "bridge" but full-year OCF was -$208M. The $734M Q4 net loss headlines scare people who should look at gross profit instead, while simultaneously masking the real concern, which is the operating loss and the negative OCF. The $9.3B contracted value sounds enormous but the actual lease economics (rent/MW, margin after debt service, return on invested capital) are undisclosed. The valuation dispersion — $6 to $38 — is the widest of any company in this repo and reflects genuine, irreconcilable disagreement about what Cipher is worth.
 
-      **Best near-term prediction:** Cipher is likely to keep winning strategic credibility if it continues moving Barber Lake and Black Pearl toward delivery on schedule and avoids tenant slippage. The harder medium-term test is whether those contracts convert into attractive rental economics without forcing the company into repeated financing dependence. If hosting revenue shows up at scale and margins look reasonable, Cipher could graduate from "bitcoin miner with AI optionality" to "specialized data-center developer with a mining legacy." If not, the market may decide it financed an expensive transition whose economics never became clear.
+      **Where consensus may be wrong:** The market is debating whether Cipher is an "AI infrastructure company" or a "bitcoin miner." Neither is quite right. Cipher is best understood as a **specialized data center developer** — a company that sources power and land, builds physical infrastructure, and leases it to hyperscalers on long-duration contracts. That's a real business with real value, but it's closer to infrastructure private equity than to a technology platform. The correct comparison is probably not Nebius or CoreWeave (cloud platforms) but rather a power REIT or a toll-road developer. If the market reprices Cipher accordingly — lower multiple but with credit for contracted cash flows — the stock finds a different but potentially more sustainable valuation.
+
+      **Best near-term prediction:** Black Pearl Q4 2026 rent commencement is the binary event. If it hits, Cipher's story transforms from leveraged hope to project-financed reality, and the stock likely re-rates toward the $20+ analyst targets. If it slips, the debt burden becomes the dominant narrative, IREN's execution lead widens further, and the stock likely re-tests its lows. The next two quarters are the company's proof-of-concept window.
 
 disclosure_gaps: |
-  The biggest limitations are around contract economics rather than headline deal existence. Cipher has disclosed meaningful counterparties and site scale, but not enough detail on rent cadence, margin structure, customer concentration, returns on invested capital by site, or the steady-state level of additional capex needed before AWS and Fluidstack revenue become visible in the statements. Those gaps matter because they are the difference between a financing-backed bridge to a durable hosting business and a capital-intensive buildout whose best contracts still do not produce strong shareholder economics.
+  The critical gaps are all about conversion economics, not deal existence:
+  (1) **Lease economics** — AWS rent per MW, escalators, margin after Black Pearl debt service, and ROI on the $2B+ invested are all undisclosed. The $5.5B TCV tells you the ceiling but not the profitability.
+  (2) **Segment cash flow** — no separate reporting of mining OCF vs HPC transition costs. The aggregated -$208M full-year OCF obscures whether mining itself generates positive cash.
+  (3) **Construction timeline detail** — 95% equipment secured is helpful but specific completion percentages, commissioning dates, and contingency plans for Black Pearl and Barber Lake are not regularly updated.
+  (4) **Colchis tenant pipeline** — the JV and 1 GW potential are disclosed but no tenant discussions, pricing expectations, or ERCOT approval timeline are public.
+  (5) **Debt covenants** — the Black Pearl notes include a completion guarantee. The trigger conditions and financial covenant details are in the indenture but not summarized in accessible disclosures.
 
 sources:
   - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
     kind: sec_10k
-    description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31, filed 2026-02-24; used for financial statement context, operating and contracted capacity, Black Pearl timing, portfolio scale, and debt structure."
-    retrieved_at: "2026-03-26"
-  - url: https://investors.ciphermining.com/news-releases/news-release-details/cipher-digital-provides-fourth-quarter-and-full-year-2025
-    kind: ir_html
-    description: "Primary source: official Cipher investor relations release dated 2026-02-24 for the fourth quarter and full year 2025 business update."
-    retrieved_at: "2026-03-26"
+    description: "Form 10-K FY2025 — portfolio overview, mining operations, HPC development, debt, Black Pearl/Barber Lake status."
+    retrieved_at: "2026-03-28"
+  - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010326001966/dp241421_8k.htm
+    kind: sec_8k
+    description: "Form 8-K — $2B Black Pearl senior secured notes closing (Feb 11, 2026)."
+    retrieved_at: "2026-03-28"
   - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
     kind: sec_8k
-    description: "Primary source: Exhibit 99.2 to Cipher's November 2025 business update filing; reviewed for AWS lease disclosures, Colchis site framing, and management's HPC transition messaging."
-    retrieved_at: "2026-03-26"
+    description: "Form 8-K — Q3 2025 update, AWS $5.5B lease disclosure, Colchis 1 GW site."
+    retrieved_at: "2026-03-28"
   - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010325012168/dp234624_8k.htm
     kind: sec_8k
-    description: "Primary source: Form 8-K filed 2025-09-25 describing the Fluidstack Barber Lake lease, Google's backstop role, and related warrant issuance."
-    retrieved_at: "2026-03-26"
+    description: "Form 8-K — Fluidstack/Google Barber Lake lease, Google backstop, warrant agreement."
+    retrieved_at: "2026-03-28"
   - url: https://www.sec.gov/Archives/edgar/data/1819989/000119312525225645/d52925d8k.htm
     kind: sec_8k
-    description: "Primary source: Form 8-K filed 2025-09-30 announcing issuance of $1.3 billion of 0.00% convertible senior notes due 2031 and related capped call transactions."
-    retrieved_at: "2026-03-26"
-  - url: https://www.sec.gov/Archives/edgar/data/1819989/000119312525218502/d936051dex991.htm
-    kind: sec_8k
-    description: "Primary source: Exhibit 99.1 filed 2025-09-25 announcing pricing of the upsized convertible notes offering and intended use of proceeds for Barber Lake, HPC build-out, and general corporate purposes."
-    retrieved_at: "2026-03-26"
+    description: "Form 8-K — $1.3B convertible notes (0%, due 2031) closing."
+    retrieved_at: "2026-03-28"
+  - url: https://www.marketbeat.com/stocks/NASDAQ/CIFR/forecast/
+    kind: sell_side_summary
+    description: "Sell-side: 17 analysts, Moderate Buy, range $6-$38, median ~$24."
+    retrieved_at: "2026-03-28"
+  - url: https://247wallst.com/investing/2026/02/15/why-iren-has-a-big-advantage-over-cipher-mining/
+    kind: curated_platform
+    description: "Curated platform: 24/7 Wall St. — IREN vs Cipher competitive comparison."
+    retrieved_at: "2026-03-28"
+  - url: https://www.ainvest.com/news/cipher-2b-note-offering-catalyst-hpc-transition-debt-overhang-2602/
+    kind: curated_platform
+    description: "Curated platform: ainvest — debt structure and transition risk analysis."
+    retrieved_at: "2026-03-28"
+  - url: https://fusioncapital.substack.com/p/the-neocloud-wars-why-coreweave-is
+    kind: specialist_analysis
+    description: "Specialist: Fusion Capital — neocloud model comparison context."
+    retrieved_at: "2026-03-28"

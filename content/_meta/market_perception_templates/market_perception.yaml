@@ -1,0 +1,225 @@
+# Market perception — external signal on how the market sees a company.
+# Copy to companies/<slug>/market_perception/market_perception.yaml (content or inbox).
+#
+# schema_version 1: consensus narrative, key debates, sentiment signals,
+# information asymmetries, and forward signals.
+#
+# This file captures perception from sources *beyond* SEC filings and official IR:
+# specialist analysis (SemiAnalysis, domain experts), earnings transcripts,
+# curated platforms (Seeking Alpha), sell-side summaries, and social/community signal.
+#
+# Source tiers (see agent/instructions/market_perception.md for full rules):
+#   Tier 1 — deep technical / analytical: specialist research, earnings transcripts,
+#            conference presentations, domain-expert blogs
+#   Tier 2 — curated analytical: Seeking Alpha (quality-filtered), tech press,
+#            sell-side research (summary statistics only, no proprietary text)
+#   Tier 3 — social / community: X, Reddit, HackerNews (corroboration required)
+#
+# Per-section sources: { url, kind, description, retrieved_at } with optional excerpt.
+# Top-level sources[]: bibliography of all major sources consulted.
+
+kind: market_perception
+schema_version: 1
+
+# ISO date when this perception file was authored or last substantively reviewed.
+as_of: null
+
+# Company slug matching entity.yaml.
+company: null
+
+# Value-chain layer id (from content/_meta/layers.yaml).
+layer: null
+
+# ── Consensus narrative ─────────────────────────────────────────────────────────
+# What does the market broadly believe about this company right now?
+consensus_narrative:
+  # 2-4 sentence summary of the dominant market view.
+  summary: null
+
+  # The prevailing bull thesis — what optimists emphasize.
+  bull_thesis:
+    view: null
+    key_assumptions: []
+    sources: []
+
+  # The prevailing bear thesis — what skeptics emphasize.
+  bear_thesis:
+    view: null
+    key_assumptions: []
+    sources: []
+
+  # Assumptions embedded in consensus that may not hold (e.g. growth rate,
+  # market share trajectory, margin sustainability).
+  embedded_assumptions:
+    - assumption: null
+      notes: null
+      sources: []
+
+  # How the consensus has shifted over the past 1-2 quarters.
+  # e.g. "Shifted from supply-constrained euphoria to margin sustainability concerns"
+  narrative_shift:
+    direction: null          # "more_bullish" | "more_bearish" | "stable" | "rotating"
+    summary: null
+    prior_consensus: null
+    sources: []
+
+# ── Key debates ─────────────────────────────────────────────────────────────────
+# Active disagreements the market is working through. Each debate should be
+# specific and resolvable — "Will X maintain margins above Y% through Z?" is
+# better than "Is X a good company?"
+key_debates:
+  - id: null
+    question: null
+
+    bull_case:
+      argument: null
+      evidence: null
+      sources: []
+
+    bear_case:
+      argument: null
+      evidence: null
+      sources: []
+
+    # What evidence (filing, product launch, earnings print) would resolve this?
+    resolution_evidence: null
+
+    # Your assessment of where the weight of evidence currently leans.
+    # Must be clearly labeled as interpretation, not fact.
+    # "bull" | "bear" | "balanced" | "insufficient_evidence"
+    current_lean: null
+    lean_reasoning: null
+
+# ── Sentiment signals ───────────────────────────────────────────────────────────
+# Quantitative or semi-quantitative measures of market mood.
+sentiment_signals:
+  # Sell-side consensus — summary statistics only. Do NOT reproduce proprietary
+  # research text. Record rating distribution and target range.
+  sell_side_summary:
+    total_analysts: null
+    buy_count: null
+    hold_count: null
+    sell_count: null
+    consensus_target_low: null
+    consensus_target_median: null
+    consensus_target_high: null
+    as_of: null
+    notes: null
+    sources: []
+
+  # Directional sentiment from social / community platforms.
+  # "strongly_bullish" | "bullish" | "neutral" | "bearish" | "strongly_bearish" | "mixed"
+  social_sentiment:
+    direction: null
+    summary: null
+    platforms_sampled: []    # e.g. ["x", "reddit_r_nvidia", "hackernews"]
+    sources: []
+
+  # Notable recent shifts in sentiment (date-stamped).
+  notable_shifts:
+    - date: null
+      trigger: null
+      from_sentiment: null
+      to_sentiment: null
+      notes: null
+      sources: []
+
+  # Contrarian positions gaining traction — views that go against consensus
+  # but are backed by credible analysis.
+  contrarian_positions:
+    - position: null
+      proponent: null        # author / account / firm name
+      reasoning: null
+      source_tier: null      # 1, 2, or 3
+      sources: []
+
+# ── Competitive positioning ──────────────────────────────────────────────────────
+# How does this company compare to its closest peers on the dimensions that
+# actually matter? Focus on what drives customer decisions and economic outcomes,
+# not generic strategy frameworks. Use peer data from their business/financials
+# files when available; otherwise use same source tiers as rest of perception.
+competitive_positioning:
+  # 2-4 companies that compete most directly in this layer.
+  key_peers:
+    - slug: null              # company slug if in repo, else null
+      name: null
+      relevance: null         # why this is a key peer
+      sources: []
+
+  # Dimensions where this company has a genuine, durable advantage.
+  where_company_wins:
+    - dimension: null
+      summary: null
+      durability: null        # "strong" | "moderate" | "eroding"
+      sources: []
+
+  # Competitive advantages that are eroding, with evidence.
+  where_gap_closing:
+    - dimension: null
+      summary: null
+      pace: null              # "rapidly" | "gradually" | "stalled"
+      sources: []
+
+  # Dimensions where peers are objectively stronger.
+  where_company_loses:
+    - dimension: null
+      leading_peer: null
+      summary: null
+      sources: []
+
+  # What keeps customers vs. what makes switching feasible.
+  switching_costs:
+    summary: null
+    lock_in_factors: []       # e.g. ["CUDA ecosystem", "trained workforce", "software stack"]
+    switching_enablers: []    # e.g. ["open standards (Triton)", "ROCm maturation"]
+    sources: []
+
+  # Specific events that could reshuffle competitive rankings.
+  order_changers:
+    - event: null
+      impact: null
+      likelihood: null        # "high" | "medium" | "low"
+      timeline: null
+      sources: []
+
+# ── Information asymmetries ─────────────────────────────────────────────────────
+# Where the market may be wrong. This is the most valuable section.
+# Each asymmetry should have: what the market believes, what evidence suggests
+# instead, why the gap exists, and what would close it.
+information_asymmetries:
+  - id: null
+    title: null
+
+    # What the market currently believes or prices in.
+    market_believes: null
+
+    # What the evidence (from Tier 1/2 sources) suggests instead.
+    evidence_suggests: null
+
+    # Why the gap exists (complexity, recency bias, attention, model error).
+    gap_reason: null
+
+    # What event or disclosure would close the gap.
+    closing_catalyst: null
+
+    # "high" | "medium" | "low" — your confidence that this is a real asymmetry.
+    confidence: null
+
+    sources: []
+
+# ── Forward signals ─────────────────────────────────────────────────────────────
+# Leading indicators not yet absorbed into consensus: technical community
+# assessments, supply chain signals, hiring patterns, regulatory developments,
+# customer adoption signals.
+forward_signals:
+  - id: null
+    signal: null
+    source_tier: null        # 1, 2, or 3
+    date_observed: null      # ISO date
+    implication: null
+    sources: []
+
+# ── Top-level sources ───────────────────────────────────────────────────────────
+# Bibliography of all major sources consulted for this perception file.
+# Most authoritative / most recent first.
+sources: []

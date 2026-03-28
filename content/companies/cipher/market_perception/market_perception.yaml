@@ -1,0 +1,516 @@
+kind: market_perception
+schema_version: 1
+
+as_of: "2026-03-28"
+
+company: cipher
+layer: infrastructure
+
+# ── Consensus narrative ─────────────────────────────────────────────────────────
+consensus_narrative:
+  summary: >
+    The market sees Cipher as the most aggressive bitcoin-miner-to-HPC-infrastructure
+    pivot, having gone from zero contracted AI hosting to ~$9.3B in hyperscaler deals
+    (AWS $5.5B + Fluidstack/Google $3.8B) in a matter of months. The corporate rebrand
+    to Cipher Digital (Feb 2026) is symbolic of the intended identity shift. But revenue
+    is still almost entirely mining (~$60M/quarter), the company has accumulated ~$3.2B
+    of debt to fund the transition, and the first meaningful hosting rent doesn't arrive
+    until late 2026 at the earliest. The debate is whether this is a well-timed infrastructure
+    play or a leveraged bet that has outrun its revenue by two years.
+
+  bull_thesis:
+    view: >
+      Cipher controls one of the largest power-and-land portfolios among former bitcoin
+      miners: 4.2 GW across 10 sites, plus a 3.4 GW pipeline. It has converted this into
+      two tier-1 hyperscaler contracts (AWS 15-year, Fluidstack/Google 10-year with Google
+      backstop) totaling ~$9.3B of contracted revenue. Black Pearl (300 MW, AWS) and
+      Barber Lake (168 MW, Fluidstack/Google) are under construction with 95% of long-lead
+      equipment secured. HPC revenue is projected to reach ~$127M in 2026 and ~$739M by
+      2027. The Colchis JV adds up to 1 GW of future capacity. Morgan Stanley has the
+      highest target at $38, reflecting the bull case for the infrastructure portfolio.
+    key_assumptions:
+      - "Black Pearl Phase I rent commences Q4 2026, full ramp Q1 2027"
+      - "Barber Lake delivers 168 MW to Fluidstack by September 2026"
+      - "HPC revenue reaches ~$739M by 2027, exceeding mining revenue"
+      - "~$3.2B of debt is serviceable from hyperscaler lease cash flows"
+      - "Additional hyperscaler contracts close from the 3.4 GW+ pipeline"
+    sources:
+      - url: https://www.trefis.com/stock/cifr/articles/592335/cipher-digital-stock-9-0-ai-pivot-gains-traction-at-morgan-stanley-conf/2026-03-05
+        kind: curated_platform
+        description: "Curated platform: Trefis — Cipher Digital AI pivot gains traction at Morgan Stanley conference."
+        retrieved_at: "2026-03-28"
+      - url: https://finviz.com/news/264465/cipher-minings-aihpc-expansion-takes-shape-is-the-shift-paying-off
+        kind: curated_platform
+        description: "Curated platform: FinViz — Cipher Mining's AI/HPC expansion analysis."
+        retrieved_at: "2026-03-28"
+
+  bear_thesis:
+    view: >
+      Cipher went from zero debt to ~$3.2B in roughly one year. Annual interest obligations
+      (~$245M) exceed the company's entire FY2025 revenue ($224M). The $2B senior secured
+      notes at 6.125% and $1.3B convertible notes create a debt wall that must be serviced
+      before any hosting revenue arrives. Q4 2025 showed -$54M OCF, -$300M operating loss,
+      and -$734M net loss. CEO insider selling ($631K in March) and 119% annualized
+      volatility signal fragility. The stock at ~$7-8 trades at ~31x P/S on a mining
+      revenue base while the HPC story remains entirely pre-revenue.
+    key_assumptions:
+      - "Construction delays or interconnection issues at Black Pearl/Barber Lake could strand capital"
+      - "~$245M annual interest exceeds current revenue — no room for execution slips"
+      - "Bitcoin mining economics deteriorate post-halving, weakening the cash flow bridge"
+      - "Additional capital needed for the remaining 3.4 GW pipeline"
+      - "Hyperscaler counterparties could renegotiate or slow absorption of contracted capacity"
+    sources:
+      - url: https://www.ainvest.com/news/cipher-2b-note-offering-catalyst-hpc-transition-debt-overhang-2602/
+        kind: curated_platform
+        description: "Curated platform: ainvest — '$2B Note Offering: A Catalyst for HPC Transition or a Debt Overhang?'"
+        retrieved_at: "2026-03-28"
+      - url: https://www.ainvest.com/news/cipher-mining-hpc-pivot-hype-cycle-2602/
+        kind: curated_platform
+        description: "Curated platform: ainvest — 'The HPC Pivot or Just a Hype Cycle?'"
+        retrieved_at: "2026-03-28"
+
+  embedded_assumptions:
+    - assumption: "Hyperscaler demand for third-party HPC capacity persists through the multi-year lease terms"
+      notes: "AWS and Google committed to decade-plus leases, but both build their own data centers as well. These leases may represent hedging during a scarcity period rather than permanent outsourcing."
+      sources: []
+    - assumption: "Cipher can execute construction on schedule across multiple sites simultaneously"
+      notes: "95% of long-lead equipment is secured, which is genuine progress. But simultaneous Black Pearl and Barber Lake construction with a lean team and new corporate identity creates execution surface area."
+      sources:
+        - url: https://finviz.com/news/264465/cipher-minings-aihpc-expansion-takes-shape-is-the-shift-paying-off
+          kind: curated_platform
+          description: "Curated platform: FinViz — equipment procurement and construction progress."
+          retrieved_at: "2026-03-28"
+    - assumption: "Bitcoin mining provides a cash flow bridge until HPC revenue arrives"
+      notes: "Mining revenue was $224M in FY2025 but OCF was -$208M for the full year. The mining business is not cash-generative enough to bridge the transition alone — the bridge is debt, not mining cash flow."
+      sources: []
+
+  narrative_shift:
+    direction: mixed
+    summary: >
+      Sentiment is split. The stock gained ~150% from its lows on the strength of the
+      AWS and Fluidstack/Google contracts, the rebrand, and the infrastructure pipeline.
+      But the $2B secured notes offering (Feb 2026) caused a 5% pre-market drop, and
+      the Q4 $734M net loss spooked some investors even as shares rose 6% on the day.
+      The market is giving credit for the pipeline but remains nervous about the debt
+      load and the gap between contracted revenue and actual cash flow.
+    prior_consensus: "Speculative bitcoin miner with some power assets and optionality on AI hosting."
+    sources:
+      - url: https://www.coindesk.com/markets/2026/02/24/cipher-digital-rebrands-as-it-pivots-from-bitcoin-mining-to-hpc-shares-slide
+        kind: curated_platform
+        description: "Curated platform: CoinDesk — rebrand coverage and HPC pivot framing."
+        retrieved_at: "2026-03-28"
+
+# ── Key debates ─────────────────────────────────────────────────────────────────
+key_debates:
+  - id: debt_serviceability
+    question: "Can Cipher service ~$3.2B of debt ($245M+ annual interest) on a ~$224M revenue base before HPC rent arrives?"
+
+    bull_case:
+      argument: "The debt is purpose-built for specific projects with contracted tenants. The $2B Black Pearl notes are secured against the AWS lease — essentially project finance against a 15-year hyperscaler commitment. The $1.3B convertible notes at 0% coupon have zero cash interest cost. Cash and bitcoin liquidity ($754M) provides a runway through 2026 until HPC rent commences. By 2027 the HPC revenue alone ($739M projected) should cover all interest costs."
+      evidence: "Black Pearl $2B notes at 6.125% = ~$122M annual interest. $1.3B convertible at 0% = zero cash interest. Combined with mining cash flow and $754M liquidity. AWS lease and Fluidstack/Google contracts totaling $9.3B provide the cash flow to repay."
+      sources:
+        - url: https://marketchameleon.com/articles/b/2026/2/3/cifr-announces-2-billion-senior-notes-black-pearl-facility
+          kind: curated_platform
+          description: "Curated platform: Market Chameleon — Black Pearl notes structure and terms."
+          retrieved_at: "2026-03-28"
+
+    bear_case:
+      argument: "FY2025 operating cash flow was -$208M. Mining revenue ($224M) cannot cover the interest burden alone. The 0% convertible has zero cash interest but creates dilution risk (404M shares outstanding, convertible terms not fully disclosed). The $2B secured notes at 6.125% carry a completion guarantee — if Black Pearl construction delays, Cipher is on the hook. And the remaining 3.4 GW pipeline will require additional billions of financing. The debt-to-equity ratio at year-end was already 4:1 ($3.2B debt vs $806M equity)."
+      evidence: "Debt/equity 4:1. OCF -$208M FY2025. Interest expense on $2B notes alone = $122M/year. Share count up from ~302M to ~405M in FY2025 (34% dilution)."
+      sources:
+        - url: https://www.ainvest.com/news/cipher-2b-note-offering-catalyst-hpc-transition-debt-overhang-2602/
+          kind: curated_platform
+          description: "Curated platform: ainvest — debt overhang analysis."
+          retrieved_at: "2026-03-28"
+
+    resolution_evidence: "Black Pearl Phase I rent commencement in Q4 2026. If AWS lease payments begin on schedule, the debt becomes project-financed against real cash flow. If construction delays push commencement into 2027, the interest-revenue gap widens."
+    current_lean: neutral
+    lean_reasoning: "The structure is intelligently designed — project finance against hyperscaler leases — but the margin of error is thin. A single quarter of construction delay changes the math significantly."
+
+  - id: mining_bridge_viability
+    question: "Is bitcoin mining a viable cash flow bridge or a deteriorating legacy business?"
+
+    bull_case:
+      argument: "Mining provides ~$60M/quarter revenue and keeps the lights on while HPC is built. Bitcoin's post-halving price recovery supports mining profitability. The mining fleet (207 MW) can be wound down as HPC capacity comes online, reducing capex. Some sites (like the Odessa facility) may be repurposed for HPC."
+      evidence: "Q4 2025 revenue $59.7M. Mining operations remain operational at ~207 MW."
+      sources: []
+
+    bear_case:
+      argument: "FY2025 operating cash flow was -$208M on $224M of mostly mining revenue. Post-halving difficulty adjustments and rising energy costs mean mining is cash-flow-negative at the operating level. The mining fleet requires ongoing maintenance capex. It's not a bridge — it's a cost center being subsidized by debt."
+      evidence: "OCF was negative in every quarter of FY2025. Mining hash rate and difficulty adjustments post-2024 halving."
+      sources:
+        - url: https://finance.yahoo.com/news/cipher-mining-cifr-pivot-toward-111900240.html
+          kind: curated_platform
+          description: "Curated platform: Yahoo Finance — Q4 financial analysis highlighting losses."
+          retrieved_at: "2026-03-28"
+
+    resolution_evidence: "Q1-Q2 2026 mining OCF. If mining generates positive operating cash flow as a standalone segment, the bridge thesis holds. If not, the transition is entirely debt-funded with no internal cash cushion."
+    current_lean: bear
+    lean_reasoning: "The numbers don't support the bridge narrative. Full-year OCF was -$208M. Mining is contributing revenue but not positive cash flow. The bridge is debt, not mining."
+
+  - id: miner_vs_neocloud_identity
+    question: "Is Cipher transitioning into a real infrastructure platform or just a leveraged power arbitrage?"
+
+    bull_case:
+      argument: "The rebrand to Cipher Digital signals permanent identity shift. $9.3B in contracted hyperscaler revenue, two blue-chip tenants (AWS, Google backstop), 4.2 GW portfolio, and construction underway at multiple sites. This is no longer optionality — it's committed capital and signed contracts. The pipeline (3.4 GW more) positions Cipher as a power-rich data center developer."
+      evidence: "Legal name changed. $9.3B contracted. 95% of long-lead equipment secured. Construction active at Black Pearl and Barber Lake."
+      sources:
+        - url: https://www.ainvest.com/news/cipher-digital-surges-6-28-hpc-pivot-360m-volume-ranks-363rd-2603/
+          kind: curated_platform
+          description: "Curated platform: ainvest — HPC pivot momentum."
+          retrieved_at: "2026-03-28"
+
+    bear_case:
+      argument: "Cipher doesn't operate a managed platform, cloud software, or GPU fleet. It's building shells — physical data center capacity leased to hyperscalers on long-term terms. This is closer to a power REIT or industrial landlord than a technology company. The premium valuation implied by 'AI infrastructure' doesn't match landlord economics. And the bitcoin mining base is still 100% of current revenue."
+      evidence: "Business profile: offers_managed_platform = false. No GPU fleet. Revenue 100% mining. HPC model is tenant lease, not platform."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+          kind: sec_10k
+          description: "Form 10-K — business model: data center owner/operator, not cloud platform."
+          retrieved_at: "2026-03-28"
+
+    resolution_evidence: "Whether Cipher develops any software or managed-service layer on top of the physical infrastructure. If it remains a pure landlord, the correct valuation framework is data center REIT, not AI infrastructure. If it adds services, the multiple could expand."
+    current_lean: bear
+    lean_reasoning: "The disclosed business model is clearly landlord/lease, not platform. The market may be giving AI-infrastructure multiples to what is fundamentally a construction-and-lease business."
+
+# ── Sentiment signals ───────────────────────────────────────────────────────────
+sentiment_signals:
+  sell_side_summary:
+    total_analysts: 17
+    buy_count: 14
+    hold_count: 1
+    sell_count: 2
+    consensus_target_low: 6.00
+    consensus_target_median: 24.00
+    consensus_target_high: 38.00
+    as_of: "2026-03-28"
+    notes: >
+      Moderate Buy consensus but with enormous target dispersion — $6 to $38 is a 6:1
+      range, reflecting deep disagreement. Morgan Stanley ($38, Overweight) leads the
+      bulls; Wall Street Zen downgraded to Strong Sell. The two sell ratings and the
+      wide range are unusual for a Moderate Buy — this is not comfortable consensus.
+      KBW recently cut from $22 to $20 despite maintaining Outperform, suggesting
+      creeping caution even among bulls. CEO insider selling adds a negative signal.
+    sources:
+      - url: https://www.marketbeat.com/stocks/NASDAQ/CIFR/forecast/
+        kind: sell_side_summary
+        description: "Sell-side summary: MarketBeat — 17 analysts, Moderate Buy, target range $6-$38."
+        retrieved_at: "2026-03-28"
+      - url: https://stockanalysis.com/stocks/cifr/ratings/
+        kind: sell_side_summary
+        description: "Sell-side summary: StockAnalysis — analyst ratings and history."
+        retrieved_at: "2026-03-28"
+
+  social_sentiment:
+    direction: neutral
+    summary: >
+      Reddit sentiment score is 58/100 (neutral) with modest mention frequency (~4/day
+      in investing subreddits). The crypto community is split — some see the HPC pivot
+      as visionary, others view it as abandoning the mining thesis. r/CryptoMining
+      leans bearish on the rebrand. r/wallstreetbets occasionally mentions CIFR in
+      the context of AI infrastructure plays but without the conviction seen for IREN
+      or NBIS. StockTwits sentiment is mixed with concern about the Q4 loss and
+      debt levels.
+    platforms_sampled: ["reddit_investing", "reddit_cryptomining", "stocktwits"]
+    sources:
+      - url: https://altindex.com/ticker/cifr/reddit-mentions
+        kind: social_signal
+        description: "Community signal: AltIndex — Reddit sentiment and mention frequency for CIFR."
+        retrieved_at: "2026-03-28"
+      - url: https://stocktwits.com/symbol/CIFR/sentiment
+        kind: social_signal
+        description: "Community signal: StockTwits — CIFR sentiment tracker."
+        retrieved_at: "2026-03-28"
+
+  notable_shifts:
+    - date: "2025-09-25"
+      trigger: "Fluidstack/Google Barber Lake lease announcement and $1.3B convertible notes"
+      from_sentiment: neutral
+      to_sentiment: bullish
+      notes: "Stock surged on the first concrete hyperscaler deal. Established CIFR as a credible HPC transition story rather than a speculative miner."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010325012168/dp234624_8k.htm
+          kind: sec_8k
+          description: "Form 8-K — Fluidstack/Google deal announcement."
+          retrieved_at: "2026-03-28"
+    - date: "2025-11-03"
+      trigger: "AWS $5.5B Black Pearl lease disclosed in Q3 update"
+      from_sentiment: bullish
+      to_sentiment: strongly_bullish
+      notes: "The AWS deal was the inflection point. Combined with Fluidstack/Google, total contracted HPC value reached ~$9.3B. Stock gained ~150% from prior lows."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+          kind: sec_8k
+          description: "Form 8-K — AWS Black Pearl lease disclosure."
+          retrieved_at: "2026-03-28"
+    - date: "2026-02-04"
+      trigger: "$2B senior secured notes offering announced"
+      from_sentiment: bullish
+      to_sentiment: mixed
+      notes: "Stock dropped 5% pre-market on the announcement. Investors viewed the additional $2B of 6.125% debt as aggressive given the existing leverage. Some reframed as smart project finance; others as overleveraging."
+      sources:
+        - url: https://www.ainvest.com/news/cipher-2b-note-offering-catalyst-hpc-transition-debt-overhang-2602/
+          kind: curated_platform
+          description: "Curated platform: ainvest — market reaction to $2B notes."
+          retrieved_at: "2026-03-28"
+    - date: "2026-02-24"
+      trigger: "Q4 2025 earnings: $734M net loss, rebrand to Cipher Digital"
+      from_sentiment: mixed
+      to_sentiment: mixed
+      notes: "Net loss was headline-scary but largely non-cash (mark-to-market, depreciation). Stock rose 6% on the day. The rebrand was polarizing — bulls saw commitment, bears saw desperation to escape the 'miner' discount."
+      sources:
+        - url: https://www.coindesk.com/markets/2026/02/24/cipher-digital-rebrands-as-it-pivots-from-bitcoin-mining-to-hpc-shares-slide
+          kind: curated_platform
+          description: "Curated platform: CoinDesk — earnings and rebrand coverage."
+          retrieved_at: "2026-03-28"
+
+  contrarian_positions:
+    - position: "Cipher is a leveraged landlord being priced as an AI infrastructure company"
+      proponent: "Bear-leaning analysts and value investors"
+      reasoning: "No managed platform, no GPU fleet, no software layer. Revenue is 100% mining. HPC model is long-term lease to hyperscalers — this is data center development, not technology. The correct comp is a power/REIT play with 4:1 leverage, not an AI infrastructure premium."
+      source_tier: 2
+      sources:
+        - url: https://www.ainvest.com/news/cipher-mining-hpc-pivot-hype-cycle-2602/
+          kind: curated_platform
+          description: "Curated platform: ainvest — 'The HPC Pivot or Just a Hype Cycle?'"
+          retrieved_at: "2026-03-28"
+    - position: "CIFR is the best risk-reward in the miner-to-HPC space because the contracts are already signed"
+      proponent: "Morgan Stanley ($38 target), infrastructure-focused growth investors"
+      reasoning: "$9.3B in contracted value with tier-1 counterparties provides unmatched revenue visibility for a former miner. Construction is 95% equipment-secured. Black Pearl project finance (notes secured against AWS lease) is structured like infrastructure, not speculation."
+      source_tier: 2
+      sources:
+        - url: https://www.trefis.com/stock/cifr/articles/592335/cipher-digital-stock-9-0-ai-pivot-gains-traction-at-morgan-stanley-conf/2026-03-05
+          kind: curated_platform
+          description: "Curated platform: Trefis — Morgan Stanley conference coverage."
+          retrieved_at: "2026-03-28"
+
+# ── Competitive positioning ──────────────────────────────────────────────────────
+competitive_positioning:
+  key_peers:
+    - slug: iren
+      name: IREN Ltd
+      relevance: "Most direct comparable: fellow bitcoin-miner-to-AI-infrastructure pivot. IREN has a larger power portfolio (4.5 GW), more energized AI capacity (460 MW), and a $9.7B Microsoft deal. The primary benchmark for Cipher's execution."
+      sources:
+        - url: https://247wallst.com/investing/2026/02/15/why-iren-has-a-big-advantage-over-cipher-mining/
+          kind: curated_platform
+          description: "Curated platform: 24/7 Wall St. — 'Why IREN Has A Big Advantage Over Cipher Mining.'"
+          retrieved_at: "2026-03-28"
+    - slug: null
+      name: Core Scientific (CORZ)
+      relevance: "Another bitcoin miner pivoting to HPC hosting. Filed for bankruptcy and emerged in 2024. Signed CoreWeave as anchor tenant. Useful comp for transition speed and debt management post-restructuring."
+      sources: []
+    - slug: null
+      name: Riot Platforms (RIOT)
+      relevance: "Large bitcoin miner that has been slower to pivot to HPC. Provides a 'what if Cipher had not pivoted' comparison baseline."
+      sources: []
+
+  where_company_wins:
+    - dimension: "Contracted deal quality and counterparty"
+      summary: "AWS (15-year, $5.5B) and Fluidstack with Google backstop (10-year, $3.8B) are blue-chip, long-duration contracts. The AWS deal is unusually long for the sector. The Google backstop on the Fluidstack lease provides credit protection that few HPC landlords can show."
+      durability: strong
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+          kind: sec_8k
+          description: "Form 8-K — AWS lease terms."
+          retrieved_at: "2026-03-28"
+    - dimension: "Power-and-land portfolio scale"
+      summary: "4.2 GW across 10 sites plus 3.4 GW pipeline across 8 more sites. This is one of the largest power portfolios among former miners. The concentration in Texas (ERCOT market) provides regulatory familiarity and power cost advantages."
+      durability: moderate
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+          kind: sec_10k
+          description: "Form 10-K — portfolio overview, 4.2 GW + 3.4 GW pipeline."
+          retrieved_at: "2026-03-28"
+    - dimension: "Project finance discipline"
+      summary: "The Black Pearl $2B notes are structured as project finance secured against the AWS lease, with a completion guarantee. This is more sophisticated than equity-funded construction. It mirrors how traditional infrastructure is financed."
+      durability: moderate
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010326001966/dp241421_8k.htm
+          kind: sec_8k
+          description: "Form 8-K — Black Pearl notes structure."
+          retrieved_at: "2026-03-28"
+
+  where_gap_closing:
+    - dimension: "Energized AI capacity"
+      summary: "Cipher has 544 MW of contracted AI hosting capacity but very little actually energized. IREN has 460 MW energized for AI and is bringing 1.4 GW online in April 2026. Cipher's energization timeline lags by 6-12 months."
+      pace: slowly
+      sources:
+        - url: https://247wallst.com/investing/2026/02/15/why-iren-has-a-big-advantage-over-cipher-mining/
+          kind: curated_platform
+          description: "Curated platform: 24/7 Wall St. — energized capacity comparison."
+          retrieved_at: "2026-03-28"
+
+  where_company_loses:
+    - dimension: "Operational AI/HPC revenue"
+      leading_peer: IREN
+      summary: "IREN is already generating AI hosting revenue (Microsoft deal live). Cipher's HPC revenue is projected to start Q4 2026 at the earliest. IREN has 6-12 months of operational lead time."
+      sources:
+        - url: https://247wallst.com/investing/2026/02/15/why-iren-has-a-big-advantage-over-cipher-mining/
+          kind: curated_platform
+          description: "Curated platform: 24/7 Wall St. — revenue timing comparison."
+          retrieved_at: "2026-03-28"
+    - dimension: "Balance sheet health"
+      leading_peer: IREN
+      summary: "Cipher's debt-to-equity is ~4:1 ($3.2B debt vs $806M equity). Annual interest burden (~$245M) exceeds FY2025 revenue ($224M). IREN carries lower leverage relative to its power portfolio and has a higher-margin contract with Microsoft."
+      sources: []
+    - dimension: "Platform and software differentiation"
+      leading_peer: Nebius
+      summary: "Cipher explicitly does not offer a managed platform. Nebius has Aether, Token Factory, serverless AI, and Tavily. CoreWeave has a full cloud stack. Cipher is competing on power and construction, not technology — which caps the value the market assigns to the 'AI infrastructure' label."
+      sources: []
+
+  switching_costs:
+    summary: "Long-duration leases (15-year AWS, 10-year Fluidstack/Google) create strong lock-in once facilities are delivered. Hyperscalers are unlikely to abandon purpose-built capacity mid-lease. But Cipher is competing with hyperscalers' own internal capacity — the customer can self-supply at the margin."
+    lock_in_factors:
+      - "15-year AWS lease with dedicated capacity build"
+      - "10-year Fluidstack/Google lease with Google backstop"
+      - "Facility customization for specific tenant workloads"
+      - "Completion guarantee from Cipher on Black Pearl"
+    switching_enablers:
+      - "Hyperscalers build their own data centers in parallel"
+      - "No proprietary software layer creating workflow lock-in"
+      - "Physical infrastructure is generic power+cooling, not specialized"
+    sources: []
+
+  order_changers:
+    - event: "Black Pearl Phase I delivers on schedule (Q4 2026) and AWS rent commences"
+      impact: "Would validate the entire transition thesis. First non-mining revenue at scale. Debt serviceability proven against real cash flow rather than projections."
+      likelihood: medium_high
+      timeline: "Q4 2026"
+      sources: []
+    - event: "Construction delays push rent commencement into 2027"
+      impact: "Would force Cipher to service ~$245M annual interest for an additional 2-4 quarters on mining revenue alone. Liquidity runway ($754M) would be tested. Bear thesis would strengthen significantly."
+      likelihood: medium
+      timeline: "H1 2027"
+      sources: []
+    - event: "Third hyperscaler signs a contract for Colchis or pipeline sites"
+      impact: "Would prove the miner-to-developer model is repeatable, not a one-time win. Colchis (1 GW potential) with a major tenant would be transformative."
+      likelihood: medium
+      timeline: "Next 4-6 quarters"
+      sources: []
+    - event: "Bitcoin price collapse reduces mining cash flow bridge"
+      impact: "Would accelerate the liquidity pressure. Mining is already cash-flow-negative at the operating level, but a price drop would make it worse and could force asset sales."
+      likelihood: low_medium
+      timeline: "Any time"
+      sources: []
+
+# ── Information asymmetries ─────────────────────────────────────────────────────
+information_asymmetries:
+  - id: mining_is_not_a_bridge
+    title: "Bitcoin mining is not a cash flow bridge — the bridge is debt"
+    market_believes: "Cipher's mining operations provide a cash flow bridge until HPC revenue arrives."
+    evidence_suggests: "FY2025 operating cash flow was -$208M on $224M of revenue. Q4 2025 OCF was -$54M on $60M revenue. Mining is cash-flow-negative at the operating level. The actual bridge is the $628M of cash raised through debt and equity issuance, not mining profitability."
+    gap_reason: "The presence of mining revenue creates the appearance of a live business funding the transition. The OCF number, buried deeper in the financials, tells a different story."
+    closing_catalyst: "Disclosure of segment-level cash flow for mining vs HPC when hosting revenue begins. If mining OCF is separately reported as negative, the narrative shifts."
+    confidence: high
+    sources:
+      - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001819989.json
+        kind: sec_companyfacts_json
+        description: "XBRL — FY2025 OCF -$208M, Q4 OCF -$54M."
+        retrieved_at: "2026-03-28"
+
+  - id: net_loss_is_mostly_non_cash
+    title: "The $734M Q4 net loss is mostly non-cash — but the operating loss is real"
+    market_believes: "Cipher lost $734M in Q4 2025, which sounds catastrophic."
+    evidence_suggests: "The $734M net loss includes large non-cash items (mark-to-market on bitcoin holdings, D&A ramp from construction, SBC). The operating loss of $301M is more informative but still includes significant non-cash charges. Gross profit was actually $35.5M on $59.7M revenue — a 59% gross margin. The underlying mining business isn't unprofitable at the gross level; the losses come from below-the-line items and the massive overhead of transitioning."
+    gap_reason: "Headlines focus on net loss. The GAAP structure forces non-cash items into the P&L, making operational performance look worse than it is."
+    closing_catalyst: "Adjusted EBITDA disclosure or segment reporting that separates operating mining economics from transition costs."
+    confidence: high
+    sources:
+      - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001819989.json
+        kind: sec_companyfacts_json
+        description: "XBRL — Q4 P&L decomposition."
+        retrieved_at: "2026-03-28"
+
+  - id: aws_lease_economics_undisclosed
+    title: "The AWS lease economics (rent per MW, margin structure) are not publicly detailed"
+    market_believes: "$5.5B AWS deal over 15 years = ~$367M annualized revenue with attractive margins."
+    evidence_suggests: "The $5.5B figure was disclosed in the Q3 2025 business update as 'estimated contract value.' The actual rent per MW, annual escalators, margin structure after construction/financing costs, and return on invested capital are not public. The $2B Black Pearl notes at 6.125% represent a known cost ($122M/year interest), but the net margin after servicing that debt against the actual rent payments is unknown."
+    gap_reason: "Management disclosed the headline TCV to attract investment and validate the pivot. The detailed economics that determine shareholder returns are proprietary."
+    closing_catalyst: "First full quarter of AWS rent reported in financial statements (expected H1 2027). The gap between interest costs and rent revenue will reveal the true economics."
+    confidence: medium
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+        kind: sec_8k
+        description: "Form 8-K — Q3 business update, AWS $5.5B estimated contract value."
+        retrieved_at: "2026-03-28"
+
+# ── Forward signals ─────────────────────────────────────────────────────────────
+forward_signals:
+  - id: black_pearl_construction_progress
+    signal: "Black Pearl construction underway with 95% of long-lead equipment secured"
+    source_tier: 1
+    date_observed: "2026-02-24"
+    implication: "Equipment procurement is the longest lead-time risk for data center construction. 95% secured means the construction timeline is primarily about labor and commissioning, not supply chain. This is the strongest evidence that Q4 2026 rent commencement is achievable."
+    sources:
+      - url: https://finviz.com/news/264465/cipher-minings-aihpc-expansion-takes-shape-is-the-shift-paying-off
+        kind: curated_platform
+        description: "Curated platform: FinViz — construction and procurement progress."
+        retrieved_at: "2026-03-28"
+
+  - id: rebrand_to_cipher_digital
+    signal: "Legal name changed from Cipher Mining Inc. to Cipher Digital Inc. effective February 23, 2026"
+    source_tier: 1
+    date_observed: "2026-02-24"
+    implication: "Corporate rebrands signal permanent strategic commitment. Management is burning the boats on the 'bitcoin miner' identity. This makes reversal to pure mining unlikely and commits the company to executing the HPC pivot."
+    sources:
+      - url: https://investors.cipherdigital.com/news-releases/news-release-details/cipher-digital-provides-fourth-quarter-and-full-year-2025/
+        kind: ir_html
+        description: "Primary source: Cipher Digital — name change and Q4 update."
+        retrieved_at: "2026-03-28"
+
+  - id: insider_selling
+    signal: "CEO Tyler Page sold 37,500 shares on March 25, 2026 ($631K)"
+    source_tier: 1
+    date_observed: "2026-03-25"
+    implication: "Insider selling during a pivotal construction phase sends a mildly negative signal, though the amount is small relative to total holdings. Worth monitoring for pattern rather than treating as definitive."
+    sources:
+      - url: https://www.marketbeat.com/instant-alerts/cipher-mining-inc-nasdaqcifr-receives-average-recommendation-of-moderate-buy-from-analysts-2026-03-28/
+        kind: curated_platform
+        description: "Curated platform: MarketBeat — insider selling disclosure."
+        retrieved_at: "2026-03-28"
+
+  - id: colchis_jv_ercot_approval
+    signal: "Colchis HPC JV (up to 1 GW) pending ERCOT approval with expected energization in 2028"
+    source_tier: 1
+    date_observed: "2025-11-03"
+    implication: "ERCOT approval is the gating factor. If granted, Colchis would be Cipher's third major HPC site and the largest. A signed tenant for Colchis would be a major catalyst for the stock."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+        kind: sec_8k
+        description: "Form 8-K — Colchis site details and ERCOT timeline."
+        retrieved_at: "2026-03-28"
+
+# ── Top-level sources ───────────────────────────────────────────────────────────
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998926000009/cifr-20251231.htm
+    kind: sec_10k
+    description: "Form 10-K FY2025 — portfolio overview, debt structure, business model."
+    retrieved_at: "2026-03-28"
+  - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010326001966/dp241421_8k.htm
+    kind: sec_8k
+    description: "Form 8-K — $2B Black Pearl senior secured notes closing."
+    retrieved_at: "2026-03-28"
+  - url: https://www.sec.gov/Archives/edgar/data/1819989/000181998925000110/ciphermining_businessupd.htm
+    kind: sec_8k
+    description: "Form 8-K — Q3 2025 update, AWS lease, Colchis site."
+    retrieved_at: "2026-03-28"
+  - url: https://www.sec.gov/Archives/edgar/data/1819989/000095010325012168/dp234624_8k.htm
+    kind: sec_8k
+    description: "Form 8-K — Fluidstack/Google Barber Lake lease."
+    retrieved_at: "2026-03-28"
+  - url: https://www.marketbeat.com/stocks/NASDAQ/CIFR/forecast/
+    kind: sell_side_summary
+    description: "Sell-side: 17 analysts, Moderate Buy, median target $24, range $6-$38."
+    retrieved_at: "2026-03-28"
+  - url: https://www.ainvest.com/news/cipher-2b-note-offering-catalyst-hpc-transition-debt-overhang-2602/
+    kind: curated_platform
+    description: "Curated platform: ainvest — $2B notes analysis and debt overhang framing."
+    retrieved_at: "2026-03-28"
+  - url: https://247wallst.com/investing/2026/02/15/why-iren-has-a-big-advantage-over-cipher-mining/
+    kind: curated_platform
+    description: "Curated platform: 24/7 Wall St. — IREN vs Cipher competitive analysis."
+    retrieved_at: "2026-03-28"
+  - url: https://altindex.com/ticker/cifr/reddit-mentions
+    kind: social_signal
+    description: "Community: Reddit sentiment and mention statistics for CIFR."
+    retrieved_at: "2026-03-28"

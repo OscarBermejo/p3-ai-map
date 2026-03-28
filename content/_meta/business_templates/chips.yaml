@@ -1,0 +1,250 @@
+# Chips layer — product-centric business profile (not quarterly financials).
+# Copy to companies/<slug>/business/business.yaml (content or inbox).
+#
+# profile_version 1: product-first model. The unit of comparison is the **chip / accelerator**,
+#   not the company. Each entry in products[] is one product (GPU, ASIC, custom accelerator)
+#   with structured specs, performance, pricing proxies, and workload fit.
+#
+# Company-level context (software_ecosystem, manufacturing_and_supply, commercial_traction,
+#   roadmap) wraps around the product catalog — these are per-vendor, not per-chip.
+#
+# Data-source tiers for chip specs:
+#   Tier 1 — vendor datasheet, official product page, SEC filing, earnings call transcript.
+#   Tier 2 — MLPerf submissions, major third-party benchmarks (cite benchmark + submission ID).
+#   Tier 3 — analyst estimates, leaked specs, crowd-sourced benchmarks (use only when Tier 1/2
+#            unavailable; flag clearly in notes).
+#   Cloud pricing — CSP public pricing pages (snapshot date in notes; prices move).
+#
+# Per leaf: { value, notes, sources }. Issuer-agnostic keys only; detail in notes. Optional top-level sources[].
+
+layer: chips
+profile_version: 1
+
+as_of: null
+
+# ─── Product catalog ────────────────────────────────────────────────────────────
+# Each entry is one accelerator / chip product. This is the core of the chips business profile.
+# Add one entry per distinct product (H100 SXM, H100 PCIe, and H200 are separate entries).
+#
+# Product identity fields (name, vendor, generation, status, launch_date) are plain scalars.
+# All spec/metric leaves use { value, notes, sources } for sourcing consistency.
+products:
+  - name: null                          # Product name as marketed (e.g. "H100 SXM", "MI300X", "Gaudi 3").
+    vendor: null                        # Company slug (must match company_index.yaml).
+    generation: null                    # Vendor generation label (e.g. "Hopper", "CDNA 3", "Granite Rapids").
+    status: null                        # sampling | production | eol
+    launch_date: null                   # ISO date or "YYYY" / "YYYY-Qn" if exact date unknown.
+
+    architecture:
+      process_node:
+        value: null                     # e.g. "TSMC 4N", "TSMC 5nm", "Intel 3"
+        notes: null
+        sources: []
+      transistor_count:
+        value: null                     # Billions (e.g. 80 for 80B transistors).
+        notes: null
+        sources: []
+      die_size_mm2:
+        value: null                     # Total silicon area in mm². For chiplet designs, sum of compute dies or note.
+        notes: null
+        sources: []
+      memory_type:
+        value: null                     # e.g. "HBM3e", "HBM3", "HBM2e", "GDDR6X"
+        notes: null
+        sources: []
+      memory_capacity_gb:
+        value: null                     # GB per accelerator.
+        notes: null
+        sources: []
+      memory_bandwidth_tb_s:
+        value: null                     # TB/s peak memory bandwidth.
+        notes: null
+        sources: []
+      interconnect:
+        value: null                     # e.g. "NVLink 4.0 900 GB/s", "Infinity Fabric", "ICI"
+        notes: "Chip-to-chip interconnect within a node or across a tray."
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: null                     # Thermal design power in watts.
+        notes: null
+        sources: []
+      peak_flops_fp8_tflops:
+        value: null                     # Peak FP8 TFLOPS (with sparsity if vendor headline; note which).
+        notes: null
+        sources: []
+      peak_flops_fp16_tflops:
+        value: null                     # Peak FP16 / BF16 TFLOPS (note dense vs. sparse).
+        notes: null
+        sources: []
+      peak_flops_fp32_tflops:
+        value: null                     # Peak FP32 TFLOPS.
+        notes: null
+        sources: []
+      peak_flops_int8_tops:
+        value: null                     # Peak INT8 TOPS if applicable.
+        notes: null
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: null                     # Derived: peak_flops_fp8 / tdp_watts (TFLOPS/W). Compute or leave null.
+        notes: null
+        sources: []
+      flops_per_watt_fp16:
+        value: null                     # Derived: peak_flops_fp16 / tdp_watts.
+        notes: null
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null                     # Derived: memory_bandwidth_tb_s / tdp_watts (TB/s per W).
+        notes: null
+        sources: []
+
+    system_context:
+      reference_system:
+        value: null                     # e.g. "DGX H100", "Universal Baseboard (UBB)", "Gaudi 3 server"
+        notes: null
+        sources: []
+      gpus_per_system:
+        value: null                     # Accelerators per reference system / node (e.g. 8).
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: null                     # Total system power draw (node level) if published.
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null                     # Per-rack power density in kW if disclosed or derivable.
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: null                     # e.g. "NVLink Switch 72-GPU", "InfiniBand NDR 400G", "RoCE"
+        notes: "Network fabric for multi-node / cluster scale-out."
+        sources: []
+
+    workload_fit:
+      training:
+        value: null                     # strong | competitive | limited | not_applicable
+        notes: null
+        sources: []
+      inference:
+        value: null                     # strong | competitive | limited | not_applicable
+        notes: null
+        sources: []
+      fine_tuning:
+        value: null                     # strong | competitive | limited | not_applicable
+        notes: null
+        sources: []
+      target_model_scale:
+        value: null                     # e.g. ">100B parameter training", "7B–70B inference", "all scales"
+        notes: null
+        sources: []
+      workload_notes:
+        value: null                     # Free-text: specific model families, niche strengths (e.g. MoE, long-context).
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null                     # Summary or link (e.g. "MLPerf Training v4.0, submission X").
+        notes: "Cite round, benchmark, and submission ID."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: "Cite round, scenario (Offline/Server), and submission ID."
+        sources: []
+      vendor_published:
+        value: null                     # Notable vendor-published benchmark claims (flag as vendor data).
+        notes: null
+        sources: []
+
+    pricing:
+      list_price_usd:
+        value: null                     # Published list / MSRP if available (rare for data-center GPUs).
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null                     # Representative on-demand $/hr from a major CSP.
+        notes: "State provider, instance type, region, and snapshot date."
+        sources: []
+      cloud_providers:
+        value: []                       # CSPs offering this accelerator (e.g. ["AWS", "GCP", "Azure", "CoreWeave"]).
+        notes: null
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []                       # OEM server platforms shipping this chip (e.g. ["Dell XE9680", "Supermicro SYS-421GE"]).
+        notes: null
+        sources: []
+      lead_time:
+        value: null                     # Estimated lead time if known (e.g. "4–6 weeks", "allocation-constrained").
+        notes: null
+        sources: []
+
+    sources: []                         # Per-product top-level sources (datasheet URL, product page, etc.).
+
+# ─── Company-level context ──────────────────────────────────────────────────────
+
+software_ecosystem:
+  stack_name:
+    value: null                         # e.g. "CUDA + cuDNN", "ROCm", "Synapse AI", "XLA/PJRT"
+    notes: null
+    sources: []
+  framework_support:
+    value: []                           # Frameworks with first-class support (e.g. ["PyTorch", "JAX", "TensorFlow"]).
+    notes: null
+    sources: []
+  ecosystem_maturity:
+    value: null                         # dominant | mature | growing | early
+    notes: "Qualitative assessment of library breadth, community, and production readiness."
+    sources: []
+
+manufacturing_and_supply:
+  foundry_partners:
+    value: []                           # e.g. ["TSMC"], ["Samsung Foundry", "TSMC"]
+    notes: null
+    sources: []
+  process_nodes:
+    value: []                           # All nodes in current product line (e.g. ["4N", "5nm", "3nm"]).
+    notes: null
+    sources: []
+  packaging:
+    value: null                         # e.g. "CoWoS-S", "CoWoS-L", "EMIB + Foveros", "SoIC"
+    notes: "Advanced packaging technology; often the binding supply constraint."
+    sources: []
+  supply_constraints:
+    value: null
+    notes: "Known bottlenecks: CoWoS capacity, HBM allocation, substrate supply, etc."
+    sources: []
+
+commercial_traction:
+  deployment_channels:
+    value: []                           # e.g. ["CSP instances", "OEM servers", "direct enterprise", "custom silicon (hyperscaler)"]
+    notes: null
+    sources: []
+  notable_customers_or_design_wins:
+    value: []
+    notes: null
+    sources: []
+  revenue_segment:
+    value: null                         # Issuer segment name where AI accelerator revenue is reported (e.g. "Data Center", "DCAI").
+    notes: null
+    sources: []
+
+roadmap:
+  next_generation:
+    value: null                         # e.g. "Blackwell Ultra (B300) — expected H2 2025"
+    notes: null
+    sources: []
+  cadence:
+    value: null                         # e.g. "annual", "~18 months", "irregular"
+    notes: null
+    sources: []
+  roadmap_credibility:
+    value: null                         # strong | moderate | unproven — based on execution history.
+    notes: null
+    sources: []
+
+sources: []

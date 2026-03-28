@@ -1,6 +1,6 @@
 # Financial narrative (`narrative/narrative.yaml`)
 
-**Purpose:** Produce the **deepest, most useful judgment layer** on the company in this repo: the part that connects **financials**, **business profile**, **announcements**, management framing, products, market position, and competition into a single view of **what is really going on underneath**.
+**Purpose:** Produce the **deepest, most useful judgment layer** on the company in this repo: the part that connects **financials**, **business profile**, **announcements**, **market perception**, management framing, products, market position, and competition into a single view of **what is really going on underneath**. This is the **capstone** of the full analysis pipeline — the file someone reads when they want the equivalent of months of company study in 15 minutes.
 
 This file should help answer questions like:
 
@@ -16,9 +16,10 @@ This is **not** just a filing recap. It is a **thesis-driven synthesis** that sh
 
 The narrative should:
 
-- connect `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and current-period primary documents
+- connect `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, `market_perception/market_perception.yaml`, and current-period primary documents
 - connect the current period to prior periods, strategic direction, and disclosed company history where relevant
-- surface what is **non-obvious**, **easy to miss**, or **strategically important**
+- incorporate **market perception** — use consensus narrative, key debates, competitive positioning, and information asymmetries from `market_perception/market_perception.yaml` to sharpen your own judgment (not to parrot the market's view, but to engage with it)
+- surface what is **non-obvious**, **easy to miss**, or **strategically important** — including where you agree or disagree with the market's assessment
 - bring **judgment**, not just description
 - make **bounded predictions** when useful
 - remain **evidence-linked**, not speculative fiction
@@ -98,6 +99,7 @@ Read with:
 - [financials.md](./financials.md)
 - [business.md](./business.md)
 - [announcements.md](./announcements.md) when recent company events are important to the thesis
+- [market_perception.md](./market_perception.md) — if `market_perception/market_perception.yaml` exists, read it before drafting. Use consensus narrative, key debates, competitive positioning, and information asymmetries to sharpen your own judgment. Engage with the market’s view — agree, disagree, or add nuance — do not ignore it.
 - the layer’s `content/_meta/layer_frameworks/<layer>.yaml` when it helps frame what usually matters in that slice
 
 ### Open the documents and read deeply (required)
@@ -159,19 +161,22 @@ If the thesis changes materially by period, anchor it via `based_on_financials` 
 
 ## How to build the narrative (agent)
 
-1. Read the target period’s `financials/*.yaml`, `business/business.yaml`, and `announcements/announcements.yaml` if present
+1. Read the target period’s `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and `market_perception/market_perception.yaml` if present
 2. Open the primary documents behind the core claims you expect to make
 3. Study prior periods and recent changes so you can tell what is changing versus what is just being repeated
-4. Ask:
+4. Review market perception: what is the consensus? What are the key debates? Where does the market think this company wins or loses vs peers? Where might the market be wrong?
+5. Ask:
    - what is the real story here?
    - what is non-obvious?
    - what matters most for the next 1–4 quarters?
    - what is management saying, and what do the underlying facts say?
    - where is this company stronger or weaker than peers?
-5. Identify **2–5 issuer-specific angles** that are worth writing about
-6. Draft custom `sections` that reflect those angles
-7. Use `central_questions` only if a short thematic hook helps the UI; otherwise omit it
-8. End with a real `conclusion` that synthesizes the company view, not just the section headings
+   - where does the market appear to be wrong, and why?
+   - what information asymmetry is most actionable?
+6. Identify **2–5 issuer-specific angles** that are worth writing about
+7. Draft custom `sections` that reflect those angles
+8. Use `central_questions` only if a short thematic hook helps the UI; otherwise omit it
+9. End with a real `conclusion` that synthesizes the company view, not just the section headings
 
 ## What a strong narrative usually contains
 
@@ -187,6 +192,9 @@ Depending on the company, useful angles may include:
 - whether new products or infrastructure matter economically yet
 - whether peer comparisons make the company look stronger or weaker than management implies
 - whether disclosed risks are manageable or likely to become central
+- where the market consensus appears correct vs. where it appears to be missing something (drawing on `market_perception/market_perception.yaml`)
+- which information asymmetries from market perception are most material and why
+- whether competitive positioning is as strong as the market assumes, or whether the gap is closing faster than priced in
 
 Do **not** force every issuer through the same categories.
 
@@ -266,16 +274,30 @@ The validator only requires `id: conclusion`.
 
 ## Workflow (agents)
 
-1. Read `financials/README.md`, the target `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and `entity.yaml`
+1. Read `financials/README.md`, the target `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, `market_perception/market_perception.yaml` (if present), and `entity.yaml`
 2. Open every primary you rely on for the main narrative claims
-3. Draft issuer-specific sections with real judgment
-4. Separate clearly in your own reasoning:
+3. Review market perception inputs: consensus, debates, competitive positioning, information asymmetries, forward signals
+4. Draft issuer-specific sections with real judgment — engaging with the market’s view where relevant
+5. Separate clearly in your own reasoning:
    - disclosed facts
    - evidence-based interpretation
    - forward-looking judgment / prediction
-5. Add `disclosure_gaps` where confidence is limited
-6. Run `scripts/validate_values_file.py` on `narrative/narrative.yaml`
-7. Default to proposing under `inbox/` until approved for `content/`
+6. Add `disclosure_gaps` where confidence is limited
+7. Run `scripts/validate_values_file.py` on `narrative/narrative.yaml`
+8. Default to proposing under `inbox/` until approved for `content/`
+
+## Relationship to other files
+
+The narrative is the **capstone** of the analysis pipeline. It reads and synthesizes all prior files:
+
+| File | How narrative uses it |
+|------|---------------------|
+| `financials/*.yaml` | The numerical backbone — what happened in the numbers |
+| `business/business.yaml` | How the business actually works — operations, products, capacity |
+| `announcements/announcements.yaml` | Recent events that affect the thesis |
+| `market_perception/market_perception.yaml` | What the market thinks, where the debates are, where the crowd may be wrong, and how this company compares to peers |
+
+The narrative should not merely restate these files. It should **connect** them — using financials + business + announcements + perception together in the same arguments — and **add judgment** that none of the individual files can provide on their own.
 
 ## Relationship to the map UI
 
@@ -299,7 +321,7 @@ The narrative must **reach a conclusion** — not merely describe. The **agent**
 - **Avoid:** A rigid **question-and-answer** scaffold where every file mirrors the same prompts, or a **conclusion** that only repeats answers to a numbered list. Prefer **discovery-style prose**: short sections that each illuminate **one** layer beneath the dashboard, then a **`conclusion`** that reads like a **synthesis** (e.g. how to read the quarter, what to watch, what remains unknown) — **not** a checklist recap unless it genuinely fits.
 - **`central_questions`:** **Optional.** Use when a short **thematic hook** helps the UI (one or two lines max); otherwise **omit** and let the opening sections carry the angle. If you use it, **do not** paste the same generic “growth vs cash vs debt” trio for every company.
 
-**Read with:** [sources.md](./sources.md) (third track), [financials.md](./financials.md), and the layer’s **`content/_meta/layer_frameworks/<layer>.yaml`** when you need framing for *what usually matters* in that slice — as **hints**, not mandatory headings.
+**Read with:** [sources.md](./sources.md) (third track), [financials.md](./financials.md), [market_perception.md](./market_perception.md) (if `market_perception/market_perception.yaml` exists — use consensus, debates, competitive positioning, and information asymmetries to sharpen your judgment), and the layer’s **`content/_meta/layer_frameworks/<layer>.yaml`** when you need framing for *what usually matters* in that slice — as **hints**, not mandatory headings.
 
 ---
 
@@ -374,8 +396,9 @@ Required (`id: conclusion`). **Synthesize** — how to read the period, what is 
 
 ## Workflow (agents)
 
-1. **`financials/README.md`**, target **`financials/*.yaml`**, **`business/business.yaml`**, layer framework if useful.
-2. **Open** every **primary** URL you will use from quarter **`sources`** (and any add-on filing for footnotes). Read **cash flows, face statements, footnotes, and notes** needed for **your** angles (debt, leases, segments, revenue policies, etc.).
+1. **`financials/README.md`**, target **`financials/*.yaml`**, **`business/business.yaml`**, **`market_perception/market_perception.yaml`** (if present), layer framework if useful.
+2. **Review market perception** inputs: consensus, debates, competitive positioning, information asymmetries, forward signals. Use these to inform — not replace — your own judgment.
+3. **Open** every **primary** URL you will use from quarter **`sources`** (and any add-on filing for footnotes). Read **cash flows, face statements, footnotes, and notes** needed for **your** angles (debt, leases, segments, revenue policies, etc.).
 3. Draft **`sections`** (issuer-specific), optional **`central_questions`**, **`conclusion`**, **`disclosure_gaps`**, top-level **`sources`** (list every primary you **opened**). Where **`financials`** and opened primaries answer an implied question (GAAP vs non-GAAP, net debt, OCF bridge, scale of CapEx vs revenue), **put those numbers in the `body`** — see **Show the data, answer the question** under **The `conclusion` section** above.
 4. **`scripts/validate_values_file.py`** on **`narrative/narrative.yaml`**.
 5. Default: propose under **`inbox/`** until approved for **`content/`**.

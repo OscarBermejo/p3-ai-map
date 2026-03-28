@@ -1,0 +1,21 @@
+kind: financial_narrative
+schema_version: 1
+
+as_of: null
+
+based_on_financials:
+  file: null
+  period_end: null
+  period_label: null
+
+business_profile_as_of: null
+
+central_questions: []
+
+sections: []
+
+disclosure_gaps: []
+
+conclusion: null
+
+sources: []

@@ -1,8 +1,8 @@
 # Agent instructions: sources
 
-**Use this file** whenever you need to decide what counts as evidence for facts in `content/`, including `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, and `narrative/narrative.yaml`.
+**Use this file** whenever you need to decide what counts as evidence for facts in `content/`, including `financials/*.yaml`, `business/business.yaml`, `announcements/announcements.yaml`, `narrative/narrative.yaml`, and `market_perception/market_perception.yaml`.
 
-There are **four tracks** with the same primary-first discipline but different downstream rules:
+There are **five tracks** with the same primary-first discipline but different downstream rules:
 
 | Track | Files | What it covers |
 |-------|-------|----------------|
@@ -10,8 +10,9 @@ There are **four tracks** with the same primary-first discipline but different d
 | **Business profiles** | `business/business.yaml` | Operating / strategic facts such as capacity, contracts, platform, and GPU mix |
 | **Announcements** | `announcements/announcements.yaml` | Latest material company announcements such as deals, raises, ATM, hiring, launches, and regulatory items |
 | **Financial narratives** | `narrative/narrative.yaml` | Interpretive synthesis of what is non-obvious beneath headline metrics; not authoritative new metrics |
+| **Market perception** | `market_perception/market_perception.yaml` | External market signal: consensus narrative, key debates, sentiment, information asymmetries, and forward signals from analytical / curated / community sources |
 
-**Rule of thumb:** If it belongs in `metrics:` with a quarter end date, use the **financial** track. If it belongs in `business/business.yaml`, use the **business** track. If it is a discrete recent company-announced event, use the **announcements** track. If it is analysis, gaps, and cited reasoning rather than new metrics, use the **narrative** track.
+**Rule of thumb:** If it belongs in `metrics:` with a quarter end date, use the **financial** track. If it belongs in `business/business.yaml`, use the **business** track. If it is a discrete recent company-announced event, use the **announcements** track. If it is analysis, gaps, and cited reasoning rather than new metrics, use the **narrative** track. If it captures how the market sees the company — external perception, debates, and sentiment — use the **market perception** track.
 
 ---
 
@@ -234,3 +235,84 @@ If you did not open the document, do not imply that you reviewed the notes. If a
 - Do **not** introduce new authoritative metrics; reference `financials/*.yaml` or quote primaries directly
 - Tier 2 news / wires are not sufficient to anchor economic claims; use them only as context with labeling, or to find a primary
 - Every narrative file must list non-empty top-level `sources` covering the primaries actually consulted, with the most relevant / latest primary first when multiple rows apply
+
+---
+
+## Market perception (`market_perception/market_perception.yaml`)
+
+This track captures how the market sees a company — consensus narrative, key debates, sentiment signals, information asymmetries, and forward signals — using sources **beyond** SEC filings and official IR. See [market_perception.md](./market_perception.md).
+
+Market perception uses a **three-tier source model** distinct from other tracks:
+
+| Tier | Trust level | Examples | Handling |
+|------|-------------|----------|----------|
+| **1 — Deep technical / analytical** | Highest | SemiAnalysis, earnings transcripts, Hot Chips, domain-expert blogs (Benedict Evans, Stratechery) | Direct citation; highest weight |
+| **2 — Curated analytical** | Moderate | Seeking Alpha (quality-filtered by author), tech press (The Information, Bloomberg Technology), sell-side summaries | Requires labeling; individual quality check |
+| **3 — Social / community** | Lowest | X, Reddit, HackerNews | Corroboration required; never sole evidence for factual claims |
+
+### Market perception source rules
+
+1. **Always attribute** — every claim must trace to a source with tier, author/account, date, and URL
+2. **Label interpretation** — separate "Source X argues …" from the agent's own assessment
+3. **Sell-side research** — record summary statistics only (rating distribution, target range). **Do not** reproduce proprietary text.
+4. **Seeking Alpha** — filter aggressively by author quality and track record. Cite the specific author, not just the platform.
+5. **Social sources** (X, Reddit, HN) — useful for **sentiment direction** and **early signal**. Summarize thread-level consensus, not individual anonymous comments. Never cite as sole evidence for factual claims.
+6. **Triangulate** — a claim supported by one Tier 3 source is a data point; a claim supported by Tier 1 + Tier 2 + Tier 3 is meaningful.
+
+### Market perception `kind` values for provenance
+
+In addition to shared `kind` values, market perception sources may use:
+
+- `earnings_transcript` — official earnings call transcript
+- `specialist_analysis` — SemiAnalysis, domain-expert blog, etc.
+- `curated_platform` — Seeking Alpha, Motley Fool, tech press
+- `sell_side_summary` — broker research summary (not full text)
+- `social_signal` — X, Reddit, HN thread or account
+- `conference_qa` — Q&A from investor/industry conference
+
+---
+
+## Layer-specific source extensions
+
+The rules above apply to all layers. The subsections below add **scoped** source tiers for specific layers. Do **not** apply a layer's extensions to other layers unless that layer's subsection is added here.
+
+### Chips
+
+The chips layer needs sources that SEC filings and vendor press releases alone cannot provide: architecture context, supply chain dynamics, competitive benchmarking, and real-world performance data. The extensions below apply **only** to chips-layer files (`business/business.yaml`, `announcements/announcements.yaml`, `narrative/narrative.yaml` for chips-layer companies).
+
+#### Chips Tier 1 (primary — same weight as shared Tier 1)
+
+These are official vendor-controlled publications with technical substance beyond marketing:
+
+- **Vendor datasheets and product pages** — the canonical source for specs (FLOPS, TDP, memory, interconnect). Always prefer the datasheet over any secondary report for hard numbers.
+- **Vendor technical blogs** (NVIDIA Developer Blog, AMD ROCm blog, Intel AI blog, etc.) — official vendor publications with architecture detail, software stack updates, and performance characterizations. Treat as Tier 1 since they are vendor-controlled and citable.
+- **Conference papers and presentations** — Hot Chips, ISSCC, IEEE, and similar peer-reviewed or industry-standard venues where vendors present architecture details. These are credible technical disclosures.
+- **MLPerf / MLCommons submissions** — standardized, auditable, independently verified benchmark results. Cite the specific round, benchmark, scenario (Offline/Server), and submission ID. The closest thing to an objective performance comparison across vendors.
+
+#### Chips Tier 2 (analytical — allowed with labeling)
+
+These provide expert analysis, supply chain context, and competitive framing that primary sources do not cover:
+
+- **SemiAnalysis** — deep technical analysis of chip architectures, process nodes, packaging constraints, supply chain dynamics, pricing, and competitive positioning. Allowed as a source for:
+  - Supply chain and manufacturing context (e.g. CoWoS capacity constraints, HBM allocation)
+  - Competitive positioning and real-world performance context
+  - Pricing analysis and market dynamics
+  - Architecture analysis beyond what datasheets disclose
+
+#### Chips source rules
+
+1. **Hard specs** (FLOPS, TDP, memory capacity/bandwidth, die size, transistor count, process node) — Chips Tier 1 only. Do not cite Tier 2 as the sole source for a spec that appears on a datasheet.
+2. **Benchmarks** — MLPerf submissions preferred. Vendor-published benchmarks are Tier 1 but must be flagged as vendor data in `notes`. Tier 2 benchmark analysis may add context but does not replace the submission.
+3. **Supply chain, pricing dynamics, competitive context** — Tier 2 is allowed and often the best available source. Label clearly: `"SemiAnalysis analysis"` or similar in `sources[].description`.
+4. **Workload fit and deployment readiness** — combine Tier 1 (vendor claims, MLPerf) with Tier 2 (independent analysis) when both exist. If only Tier 2 is available, flag in `notes`.
+5. **When Tier 1 and Tier 2 conflict on a factual claim**, prefer Tier 1. Record the discrepancy in `notes` if material.
+
+#### Chips `kind` values for provenance
+
+In addition to the shared `kind` values, chips-layer sources may use:
+
+- `vendor_datasheet` — official product spec sheet or product page
+- `vendor_blog` — official vendor technical blog post
+- `conference_paper` — Hot Chips, ISSCC, IEEE, or similar venue
+- `mlperf_submission` — MLPerf / MLCommons official submission (include round + ID)
+- `industry_analysis` — SemiAnalysis or equivalent (always name the source in `description`)

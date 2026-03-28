@@ -1,0 +1,35 @@
+period:
+  label: "FY2026 Q2"
+  start: "2025-04-28"
+  end: "2025-07-27"
+  fiscal_year: 2026
+
+currency_reporting: USD
+
+metrics:
+  revenue: 46743000000
+  gross_profit: 33853000000
+  operating_income: 28440000000
+  net_income: 26422000000
+  operating_cash_flow: 15365000000
+  capital_expenditures_cash: 1895000000
+  total_assets: 140740000000
+  total_liabilities: 40609000000
+  stockholders_equity: 100131000000
+  total_debt: 8466000000
+  cash_and_equivalents: 11639000000
+  shares_outstanding_basic: 24366000000
+  shares_outstanding_diluted: 24532000000
+  market_cap: null
+
+sources:
+  - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json
+    kind: sec_companyfacts_json
+    covers: [revenue, gross_profit, operating_income, net_income, total_assets, total_liabilities, stockholders_equity, total_debt, cash_and_equivalents, shares_outstanding_basic, shares_outstanding_diluted]
+    description: "From SEC company facts API (XBRL): income statement and balance sheet metrics for this quarter; share counts as reported. Accession 0001045810-25-000209."
+    retrieved_at: "2026-03-26"
+  - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json
+    kind: sec_companyfacts_json
+    covers: [operating_cash_flow, capital_expenditures_cash]
+    description: "Derived: single-quarter operating_cash_flow = 6M_YTD (42779000000) - Q1 (27414000000) = 15365000000. capital_expenditures_cash derived similarly from PaymentsToAcquireProductiveAssets YTD: 6M_YTD (3122000000) - Q1 (1227000000) = 1895000000."
+    retrieved_at: "2026-03-26"

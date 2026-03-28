@@ -1,0 +1,25 @@
+slug: nvidia
+legal_name: NVIDIA Corporation
+
+tickers:
+  - symbol: NVDA
+    exchange: NASDAQ
+
+summary: |
+  NVIDIA designs GPUs and accelerator platforms that dominate AI training and
+  inference workloads. The Data Center segment — driven by products such as
+  H100, H200, and Blackwell — is the primary revenue engine. The company also
+  provides the CUDA software ecosystem, networking (InfiniBand, NVLink), and
+  full-system reference designs (DGX). Quantitative results belong in
+  financials/*.yaml with sources.
+
+links:
+  investor_relations: https://investor.nvidia.com
+  press_releases_index: https://nvidianews.nvidia.com
+  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001045810&owner=include&count=40
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes: []

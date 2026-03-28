@@ -1,0 +1,35 @@
+period:
+  label: "FY2026 Q4"
+  start: "2025-10-27"
+  end: "2026-01-25"
+  fiscal_year: 2026
+
+currency_reporting: USD
+
+metrics:
+  revenue: 68127000000
+  gross_profit: 51093000000
+  operating_income: 44299000000
+  net_income: 42960000000
+  operating_cash_flow: 36188000000
+  capital_expenditures_cash: 1284000000
+  total_assets: 206803000000
+  total_liabilities: 49510000000
+  stockholders_equity: 157293000000
+  total_debt: 8468000000
+  cash_and_equivalents: 10605000000
+  shares_outstanding_basic: 24359000000
+  shares_outstanding_diluted: 24514000000
+  market_cap: null
+
+sources:
+  - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json
+    kind: sec_companyfacts_json
+    covers: [revenue, gross_profit, operating_income, net_income, operating_cash_flow, capital_expenditures_cash]
+    description: "Derived: all flow metrics = FY2026 full year minus nine-month YTD through Q3 (sum of Q1–Q3). From SEC company facts (XBRL): revenue FY 215938000000 minus 9M sum 147811000000 = 68127000000; gross_profit FY 153463000000 minus 9M sum 102370000000 = 51093000000; operating_income FY 130387000000 minus 9M sum 86088000000 = 44299000000; net_income FY 120067000000 minus 9M sum 77107000000 = 42960000000; operating_cash_flow FY 102718000000 minus 9M_YTD 66530000000 = 36188000000; capital_expenditures_cash (PaymentsToAcquireProductiveAssets) FY 6042000000 minus 9M_YTD 4758000000 = 1284000000. 10-K accession 0001045810-26-000021; 9M inputs from prior quarters’ filings."
+    retrieved_at: "2026-03-26"
+  - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001045810.json
+    kind: sec_companyfacts_json
+    covers: [total_assets, total_liabilities, stockholders_equity, total_debt, cash_and_equivalents, shares_outstanding_basic, shares_outstanding_diluted]
+    description: "From SEC company facts API (XBRL): balance sheet and fiscal-year share counts as of period end 2026-01-25. Accession 0001045810-26-000021."
+    retrieved_at: "2026-03-26"

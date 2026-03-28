@@ -1,0 +1,149 @@
+# Market perception — NVIDIA (chips layer)
+# Scaffolded from content/_meta/market_perception_templates/market_perception.yaml.
+# Populate per agent/instructions/market_perception.md.
+
+kind: market_perception
+schema_version: 1
+
+as_of: null
+
+company: nvidia
+layer: chips
+
+# ── Consensus narrative ─────────────────────────────────────────────────────────
+consensus_narrative:
+  summary: null
+
+  bull_thesis:
+    view: null
+    key_assumptions: []
+    sources: []
+
+  bear_thesis:
+    view: null
+    key_assumptions: []
+    sources: []
+
+  embedded_assumptions:
+    - assumption: null
+      notes: null
+      sources: []
+
+  narrative_shift:
+    direction: null
+    summary: null
+    prior_consensus: null
+    sources: []
+
+# ── Key debates ─────────────────────────────────────────────────────────────────
+key_debates:
+  - id: null
+    question: null
+    bull_case:
+      argument: null
+      evidence: null
+      sources: []
+    bear_case:
+      argument: null
+      evidence: null
+      sources: []
+    resolution_evidence: null
+    current_lean: null
+    lean_reasoning: null
+
+# ── Sentiment signals ───────────────────────────────────────────────────────────
+sentiment_signals:
+  sell_side_summary:
+    total_analysts: null
+    buy_count: null
+    hold_count: null
+    sell_count: null
+    consensus_target_low: null
+    consensus_target_median: null
+    consensus_target_high: null
+    as_of: null
+    notes: null
+    sources: []
+
+  social_sentiment:
+    direction: null
+    summary: null
+    platforms_sampled: []
+    sources: []
+
+  notable_shifts:
+    - date: null
+      trigger: null
+      from_sentiment: null
+      to_sentiment: null
+      notes: null
+      sources: []
+
+  contrarian_positions:
+    - position: null
+      proponent: null
+      reasoning: null
+      source_tier: null
+      sources: []
+
+# ── Competitive positioning ──────────────────────────────────────────────────────
+competitive_positioning:
+  key_peers:
+    - slug: null
+      name: null
+      relevance: null
+      sources: []
+
+  where_company_wins:
+    - dimension: null
+      summary: null
+      durability: null
+      sources: []
+
+  where_gap_closing:
+    - dimension: null
+      summary: null
+      pace: null
+      sources: []
+
+  where_company_loses:
+    - dimension: null
+      leading_peer: null
+      summary: null
+      sources: []
+
+  switching_costs:
+    summary: null
+    lock_in_factors: []
+    switching_enablers: []
+    sources: []
+
+  order_changers:
+    - event: null
+      impact: null
+      likelihood: null
+      timeline: null
+      sources: []
+
+# ── Information asymmetries ─────────────────────────────────────────────────────
+information_asymmetries:
+  - id: null
+    title: null
+    market_believes: null
+    evidence_suggests: null
+    gap_reason: null
+    closing_catalyst: null
+    confidence: null
+    sources: []
+
+# ── Forward signals ─────────────────────────────────────────────────────────────
+forward_signals:
+  - id: null
+    signal: null
+    source_tier: null
+    date_observed: null
+    implication: null
+    sources: []
+
+# ── Top-level sources ───────────────────────────────────────────────────────────
+sources: []

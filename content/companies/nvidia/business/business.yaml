@@ -1,0 +1,1216 @@
+# Chips layer — NVIDIA product-centric business profile.
+# See content/_meta/business_templates/chips.yaml for field definitions and source tiers.
+#
+# Spec notes:
+#   - Tensor Core FLOPS marked "(sparse)" are with 2:4 structured sparsity; dense = half the sparse figure.
+#   - NVIDIA's headline numbers use sparse; both are noted where relevant.
+#   - B200/B300 per-GPU specs derived from HGX 8-GPU system specs (÷ 8).
+
+layer: chips
+profile_version: 1
+
+as_of: "2026-03-26"
+
+# ─── Product catalog ────────────────────────────────────────────────────────────
+products:
+
+  # ── H100 SXM ──────────────────────────────────────────────────────────────────
+  - name: "H100 SXM"
+    vendor: nvidia
+    generation: "Hopper"
+    status: production
+    launch_date: "2023-Q1"
+
+    architecture:
+      process_node:
+        value: "TSMC 4N"
+        notes: "Custom TSMC 4nm-class node for NVIDIA."
+        sources:
+          - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+            kind: vendor_datasheet
+            description: "NVIDIA H100 Tensor Core GPU Architecture whitepaper."
+            retrieved_at: "2026-03-26"
+      transistor_count:
+        value: 80
+        notes: "80 billion transistors."
+        sources:
+          - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+            kind: vendor_datasheet
+            description: "NVIDIA Hopper architecture whitepaper: 80B transistors."
+            retrieved_at: "2026-03-26"
+      die_size_mm2:
+        value: 814
+        notes: "Monolithic die, 814 mm²."
+        sources:
+          - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+            kind: vendor_datasheet
+            description: "NVIDIA Hopper architecture whitepaper: 814 mm² die size."
+            retrieved_at: "2026-03-26"
+      memory_type:
+        value: "HBM3"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: 80GB HBM3."
+            retrieved_at: "2026-03-26"
+      memory_capacity_gb:
+        value: 80
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page spec table."
+            retrieved_at: "2026-03-26"
+      memory_bandwidth_tb_s:
+        value: 3.35
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: 3.35 TB/s GPU memory bandwidth."
+            retrieved_at: "2026-03-26"
+      interconnect:
+        value: "NVLink 4.0, 900 GB/s"
+        notes: "Fourth-generation NVLink; PCIe Gen5 128 GB/s."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page spec table: NVLink 900GB/s."
+            retrieved_at: "2026-03-26"
+
+    performance:
+      tdp_watts:
+        value: 700
+        notes: "Up to 700W configurable."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: Max TDP up to 700W (configurable)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp8_tflops:
+        value: 3958
+        notes: "With sparsity. Dense: ~1,979 TFLOPS."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: FP8 Tensor Core 3,958 TFLOPS (with sparsity)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp16_tflops:
+        value: 1979
+        notes: "With sparsity. Dense: ~990 TFLOPS. Same value for BF16."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: FP16/BF16 Tensor Core 1,979 TFLOPS (with sparsity)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp32_tflops:
+        value: 67
+        notes: "Non-tensor FP32."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: FP32 67 TFLOPS."
+            retrieved_at: "2026-03-26"
+      peak_flops_int8_tops:
+        value: 3958
+        notes: "With sparsity."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: INT8 Tensor Core 3,958 TOPS (with sparsity)."
+            retrieved_at: "2026-03-26"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 5.65
+        notes: "Derived: 3,958 TFLOPS (sparse) / 700W."
+        sources: []
+      flops_per_watt_fp16:
+        value: 2.83
+        notes: "Derived: 1,979 TFLOPS (sparse) / 700W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.00479
+        notes: "Derived: 3.35 TB/s / 700W."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "DGX H100"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: NVIDIA DGX H100 with 8 GPUs."
+            retrieved_at: "2026-03-26"
+      gpus_per_system:
+        value: 8
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: 10200
+        notes: "DGX H100 max system power ~10.2 kW."
+        sources:
+          - url: https://docs.nvidia.com/dgx/dgxh100-user-guide/introduction-to-dgxh100.html
+            kind: vendor_blog
+            description: "NVIDIA DGX H100 User Guide: system specifications."
+            retrieved_at: "2026-03-26"
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR 400 Gb/s"
+        notes: "NVIDIA Quantum-2 InfiniBand NDR for multi-node scale-out."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page mentions NDR Quantum-2 InfiniBand."
+            retrieved_at: "2026-03-26"
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: "Dominant training accelerator through 2024; workhorse for most large-model training runs."
+        sources: []
+      inference:
+        value: "strong"
+        notes: "FP8 Transformer Engine enables competitive inference throughput; widely deployed for inference at scale."
+        sources: []
+      fine_tuning:
+        value: "strong"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "All scales, up to and including trillion-parameter training with multi-node clusters."
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Fourth-gen Tensor Cores with FP8 Transformer Engine. MIG support for multi-tenant inference."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "NVIDIA submits H100 results in multiple MLPerf Training rounds."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: "NVIDIA submits H100 results in multiple MLPerf Inference rounds."
+        sources: []
+      vendor_published:
+        value: "Up to 4X higher AI training on GPT-3 vs A100; up to 30X higher inference on largest models vs A100."
+        notes: "Vendor-published claims from NVIDIA product page; projected performance."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h100/
+            kind: vendor_datasheet
+            description: "NVIDIA H100 product page: performance claims vs A100."
+            retrieved_at: "2026-03-26"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "Not publicly listed for data-center SXM SKU."
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: ["AWS", "GCP", "Azure", "CoreWeave", "Lambda", "Oracle Cloud"]
+        notes: "Widely available across major CSPs as of 2025."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: ["Dell PowerEdge XE9680", "HPE Cray EX254n", "Lenovo ThinkSystem SR675 V3", "Supermicro SYS-421GE-TNRT"]
+        notes: "Partial list of major OEM platforms."
+        sources: []
+      lead_time:
+        value: "Generally available"
+        notes: "Supply constraints eased through 2024–2025 as Blackwell ramp absorbed demand."
+        sources: []
+
+    sources:
+      - url: https://www.nvidia.com/en-us/data-center/h100/
+        kind: vendor_datasheet
+        description: "NVIDIA H100 GPU official product page with spec table."
+        retrieved_at: "2026-03-26"
+      - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+        kind: vendor_datasheet
+        description: "NVIDIA H100 Tensor Core GPU Architecture whitepaper (Hopper)."
+        retrieved_at: "2026-03-26"
+
+  # ── H200 SXM ──────────────────────────────────────────────────────────────────
+  - name: "H200 SXM"
+    vendor: nvidia
+    generation: "Hopper"
+    status: production
+    launch_date: "2024-Q2"
+
+    architecture:
+      process_node:
+        value: "TSMC 4N"
+        notes: "Same die as H100; memory upgrade to HBM3e."
+        sources: []
+      transistor_count:
+        value: 80
+        notes: "Same die as H100."
+        sources: []
+      die_size_mm2:
+        value: 814
+        notes: "Same die as H100."
+        sources: []
+      memory_type:
+        value: "HBM3e"
+        notes: "First GPU with HBM3e."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: first GPU with HBM3e, 141GB."
+            retrieved_at: "2026-03-26"
+      memory_capacity_gb:
+        value: 141
+        notes: "Nearly double the H100 SXM's 80GB."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: 141GB GPU memory."
+            retrieved_at: "2026-03-26"
+      memory_bandwidth_tb_s:
+        value: 4.8
+        notes: "1.4X more bandwidth than H100 SXM."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: 4.8 TB/s memory bandwidth."
+            retrieved_at: "2026-03-26"
+      interconnect:
+        value: "NVLink 4.0, 900 GB/s"
+        notes: "Same NVLink as H100 SXM."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 spec table: NVLink 900GB/s."
+            retrieved_at: "2026-03-26"
+
+    performance:
+      tdp_watts:
+        value: 700
+        notes: "Up to 700W configurable; same power envelope as H100 SXM."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: Max TDP up to 700W (configurable)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp8_tflops:
+        value: 3958
+        notes: "With sparsity. Same compute die as H100 SXM."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 spec table: FP8 Tensor Core 3,958 TFLOPS."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp16_tflops:
+        value: 1979
+        notes: "With sparsity. Same as H100 SXM."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 spec table: FP16 Tensor Core 1,979 TFLOPS."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp32_tflops:
+        value: 67
+        notes: "Same compute die as H100."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 spec table: FP32 67 TFLOPS."
+            retrieved_at: "2026-03-26"
+      peak_flops_int8_tops:
+        value: 3958
+        notes: "With sparsity."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 spec table: INT8 3,958 TOPS."
+            retrieved_at: "2026-03-26"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 5.65
+        notes: "Derived: 3,958 / 700W. Same as H100 SXM (same die, same TDP)."
+        sources: []
+      flops_per_watt_fp16:
+        value: 2.83
+        notes: "Derived: 1,979 / 700W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.00686
+        notes: "Derived: 4.8 TB/s / 700W. 43% better memory BW/W than H100 SXM."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "HGX H200"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: HGX H200 with 4 or 8 GPUs."
+            retrieved_at: "2026-03-26"
+      gpus_per_system:
+        value: 8
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR 400 Gb/s"
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: "Same compute as H100; memory upgrade helps with larger batch sizes and longer sequences."
+        sources: []
+      inference:
+        value: "strong"
+        notes: "Larger HBM3e enables higher-throughput inference for memory-bound LLMs; up to 1.9X faster on Llama2 70B vs H100."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page: 1.9X faster Llama2 70B inference vs H100."
+            retrieved_at: "2026-03-26"
+      fine_tuning:
+        value: "strong"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "All scales; memory upgrade particularly benefits 70B+ parameter inference."
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Drop-in upgrade path from H100 in HGX form factor. Primary benefit is memory capacity and bandwidth, not compute."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: "Up to 1.9X faster Llama2 70B inference, 1.6X faster GPT-3 175B inference vs H100."
+        notes: "Vendor-published; preliminary specifications."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/h200/
+            kind: vendor_datasheet
+            description: "NVIDIA H200 product page performance claims vs H100."
+            retrieved_at: "2026-03-26"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: ["AWS", "GCP", "Azure", "CoreWeave", "Lambda"]
+        notes: "Availability expanding through 2025."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Available through NVIDIA-Certified Systems partners."
+        sources: []
+      lead_time:
+        value: "Generally available"
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://www.nvidia.com/en-us/data-center/h200/
+        kind: vendor_datasheet
+        description: "NVIDIA H200 GPU official product page with spec table."
+        retrieved_at: "2026-03-26"
+
+  # ── B200 (Blackwell) ──────────────────────────────────────────────────────────
+  - name: "B200"
+    vendor: nvidia
+    generation: "Blackwell"
+    status: production
+    launch_date: "2024-Q4"
+
+    architecture:
+      process_node:
+        value: "TSMC 4NP"
+        notes: "Dual-die (chiplet) design connected by 10 TB/s NV-HBI chip-to-chip link."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/
+            kind: vendor_datasheet
+            description: "NVIDIA Blackwell architecture page."
+            retrieved_at: "2026-03-26"
+      transistor_count:
+        value: 208
+        notes: "208 billion transistors across two dies."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/
+            kind: vendor_datasheet
+            description: "NVIDIA Blackwell architecture: 208B transistors."
+            retrieved_at: "2026-03-26"
+      die_size_mm2:
+        value: null
+        notes: "Dual-chiplet; each die ~420 mm². Total package area larger but not directly comparable to monolithic die size."
+        sources: []
+      memory_type:
+        value: "HBM3e"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX B200 page: 192GB HBM3e per GPU."
+            retrieved_at: "2026-03-26"
+      memory_capacity_gb:
+        value: 192
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: 1.4 TB total / 8 GPUs = 192 GB per GPU (confirmed by DGX B200 specs)."
+            retrieved_at: "2026-03-26"
+      memory_bandwidth_tb_s:
+        value: 8.0
+        notes: "Derived from DGX B200 aggregate 64 TB/s ÷ 8 GPUs."
+        sources:
+          - url: https://resources.nvidia.com/en-us-dgx-software/dgx-b200-datasheet
+            kind: vendor_datasheet
+            description: "DGX B200 datasheet: 64 TB/s aggregate HBM3e bandwidth."
+            retrieved_at: "2026-03-26"
+      interconnect:
+        value: "NVLink 5.0, 1.8 TB/s"
+        notes: "Fifth-generation NVLink; NVLink Switch for all-to-all GPU communication."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: NVLink GPU-to-GPU 1.8 TB/s, total NVLink 14.4 TB/s."
+            retrieved_at: "2026-03-26"
+
+    performance:
+      tdp_watts:
+        value: 1000
+        notes: "Up to 1000W per GPU; commonly cited figure for SXM B200."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/
+            kind: vendor_datasheet
+            description: "NVIDIA Blackwell architecture: ~1000W TDP per GPU."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp8_tflops:
+        value: 9000
+        notes: "With sparsity. Derived: HGX B200 72 PFLOPS (sparse) ÷ 8 GPUs = 9,000 TFLOPS. Dense: ~4,500 TFLOPS."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX B200 spec table: FP8 Tensor Core 72 PFLOPS (sparse) for 8 GPUs."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp16_tflops:
+        value: 4500
+        notes: "With sparsity. Derived: HGX B200 36 PFLOPS (sparse) ÷ 8 = 4,500 TFLOPS. Dense: ~2,250 TFLOPS."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX B200 spec table: FP16/BF16 Tensor Core 36 PFLOPS (sparse) for 8 GPUs."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp32_tflops:
+        value: 75
+        notes: "Derived: HGX B200 600 TFLOPS ÷ 8 GPUs."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX B200 spec table: FP32 600 TFLOPS for 8 GPUs."
+            retrieved_at: "2026-03-26"
+      peak_flops_int8_tops:
+        value: 9000
+        notes: "With sparsity. Derived: HGX B200 72 POPS ÷ 8."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX B200 spec table."
+            retrieved_at: "2026-03-26"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 9.0
+        notes: "Derived: 9,000 TFLOPS (sparse) / 1000W. ~1.6X better than H100 SXM."
+        sources: []
+      flops_per_watt_fp16:
+        value: 4.5
+        notes: "Derived: 4,500 TFLOPS (sparse) / 1000W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.008
+        notes: "Derived: 8.0 TB/s / 1000W."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "DGX B200"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/dgx-b200/
+            kind: vendor_datasheet
+            description: "NVIDIA DGX B200 product page."
+            retrieved_at: "2026-03-26"
+      gpus_per_system:
+        value: 8
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: 14300
+        notes: "DGX B200 max system power ~14.3 kW (includes CPUs, NICs, etc.)."
+        sources:
+          - url: https://docs.nvidia.com/dgx/dgxb200-user-guide/introduction-to-dgxb200.html
+            kind: vendor_blog
+            description: "NVIDIA DGX B200 User Guide: system power specifications."
+            retrieved_at: "2026-03-26"
+      rack_density_kw:
+        value: null
+        notes: "Liquid cooling required at these power levels."
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR/HDR 400 Gb/s or Spectrum-X Ethernet 800 Gb/s"
+        notes: "Supports both Quantum-X InfiniBand and Spectrum-X Ethernet."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: networking options up to 800 Gb/s."
+            retrieved_at: "2026-03-26"
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: "2nd-gen Transformer Engine with FP4; designed for large-model training at scale."
+        sources: []
+      inference:
+        value: "strong"
+        notes: "FP4 support and 2.4X memory capacity vs H100 drive inference throughput gains."
+        sources: []
+      fine_tuning:
+        value: "strong"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "All scales; 192GB HBM3e per GPU enables larger batch sizes and model shards."
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Dual-die architecture with second-gen Transformer Engine. FP4 precision support is new in Blackwell. NVLink 5.0 doubles interconnect bandwidth vs Hopper."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: ["CoreWeave", "Oracle Cloud"]
+        notes: "Early availability; expanding through 2025–2026."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Available through DGX B200 and NVIDIA-Certified Systems partners."
+        sources: []
+      lead_time:
+        value: "Allocation-constrained"
+        notes: "Shipping since late 2024; demand exceeds supply through early 2026."
+        sources: []
+
+    sources:
+      - url: https://www.nvidia.com/en-us/data-center/b200/
+        kind: vendor_datasheet
+        description: "NVIDIA HGX platform page with B200 and B300 spec tables."
+        retrieved_at: "2026-03-26"
+      - url: https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/
+        kind: vendor_datasheet
+        description: "NVIDIA Blackwell architecture overview."
+        retrieved_at: "2026-03-26"
+
+  # ── B300 (Blackwell Ultra) ────────────────────────────────────────────────────
+  - name: "B300"
+    vendor: nvidia
+    generation: "Blackwell Ultra"
+    status: production
+    launch_date: "2025-Q2"
+
+    architecture:
+      process_node:
+        value: "TSMC 4NP"
+        notes: "Same dual-die architecture as B200; enhanced memory configuration."
+        sources: []
+      transistor_count:
+        value: 208
+        notes: "Same die as B200."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Dual-chiplet; same as B200."
+        sources: []
+      memory_type:
+        value: "HBM3e"
+        notes: "288GB per GPU — 50% more than B200."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 total memory 2.1 TB / 8 GPUs = 288 GB per GPU (Blackwell Ultra)."
+            retrieved_at: "2026-03-26"
+      memory_capacity_gb:
+        value: 288
+        notes: "Derived: HGX B300 2.1 TB total ÷ 8 GPUs."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 total memory 2.1 TB."
+            retrieved_at: "2026-03-26"
+      memory_bandwidth_tb_s:
+        value: null
+        notes: "Not separately disclosed; expected higher than B200 due to additional HBM3e stacks."
+        sources: []
+      interconnect:
+        value: "NVLink 5.0, 1.8 TB/s"
+        notes: "Same fifth-gen NVLink as B200."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 NVLink 1.8 TB/s per GPU."
+            retrieved_at: "2026-03-26"
+
+    performance:
+      tdp_watts:
+        value: 1000
+        notes: "Expected ~1000W; same power class as B200."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: 9000
+        notes: "With sparsity. Derived: HGX B300 72 PFLOPS (sparse) ÷ 8. Same FP8 as B200."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 FP8 72 PFLOPS (sparse) for 8 GPUs."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp16_tflops:
+        value: 4500
+        notes: "With sparsity. Same as B200."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 FP16/BF16 36 PFLOPS (sparse)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp32_tflops:
+        value: 75
+        notes: "Derived: HGX B300 600 TFLOPS ÷ 8."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: FP32 600 TFLOPS for 8 GPUs."
+            retrieved_at: "2026-03-26"
+      peak_flops_int8_tops:
+        value: null
+        notes: "HGX page shows 3 POPS (sparse) for INT8 — 375 TOPS per GPU. Spec labeling unclear; may reflect different measurement."
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 9.0
+        notes: "Derived: 9,000 / 1000W. Same compute efficiency as B200; advantage is memory capacity."
+        sources: []
+      flops_per_watt_fp16:
+        value: 4.5
+        notes: "Derived: 4,500 / 1000W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Memory bandwidth per GPU not separately disclosed."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "HGX B300"
+        notes: null
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: HGX B300 with 8x Blackwell Ultra SXM."
+            retrieved_at: "2026-03-26"
+      gpus_per_system:
+        value: 8
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Liquid cooling required."
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR or Spectrum-X Ethernet up to 800 Gb/s"
+        notes: "HGX B300 supports up to 1.6 TB/s networking bandwidth."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: networking bandwidth 1.6 TB/s."
+            retrieved_at: "2026-03-26"
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: "Up to 2.6X training performance vs B200 for LLMs per HGX page claims. FP4 support, 2X attention performance vs Blackwell."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: B300 training performance claims."
+            retrieved_at: "2026-03-26"
+      inference:
+        value: "strong"
+        notes: "FP4 Tensor Core 18 PFLOPS per GPU (sparse); 288GB memory enables larger KV caches and batch sizes."
+        sources: []
+      fine_tuning:
+        value: "strong"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "All scales; 288GB memory per GPU reduces sharding needs for 70B–405B models."
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Blackwell Ultra adds FP4 inference boost (144 PFLOPS for 8 GPUs vs 108 for B200) and 2X attention performance over base Blackwell."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: "Up to 2.6X higher training performance for DeepSeek-R1 vs B200; 2X attention performance vs Blackwell."
+        notes: "Vendor-published; projected performance subject to change."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: B300 performance projections."
+            retrieved_at: "2026-03-26"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: []
+        notes: "Early shipping; CSP availability ramping through 2026."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: null
+        sources: []
+      lead_time:
+        value: "Allocation-constrained"
+        notes: "Shipping now per NVIDIA HGX page; high demand."
+        sources:
+          - url: https://www.nvidia.com/en-us/data-center/b200/
+            kind: vendor_datasheet
+            description: "NVIDIA HGX page: 'HGX B300 and HGX B200 shipping now.'"
+            retrieved_at: "2026-03-26"
+
+    sources:
+      - url: https://www.nvidia.com/en-us/data-center/b200/
+        kind: vendor_datasheet
+        description: "NVIDIA HGX platform page with B300 (Blackwell Ultra) spec tables."
+        retrieved_at: "2026-03-26"
+
+  # ── Vera Rubin (Rubin) ───────────────────────────────────────────────────────
+  - name: "Vera Rubin"
+    vendor: nvidia
+    generation: "Rubin"
+    status: production
+    launch_date: "2026-H2"
+
+    architecture:
+      process_node:
+        value: "TSMC N3"
+        notes: "TSMC 3nm-class node; first NVIDIA data-center GPU on 3nm."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 official product page."
+            retrieved_at: "2026-03-26"
+      transistor_count:
+        value: 336
+        notes: "336 billion transistors; 1.6X increase over Blackwell's 208B."
+        sources:
+          - url: https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer
+            kind: vendor_blog
+            description: "NVIDIA Technical Blog: Inside the Vera Rubin Platform."
+            retrieved_at: "2026-03-26"
+      die_size_mm2:
+        value: null
+        notes: "Not yet disclosed."
+        sources: []
+      memory_type:
+        value: "HBM4"
+        notes: "First GPU with HBM4; 288GB per GPU."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: 20.7 TB HBM4 for 72 GPUs."
+            retrieved_at: "2026-03-26"
+      memory_capacity_gb:
+        value: 288
+        notes: "Derived: NVL72 total 20.7 TB / 72 GPUs ≈ 288 GB per GPU."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table."
+            retrieved_at: "2026-03-26"
+      memory_bandwidth_tb_s:
+        value: 21.9
+        notes: "Derived: NVL72 1,580 TB/s / 72 GPUs ≈ 21.9 TB/s per GPU. ~2.7X over Blackwell."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: 1,580 TB/s total GPU memory bandwidth."
+            retrieved_at: "2026-03-26"
+      interconnect:
+        value: "NVLink 6.0, 3.6 TB/s"
+        notes: "Sixth-generation NVLink; 2X bandwidth over NVLink 5.0. NVLink-C2C 1.8 TB/s to Vera CPU."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: NVLink 3.6 TB/s per GPU."
+            retrieved_at: "2026-03-26"
+
+    performance:
+      tdp_watts:
+        value: null
+        notes: "Per-GPU TDP not separately disclosed. NVL72 rack total 120–130 kW for 72 GPUs + 36 CPUs + networking."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: 17500
+        notes: "Dense. FP8/FP6 Training: 17.5 PFLOPS per GPU. Spec table footnote marks this as dense."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: FP8/FP6 Training 17.5 PFLOPS per GPU (dense)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp16_tflops:
+        value: 4000
+        notes: "Dense. FP16/BF16: 4 PFLOPS per GPU."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: FP16/BF16 4 PFLOPS per GPU (dense)."
+            retrieved_at: "2026-03-26"
+      peak_flops_fp32_tflops:
+        value: 130
+        notes: null
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: FP32 130 TFLOPS per GPU."
+            retrieved_at: "2026-03-26"
+      peak_flops_int8_tops:
+        value: 250000
+        notes: "Dense. 0.25 POPS per GPU = 250,000 TOPS."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 spec table: INT8 0.25 POPS per GPU (dense)."
+            retrieved_at: "2026-03-26"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: null
+        notes: "Per-GPU TDP not disclosed; cannot derive."
+        sources: []
+      flops_per_watt_fp16:
+        value: null
+        notes: "Per-GPU TDP not disclosed; cannot derive."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Per-GPU TDP not disclosed; cannot derive."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "Vera Rubin NVL72"
+        notes: "Rack-scale system with 72 Rubin GPUs + 36 Vera CPUs."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 product page."
+            retrieved_at: "2026-03-26"
+      gpus_per_system:
+        value: 72
+        notes: "NVL72: 72 GPUs in a single rack-scale system."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: "120–130 kW range for full NVL72 rack (GPUs + CPUs + networking)."
+        sources: []
+      rack_density_kw:
+        value: 125
+        notes: "~120–130 kW per NVL72 rack. Liquid cooling required."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 product page; rack power range."
+            retrieved_at: "2026-03-26"
+      scale_out_interconnect:
+        value: "Quantum-X800 InfiniBand or Spectrum-X Ethernet"
+        notes: "ConnectX-9 SuperNIC: 1.6 Tb/s per GPU bandwidth."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 networking specs."
+            retrieved_at: "2026-03-26"
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: "Trains MoE models with 1/4 the GPUs vs Blackwell. NVFP4 Training 35 PFLOPS per GPU."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72: training efficiency claims."
+            retrieved_at: "2026-03-26"
+      inference:
+        value: "strong"
+        notes: "1/10th cost per million tokens vs Blackwell. NVFP4 50 PFLOPS per GPU. Co-designed with Groq 3 LPX for trillion-parameter inference."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72: inference cost claims."
+            retrieved_at: "2026-03-26"
+      fine_tuning:
+        value: "strong"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "Trillion-parameter models and million-token context; designed for reasoning and agentic AI."
+        notes: null
+        sources: []
+      workload_notes:
+        value: "NVFP4 Transformer Engine introduces FP4 training at 35 PFLOPS and inference at 50 PFLOPS per GPU. Vera CPU co-processor adds 88 Olympus Arm cores per superchip for data movement and agentic reasoning. NVL72 rack-scale architecture with 72 GPUs as baseline unit."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: "1/4 GPUs for MoE training vs Blackwell; 1/10 cost per million tokens for inference vs Blackwell."
+        notes: "Vendor-published; projected performance subject to change."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72 performance claims."
+            retrieved_at: "2026-03-26"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: []
+        notes: "Availability ramping through H2 2026."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Built on third-generation MGX NVL72 rack design; 80+ MGX ecosystem partners."
+        sources:
+          - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+            kind: vendor_datasheet
+            description: "NVIDIA Vera Rubin NVL72: MGX ecosystem note."
+            retrieved_at: "2026-03-26"
+      lead_time:
+        value: "Full production"
+        notes: "In full production as of H2 2026. Rubin Ultra variant planned for 2027."
+        sources:
+          - url: https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform
+            kind: ir_html
+            description: "NVIDIA press release: Vera Rubin platform in full production."
+            retrieved_at: "2026-03-26"
+
+    sources:
+      - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+        kind: vendor_datasheet
+        description: "NVIDIA Vera Rubin NVL72 official product page with spec table."
+        retrieved_at: "2026-03-26"
+      - url: https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer
+        kind: vendor_blog
+        description: "NVIDIA Technical Blog: Inside the Vera Rubin Platform."
+        retrieved_at: "2026-03-26"
+      - url: https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform
+        kind: ir_html
+        description: "NVIDIA press release: Vera Rubin platform announcement."
+        retrieved_at: "2026-03-26"
+
+# ─── Company-level context ──────────────────────────────────────────────────────
+
+software_ecosystem:
+  stack_name:
+    value: "CUDA + cuDNN + TensorRT"
+    notes: "CUDA is the dominant GPU programming model; cuDNN for deep learning primitives; TensorRT for inference optimization."
+    sources:
+      - url: https://developer.nvidia.com/cuda-toolkit
+        kind: vendor_blog
+        description: "NVIDIA CUDA Toolkit developer page."
+        retrieved_at: "2026-03-26"
+  framework_support:
+    value: ["PyTorch", "JAX", "TensorFlow", "ONNX Runtime", "Triton Inference Server"]
+    notes: "First-class support across all major ML frameworks. NVIDIA contributes directly to PyTorch and JAX GPU backends."
+    sources: []
+  ecosystem_maturity:
+    value: "dominant"
+    notes: "CUDA has 17+ years of ecosystem development; the deepest library support, largest developer community, and widest tool chain of any accelerator platform."
+    sources: []
+
+manufacturing_and_supply:
+  foundry_partners:
+    value: ["TSMC"]
+    notes: "All current data-center GPUs manufactured by TSMC."
+    sources:
+      - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+        kind: vendor_datasheet
+        description: "H100 whitepaper: TSMC 4N process."
+        retrieved_at: "2026-03-26"
+  process_nodes:
+    value: ["4N", "4NP", "N3"]
+    notes: "Hopper (H100/H200): TSMC 4N. Blackwell (B200/B300): TSMC 4NP. Rubin: TSMC N3."
+    sources: []
+  packaging:
+    value: "CoWoS-S (Hopper), CoWoS-L (Blackwell), CoWoS (Rubin)"
+    notes: "Blackwell's dual-die design uses TSMC CoWoS-L for the larger interposer. CoWoS capacity has been a binding supply constraint across generations."
+    sources: []
+  supply_constraints:
+    value: "CoWoS packaging capacity, HBM3e/HBM4 allocation, and advanced packaging remain primary bottlenecks."
+    notes: null
+    sources: []
+
+commercial_traction:
+  deployment_channels:
+    value: ["CSP instances", "OEM servers", "DGX systems", "HGX baseboards", "direct enterprise"]
+    notes: null
+    sources: []
+  notable_customers_or_design_wins:
+    value: ["Microsoft Azure", "Google Cloud", "Amazon Web Services", "Meta", "Oracle Cloud", "CoreWeave", "Tesla", "xAI"]
+    notes: "All major hyperscalers and leading AI labs deploy NVIDIA GPUs at scale."
+    sources: []
+  revenue_segment:
+    value: "Data Center"
+    notes: "NVIDIA reports AI accelerator revenue under the 'Data Center' segment. FY2026 Data Center revenue dominates total."
+    sources:
+      - url: https://investor.nvidia.com
+        kind: ir_html
+        description: "NVIDIA Investor Relations: segment reporting."
+        retrieved_at: "2026-03-26"
+
+roadmap:
+  next_generation:
+    value: "Rubin Ultra (2027) — enhanced Rubin variant with expected memory and performance improvements."
+    notes: "Rubin (2026) now in full production as Vera Rubin NVL72. Rubin Ultra planned for 2027, continuing the annual cadence."
+    sources:
+      - url: https://nvidia.com/en-us/data-center/vera-rubin-nvl72/
+        kind: vendor_datasheet
+        description: "NVIDIA Vera Rubin NVL72 product page; Rubin Ultra mentioned in roadmap."
+        retrieved_at: "2026-03-26"
+  cadence:
+    value: "annual"
+    notes: "NVIDIA has delivered Ampere (2020), Hopper (2022), Blackwell (2024), Blackwell Ultra (2025), Rubin (2026) — annual cadence for data-center architectures. Rubin Ultra expected 2027."
+    sources: []
+  roadmap_credibility:
+    value: "strong"
+    notes: "Consistent execution on roadmap dates. Each generation has shipped within the announced timeframe."
+    sources: []
+
+sources:
+  - url: https://www.nvidia.com/en-us/data-center/h100/
+    kind: vendor_datasheet
+    description: "NVIDIA H100 GPU official product page."
+    retrieved_at: "2026-03-26"
+  - url: https://www.nvidia.com/en-us/data-center/h200/
+    kind: vendor_datasheet
+    description: "NVIDIA H200 GPU official product page."
+    retrieved_at: "2026-03-26"
+  - url: https://www.nvidia.com/en-us/data-center/b200/
+    kind: vendor_datasheet
+    description: "NVIDIA HGX platform page (B200, B300, Rubin)."
+    retrieved_at: "2026-03-26"
+  - url: https://resources.nvidia.com/en-us-hopper-architecture/nvidia-h100-tensor-c
+    kind: vendor_datasheet
+    description: "NVIDIA H100 Tensor Core GPU Architecture whitepaper."
+    retrieved_at: "2026-03-26"

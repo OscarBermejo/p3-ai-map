@@ -36,7 +36,7 @@ Work like an experienced **financial research and investing professional** with 
 | `inbox/` | Drafts / proposals awaiting approval |
 | `content/_meta/layers.yaml` | Value-chain layer order and ids |
 | `content/_meta/company_index.yaml` | Human-maintained `slug` → `layer` map for canonical companies |
-| `content/companies/<slug>/` | One company: `entity.yaml` + optional `business/business.yaml` + optional `financials/` + optional `announcements/announcements.yaml` + optional `narrative/narrative.yaml` |
+| `content/companies/<slug>/` | One company: `entity.yaml` + optional `business/business.yaml` + optional `financials/` + optional `announcements/announcements.yaml` + optional `narrative/narrative.yaml` + optional `market_perception/market_perception.yaml` |
 | `content/_meta/companies/README.md` | Canonical doc for company folder layout and scaffold |
 | `content/_meta/companies/_example/` | Structural template for new companies; **not** a real issuer |
 | `inbox/proposals/<date>/companies/<slug>/` | Proposal tree with the same shape as `content/companies/<slug>/` |
@@ -74,6 +74,7 @@ When you add a script under `agent/tools/`, append a one-line description to the
 
 | File | When |
 |------|------|
+| [company_deep_dive.md](./company_deep_dive.md) | Full company analysis → sequences all phases from scaffold to narrative capstone |
 | [sources.md](./sources.md) | Always when stating or updating facts |
 | [company_add_company.md](./company_add_company.md) | New company scaffold → create company folder and `entity.yaml` first |
 | [financials.md](./financials.md) | Quarterly metrics / `financials/*.yaml` |
@@ -83,3 +84,4 @@ When you add a script under `agent/tools/`, append a one-line description to the
 | [business_workflows.md](./business_workflows.md) | Business workflows → create `business/business.yaml`, or validate / update an existing profile |
 | [announcements.md](./announcements.md) | `announcements/announcements.yaml` → latest material company announcements from official channels; newest first |
 | [narrative.md](./narrative.md) | `narrative/narrative.yaml` → thesis-driven company judgment connecting filings, business, announcements, and context; not new authoritative metrics |
+| [market_perception.md](./market_perception.md) | `market_perception/market_perception.yaml` → external market signal: consensus narrative, key debates, sentiment, information asymmetries, and forward signals |

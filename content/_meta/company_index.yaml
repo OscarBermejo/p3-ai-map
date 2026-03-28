@@ -17,3 +17,5 @@ companies:
     layer: infrastructure
   - slug: coreweave
     layer: infrastructure
+  - slug: nvidia
+    layer: chips

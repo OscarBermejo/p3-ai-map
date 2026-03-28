@@ -1,0 +1,497 @@
+kind: market_perception
+schema_version: 1
+
+as_of: "2026-03-26"
+
+company: nebius
+layer: infrastructure
+
+# ── Consensus narrative ─────────────────────────────────────────────────────────
+consensus_narrative:
+  summary: >
+    The market sees Nebius as the most validated neocloud story in AI infrastructure after
+    a remarkable March 2026: $27B Meta deal, $2B NVIDIA investment, $4.3B convertible notes
+    raise, and a gigawatt-scale factory approval. Consensus has shifted from "interesting
+    Yandex spinoff" to "potential new AWS for AI." But the stock trades at extreme multiples
+    (~70x revenue) and the capital requirements are staggering ($16-20B capex in 2026 alone),
+    creating deep disagreement on whether the valuation is justified by the trajectory.
+
+  bull_thesis:
+    view: >
+      Nebius is building the infrastructure layer of AI at a pace and scale that makes it
+      a potential utility-like platform. ~$46B in contracted hyperscaler deals (Microsoft
+      $17.4B + Meta $27B), NVIDIA strategic backing ($2B investment + 5 GW partnership),
+      ARR guidance of $7-9B by end-2026 (up from $1.25B at year-end 2025), and 20 years
+      of cloud engineering DNA from Yandex. The company is "sold out" of capacity — demand
+      exceeds supply. The neocloud model (purpose-built for AI, vertically integrated, own
+      power) is structurally superior to legacy hyperscaler bolt-ons for frontier workloads.
+    key_assumptions:
+      - "ARR reaches $7-9B by end-2026 from $1.25B at year-end 2025 (5.6-7.2x growth)"
+      - "Connected power ramps to 800 MW-1 GW by end-2026 from ~170 MW"
+      - "$16-20B capex in 2026 is fundable through prepayments, debt, and equity"
+      - "Multi-year hyperscaler contracts convert to delivered capacity on schedule"
+      - "Software layer (Aether, Token Factory, Tavily) creates differentiation beyond raw compute"
+    sources:
+      - url: https://seekingalpha.com/article/4877486-nebius-high-stakes-capex-meets-massive-ai-infrastructure-potential
+        kind: curated_platform
+        description: "Curated platform: Seeking Alpha — 'High-Stakes CapEx Meets Massive AI Infrastructure Potential.'"
+        retrieved_at: "2026-03-26"
+      - url: https://www.benzinga.com/trading-ideas/movers/26/03/51286320/nebius-rewrites-expectations-next-stop-200
+        kind: curated_platform
+        description: "Curated platform: Benzinga — 'Nebius Rewrites Expectations — Next Stop $200?' post-Meta deal analyst reaction."
+        retrieved_at: "2026-03-26"
+
+  bear_thesis:
+    view: >
+      Nebius trades at ~70x trailing revenue and ~200x earnings on a business that burned
+      $1.23B of free cash flow in Q4 2025 alone. The $16-20B capex plan for 2026 requires
+      continuous access to capital markets. A $34.5B funding gap exists for the $54.5B
+      capex plan through 2028. Governance risk from founder Arkady Volozh's super-voting
+      control and the Yandex legacy. The neocloud model is structurally dependent on GPU
+      scarcity — when supply normalizes, margins compress and differentiation erodes.
+    key_assumptions:
+      - "Valuation requires flawless multi-year execution to justify current price"
+      - "Capital markets access could tighten, stranding partially built infrastructure"
+      - "GPU scarcity will ease by 2027-2028, compressing neocloud margins"
+      - "Customer concentration in Microsoft and Meta creates dependency risk"
+      - "Founder-controlled governance structure limits minority shareholder protection"
+    sources:
+      - url: https://ts2.tech/en/nebius-group-n-v-nbis-stock-outlook-for-2026-how-microsoft-and-meta-deals-are-shaping-this-ai-infrastructure-high-flier/
+        kind: curated_platform
+        description: "Curated platform: TS2 — detailed valuation analysis showing extreme multiples and governance concerns."
+        retrieved_at: "2026-03-26"
+      - url: https://seekingalpha.com/article/4882650-nebius-demand-is-there-and-capex-is-to-watch
+        kind: curated_platform
+        description: "Curated platform: Seeking Alpha — 'Demand Is There, But CapEx Is The Key Variable.'"
+        retrieved_at: "2026-03-26"
+
+  embedded_assumptions:
+    - assumption: "The neocloud model has durable structural advantages over hyperscalers for AI workloads"
+      notes: "This is the foundational bet. If hyperscalers close the performance gap for AI workloads, the neocloud premium evaporates. Currently supported by demand exceeding supply and customer willingness to sign multi-year deals."
+      sources:
+        - url: https://www.networkworld.com/article/4011187/neoclouds-roll-in-challenge-hyperscalers-for-ai-workloads.html
+          kind: curated_platform
+          description: "Curated platform: Network World — 'Neoclouds roll in, challenge hyperscalers for AI workloads.'"
+          retrieved_at: "2026-03-26"
+    - assumption: "GPU scarcity persists long enough for Nebius to build a moat"
+      notes: "Current demand exceeds supply (Nebius was 'sold out' in Q4 2025). But NVIDIA is expanding production (Blackwell, Rubin), and multiple neoclouds are scaling simultaneously. The window may be 18-24 months."
+      sources: []
+    - assumption: "60% of 2026 capex is self-funded through internal cash and prepayments"
+      notes: "Management claim from shareholder letter. Remaining 40% requires external capital — convertible notes ($4.3B closed), equity, and potentially more. Sensitive to deployment timing."
+      sources:
+        - url: https://static3.seekingalpha.com/article/4875310-nebius-dont-let-the-capex-scare-you
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — capex funding breakdown analysis."
+          retrieved_at: "2026-03-26"
+
+  narrative_shift:
+    direction: more_bullish
+    summary: >
+      Dramatic bullish shift in March 2026. The Meta $27B deal (March 16), NVIDIA $2B
+      investment (March 11), gigawatt-scale factory approval (March 3), and $4.3B convertible
+      close (March 20) transformed the narrative from "interesting AI infrastructure startup"
+      to "validated large-scale platform." Reddit sentiment recovered from bearish 35 (post
+      Q4 miss Feb 15) to 72 (March 10) and likely higher post-Meta deal. Analyst targets
+      raised across the board.
+    prior_consensus: "Promising but unproven AI infrastructure play with execution uncertainty and Yandex legacy questions."
+    sources:
+      - url: https://www.finviz.com/news/334823/reddit-fell-in-love-with-nebius-then-panic-sold-the-wrong-miss
+        kind: curated_platform
+        description: "Curated platform: FinViz — Reddit sentiment trajectory from euphoria to panic to recovery."
+        retrieved_at: "2026-03-26"
+
+# ── Key debates ─────────────────────────────────────────────────────────────────
+key_debates:
+  - id: capex_fundability
+    question: "Can Nebius fund $16-20B of capex in 2026 and $54.5B through 2028 without destroying shareholder value?"
+
+    bull_case:
+      argument: "60% of 2026 capex is internally funded via customer prepayments and cash generation. The $4.3B convertible close, $2B NVIDIA investment, and access to ATM equity provide multiple funding levers. Meta and Microsoft prepayments create a self-reinforcing cycle where customer capital funds the infrastructure those customers need."
+      evidence: "Q4 2025 operating cash flow was $834M, boosted by $1.57B deferred revenue. Post-period: $4.3B convertibles + $2B NVIDIA = $6.3B of fresh capital. Management says 60% self-funded."
+      sources:
+        - url: https://static3.seekingalpha.com/article/4875310-nebius-dont-let-the-capex-scare-you
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — capex funding analysis and 60% self-funding claim."
+          retrieved_at: "2026-03-26"
+
+    bear_case:
+      argument: "A $34.5B funding gap exists for the $54.5B capex plan through 2028. Operating cash flow is heavily shaped by prepayment timing, not recurring profitability. Net loss was $249.6M in Q4 despite $834M OCF. If capital markets tighten or customer prepayments slow, partially built infrastructure becomes stranded capital."
+      evidence: "$54.5B total capex through 2028 minus identifiable funding sources = ~$34.5B gap per analyst estimates. Free cash flow was -$1.23B in Q4 2025."
+      sources:
+        - url: https://seekingalpha.com/article/4882650-nebius-demand-is-there-and-capex-is-to-watch
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — capex funding gap and FCF analysis."
+          retrieved_at: "2026-03-26"
+
+    resolution_evidence: "H1 2026 capex execution and cash flow. If Nebius deploys $8-10B of capex while maintaining cash position through prepayments and debt, the funding model gains credibility. If cash balance deteriorates faster than revenue scales, the gap becomes the story."
+    current_lean: bull
+    lean_reasoning: "The pace of capital formation — $6.3B raised in March alone, on top of ~$46B in customer commitments — suggests Nebius has unusual access to capital for this stage. The risk is real but the momentum is extraordinary."
+
+  - id: valuation_vs_trajectory
+    question: "Is Nebius worth ~$50B+ market cap on $228M of quarterly revenue?"
+
+    bull_case:
+      argument: "You don't value a company scaling from $1.25B ARR to $7-9B ARR at trailing multiples. The contracted deal book ($46B+), NVIDIA partnership, and sold-out capacity justify pricing on forward economics. At $8B ARR with 40% EBITDA margins, Nebius would trade at ~15x forward EBITDA — reasonable for a high-growth infrastructure platform."
+      evidence: "ARR guidance $7-9B by end-2026. Adjusted EBITDA margin target 40%. ~$46B contracted deals provide revenue visibility."
+      sources:
+        - url: https://www.benzinga.com/trading-ideas/movers/26/03/51286320/nebius-rewrites-expectations-next-stop-200
+          kind: curated_platform
+          description: "Curated platform: Benzinga — forward valuation framework post-Meta deal."
+          retrieved_at: "2026-03-26"
+
+    bear_case:
+      argument: "At ~$100/share and ~$50B+ market cap, NBIS trades at ~70x trailing revenue and near 200x earnings. The contracted deals are multi-year with execution risk. If growth disappoints by even 20%, the stock reprices violently. History is full of capital-intensive infrastructure plays that looked cheap on forward multiples and expensive on actuals."
+      evidence: "Q4 2025 net loss $249.6M. P/S ~70x trailing. Stock already -31% from 52-week high despite the deal flow."
+      sources:
+        - url: https://ts2.tech/en/nebius-group-n-v-nbis-stock-outlook-for-2026-how-microsoft-and-meta-deals-are-shaping-this-ai-infrastructure-high-flier/
+          kind: curated_platform
+          description: "Curated platform: TS2 — valuation analysis showing extreme trailing multiples."
+          retrieved_at: "2026-03-26"
+
+    resolution_evidence: "Q1-Q2 2026 revenue trajectory. If quarterly revenue jumps from $228M toward $500M+, the valuation normalizes rapidly. If revenue stays below $400M, the trajectory thesis weakens."
+    current_lean: bull
+    lean_reasoning: "The contracted deal book and sold-out capacity provide unusual forward visibility for a company at this stage. The valuation is extreme on trailing metrics but the growth vector is supported by signed commitments, not projections."
+
+  - id: neocloud_durability
+    question: "Is the neocloud model a durable business or a temporary scarcity trade?"
+
+    bull_case:
+      argument: "Neoclouds are purpose-built for AI workloads with better performance-per-dollar than legacy hyperscaler infrastructure. Nebius's vertically integrated model (own power, own racks, own networking) creates cost advantages. The software layer (Aether, Token Factory) adds stickiness. This is not a commodity — it's a platform."
+      evidence: "Nebius was first in Europe to deploy NVIDIA HGX B300 (Nov 2025). Custom server rack design and InfiniBand networking. Aether 3.0/3.5 platform releases. Tavily acquisition for agentic search."
+      sources:
+        - url: https://investor.wedbush.com/wedbush/article/finterra-2026-2-23-the-ai-factory-reborn-a-deep-dive-into-nebius-group-nbis-and-the-2026-ai-infrastructure-landscape
+          kind: specialist_analysis
+          description: "Specialist analysis: Wedbush/Finterra deep dive — 'The AI Factory Reborn' on neocloud model durability."
+          retrieved_at: "2026-03-26"
+
+    bear_case:
+      argument: "The neocloud model works in scarcity. When GPU supply normalizes (Blackwell ramp, Rubin launch, multiple neoclouds scaling), the performance-per-dollar advantage narrows. Hyperscalers have deeper pockets and existing customer relationships. CoreWeave already faces revenue delays from third-party capacity bottlenecks. The model is structurally dependent on GPU depreciation economics that may not hold."
+      evidence: "CoreWeave finances GPUs at 9-11% interest, using chips as collateral. If utilization drops below 80%, margins turn negative. Neocloud margins are untested at scale in a supply-abundant environment."
+      sources:
+        - url: https://fusioncapital.substack.com/p/the-neocloud-wars-why-coreweave-is
+          kind: specialist_analysis
+          description: "Specialist analysis: Fusion Capital — 'The Neocloud Wars: Why CoreWeave is Betting on Debt, but Nebius is Building the New AWS.'"
+          retrieved_at: "2026-03-26"
+
+    resolution_evidence: "2027-2028 neocloud margins as GPU supply expands. If Nebius maintains 40%+ EBITDA margins as capacity grows and scarcity eases, the platform thesis wins. If margins compress toward 20% or below, it was a scarcity trade."
+    current_lean: bull
+    lean_reasoning: "The software platform differentiation (Aether, Token Factory, serverless AI), early Vera Rubin deployment, and 20 years of cloud engineering DNA give Nebius more durability potential than pure GPU resellers. But this is the longest-term and most uncertain question."
+
+# ── Sentiment signals ───────────────────────────────────────────────────────────
+sentiment_signals:
+  sell_side_summary:
+    total_analysts: 9
+    buy_count: 8
+    hold_count: 2
+    sell_count: 0
+    consensus_target_low: 120.00
+    consensus_target_median: 166.78
+    consensus_target_high: 211.00
+    as_of: "2026-03-27"
+    notes: >
+      Strong Buy consensus with 65% upside to median target from ~$101 current price.
+      Coverage expanding rapidly: Citi initiated at $169 (March 16), BofA at $150 (March 24).
+      DA Davidson and BWS both raised to $200 on Meta deal day. No sell ratings — unusual
+      unanimity for a stock at these multiples.
+    sources:
+      - url: https://stockanalysis.com/stocks/nbis/forecast/
+        kind: sell_side_summary
+        description: "Sell-side summary: StockAnalysis aggregation of 9 analyst ratings and price targets."
+        retrieved_at: "2026-03-26"
+
+  social_sentiment:
+    direction: bullish
+    summary: >
+      Reddit sentiment recovered dramatically from a bearish 35 (post-Q4 miss, Feb 15) to
+      bullish 72+ (early March) driven by the deal cascade. Users on r/NBIS_Stock call it
+      "the most asymmetrical AI play on the market." However, the Q4 earnings miss (-$0.24
+      vs expectations) showed the community can panic-sell on short-term misses even when the
+      long-term thesis strengthens. Sentiment is currently bullish but fragile — dependent on
+      continued deal flow and execution milestones.
+    platforms_sampled: ["reddit_r_nbis_stock", "reddit_r_wallstreetbets"]
+    sources:
+      - url: https://www.finviz.com/news/334823/reddit-fell-in-love-with-nebius-then-panic-sold-the-wrong-miss
+        kind: social_signal
+        description: "Community signal: FinViz — 'Reddit Fell in Love With Nebius Then Panic Sold the Wrong Miss.'"
+        retrieved_at: "2026-03-26"
+      - url: https://altindex.com/ticker/nbis/sentiment
+        kind: social_signal
+        description: "Community signal: AltIndex sentiment tracker for NBIS."
+        retrieved_at: "2026-03-26"
+
+  notable_shifts:
+    - date: "2026-02-12"
+      trigger: "Q4 2025 earnings miss despite record revenue — EPS below expectations"
+      from_sentiment: strongly_bullish
+      to_sentiment: bearish
+      notes: "Reddit sentiment dropped from 95 to 35 in three days. Stock sold off. Demonstrated that retail ownership makes NBIS sensitive to short-term earnings beats/misses regardless of strategic progress."
+      sources:
+        - url: https://www.finviz.com/news/334823/reddit-fell-in-love-with-nebius-then-panic-sold-the-wrong-miss
+          kind: social_signal
+          description: "Community signal: sentiment crash post-Q4 earnings."
+          retrieved_at: "2026-03-26"
+    - date: "2026-03-11"
+      trigger: "NVIDIA $2B investment and strategic partnership announcement"
+      from_sentiment: mixed
+      to_sentiment: bullish
+      notes: "Stock rallied 16% on the day. NVIDIA validation seen as the strongest possible endorsement of the neocloud model."
+      sources:
+        - url: https://www.tradingview.com/news/tradingview:bc8e42aa7094b:0-nbis-nebius-stock-rallies-16-after-nvidia-injects-2-billion-into-neocloud/
+          kind: curated_platform
+          description: "Curated platform: TradingView — NBIS 16% rally on NVIDIA investment."
+          retrieved_at: "2026-03-26"
+    - date: "2026-03-16"
+      trigger: "Meta $27B AI infrastructure deal announcement"
+      from_sentiment: bullish
+      to_sentiment: strongly_bullish
+      notes: "The largest single neocloud contract. Analyst targets raised same day. Total contracted deal value now ~$46B+."
+      sources:
+        - url: https://www.newsbreak.com/stocktwits-303303202/4543837764238-nebius-stock-to-rally-50-more-2-analysts-see-similar-upside-after-meta-neocloud-deal
+          kind: curated_platform
+          description: "Curated platform: NewsBreak — analyst upgrades on Meta deal day."
+          retrieved_at: "2026-03-26"
+
+  contrarian_positions:
+    - position: "Nebius is structurally overvalued because the neocloud model is a scarcity trade, not a durable platform"
+      proponent: "Bear-leaning Seeking Alpha analysts and governance-focused investors"
+      reasoning: "At ~70x revenue, the stock prices in flawless multi-year execution. GPU scarcity is temporary. Founder-controlled governance limits minority shareholder recourse. The $34.5B funding gap through 2028 requires continuous capital market access."
+      source_tier: 2
+      sources:
+        - url: https://seekingalpha.com/article/4882650-nebius-demand-is-there-and-capex-is-to-watch
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — capex risk and valuation concerns."
+          retrieved_at: "2026-03-26"
+
+# ── Competitive positioning ──────────────────────────────────────────────────────
+competitive_positioning:
+  key_peers:
+    - slug: coreweave
+      name: CoreWeave
+      relevance: "Largest neocloud by revenue (~$5B) and GPU fleet (250k+). Direct competitor for hyperscaler AI infrastructure contracts. The primary benchmark for Nebius's scale ambitions."
+      sources:
+        - url: https://seekingalpha.com/article/4840996-nebius-vs-coreweave-the-neocloud-battle-shaping-the-future-of-ai-infrastructure
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — 'Nebius Vs. CoreWeave: The Neocloud Battle.'"
+          retrieved_at: "2026-03-26"
+    - slug: iren
+      name: IREN Ltd
+      relevance: "Fellow infrastructure-layer neocloud with significant power portfolio (4.5 GW secured). Bitcoin-miner-to-AI pivot. Shared Microsoft customer. Useful for power portfolio and deal-flow comparison."
+      sources: []
+    - slug: null
+      name: Lambda Labs
+      relevance: "GPU cloud provider focused on ML researchers and startups. Smaller scale but targets overlapping inference/training market. Represents the long tail of neocloud competition."
+      sources: []
+
+  where_company_wins:
+    - dimension: "Deal flow velocity and customer quality"
+      summary: "~$46B in contracted hyperscaler deals (Microsoft $17.4B + Meta $27B) in months. No other neocloud has signed contracts of this magnitude this quickly. Customer quality (Microsoft, Meta, NVIDIA as investor) is unmatched in the space."
+      durability: strong
+      sources:
+        - url: https://group.nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta
+          kind: company_web
+          description: "Primary source: Nebius — Meta $27B deal announcement."
+          retrieved_at: "2026-03-26"
+    - dimension: "Strategic NVIDIA relationship"
+      summary: "$2B investment + full-stack partnership spanning AI factory design, inference software, fleet management, and Vera Rubin early access. First in Europe to deploy HGX B300. This is deeper than a purchase agreement — NVIDIA is co-building the platform."
+      durability: strong
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+          kind: sec_6k
+          description: "Form 6-K — NVIDIA partnership and $2B investment."
+          retrieved_at: "2026-03-26"
+    - dimension: "Power infrastructure independence"
+      summary: "2.5 GW+ of self-procured power capacity reduces dependency on third-party data center providers. CoreWeave faced revenue delays due to third-party capacity bottlenecks. Nebius's model avoids this."
+      durability: moderate
+      sources:
+        - url: https://www.ainvest.com/news/nebius-group-overlooked-ai-cloud-powerhouse-poised-outperform-coreweave-2026-2601/
+          kind: curated_platform
+          description: "Curated platform: ainvest — power independence advantage vs CoreWeave."
+          retrieved_at: "2026-03-26"
+    - dimension: "Cloud engineering heritage (Yandex DNA)"
+      summary: "20+ years of cloud engineering from the Yandex platform, 1,000+ AI engineers. This is not a standing-start infrastructure company — it inherited production-grade cloud operations expertise."
+      durability: strong
+      sources:
+        - url: https://fusioncapital.substack.com/p/the-neocloud-wars-why-coreweave-is
+          kind: specialist_analysis
+          description: "Specialist analysis: Fusion Capital — Yandex heritage as competitive advantage."
+          retrieved_at: "2026-03-26"
+
+  where_gap_closing:
+    - dimension: "Revenue scale"
+      summary: "CoreWeave generates ~$5B annually vs Nebius ~$900M (FY2025). The gap is closing rapidly — Nebius guides $3.0-3.4B for FY2026 — but CoreWeave still operates at 5x the revenue scale today."
+      pace: rapidly
+      sources:
+        - url: https://seekingalpha.com/article/4840996-nebius-vs-coreweave-the-neocloud-battle-shaping-the-future-of-ai-infrastructure
+          kind: curated_platform
+          description: "Curated platform: Seeking Alpha — revenue comparison Nebius vs CoreWeave."
+          retrieved_at: "2026-03-26"
+
+  where_company_loses:
+    - dimension: "Current operational scale (GPUs deployed, data centers live)"
+      leading_peer: CoreWeave
+      summary: "CoreWeave has 250k+ GPUs and 33 data centers. Nebius had ~30,000 GPUs (stale count from March 2025) and ~170 MW active power. The deployed infrastructure gap is still very large."
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+          kind: sec_20f
+          description: "Form 20-F — ~30,000 GPUs as of March 2025 (stale)."
+          retrieved_at: "2026-03-26"
+    - dimension: "Debt profile discipline"
+      leading_peer: IREN
+      summary: "Nebius total debt was ~$4.1B at year-end 2025, now ~$8.5B+ after the $4.3B convertible close. CoreWeave carries ~$18.8B. Among infrastructure peers, IREN's ~$3.8B is lower relative to its power portfolio. Nebius is rapidly leveraging up."
+      sources: []
+
+  switching_costs:
+    summary: "Multi-year contracts with hyperscalers create strong lock-in once capacity is deployed. The Microsoft and Meta deals are 5+ year commitments. However, Nebius competes with these same hyperscalers' own infrastructure — switching cost accrues after deployment but the customer always has an internal alternative."
+    lock_in_factors:
+      - "Multi-year contract terms ($17.4B Microsoft, $27B Meta)"
+      - "Purpose-built AI infrastructure at Nebius sites"
+      - "Deep NVIDIA integration and early access to next-gen platforms"
+      - "Software platform (Aether, Token Factory) creates workflow lock-in"
+    switching_enablers:
+      - "Hyperscalers have internal GPU infrastructure as backup"
+      - "GPU compute is increasingly commoditized at the hardware layer"
+      - "Contracts may allow capacity reallocation or renegotiation"
+    sources: []
+
+  order_changers:
+    - event: "GPU supply normalization (Blackwell ramp, Rubin launch) reduces scarcity premium"
+      impact: "Would compress neocloud margins industry-wide. The question becomes whether Nebius's software layer and efficiency advantages are enough to maintain premium pricing when raw compute is less scarce."
+      likelihood: medium
+      timeline: "2027-2028"
+      sources: []
+    - event: "A major hyperscaler builds equivalent AI-optimized infrastructure in-house"
+      impact: "Would validate that the neocloud model is a transition state, not a permanent architecture. Meta and Microsoft are both building their own AI infrastructure alongside neocloud contracts."
+      likelihood: medium
+      timeline: "2027-2029"
+      sources: []
+    - event: "Nebius signs a third major hyperscaler deal (AWS, Google, or Oracle)"
+      impact: "Would further validate the platform as essential infrastructure. Each additional hyperscaler reduces concentration risk and strengthens the 'AI utility' narrative."
+      likelihood: medium
+      timeline: "Next 2-4 quarters"
+      sources: []
+
+# ── Information asymmetries ─────────────────────────────────────────────────────
+information_asymmetries:
+  - id: prepayment_driven_cash_flow
+    title: "Operating cash flow is driven by prepayments, not recurring profitability"
+    market_believes: "Nebius generated $834M in operating cash flow in Q4 2025, proving the business model generates real cash."
+    evidence_suggests: "The $834M OCF was heavily shaped by +$1.57B in deferred revenue (customer prepayments) offset by -$632.8M in accounts receivable, alongside large D&A. Net loss was still $249.6M. Strip out the prepayment timing and the underlying cash economics are not yet self-sustaining."
+    gap_reason: "OCF is a headline number that looks strong without decomposing the components. The prepayment structure is disclosed but the magnitude of its contribution to cash flow is easy to miss."
+    closing_catalyst: "A quarter where OCF remains strong without a comparable surge in deferred revenue would prove the underlying economics are real, not just timing."
+    confidence: high
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+        kind: sec_6k
+        description: "Form 6-K Ex.99.1 — Q4 2025 cash flow statement showing deferred revenue and AR components."
+        retrieved_at: "2026-03-26"
+
+  - id: meta_deal_optionality
+    title: "The Meta $27B deal is $12B committed + $15B conditional — not $27B guaranteed"
+    market_believes: "Nebius signed a $27B deal with Meta, its largest contract ever."
+    evidence_suggests: "The official announcement says $12B of dedicated capacity (committed) plus up to $15B of 'additional available compute capacity' that Meta can purchase 'across certain upcoming clusters.' The $15B is optional. The headline is the ceiling, not the floor."
+    gap_reason: "Headlines use the total ($27B) because it's more impressive. The $12B committed + $15B optional structure is disclosed but not emphasized in most coverage."
+    closing_catalyst: "Meta exercising (or not) the optional capacity in 2027-2028 will show whether the $27B was realistic or optimistic."
+    confidence: high
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta
+        kind: company_web
+        description: "Primary source: official Nebius announcement — '$12 billion of dedicated capacity' + 'up to $15 billion' optional."
+        retrieved_at: "2026-03-26"
+
+  - id: software_layer_economics_unknown
+    title: "The software platform (Aether, Token Factory) is positioned as a moat but has no separate economics"
+    market_believes: "Nebius is building a differentiated AI cloud platform, not just renting GPUs. The software layer justifies premium pricing and creates switching costs."
+    evidence_suggests: "Aether 3.0/3.5, Token Factory, and the Tavily acquisition are real products with real releases. But Nebius does not disclose software-layer revenue, margins, or customer adoption metrics separately. The platform story is strategic positioning, not yet proven economics."
+    gap_reason: "Management correctly emphasizes the platform vision to avoid being valued as a commodity GPU reseller. But the market is giving credit for platform economics that are not yet demonstrated in the financials."
+    closing_catalyst: "Disclosure of platform-layer metrics (Token Factory revenue, Aether adoption, software-attached vs bare-metal revenue mix) would either validate or deflate the platform premium."
+    confidence: medium
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Form 6-K — shareholder letter mentioning Aether and Token Factory but no separate financials."
+        retrieved_at: "2026-03-26"
+
+# ── Forward signals ─────────────────────────────────────────────────────────────
+forward_signals:
+  - id: vera_rubin_deployment
+    signal: "Nebius plans to offer NVIDIA Vera Rubin NVL72 from H2 2026 — among the first globally"
+    source_tier: 1
+    date_observed: "2026-01-05"
+    implication: "Early access to next-gen NVIDIA platforms maintains Nebius's performance leadership. Customers choosing Nebius for Rubin workloads creates multi-year lock-in on the newest architecture."
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-to-offer-nvidia-vera-rubin-nvl-72-in-us-and-europe-from-h2-2026
+        kind: company_web
+        description: "Primary source: Nebius — Vera Rubin NVL72 availability announcement."
+        retrieved_at: "2026-03-26"
+
+  - id: independence_missouri_factory
+    signal: "Gigawatt-scale AI factory approved in Independence, Missouri — up to 1.2 GW potential"
+    source_tier: 1
+    date_observed: "2026-03-03"
+    implication: "First gigawatt-scale site in the portfolio. If built, represents 7x the current active power (170 MW). This is the physical manifestation of the multi-year scaling thesis."
+    sources:
+      - url: https://group.nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory
+        kind: company_web
+        description: "Primary source: Nebius — Independence, Missouri factory approval."
+        retrieved_at: "2026-03-26"
+
+  - id: volozh_citizenship_renunciation
+    signal: "Arkady Volozh formally renounced Russian citizenship, severing final legal tie to Russia"
+    source_tier: 1
+    date_observed: "2026-03-01"
+    implication: "Removes a lingering governance overhang from the Yandex era. ESG-focused and sovereign wealth fund investors who avoided NBIS due to Russia association may now reconsider. Signals permanent Western orientation."
+    sources:
+      - url: https://www.ad-hoc-news.de/boerse/news/ueberblick/nebius-group-ceo-severs-final-legal-tie-to-russia/68619922
+        kind: curated_platform
+        description: "Curated platform: ad-hoc-news — Volozh renounces Russian citizenship."
+        retrieved_at: "2026-03-26"
+
+  - id: meta_deal_as_sector_validation
+    signal: "Meta committing $27B to a neocloud validates the model for the entire sector"
+    source_tier: 1
+    date_observed: "2026-03-16"
+    implication: "If Meta — which has its own massive GPU infrastructure — still signs $27B with a neocloud, the model has durability beyond scarcity. This is the strongest signal yet that hyperscalers view neoclouds as complementary, not transitional."
+    sources:
+      - url: https://www.reuters.com/technology/nebius-signs-ai-capacity-deal-with-meta-2026-03-16/
+        kind: curated_platform
+        description: "Reuters: Nebius $27B Meta deal."
+        retrieved_at: "2026-03-26"
+
+# ── Top-level sources ───────────────────────────────────────────────────────────
+sources:
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+    kind: sec_6k
+    description: "Form 6-K Ex.99.2 — Q4 2025 shareholder letter (Feb 12, 2026)."
+    retrieved_at: "2026-03-26"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
+    kind: sec_6k
+    description: "Form 6-K Ex.99.1 — Q4/FY2025 financial results."
+    retrieved_at: "2026-03-26"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
+    kind: sec_6k
+    description: "Form 6-K Ex.99.1 — NVIDIA $2B investment and partnership (Mar 11, 2026)."
+    retrieved_at: "2026-03-26"
+  - url: https://group.nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta
+    kind: company_web
+    description: "Nebius — Meta $27B AI infrastructure deal (Mar 16, 2026)."
+    retrieved_at: "2026-03-26"
+  - url: https://stockanalysis.com/stocks/nbis/forecast/
+    kind: sell_side_summary
+    description: "Sell-side summary: 9 analysts, Strong Buy consensus, median target $166.78."
+    retrieved_at: "2026-03-26"
+  - url: https://seekingalpha.com/article/4877486-nebius-high-stakes-capex-meets-massive-ai-infrastructure-potential
+    kind: curated_platform
+    description: "Curated platform: Seeking Alpha — capex and infrastructure potential analysis."
+    retrieved_at: "2026-03-26"
+  - url: https://seekingalpha.com/article/4840996-nebius-vs-coreweave-the-neocloud-battle-shaping-the-future-of-ai-infrastructure
+    kind: curated_platform
+    description: "Curated platform: Seeking Alpha — Nebius vs CoreWeave competitive analysis."
+    retrieved_at: "2026-03-26"
+  - url: https://fusioncapital.substack.com/p/the-neocloud-wars-why-coreweave-is
+    kind: specialist_analysis
+    description: "Specialist analysis: Fusion Capital — neocloud model comparison."
+    retrieved_at: "2026-03-26"
+  - url: https://www.finviz.com/news/334823/reddit-fell-in-love-with-nebius-then-panic-sold-the-wrong-miss
+    kind: social_signal
+    description: "Community signal: Reddit sentiment trajectory for NBIS."
+    retrieved_at: "2026-03-26"
