@@ -1,0 +1,25 @@
+slug: applied-digital
+legal_name: Applied Digital Corporation
+
+tickers:
+  - symbol: APLD
+    exchange: NASDAQ
+
+summary: |
+  Applied Digital designs, develops, and operates next-generation digital
+  infrastructure for high-performance computing (HPC) and artificial
+  intelligence (AI) workloads in North America. The company operates through
+  three segments: Data Center Hosting, Cloud Services, and HPC Hosting.
+  It is building large-scale AI factory campuses and provides GPU cloud
+  services. Quantitative results belong in financials/*.yaml with sources.
+
+links:
+  investor_relations: https://ir.applieddigital.com/
+  press_releases_index: https://ir.applieddigital.com/news-events/press-releases
+  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001144879&owner=include&count=40
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes: []
