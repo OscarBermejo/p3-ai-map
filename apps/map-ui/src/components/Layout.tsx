@@ -90,7 +90,7 @@ export function Layout({ children }: LayoutProps) {
           ref={brandButtonRef}
           type="button"
           className="layout__brand"
-          aria-label="theaimap — about this page"
+          aria-label="theaimap (?) — about this page"
           aria-expanded={aboutOpen}
           aria-haspopup="dialog"
           aria-controls="layout-about-dialog"
@@ -99,7 +99,7 @@ export function Layout({ children }: LayoutProps) {
           onFocus={enterAboutZone}
           onBlur={handleBrandBlur}
         >
-          theaimap
+          theaimap (?)
         </button>
       </div>
       {aboutOpen ? (
@@ -116,11 +116,11 @@ export function Layout({ children }: LayoutProps) {
           onBlur={handleDialogBlur}
         >
           <h2 id="layout-about-title" className="layout__about-title">
-            TheAiMap
+            theaimap
           </h2>
           <div className="layout__about-body">
             <p>
-              TheAiMap is meant to help you see how companies fit into the AI
+              theaimap is meant to help you see how companies fit into the AI
               value chain and how their story shows up in the numbers, the
               business, and the public record—so you can orient yourself and
               compare players side by side. It is not investment advice and not
