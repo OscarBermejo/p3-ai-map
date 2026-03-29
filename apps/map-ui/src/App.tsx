@@ -1,10 +1,10 @@
 import { Layout } from "./components/Layout";
-import { LayersMapView } from "./features/layers/LayersMapView";
+import { SimpleLayersView } from "./features/layers/SimpleLayersView";
 
 export function App() {
   return (
     <Layout>
-      <LayersMapView />
+      <SimpleLayersView />
     </Layout>
   );
 }

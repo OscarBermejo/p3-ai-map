@@ -113,3 +113,8 @@ const allProducts: ChipsProductView[] = (() => {
 export function getAllChipsProducts(): ChipsProductView[] {
   return allProducts;
 }
+
+/** Products from this company's chips-layer `business.yaml` (`vendor` field stores company slug). */
+export function getChipsProductsForSlug(slug: string): ChipsProductView[] {
+  return allProducts.filter((p) => p.vendor === slug);
+}

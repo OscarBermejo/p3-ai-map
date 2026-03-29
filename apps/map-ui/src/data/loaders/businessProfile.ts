@@ -1,5 +1,8 @@
 import { parse } from "yaml";
-import type { BusinessProfileView } from "../types/businessProfile";
+import type {
+  BusinessProfileView,
+  BusinessSourceRow,
+} from "../types/businessProfile";
 
 const rawModules = import.meta.glob(
   "../../../../../content/companies/*/business/business.yaml",
@@ -49,6 +52,82 @@ function bucketNotes(
   if (typeof n !== "string") return null;
   const t = n.trim();
   return t.length ? t : null;
+}
+
+/** First http(s) URL in a citation string (AMD-style inline links). */
+function extractFirstUrlFromString(s: string): string | undefined {
+  const m = s.match(/https?:\/\/[^\s\)\]"'<>]+/i);
+  return m ? m[0] : undefined;
+}
+
+/**
+ * Every `sources:` list in the YAML (root + per-bucket), merged with URL dedup.
+ * Supports `{ url, description }` objects and plain strings (with optional inline URL).
+ */
+function parseBusinessSources(raw: string): BusinessSourceRow[] {
+  let d: Record<string, unknown>;
+  try {
+    d = parse(raw) as Record<string, unknown>;
+  } catch {
+    return [];
+  }
+  const seen = new Set<string>();
+  const out: BusinessSourceRow[] = [];
+
+  function pushRow(row: BusinessSourceRow): void {
+    const key = row.url ?? row.description;
+    if (seen.has(key)) return;
+    seen.add(key);
+    out.push(row);
+  }
+
+  function pushSourceArray(arr: unknown): void {
+    if (!Array.isArray(arr)) return;
+    for (const item of arr) {
+      if (typeof item === "string") {
+        const description = item.trim();
+        if (!description.length) continue;
+        const url = extractFirstUrlFromString(description);
+        pushRow(url ? { url, description } : { description });
+        continue;
+      }
+      if (!item || typeof item !== "object") continue;
+      const o = item as Record<string, unknown>;
+      const url = typeof o.url === "string" ? o.url.trim() : "";
+      const description =
+        typeof o.description === "string" ? o.description.trim() : "";
+      if (url && description) {
+        pushRow({ url, description });
+      } else if (url) {
+        pushRow({ url, description: description || url });
+      } else if (description) {
+        const inline = extractFirstUrlFromString(description);
+        pushRow(
+          inline ? { url: inline, description } : { description },
+        );
+      }
+    }
+  }
+
+  function walk(node: unknown): void {
+    if (node == null) return;
+    if (Array.isArray(node)) {
+      for (const el of node) walk(el);
+      return;
+    }
+    if (typeof node !== "object") return;
+    const o = node as Record<string, unknown>;
+    for (const [key, val] of Object.entries(o)) {
+      if (key === "sources") {
+        pushSourceArray(val);
+      } else {
+        walk(val);
+      }
+    }
+  }
+
+  walk(d);
+  return out;
 }
 
 function parseProfile(slug: string, raw: string): BusinessProfileView | null {
@@ -134,19 +213,27 @@ function parseProfile(slug: string, raw: string): BusinessProfileView | null {
   };
 }
 
-const bySlug = (() => {
+const { bySlug, businessSourcesBySlug } = (() => {
   const map = new Map<string, BusinessProfileView>();
+  const sourcesMap = new Map<string, BusinessSourceRow[]>();
   for (const [path, raw] of Object.entries(rawModules)) {
     const slug = parseSlugFromPath(path);
     if (!slug) continue;
     const row = parseProfile(slug, raw);
     if (row) map.set(slug, row);
+    const rows = parseBusinessSources(raw);
+    if (rows.length > 0) sourcesMap.set(slug, rows);
   }
-  return map;
+  return { bySlug: map, businessSourcesBySlug: sourcesMap };
 })();
 
 export function getBusinessProfileForSlug(
   slug: string,
 ): BusinessProfileView | null {
   return bySlug.get(slug) ?? null;
+}
+
+/** Root `sources` from `business/business.yaml` for the Business tab / provenance. */
+export function getBusinessSourcesForSlug(slug: string): BusinessSourceRow[] {
+  return businessSourcesBySlug.get(slug) ?? [];
 }

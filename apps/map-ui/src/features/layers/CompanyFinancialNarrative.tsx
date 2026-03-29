@@ -5,7 +5,6 @@ import type { FinancialNarrativeView } from "../../data/types/financialNarrative
 
 type Props = {
   narrative: FinancialNarrativeView;
-  displayName: string;
 };
 
 /**
@@ -105,10 +104,8 @@ function NarrativeMarkdownBody({ text }: { text: string }) {
   );
 }
 
-export function CompanyFinancialNarrative({ narrative, displayName }: Props) {
+export function CompanyFinancialNarrative({ narrative }: Props) {
   const {
-    basedOnFinancials,
-    asOf,
     centralQuestions,
     sections,
     disclosureGaps,
@@ -126,21 +123,6 @@ export function CompanyFinancialNarrative({ narrative, displayName }: Props) {
       >
         Financial narrative
       </h4>
-      <p className="value-chain__narrative-meta">
-        <span className="value-chain__narrative-badge">Interpretation</span>
-        {displayName} — based on{" "}
-        <code className="value-chain__code">{basedOnFinancials.file}</code>
-        {basedOnFinancials.periodLabel ? (
-          <>
-            {" "}
-            ({basedOnFinancials.periodLabel}, period end{" "}
-            {basedOnFinancials.periodEnd})
-          </>
-        ) : (
-          <> (period end {basedOnFinancials.periodEnd})</>
-        )}
-        . Narrative as of {asOf}. Not audited metrics.
-      </p>
 
       {centralQuestions.length > 0 ? (
         <div className="value-chain__narrative-questions">

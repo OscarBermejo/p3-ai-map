@@ -1,3 +1,12 @@
+/**
+ * Entries from `business/business.yaml` `sources[]` (any depth).
+ * Object rows use `url` + `description`; string rows become `description` and an optional `url` extracted from the text.
+ */
+export type BusinessSourceRow = {
+  url?: string;
+  description: string;
+};
+
 /** Flattened view of `content/companies/<slug>/business/business.yaml` for comparison tables. */
 export type BusinessProfileView = {
   slug: string;

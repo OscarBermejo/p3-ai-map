@@ -1,18 +1,19 @@
 import { useMemo } from "react";
 import {
+  FINANCIAL_METRIC_KEYS_PCT_OF_REVENUE,
   FINANCIAL_METRIC_ROWS,
   formatMetricAmount,
+  formatPctVsRevenue,
 } from "../../data/financialMetricFormat";
 import type { LatestQuarterView } from "../../data/types/quarter";
+import { PrimarySourcesList } from "./PrimarySourcesList";
 
 type CompanyFinancialEvolutionProps = {
   history: LatestQuarterView[];
-  displayName: string;
 };
 
 export function CompanyFinancialEvolution({
   history,
-  displayName,
 }: CompanyFinancialEvolutionProps) {
   const quarters = useMemo(
     () =>
@@ -22,6 +23,27 @@ export function CompanyFinancialEvolution({
     [history],
   );
 
+  /** Unique URLs across quarter files, first-seen description wins (chronological order). */
+  const mergedFinancialSources = useMemo(() => {
+    const seen = new Map<string, string>();
+    for (const q of quarters) {
+      if (!q.sources?.length) continue;
+      for (const row of q.sources) {
+        const url = typeof row.url === "string" ? row.url.trim() : "";
+        if (!url) continue;
+        const description =
+          typeof row.description === "string" ? row.description.trim() : "";
+        if (!seen.has(url)) {
+          seen.set(url, description || url);
+        }
+      }
+    }
+    return [...seen.entries()].map(([url, description]) => ({
+      url,
+      description,
+    }));
+  }, [quarters]);
+
   if (quarters.length === 0) return null;
 
   const currency = quarters[quarters.length - 1]?.currency ?? "USD";
@@ -29,15 +51,9 @@ export function CompanyFinancialEvolution({
 
   return (
     <div className="value-chain__evolution">
-      <h4 className="value-chain__metrics-heading">
-        {displayName}{" "}
-        <span className="value-chain__metrics-period">
-          · Financial evolution
-        </span>
-      </h4>
       <p className="value-chain__metrics-note">
-        {quarters.length} quarter file{quarters.length === 1 ? "" : "s"} in
-        repo (by period end). Latest: {latest.periodLabel} (end{" "}
+        {quarters.length} quarter{quarters.length === 1 ? "" : "s"} tracked (by
+        period end). Latest: {latest.periodLabel} (end{" "}
         {latest.periodEnd}). Reporting currency {currency}.
       </p>
 
@@ -68,8 +84,28 @@ export function CompanyFinancialEvolution({
                   const v = q.metrics[key];
                   const num =
                     typeof v === "number" && Number.isFinite(v) ? v : null;
+                  const revenueRaw = q.metrics.revenue;
+                  const revenue =
+                    typeof revenueRaw === "number" && Number.isFinite(revenueRaw)
+                      ? revenueRaw
+                      : null;
+                  const pct =
+                    FINANCIAL_METRIC_KEYS_PCT_OF_REVENUE.has(key) &&
+                    num != null
+                      ? formatPctVsRevenue(num, revenue)
+                      : null;
                   return (
-                    <td key={q.periodEnd}>{formatMetricAmount(num)}</td>
+                    <td key={q.periodEnd}>
+                      <span className="value-chain__evolution-cell-main">
+                        {formatMetricAmount(num)}
+                        {pct != null ? (
+                          <span className="value-chain__fin-pct">
+                            {" "}
+                            ({pct})
+                          </span>
+                        ) : null}
+                      </span>
+                    </td>
                   );
                 })}
               </tr>
@@ -77,6 +113,11 @@ export function CompanyFinancialEvolution({
           </tbody>
         </table>
       </div>
+
+      <PrimarySourcesList
+        title="Primary sources (financials)"
+        sources={mergedFinancialSources}
+      />
     </div>
   );
 }

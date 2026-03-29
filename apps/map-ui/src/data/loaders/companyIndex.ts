@@ -10,3 +10,8 @@ export function getCompaniesByLayer(layer: string): CompanyIndexRow[] {
   const { companies } = loadCompanyIndex();
   return companies.filter((c) => c.layer === layer);
 }
+
+export function getLayerForSlug(slug: string): string | null {
+  const { companies } = loadCompanyIndex();
+  return companies.find((c) => c.slug === slug)?.layer ?? null;
+}

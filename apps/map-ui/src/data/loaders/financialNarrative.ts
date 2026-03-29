@@ -16,6 +16,38 @@ function parseSlugFromPath(path: string): string | null {
   return m?.[1] ?? null;
 }
 
+/** Single-object shape, or an array of periods (use the first entry with file + period_end). */
+function normalizeBasedOnFinancials(bof: unknown): {
+  file: string;
+  periodEnd: string;
+  periodLabel?: string;
+} | null {
+  if (bof == null || typeof bof !== "object") return null;
+
+  const pick = (row: Record<string, unknown>) => {
+    const file = typeof row.file === "string" ? row.file.trim() : "";
+    const periodEnd =
+      typeof row.period_end === "string" ? row.period_end.trim() : "";
+    if (!file || !periodEnd) return null;
+    const periodLabel =
+      typeof row.period_label === "string"
+        ? row.period_label.trim()
+        : undefined;
+    return { file, periodEnd, periodLabel };
+  };
+
+  if (Array.isArray(bof)) {
+    for (const item of bof) {
+      if (!item || typeof item !== "object") continue;
+      const row = pick(item as Record<string, unknown>);
+      if (row) return row;
+    }
+    return null;
+  }
+
+  return pick(bof as Record<string, unknown>);
+}
+
 function parseNarrative(slug: string, raw: string): FinancialNarrativeView | null {
   let d: Record<string, unknown>;
   try {
@@ -25,12 +57,9 @@ function parseNarrative(slug: string, raw: string): FinancialNarrativeView | nul
   }
   if (d.kind !== "financial_narrative") return null;
 
-  const bof = d.based_on_financials;
-  if (!bof || typeof bof !== "object") return null;
-  const bf = bof as Record<string, unknown>;
-  const file = typeof bf.file === "string" ? bf.file : "";
-  const periodEnd = typeof bf.period_end === "string" ? bf.period_end : "";
-  if (!file.trim() || !periodEnd.trim()) return null;
+  const based = normalizeBasedOnFinancials(d.based_on_financials);
+  if (!based) return null;
+  const { file, periodEnd, periodLabel } = based;
 
   const sectionsRaw = d.sections;
   const sections: FinancialNarrativeView["sections"] = [];
@@ -66,8 +95,6 @@ function parseNarrative(slug: string, raw: string): FinancialNarrativeView | nul
     }
   }
 
-  const periodLabel =
-    typeof bf.period_label === "string" ? bf.period_label.trim() : undefined;
   let businessProfileAsOf: string | null | undefined;
   if (d.business_profile_as_of === null) businessProfileAsOf = null;
   else if (typeof d.business_profile_as_of === "string")
@@ -78,6 +105,15 @@ function parseNarrative(slug: string, raw: string): FinancialNarrativeView | nul
   else if (typeof d.disclosure_gaps === "string") {
     const t = d.disclosure_gaps.trim();
     disclosureGaps = t.length ? t : null;
+  } else if (Array.isArray(d.disclosure_gaps)) {
+    const parts: string[] = [];
+    for (const item of d.disclosure_gaps) {
+      if (typeof item === "string") {
+        const t = item.trim();
+        if (t.length) parts.push(`- ${t}`);
+      }
+    }
+    disclosureGaps = parts.length ? parts.join("\n") : null;
   }
 
   const centralQuestions: string[] = [];
@@ -97,7 +133,7 @@ function parseNarrative(slug: string, raw: string): FinancialNarrativeView | nul
     basedOnFinancials: {
       file,
       periodEnd,
-      periodLabel,
+      ...(periodLabel !== undefined ? { periodLabel } : {}),
     },
     businessProfileAsOf,
     centralQuestions,

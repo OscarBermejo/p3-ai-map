@@ -22,11 +22,6 @@ function leafNum(obj: unknown): number | null {
   return typeof v === "number" && Number.isFinite(v) ? v : null;
 }
 
-function leafStr(obj: unknown): string | null {
-  const v = (obj as Leaf | undefined)?.value;
-  return typeof v === "string" && v.trim().length > 0 ? v.trim() : null;
-}
-
 function leafNotes(obj: unknown): string | null {
   const n = (obj as Leaf | undefined)?.notes;
   if (typeof n !== "string") return null;
@@ -116,4 +111,9 @@ const allProducts: ModelsProductView[] = (() => {
 
 export function getAllModelsProducts(): ModelsProductView[] {
   return allProducts;
+}
+
+/** Products from this company's models-layer `business.yaml` (`vendor` field stores company slug). */
+export function getModelsProductsForSlug(slug: string): ModelsProductView[] {
+  return allProducts.filter((p) => p.vendor === slug);
 }
