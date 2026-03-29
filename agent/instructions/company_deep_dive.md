@@ -44,6 +44,8 @@ Each phase builds on the previous ones. Do not skip ahead — later phases are r
 
 **Instruction files:** [financials.md](./financials.md), [financials_workflows.md](./financials_workflows.md), [financials_sec_xbrl_concepts.md](./financials_sec_xbrl_concepts.md)
 
+> **Private companies** (no SEC filing): substitute [financials_private.md](./financials_private.md) for the three files above. The YAML structure is the same; only the sourcing rules and data quality expectations differ.
+
 1. Set up `financials/README.md` with fiscal calendar and naming conventions
 2. Pull financials for the most recent 2–4 quarters from SEC filings and XBRL
 3. Validate each quarter file with `scripts/validate_values_file.py`

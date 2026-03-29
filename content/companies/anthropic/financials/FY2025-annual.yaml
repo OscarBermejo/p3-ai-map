@@ -1,0 +1,303 @@
+period:
+  label: "FY2025-annual"
+  start: "2025-01-01"
+  end: "2025-12-31"
+  fiscal_year: 2025
+  period_type: annual_estimate  # Full-year recognized revenue Tier 2; ARR trajectory confirmed from multiple sources
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 7000000000          # ~$7B FY2025 recognized revenue — Tier 2 (CBInsights / multiple press reports); see sources
+  cost_of_revenue: null        # Not disclosed; compute-intensive; Anthropic runs AWS Trainium2, Google TPUs, NVIDIA GPUs
+  gross_profit: null           # Not disclosed; gross margins estimated 40–50% (Tier 2 press); see sources
+  research_and_development: null  # Not disclosed; safety + capabilities R&D is core spend; no credible figure available
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null       # Not disclosed; company operating at loss
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null             # Not disclosed; expected negative
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null   # Private company; no public shares
+  shares_outstanding_diluted: null
+  market_cap: null                 # Private; see extended_metrics for last-round valuation
+
+sources:
+  - url: https://www.cbinsights.com/company/anthropic/financials
+    kind: ir_html
+    description: "Tier 2: CBInsights reports Anthropic 2025 revenue at $7B. Consistent with ARR trajectory: ~$1B ARR (Dec 2024) → $14B ARR (Feb 2026). Revenue field set to $7B as best available estimate."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+    kind: ir_html
+    description: "Tier 1 (voluntary company release): Anthropic Series G announcement confirms $14B run-rate revenue as of February 2026. Company states run-rate revenue growing over 10x annually for three years. Revenue field uses $7B FY2025 recognized revenue; $14B ARR stored in extended_metrics."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: https://aibusinessweekly.net/p/anthropic-statistics
+    kind: ir_html
+    description: "Tier 2 aggregation: AI Business Weekly citing multiple sources — Anthropic $19B ARR by March 2026; $7B FY2025 revenue; $1B ARR December 2024. Corroborates CBInsights figure."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "gross_profit: not disclosed. Gross margins reported at 40-50% from Tier 2 sources (techeconomics.substack.com citing internal data). At $7B revenue, this implies gross profit of ~$2.8B–$3.5B. Standard field kept null per protocol — range not confirmable."
+    covers: [gross_profit, cost_of_revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: https://techeconomics.substack.com/p/anthropic-just-raised-30-billion
+    kind: news_article
+    description: "Tier 2: TechEconomics — Anthropic burned ~$3B in cash in 2025; gross margins 40-50%; cash flow positive target delayed to 2028. Used for burn rate and margin context in narrative."
+    covers: []
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "research_and_development, operating_income, net_income: not disclosed. No Tier 1 or credible Tier 2 source provides P&L line items beyond revenue and rough gross margin. Fields null."
+    covers: [research_and_development, selling_general_administrative, depreciation_and_amortization, operating_income, interest_expense, interest_income, other_income_expense_net, income_tax_expense_benefit, net_income]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "All cash flow and balance sheet fields: not publicly disclosed. No Tier 1 or Tier 2 source provides these for FY2025."
+    covers: [operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net, financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+data_quality:
+  overall: medium
+  confirmed_fields: []
+  estimated_fields:
+    - revenue
+  unavailable_fields:
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: >
+    Revenue ($7B) is consistent across CBInsights and multiple press sources, corroborated
+    by Anthropic's own Series G announcement which confirms $14B run-rate by Feb 2026 —
+    implying strong H2 2025 revenue acceleration. Gross margin (~40-50%) is Tier 2 only.
+    All other income statement and balance sheet metrics unavailable. Quality is 'medium'
+    because the primary metric (revenue) has consistent multi-source confirmation even
+    without formal company disclosure.
+
+extended_metrics:
+  # ── Funding and valuation ─────────────────────────────────────────────────
+  total_funding_raised_usd:
+    value: null  # Range $61.5B–$67B depending on source and methodology
+    notes: >
+      As of February 2026 (Series G), CBInsights reports $61.455B total raised;
+      hiringhello.com reports $67B+ across 25 rounds including strategic compute deals.
+      The discrepancy likely reflects different treatment of infrastructure commitments
+      (Amazon $8B strategic investment, Google tens-of-billions compute deal, Microsoft
+      Foundry commitments) vs. pure equity. Conservative equity-only estimate: ~$50B.
+      Total includes: Series G ($30B, Feb 2026) + Series F ($13B, Sep 2025) +
+      Series E ($3.5B, Mar 2025) + Amazon ($8B total, 2023–2024) + Series D ($1.25B) +
+      Series C ($450M) + Series B ($580M) + Seed/A ($124M) + other.
+    sources:
+      - url: https://www.cbinsights.com/company/anthropic/financials
+        kind: ir_html
+        description: "CBInsights: $61.455B total raised across 25 funding rounds."
+        retrieved_at: "2026-03-29"
+      - url: https://hiringhello.com/blog/from-seed-to-380b-anthropic-complete-investment-journey-2021-to-february-2026
+        kind: ir_html
+        description: "Tier 2: hiringhello.com: Anthropic complete investment journey — $67B+ across 25 rounds."
+        retrieved_at: "2026-03-29"
+
+  last_round_amount_usd:
+    value: 30000000000  # $30B — Series G, February 12, 2026
+    notes: "Led by GIC (Singapore sovereign wealth) and Coatue. This is the round closest to the FY2025 period end; it closed after fiscal year-end but is the most relevant valuation anchor."
+    sources:
+      - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+        kind: ir_html
+        description: "Tier 1 (official company release): Anthropic Series G — $30B at $380B post-money valuation, led by GIC and Coatue, Feb 12, 2026."
+        retrieved_at: "2026-03-29"
+
+  last_round_valuation_usd:
+    value: 380000000000  # $380B post-money — Series G, Feb 2026
+    notes: "Post-money valuation at Series G (Feb 2026). Previous round: Series F (Sep 2025) at $183B — $380B represents a 2.1x step-up in approximately 5 months."
+    sources:
+      - url: https://reuters.com/technology/anthropic-valued-380-billion-latest-funding-round-2026-02-12/
+        kind: news_article
+        description: "Reuters: Anthropic Series G — $380B valuation confirmed."
+        retrieved_at: "2026-03-29"
+
+  last_round_date: "2026-02-12"
+  last_round_type: series_g
+
+  # ── Prior round for FY2025 period context ──
+  series_f_amount_usd:
+    value: 13000000000  # $13B — Series F, September 2025
+    notes: "Series F at $183B post-money valuation. Closest primary equity round to Dec 31, 2025 fiscal year-end."
+    sources:
+      - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+        kind: ir_html
+        description: "Anthropic Series G announcement references prior Series F context."
+        retrieved_at: "2026-03-29"
+
+  arr_usd:
+    value: 14000000000  # $14B ARR as of February 2026 — Tier 1 (voluntary company release in Series G announcement)
+    notes: >
+      $14B run-rate as of February 2026 confirmed in Anthropic's own Series G press release
+      (Tier 1 voluntary disclosure). Estimated year-end 2025 ARR approximately $10B–$12B
+      (interpolating from ~$1B ARR Dec 2024 → $14B Feb 2026 with reported ~10x annual growth).
+      $7B FY2025 recognized revenue is stored in standard revenue field.
+      By March 2026, ARR reached approximately $19B (AI Business Weekly, Tier 2).
+    sources:
+      - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+        kind: ir_html
+        description: "Tier 1: Anthropic official Series G release — $14B run-rate revenue, growing over 10x annually."
+        retrieved_at: "2026-03-29"
+
+  monthly_burn_rate_usd:
+    value: null  # ~$250M/month estimated for FY2025 based on ~$3B annual cash burn
+    notes: >
+      TechEconomics (Tier 2) reports Anthropic burned ~$3B in cash in 2025 while generating
+      $7B revenue. Implies ~$250M/month average cash burn. However, burn rate was likely
+      back-half weighted as revenue accelerated in H2 2025. Gross margins 40–50% suggest
+      operating losses are funded by investor capital rather than operating cash flows.
+      Cash flow positive delayed to 2028. Standard field null — $3B annual burn is Tier 2 estimate.
+    sources:
+      - url: https://techeconomics.substack.com/p/anthropic-just-raised-30-billion
+        kind: news_article
+        description: "Tier 2: TechEconomics — ~$3B cash burn in 2025; gross margins 40-50%; cash flow positive target 2028."
+        retrieved_at: "2026-03-29"
+
+  cash_runway_months:
+    value: null
+    notes: >
+      Not calculable without cash balance. Series F ($13B, Sep 2025) + Series G ($30B, Feb 2026) =
+      $43B raised in approximately 6 months — provides substantial liquidity well past any reasonable
+      runway calculation at current burn rates. Conservative estimate: 10+ years at $3B annual burn,
+      but capital will be deployed into compute infrastructure and hiring well before exhaustion.
+    sources: []
+
+  headcount:
+    value: 2500  # ~2,500 employees as of early 2026 — Tier 2
+    notes: "Multiple sources report ~2,500 employees at Anthropic as of early 2026, versus OpenAI's ~4,500. Anthropic is significantly more capital-efficient on a revenue-per-employee basis."
+    sources:
+      - url: https://www.machinebrief.com/article/inside-anthropic-30b-series-g-what-380b-buys-you
+        kind: news_article
+        description: "Machine Brief: Anthropic ~2,500 employees as of early 2026."
+        retrieved_at: "2026-03-29"
+
+  revenue_per_employee_usd:
+    value: 2800000  # Derived: $7B / 2,500 = $2.8M per employee
+    notes: >
+      Derived estimate: FY2025 revenue $7B / ~2,500 headcount = ~$2.8M per employee.
+      For comparison, OpenAI at ~4,500 headcount on $13B revenue = ~$2.89M/employee.
+      The ratio is nearly identical despite Anthropic being ~2× smaller by headcount,
+      suggesting comparable per-capita productivity. Both companies have exceptional
+      revenue-per-employee ratios relative to the tech sector — driven by the high
+      leverage of AI API revenue on small engineering headcount. OpenAI's SBC run-rate
+      (~$2.5B in H1 2025 alone) distorts the true compensation picture; Anthropic's SBC
+      is not disclosed but likely comparable at this funding scale.
+    sources: []
+
+  funding_history:
+    - round: "Seed/Series A"
+      date: "2021-05"
+      amount_usd: 124000000
+      valuation_post_money_usd: 550000000
+      lead_investors: ["Spark Capital", "others"]
+      notes: "Founding round; 11 co-founders left OpenAI in late 2020/early 2021."
+
+    - round: "Series B"
+      date: "2022-04"
+      amount_usd: 580000000
+      valuation_post_money_usd: 4000000000
+      lead_investors: ["Google", "Spark Capital"]
+      notes: "Google's initial investment. $4B post-money valuation."
+
+    - round: "Series C"
+      date: "2023-05"
+      amount_usd: 450000000
+      valuation_post_money_usd: 5000000000
+      lead_investors: ["Spark Capital"]
+      notes: null
+
+    - round: "Series D"
+      date: "2023-09"
+      amount_usd: 1250000000
+      valuation_post_money_usd: 18100000000
+      lead_investors: ["Google", "Spark Capital"]
+      notes: "Amazon also invested in this round. $1.25B at $18.1B post-money."
+
+    - round: "Amazon Strategic Investment (additional)"
+      date: "2024-11"
+      amount_usd: 4000000000
+      valuation_post_money_usd: null
+      lead_investors: ["Amazon (AWS)"]
+      notes: "Amazon increased total investment to $8B and designated AWS as 'primary cloud and training partner.' Project Rainier Trainium2 cluster began deployment."
+
+    - round: "Series E"
+      date: "2025-03"
+      amount_usd: 3500000000
+      valuation_post_money_usd: 61500000000
+      lead_investors: ["Undisclosed; multiple investors"]
+      notes: "$3.5B at $61.5B post-money. Roughly 3.4× step-up from $18.1B Series D."
+
+    - round: "Series F"
+      date: "2025-09"
+      amount_usd: 13000000000
+      valuation_post_money_usd: 183000000000
+      lead_investors: ["Undisclosed; multiple investors"]
+      notes: "$13B at $183B post-money. Reflects Claude market share surge in enterprise coding segment through 2025."
+
+    - round: "Series G"
+      date: "2026-02-12"
+      amount_usd: 30000000000
+      valuation_post_money_usd: 380000000000
+      lead_investors: ["GIC (Singapore sovereign wealth)", "Coatue"]
+      notes: >
+        $30B at $380B post-money — Anthropic's largest round. More than doubled valuation
+        from Series F in approximately 5 months. Concurrent with the announcement of $14B
+        run-rate revenue and Claude Code exceeding $2.5B ARR. GIC's participation signals
+        sovereign wealth diversification into AI frontier labs.

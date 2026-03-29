@@ -1,0 +1,197 @@
+period:
+  label: "FY2025-annual"
+  start: "2025-01-01"
+  end: "2025-12-31"
+  fiscal_year: 2025
+  period_type: annual_estimate  # Full-year recognized revenue Tier 2; ARR-at-year-end from CFO statement
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 13000000000          # $13B FY2025 recognized revenue — Tier 2 (The Information / CBInsights; CFO Jan-2026 confirms ~$20B+ annualized run rate)
+  cost_of_revenue: null
+  gross_profit: null            # Not disclosed; see sources
+  research_and_development: null  # H1 2025 was $6.7B; FY2025 full year estimated $12B–$16B but no confirmed figure
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null        # Deeply negative; not disclosed
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null              # H1 2025 alone was -$13.5B; full-year net loss not disclosed
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null  # Private; see extended_metrics for last-round valuation
+
+sources:
+  - url: https://www.cbinsights.com/company/openai/financials
+    kind: ir_html
+    description: "Tier 2: CBInsights reports OpenAI 2025 revenue at $13B. Consistent with trajectory from $3.7B (2024) and $1.6B (2023). Standard revenue field set to $13B as best-available estimate."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: https://www.reuters.com/business/openai-cfo-says-annualized-revenue-crosses-20-billion-2025-2026-01-19/
+    kind: ir_html
+    description: "Tier 1 (voluntary disclosure): CFO Sarah Friar stated in January 2026 that OpenAI's annualized revenue crossed $20 billion in 2025. NOTE: This is an annualized run-rate figure (ARR), not FY2025 recognized revenue. The $13B recognized revenue figure is stored in the revenue field; ARR of $20B+ stored in extended_metrics.arr_usd."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: https://www.reuters.com/technology/openai-tops-25-billion-annualized-revenue-last-month-information-reports-2026-03-05/
+    kind: ir_html
+    description: "Tier 2: Reuters citing The Information — OpenAI's annualized revenue reached $25B as of February 2026 (i.e., the ARR at Feb 2026 month-end). Represents 17% growth from $21.4B ARR at year-end 2025. Confirms rapid H2 2025 revenue acceleration."
+    covers: []  # Supports understanding of ARR trajectory; does not change FY2025 recognized revenue
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "Distinction: revenue ($13B) is estimated FY2025 recognized revenue. ARR at year-end 2025 was $21.4B (The Information) — a run-rate figure reflecting the exit pace. The difference (~$8.4B gap) reflects that H1 2025 revenue was only $4.3B while H2 accelerated sharply. Both figures are stored; the standard revenue field holds the recognized figure."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "cost_of_revenue, gross_profit: not disclosed. Key CoR components: (1) Microsoft Azure compute (exclusive hosting); (2) Microsoft revenue share at 20% of revenue = ~$2.6B in FY2025; (3) inference compute for model serving. No credible Tier 1 or Tier 2 source provides gross margin. Field null."
+    covers: [cost_of_revenue, gross_profit]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "research_and_development: H1 2025 R&D was $6.7B (The Information). If H2 spent similarly, FY2025 R&D would be ~$13–$14B — exceeding full-year revenue. This is not unusual for a frontier AI lab (compute training costs and research headcount). Full-year figure not confirmed; field null."
+    covers: [research_and_development]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "net_income, operating_income: H1 2025 net loss alone was $13.5B. With H2 revenue significantly higher (~$8.7B) but compute capacity expanding from 0.6GW to 1.9GW in 2025, full-year net loss is estimated at $20B–$35B (Tier 3 wide range). OpenAI's forecast per The Information: $111B cumulative cash burn through 2030. Fields null; full-year not confirmed."
+    covers: [net_income, operating_income]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "All cash flow and balance sheet fields: not publicly disclosed."
+    covers: [operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net, financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+data_quality:
+  overall: medium
+  confirmed_fields: []
+  estimated_fields:
+    - revenue
+  unavailable_fields:
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: "Revenue ($13B) has consistent Tier 2 sourcing. ARR trajectory is confirmed at CFO-level (Tier 1 voluntary). All other metrics are unavailable. Quality is 'medium' due to strong revenue confirmation — this is the headline metric for a growth-stage company."
+
+extended_metrics:
+  total_funding_raised_usd:
+    value: null  # Range $167B–$175B as of Mar 2026; not pinpointed to Dec 31 2025
+    notes: >
+      As of Feb 2026 ($110B round), cumulative raised ~$175B (CBInsights) to $168B (Tracxn).
+      As of Dec 31, 2025 (pre-Feb 2026 round), cumulative was approximately $65B–$75B based on
+      Oct 2024 ($6.6B), Mar 2025 ($40B), Aug 2025 ($8.3B), Oct 2025 ($22.5B) rounds plus
+      prior raises. No single source confirms the exact Dec-31-2025 cumulative figure.
+    sources:
+      - url: https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history
+        kind: ir_html
+        description: "TechCrunch: $110B round Feb 2026 at $730B pre-money; context for full funding history."
+        retrieved_at: "2026-03-29"
+
+  last_round_amount_usd:
+    value: 22500000000  # $22.5B — Oct 2025 round (last in FY2025)
+    notes: "Led by SoftBank. Valuation not separately confirmed for this specific round."
+    sources:
+      - url: https://www.cbinsights.com/company/openai/financials
+        kind: ir_html
+        description: "CBInsights: Oct 2025, $22.5B, led by SoftBank."
+        retrieved_at: "2026-03-29"
+
+  last_round_valuation_usd:
+    value: null  # Specific post-money for Oct 2025 round not confirmed; $500B confirmed for secondary Oct 2025
+    notes: "Secondary market transaction at ~$500B (Oct 2, 2025). Primary round (Oct 26, 2025 $22.5B) valuation not separately reported."
+    sources: []
+
+  last_round_date: "2025-10-26"
+  last_round_type: series_x
+
+  arr_usd:
+    value: 21400000000  # $21.4B ARR at year-end 2025 — Tier 2 (The Information / Reuters)
+    notes: "The Information reported $21.4B ARR at year-end 2025. CFO stated $20B+ ARR crossed in 2025. Reuters reported $25B ARR as of Feb 2026. The $21.4B is used as the Dec-31-2025 exit ARR. Distinct from the $13B recognized FY2025 revenue."
+    sources:
+      - url: https://www.reuters.com/technology/openai-tops-25-billion-annualized-revenue-last-month-information-reports-2026-03-05/
+        kind: ir_html
+        description: "Reuters citing The Information: year-end 2025 ARR was $21.4B; $25B ARR reached Feb 2026 (+17%)."
+        retrieved_at: "2026-03-29"
+
+  monthly_burn_rate_usd:
+    value: null  # FY2025 full-year burn not disclosed; H1 $2.5B; H2 likely higher with compute scale-up
+    notes: "H1 2025 monthly burn ~$417M. Full-year burn unknown. The Information reported OpenAI forecast $111B cumulative cash burn through 2030, implying ~$22B/year on average — but this is a forward projection, not FY2025 actuals."
+    sources:
+      - url: https://www.theinformation.com/articles/openai-boost-revenue-forecasts-predicts-112-billion-cash-burn-2030
+        kind: ir_html
+        description: "Tier 2: The Information — OpenAI predicts $111B additional cash burn through 2030."
+        retrieved_at: "2026-03-29"
+
+  cash_runway_months:
+    value: null
+    notes: "Not calculable. Company raised $40B (Mar 2025) and $22.5B (Oct 2025) during FY2025, providing substantial liquidity."
+    sources: []
+
+  headcount:
+    value: 4500  # ~4,500 as of early 2026 — Tier 2 (Reuters)
+    notes: "Reuters Mar 2026: ~4,500 employees currently; plans to double to ~8,000 by end-2026."
+    sources:
+      - url: https://www.reuters.com/business/openai-nearly-double-workforce-8000-by-end-2026-ft-reports-2026-03-21/
+        kind: ir_html
+        description: "Reuters (FT sourced): ~4,500 employees as of Mar 2026."
+        retrieved_at: "2026-03-29"
+
+  revenue_per_employee_usd:
+    value: 2888889  # Derived: $13B / 4,500 = ~$2.89M per employee (FY2025 revenue / current headcount)
+    notes: "Derived estimate: FY2025 revenue $13B / ~4,500 headcount = ~$2.89M per employee. For context: NVIDIA's FY2026 revenue per employee was ~$3.5M+. OpenAI's ratio is high for a pre-profitability company but understates total compensation (SBC was ~$2.5B in H1 alone)."
+    sources: []

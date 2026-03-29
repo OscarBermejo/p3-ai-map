@@ -25,3 +25,7 @@ companies:
     layer: chips
   - slug: amd
     layer: chips
+  - slug: openai
+    layer: models
+  - slug: anthropic
+    layer: models

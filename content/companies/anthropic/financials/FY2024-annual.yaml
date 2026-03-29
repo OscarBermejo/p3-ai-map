@@ -1,0 +1,177 @@
+period:
+  label: "FY2024-annual"
+  start: "2024-01-01"
+  end: "2024-12-31"
+  fiscal_year: 2024
+  period_type: annual_estimate  # Limited press data; ARR at year-end better known than full-year revenue
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: null  # ARR at Dec 2024 was ~$1B; full-year recognized revenue estimated $300M–$800M; no credible single-point figure; see sources
+  cost_of_revenue: null
+  gross_profit: null
+  research_and_development: null
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null  # Private; see extended_metrics for last-round valuation
+
+sources:
+  - url: https://aibusinessweekly.net/p/anthropic-statistics
+    kind: ir_html
+    description: "Tier 2: AI Business Weekly — Anthropic ARR was approximately $1B in December 2024, growing to $14B ARR by February 2026 (approximately 14x in 14 months). This December 2024 ARR figure grounds the FY2024 revenue estimate."
+    covers: []
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: >
+      revenue: No credible single-point FY2024 recognized revenue figure available.
+      Working estimate: Given December 2024 ARR of ~$1B (Tier 2, Agentic Weekly citing enterprise data),
+      and Anthropic's rapid H2 2024 growth driven by Claude 3.5 Sonnet launch (June 2024) and Amazon's
+      $4B strategic investment announcement (November 2024), FY2024 full-year recognized revenue was
+      likely in the $300M–$800M range. The wide range reflects Anthropic's explosive growth inflection
+      in the second half of 2024: H1 revenue was small, H2 accelerated sharply. Field null per protocol
+      — no source confirms a single-point FY2024 revenue figure.
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "All P&L, cash flow, and balance sheet fields: not disclosed. No Tier 1 or credible Tier 2 source provides these for FY2024. Fields null."
+    covers: [cost_of_revenue, gross_profit, research_and_development, selling_general_administrative, depreciation_and_amortization, operating_income, interest_expense, interest_income, other_income_expense_net, income_tax_expense_benefit, net_income, operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net, financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+data_quality:
+  overall: very_low
+  confirmed_fields: []
+  estimated_fields: []
+  unavailable_fields:
+    - revenue
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: >
+    FY2024 is Anthropic's most data-sparse year. No revenue figure is confirmable from
+    Tier 1 or strong Tier 2 sources. The company was in its early commercial phase —
+    Claude 3 family launched in March 2024, Claude 3.5 Sonnet (the breakout enterprise
+    model) launched June 2024. December 2024 ARR of ~$1B is the best available anchor.
+    This file exists primarily for structural context and to establish the base from
+    which 2025's explosive growth is measured. Quality rating is 'very_low'.
+
+extended_metrics:
+  total_funding_raised_usd:
+    value: null
+    notes: >
+      As of December 31, 2024, total raised was approximately $8B–$12B:
+      Seed/A ($124M) + B ($580M) + C ($450M) + D ($1.25B) + Amazon initial ($1.25B per D round) +
+      Amazon additional (Nov 2024 $4B = $8B total including initial). CBInsights and press
+      suggest ~$9B–$11B in equity raised as of Dec 2024 before Series E (Mar 2025).
+    sources:
+      - url: https://hiringhello.com/blog/from-seed-to-380b-anthropic-complete-investment-journey-2021-to-february-2026
+        kind: ir_html
+        description: "Tier 2: Funding history; Amazon $8B total by Nov 2024."
+        retrieved_at: "2026-03-29"
+
+  last_round_amount_usd:
+    value: 4000000000  # $4B — Amazon additional investment, November 2024 (total $8B Amazon commitment)
+    notes: "Amazon increased its total commitment to $8B in November 2024, designating AWS as Anthropic's 'primary cloud and training partner.' This was the largest single investment event closest to the FY2024 period end."
+    sources:
+      - url: https://techcrunch.com/2024/11/22/anthropic-raises-an-additional-4b-from-amazon-makes-aws-is-primary-cloud-partner/
+        kind: news_article
+        description: "TechCrunch: Amazon additional $4B investment; AWS designated primary cloud and training partner."
+        retrieved_at: "2026-03-29"
+
+  last_round_valuation_usd:
+    value: null  # Valuation at Amazon's strategic investment not separately disclosed as a standard round valuation
+    notes: "Amazon's $8B total is a strategic investment and compute partnership, not a standard VC round with explicit post-money valuation. The prior traditional round (Series D, Sep 2023) had a $18.1B post-money valuation."
+    sources: []
+
+  last_round_date: "2024-11-22"
+  last_round_type: strategic
+
+  arr_usd:
+    value: null  # ~$1B ARR at December 2024 — Tier 2 estimate; field null per protocol
+    notes: >
+      AI Business Weekly cites Anthropic's ARR at approximately $1B in December 2024.
+      This is the anchor from which the 19x growth to $19B ARR (March 2026) is measured.
+      If accurate, Anthropic grew from $1B to $14B ARR in 14 months — the fastest revenue
+      expansion ever reported in enterprise software. Standard field null per protocol —
+      single-source Tier 2 figure.
+    sources:
+      - url: https://aibusinessweekly.net/p/anthropic-statistics
+        kind: ir_html
+        description: "Tier 2: AI Business Weekly — Anthropic $1B ARR in December 2024."
+        retrieved_at: "2026-03-29"
+
+  monthly_burn_rate_usd:
+    value: null
+    notes: "Not available for FY2024. Likely lower than 2025 given smaller revenue and less compute deployment."
+    sources: []
+
+  cash_runway_months:
+    value: null
+    notes: "Not calculable."
+    sources: []
+
+  headcount:
+    value: null  # Estimated 500–1,500 in 2024; 2,500 confirmed for early 2026
+    notes: "No confirmed headcount figure for FY2024. Company was in aggressive hiring phase through 2024 following AWS strategic investment."
+    sources: []
+
+  revenue_per_employee_usd:
+    value: null
+    notes: "Not calculable: both revenue and headcount uncertain for FY2024."
+    sources: []

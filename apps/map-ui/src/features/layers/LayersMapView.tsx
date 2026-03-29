@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { getBusinessProfileForSlug } from "../../data/loaders/businessProfile";
 import { getAllChipsProducts } from "../../data/loaders/chipsProducts";
+import { getAllModelsProducts } from "../../data/loaders/modelsProducts";
 import { getFinancialNarrativeForSlug } from "../../data/loaders/financialNarrative";
 import { getCompaniesByLayer } from "../../data/loaders/companyIndex";
 import {
@@ -84,6 +85,11 @@ export function LayersMapView() {
 
   const chipsProducts = useMemo(
     () => (selectedId === "chips" ? getAllChipsProducts() : []),
+    [selectedId],
+  );
+
+  const modelsProducts = useMemo(
+    () => (selectedId === "models" ? getAllModelsProducts() : []),
     [selectedId],
   );
 
@@ -220,6 +226,7 @@ export function LayersMapView() {
                 quarters={quarterBySlug}
                 business={businessBySlug}
                 chipsProducts={chipsProducts}
+                modelsProducts={modelsProducts}
               />
             </div>
           ) : null}

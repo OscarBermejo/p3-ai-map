@@ -1,0 +1,249 @@
+# Models layer — model-centric business profile (not quarterly financials).
+# Copy to companies/<slug>/business/business.yaml (content or inbox).
+#
+# profile_version 1: model-first. The unit of comparison is the individual model variant,
+#   not the company. Each entry in products[] is one model (e.g. "GPT-4o", "Claude 3.5 Sonnet",
+#   "Gemini 2.0 Flash"). GPT-4o and GPT-4o-mini are separate entries; Claude 3.5 Sonnet and
+#   Claude 3.5 Haiku are separate entries.
+#
+# Company-level context (api_platform, compute_dependency, research_profile, commercial_traction,
+#   roadmap) wraps around the model catalog — these are per-vendor, not per-model.
+#
+# ── Source tiers ──────────────────────────────────────────────────────────────
+#   Tier 1 — vendor official: model card, system card, official product/pricing page,
+#             API documentation, official technical report.
+#   Tier 2 — independent evals: Artificial Analysis (quality index + latency),
+#             LMSYS Chatbot Arena (human-preference ELO), MLPerf Inference (where submitted),
+#             established academic benchmark leaderboards (HuggingFace Open LLM, HELM).
+#   Tier 3 — estimates: journalist-reported figures, community benchmarks, leaked internal evals.
+#             Use only when Tier 1/2 unavailable; flag clearly in notes.
+#
+# ── Pricing note ──────────────────────────────────────────────────────────────
+#   API prices change frequently. Always set pricing.snapshot_date and re-check before
+#   using pricing data for analysis. Stale prices invalidate derived_efficiency ratios.
+#   For open-weight models (weights_access: open_weights), vendor API price may be null;
+#   use hosted_reference_price (a major hosting provider) as a cost proxy and label as estimate.
+#
+# ── Per leaf: { value, notes, sources } ───────────────────────────────────────
+#   Plain scalars for identity fields. { value, notes, sources } on all metric/spec leaves.
+#   sources[] entries: { url, kind, description, retrieved_at }
+
+layer: models
+profile_version: 1
+
+as_of: null
+
+# ─── Model catalog ────────────────────────────────────────────────────────────
+# Each entry is one model variant. This is the core of the models business profile.
+# Add one entry per distinct deployed model (different capability tiers, pricing tiers,
+# or modality sets = separate entries).
+products:
+
+  - name: null              # Model name as marketed (e.g. "GPT-4o", "Claude 3.5 Sonnet").
+    vendor: null            # Company slug (must match company_index.yaml).
+    model_family: null      # Vendor family label (e.g. "GPT-4", "Claude 3.5", "Gemini 2.0").
+    architecture_type: null # dense_transformer | mixture_of_experts | diffusion | other
+    weights_access: null    # proprietary | open_weights | open_source
+    status: null            # preview | ga | deprecated
+    release_date: null      # ISO date or "YYYY-Qn"
+    knowledge_cutoff: null  # ISO date of training data cutoff.
+
+    # ── Capabilities ─────────────────────────────────────────────────────────
+    capabilities:
+      context_window_tokens:
+        value: null         # Maximum input context in tokens.
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: null         # Maximum tokens the model can generate per response.
+        notes: null
+        sources: []
+      modalities_in:
+        value: []           # Accepted input types: text | image | audio | video | file | tool_result
+        notes: null
+        sources: []
+      modalities_out:
+        value: []           # Generated output types: text | image | audio | code
+        notes: null
+        sources: []
+      tool_use:
+        value: null         # strong | limited | none — function/tool calling reliability.
+        notes: "strong: production-grade, parallel tool calls supported. limited: available but unreliable. none: not supported."
+        sources: []
+      computer_use:
+        value: null         # yes | no — can the model control a GUI/browser autonomously?
+        notes: null
+        sources: []
+      structured_output:
+        value: null         # yes | no — reliable JSON/schema-constrained output mode.
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: null         # yes | no | open_weights — open_weights means users run their own fine-tuning.
+        notes: null
+        sources: []
+
+    # ── Benchmarks ────────────────────────────────────────────────────────────
+    # Prefer Tier 2 independent sources over vendor-self-reported figures.
+    # If a vendor number is used, flag it in notes as "vendor-reported."
+    # null = benchmark not applicable (e.g. mmmu for text-only models) or not yet run.
+    benchmarks:
+      quality_index:
+        value: null         # 0–100 composite score from Artificial Analysis. Primary overall quality signal.
+        notes: "Source: Artificial Analysis Quality Index (artificialanalysis.ai). Blends reasoning, coding, math, and instruction-following benchmarks into a single normalized score. Recheck quarterly — index composition may update."
+        sources: []
+      chatbot_arena_elo:
+        value: null         # LMSYS Chatbot Arena ELO score. Human blind-preference signal.
+        notes: "Source: LMSYS Chatbot Arena (lmarena.ai). Based on pairwise human votes; most honest general-purpose quality signal. ELO is relative — only meaningful as a ranking vs. other models in the same Arena cohort."
+        sources: []
+      gpqa_diamond:
+        value: null         # % correct on GPQA Diamond (PhD-level science/reasoning). 0–100.
+        notes: "Hard reasoning benchmark; resistant to data contamination. Random baseline ~25%. Use for assessing frontier reasoning capability."
+        sources: []
+      swe_bench_verified:
+        value: null         # % of real GitHub issues resolved. 0–100.
+        notes: "Best available coding/engineering benchmark. 'Verified' subset has human-validated test cases. Measures end-to-end software engineering, not just code generation."
+        sources: []
+      math_500:
+        value: null         # % correct on MATH-500 (competition math). 0–100.
+        notes: "Use for quantitative/mathematical workload assessment."
+        sources: []
+      mmlu_pro:
+        value: null         # % correct on MMLU-Pro (broad knowledge, harder than original MMLU). 0–100.
+        notes: "MMLU-Pro is preferred over original MMLU; original MMLU is largely saturated by frontier models."
+        sources: []
+      mmmu:
+        value: null         # % correct on MMMU (multimodal understanding). 0–100. null for text-only models.
+        notes: "Relevant only for models with image_in capability."
+        sources: []
+
+    # ── Pricing ───────────────────────────────────────────────────────────────
+    # Prices change frequently. snapshot_date is required; treat stale data as unreliable.
+    pricing:
+      snapshot_date: null   # ISO date when these prices were verified. Required.
+      input_per_million_tokens:
+        value: null         # USD per 1M input tokens at standard (non-batch) tier.
+        notes: null
+        sources: []
+      output_per_million_tokens:
+        value: null         # USD per 1M output tokens. Primary cost driver; use as denominator in efficiency ratios.
+        notes: "null for open-weight models — no vendor API price. Use hosted_reference_price as proxy."
+        sources: []
+      context_caching_input:
+        value: null         # USD per 1M tokens for cached/repeated context (if offered).
+        notes: "Relevant for RAG and long-system-prompt deployments. Significantly reduces cost for repeated context."
+        sources: []
+      batch_input_per_million_tokens:
+        value: null         # USD per 1M input tokens at async batch tier (if offered; typically ~50% discount).
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null         # For open-weight models: representative USD/M output tokens from a major hosting provider.
+        notes: "Use for open-weight models where output_per_million_tokens is null. State provider (e.g. Together.ai, Fireworks.ai, Groq) and snapshot_date. Label derived_efficiency as estimate when using this price."
+        sources: []
+
+    # ── Latency ───────────────────────────────────────────────────────────────
+    # Source from independent measurement services only.
+    # Do NOT use vendor-published latency — vendor figures reflect ideal conditions, not production.
+    latency:
+      snapshot_date: null   # ISO date when latency was measured. Required.
+      median_ttft_ms:
+        value: null         # Time to first token, milliseconds (median across providers/regions).
+        notes: "Source: Artificial Analysis or LLMPerf. TTFT drives perceived responsiveness in interactive applications."
+        sources: []
+      output_tokens_per_second:
+        value: null         # Sustained output throughput in tokens/second.
+        notes: "Source: Artificial Analysis or LLMPerf. Drives cost and feasibility for high-volume batch/agentic workloads."
+        sources: []
+
+    # ── Derived efficiency ────────────────────────────────────────────────────
+    # Compute after pricing and benchmarks are populated. Recompute when pricing changes.
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null         # Derived: quality_index.value / output_per_million_tokens.value. Higher = better value.
+        notes: "Primary price-performance ratio. For open-weight models, divide quality_index by hosted_reference_price and label as estimate. Recompute whenever pricing.snapshot_date is updated."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null         # Derived: chatbot_arena_elo.value / output_per_million_tokens.value.
+        notes: "Alternative efficiency ratio using human-preference signal instead of composite index. Useful cross-check when quality_index and Arena ELO diverge significantly."
+        sources: []
+
+    sources: []             # Per-model top-level sources (model card, system card, official product page).
+
+# ─── Company-level context ────────────────────────────────────────────────────
+
+api_platform:
+  platform_name:
+    value: null             # e.g., "OpenAI API", "Anthropic Claude API", "Google AI Studio / Vertex AI"
+    notes: null
+    sources: []
+  deployment_options:
+    value: []               # e.g., ["vendor API", "Azure OpenAI", "AWS Bedrock", "Google Vertex AI", "self-hosted (open weights)"]
+    notes: null
+    sources: []
+  enterprise_features:
+    value: []               # e.g., ["SOC 2 Type II", "HIPAA BAA", "no training on inputs", "SSO/SAML", "audit logs", "custom data retention"]
+    notes: null
+    sources: []
+  sla_uptime:
+    value: null             # Vendor-stated uptime SLA (e.g., "99.9%").
+    notes: null
+    sources: []
+
+compute_dependency:
+  primary_training_infrastructure:
+    value: null             # Who supplies compute for training (e.g., "Microsoft Azure", "Google TPU", "own data centers").
+    notes: null
+    sources: []
+  primary_inference_infrastructure:
+    value: null             # Who supplies compute for inference serving.
+    notes: null
+    sources: []
+  infrastructure_independence:
+    value: null             # high | medium | low — how dependent on a single cloud/hardware partner?
+    notes: "high: owns or controls most of its compute. medium: primary cloud partner but not exclusive. low: single-cloud dependent (existential risk if partner withdraws)."
+    sources: []
+
+research_profile:
+  orientation:
+    value: null             # frontier_lab | product_lab | hybrid
+    notes: "frontier_lab: primary output is advancing model capabilities (OpenAI, Anthropic, DeepMind). product_lab: primary output is shipped products. hybrid: both."
+    sources: []
+  openness:
+    value: null             # proprietary | open_weights | open_source
+    notes: "proprietary: weights not released. open_weights: weights released, training code/data may be restricted (Meta Llama). open_source: weights + training code + data released (EleutherAI, some Mistral)."
+    sources: []
+  safety_approach:
+    value: null             # Brief description of safety/alignment methodology.
+    notes: "e.g., 'Constitutional AI + RLHF (Anthropic)', 'RLHF + usage policies (OpenAI)', 'Responsible Scaling Policy', 'RLHF + red-teaming (Google)'."
+    sources: []
+
+commercial_traction:
+  business_model:
+    value: []               # api_pay_per_token | subscription_chatbot | enterprise_contracts | open_weights_ecosystem | platform_revenue_share
+    notes: null
+    sources: []
+  notable_deployments:
+    value: []               # Known production integrations or major enterprise customers (where publicly disclosed).
+    notes: null
+    sources: []
+  api_ecosystem:
+    value: null             # dominant | growing | early — third-party developer adoption breadth.
+    notes: null
+    sources: []
+
+roadmap:
+  next_generation:
+    value: null             # Next known or rumored model (e.g., "GPT-5 — expected H1 2026").
+    notes: null
+    sources: []
+  release_cadence:
+    value: null             # Observed pattern (e.g., "~6-month major release + continuous minor updates").
+    notes: null
+    sources: []
+  roadmap_credibility:
+    value: null             # strong | moderate | unproven — based on execution history.
+    notes: null
+    sources: []
+
+sources: []

@@ -1,0 +1,237 @@
+# OpenAI — Material Announcements
+# Most recent first. Each entry covers a distinct material event.
+# Source tiers: Tier 1 = official OpenAI blog/press release; Tier 2 = credible press.
+
+announcements:
+
+  - date: "2026-03-17"
+    category: product_launch
+    title: "GPT-5.4 mini and nano released"
+    summary: >
+      OpenAI released GPT-5.4 mini and GPT-5.4 nano, positioned as fast and
+      cost-efficient models optimized for coding and subagent tasks. GPT-5.4
+      mini runs 2× faster than GPT-5 mini while approaching GPT-5.4 performance
+      on coding benchmarks. Nano is the lowest-latency tier, targeting
+      high-volume inference and on-device use cases. The rapid 12-day follow-up
+      to GPT-5.4 signals an accelerating release cadence.
+    significance: medium
+    sources:
+      - url: https://openai.com/index/introducing-gpt-5-4-mini-and-nano/
+        kind: vendor_page
+        description: "OpenAI official: GPT-5.4 mini and nano launch."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-03-05"
+    category: product_launch
+    title: "GPT-5.4 launched — flagship model with 1M context and native computer-use"
+    summary: >
+      OpenAI launched GPT-5.4 as its most capable flagship model. Key features:
+      1M token context window, native computer-use (GUI/browser control for agents),
+      improved token efficiency vs GPT-5.2, and 83% on the GDPval knowledge-work
+      benchmark. Three variants: standard GPT-5.4, Thinking (reasoning-focused), and
+      Pro (maximum capability). Represents OpenAI's response to pressure from Anthropic
+      Claude 3.7 Sonnet and Google Gemini 2.0 Pro.
+    significance: high
+    sources:
+      - url: https://openai.com/index/introducing-gpt-5-4/
+        kind: vendor_page
+        description: "OpenAI: GPT-5.4 launch post."
+        retrieved_at: "2026-03-29"
+      - url: https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/
+        kind: news_article
+        description: "TechCrunch: GPT-5.4 launch with Pro and Thinking variants."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-27"
+    category: funding
+    title: "$110B funding round at $730B pre-money valuation — Amazon, NVIDIA, SoftBank"
+    summary: >
+      OpenAI closed a $110B funding round, one of the largest private funding
+      rounds in history, at a $730B pre-money valuation. Led by Amazon ($50B),
+      NVIDIA ($30B), and SoftBank ($30B). The round includes infrastructure
+      partnerships: Amazon and NVIDIA will supply compute as part of the deal.
+      NVIDIA's participation is notable given NVIDIA is the primary supplier of
+      H100/B200 GPUs that OpenAI trains on. The round brings total funding to
+      approximately $175B.
+    significance: high
+    sources:
+      - url: https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history
+        kind: news_article
+        description: "TechCrunch: $110B round details, investors, valuation."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-27"
+    category: partnership
+    title: "Microsoft-OpenAI partnership updated — 27% stake, Azure exclusivity reaffirmed through 2032"
+    summary: >
+      Microsoft and OpenAI issued a joint statement confirming updated partnership
+      terms. Microsoft secured a 27% stake in OpenAI Group PBC (the PBC being the new
+      corporate structure). Azure remains exclusive for stateless OpenAI APIs through
+      2032. Microsoft receives 20% of OpenAI revenue through 2032. OpenAI gains
+      flexibility to use other compute providers for non-API workloads.
+      Microsoft investment total: $13B+. The statement came same day as the $110B
+      round to clarify that new investors (Amazon, NVIDIA) do not displace Microsoft.
+    significance: high
+    sources:
+      - url: https://blogs.microsoft.com/blog/2026/02/27/microsoft-and-openai-joint-statement-on-continuing-partnership/
+        kind: vendor_page
+        description: "Microsoft official blog: joint statement on partnership terms."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-05"
+    category: product_launch
+    title: "OpenAI Frontier platform launched for enterprise AI agents"
+    summary: >
+      OpenAI launched Frontier, an enterprise platform for building, deploying, and
+      managing AI agents at scale. Early adopters include HP, Intuit, Oracle, State
+      Farm, Thermo Fisher, and Uber. Frontier competes directly with Anthropic's
+      enterprise agent offerings and positions OpenAI as an enterprise operating
+      layer, not just an API provider. This is OpenAI's clearest move into the
+      enterprise software layer of the AI value chain.
+    significance: high
+    sources:
+      - url: https://openai.com/index/introducing-openai-frontier/
+        kind: vendor_page
+        description: "OpenAI: Frontier platform launch post."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-01-19"
+    category: financial_disclosure
+    title: "CFO Sarah Friar confirms annualized revenue crossed $20B in 2025"
+    summary: >
+      CFO Sarah Friar (hired from Nextdoor, appointed 2024) publicly stated that
+      OpenAI's annualized revenue crossed $20B in 2025. This is a voluntary
+      disclosure — one of few financially substantive public statements from OpenAI.
+      Revenue grew with computing capacity: compute expanded from 0.6 GW (2024)
+      to 1.9 GW (2025). The statement implies H2 2025 run rate significantly above
+      the H1 2025 pace of ~$8.6B annualized.
+    significance: medium
+    sources:
+      - url: https://www.reuters.com/business/openai-cfo-says-annualized-revenue-crosses-20-billion-2025-2026-01-19/
+        kind: news_article
+        description: "Reuters: CFO Sarah Friar on $20B+ annualized revenue milestone."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-26"
+    category: funding
+    title: "$22.5B funding round led by SoftBank; secondary at $500B valuation"
+    summary: >
+      OpenAI raised $22.5B led by SoftBank in October 2025 (primary round). A
+      concurrent secondary market transaction at ~$500B valuation also closed Oct 2.
+      Investors in the secondary include Dragoneer, MGX, SoftBank, T. Rowe Price,
+      and Thrive Capital. The two transactions mark rapid valuation step-up from the
+      March 2025 $300B post-money valuation — the $500B to $730B move (by Feb 2026)
+      occurred in under six months.
+    significance: medium
+    sources:
+      - url: https://www.cbinsights.com/company/openai/financials
+        kind: ir_html
+        description: "CBInsights: Oct 2025 funding rounds and valuations."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-06"
+    category: user_milestone
+    title: "ChatGPT reaches 800M weekly active users"
+    summary: >
+      Sam Altman announced ChatGPT hit 800M weekly active users, up from 700M in
+      August. Consumer subscription count: 50M+. Business users: 9M+. The pace
+      represents 4× year-over-year growth from 200M WAU in late 2024. Growth driven
+      by product releases (o1, GPT-4o voice, Sora), not just organic discovery.
+    significance: medium
+    sources:
+      - url: https://techcrunch.com/2025/10/06/sam-altman-says-chatgpt-has-hit-800m-weekly-active-users
+        kind: news_article
+        description: "TechCrunch: Sam Altman announces 800M WAU milestone."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-09-30"
+    category: product_launch
+    title: "Sora 2 released — physically accurate video generation with dialogue"
+    summary: >
+      OpenAI released Sora 2 with physics-accurate video generation including
+      realistic failure states, synchronized dialogue and sound effects, and
+      the ability to insert real people into generated scenes. Competes with
+      Google Veo 2 and Runway Gen-3. Represents OpenAI's continued expansion
+      beyond text and into video/multimodal content generation.
+    significance: medium
+    sources:
+      - url: https://openai.com/index/sora-2/
+        kind: vendor_page
+        description: "OpenAI: Sora 2 launch post."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-03-31"
+    category: funding
+    title: "$40B funding round at $300B post-money valuation — SoftBank lead"
+    summary: >
+      OpenAI's largest single funding round at the time: $40B led by SoftBank at
+      a $300B post-money valuation. Concurrent with the SoftBank-led Stargate
+      project ($500B AI infrastructure). Masayoshi Son (SoftBank) and Sam Altman
+      together committed to building U.S. AI infrastructure. The $300B post-money
+      valuation represented 2× the October 2024 round ($157B), a 91% step-up in
+      approximately 5 months.
+    significance: high
+    sources:
+      - url: https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history
+        kind: news_article
+        description: "TechCrunch: Funding history context including March 2025 round."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-02-28"
+    category: financial_disclosure
+    title: "The Information reports OpenAI H1 2025: $4.3B revenue, -$13.5B net loss"
+    summary: >
+      The Information published internal OpenAI financial data (via apparent document
+      leak): H1 2025 revenue $4.3B, net loss $13.5B, R&D $6.7B, S&M $2B, SBC ~$2.5B,
+      cash burn $2.5B (~$13.8M/day). Also revealed forecast: $111B cumulative cash
+      burn through 2030, requiring ~$600B in total compute spending. The disclosure,
+      while unofficial, is the most granular P&L data available for OpenAI.
+    significance: high
+    sources:
+      - url: https://sanj.dev/post/real-cost-of-ai-openai-financials
+        kind: ir_html
+        description: "Secondary analysis citing The Information's internal document reporting."
+        retrieved_at: "2026-03-29"
+      - url: https://www.theinformation.com/articles/openai-boost-revenue-forecasts-predicts-112-billion-cash-burn-2030
+        kind: news_article
+        description: "The Information: OpenAI revenue forecasts and $111B cash burn prediction."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-01-21"
+    category: infrastructure
+    title: "Stargate Project announced — $500B AI infrastructure with SoftBank, Oracle, MGX"
+    summary: >
+      OpenAI, SoftBank, Oracle, and MGX announced the Stargate Project at a White House
+      press conference with President Trump. $500B over four years to build U.S.-based
+      AI data centers; $100B to deploy immediately. SoftBank holds financial
+      responsibility; OpenAI holds operational responsibility. Technology partners:
+      ARM, Microsoft, NVIDIA, Oracle. Initial buildout in Texas. Represents OpenAI's
+      effort to reduce single-cloud dependence on Microsoft Azure and build proprietary
+      compute infrastructure. Microsoft retains right of first refusal on new capacity.
+    significance: high
+    sources:
+      - url: https://openai.com/index/announcing-the-stargate-project/
+        kind: vendor_page
+        description: "OpenAI: Stargate Project announcement."
+        retrieved_at: "2026-03-29"
+      - url: https://www.theverge.com/2025/1/21/24348816/openai-softbank-ai-data-center-stargate-project
+        kind: news_article
+        description: "The Verge: Stargate $500B data center plan details."
+        retrieved_at: "2026-03-29"
+
+  - date: "2024-10-02"
+    category: funding
+    title: "$6.6B Series funding at $157B valuation — Thrive, Microsoft, NVIDIA, SoftBank"
+    summary: >
+      OpenAI raised $6.6B at a $157B post-money valuation. Led by Thrive Capital
+      with Microsoft, NVIDIA, SoftBank, and Khosla Ventures participating. This
+      was the round concurrent with the announced transition from capped-profit LLC
+      structure to a Delaware Public Benefit Corporation (PBC), targeting 2025.
+      The $157B valuation established the base from which subsequent rapid
+      step-ups (to $300B, $500B, $730B) occurred over the following 16 months.
+    significance: high
+    sources:
+      - url: https://salestools.io/report/openai-6-6-billion-funding-round-october-2024
+        kind: news_article
+        description: "SalesTools citing primary reports: $6.6B at $157B, Oct 2024."
+        retrieved_at: "2026-03-29"

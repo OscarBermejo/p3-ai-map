@@ -1,0 +1,160 @@
+period:
+  label: "FY2024-annual"
+  start: "2024-01-01"
+  end: "2024-12-31"
+  fiscal_year: 2024
+  period_type: annual_estimate  # Tier 2 confirmed annual revenue; other metrics unavailable
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 3700000000         # ~$3.7B FY2024 recognized revenue — Tier 2 (The Information / CBInsights); see sources
+  cost_of_revenue: null       # Not disclosed; Microsoft 20% rev-share alone implies ≥$740M; full compute costs unknown
+  gross_profit: null          # Not disclosed; see sources
+  research_and_development: null  # Not disclosed; H1 2025 R&D was $6.7B (supra-revenue); FY2024 not reported
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null      # Not disclosed; company operated at significant loss
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null            # Not disclosed; expected deeply negative
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null    # Private company; no public shares
+  shares_outstanding_diluted: null
+  market_cap: null                  # Private; see extended_metrics for last-round valuation
+
+sources:
+  - url: https://www.cbinsights.com/company/openai/financials
+    kind: ir_html
+    description: "Tier 2: CBInsights reports OpenAI 2025 revenue at $13B and 2024 revenue implied at ~$3.7B based on trajectory from $1.6B in 2023. This is consistent with Bloomberg and The Information reporting. Standard revenue field set to $3.7B as best-available confirmed estimate."
+    covers: [revenue]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "cost_of_revenue, gross_profit: not publicly disclosed. OpenAI's primary cost of revenue items are (a) Microsoft Azure compute (exclusive cloud provider), (b) 20% of revenue paid to Microsoft as revenue share through 2032 (The Information, Oct 2025), and (c) model serving infrastructure. No credible Tier 1 or Tier 2 source provides a gross margin figure for FY2024."
+    covers: [cost_of_revenue, gross_profit]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "research_and_development, operating_income, net_income: not disclosed. The Information (2025) reported H1 2025 net loss of $13.5B on $4.3B revenue. Extrapolating to FY2024 is not reliable given rapid cost scaling in 2024-25. Fields left null."
+    covers: [research_and_development, operating_income, net_income]
+    retrieved_at: "2026-03-29"
+
+  - url: null
+    kind: documentation
+    description: "All cash flow and balance sheet fields: not publicly disclosed. No Tier 1 or Tier 2 source provides these for FY2024."
+    covers: [operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net, financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+data_quality:
+  overall: low
+  confirmed_fields: [revenue]
+  estimated_fields: []
+  unavailable_fields:
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: "Revenue is a Tier 2 figure consistent across multiple credible outlets. All other income statement and balance sheet metrics are unavailable. Quality rating is 'low' — revenue is the only usable standard metric in this file."
+
+extended_metrics:
+  total_funding_raised_usd:
+    value: null  # see notes — range $167B–$175B depending on source; not yet consolidated
+    notes: "Multiple sources: CBInsights $175.1B, Tracxn $167.9B, FundBat $168B as of Mar 2026. Discrepancy reflects ongoing activity. Conservative floor: $167B. This includes the $110B Feb 2026 round."
+    sources:
+      - url: https://www.cbinsights.com/company/openai/financials
+        kind: ir_html
+        description: "CBInsights: total raised $175.1B across 19 rounds"
+        retrieved_at: "2026-03-29"
+
+  last_round_amount_usd:
+    value: 6600000000  # $6.6B — Oct 2024 round (closest round to FY2024 period-end)
+    notes: "October 2024 primary round. Led by Thrive Capital with Microsoft, NVIDIA, SoftBank, Khosla Ventures. Post-money valuation: $157B."
+    sources:
+      - url: https://salestools.io/report/openai-6-6-billion-funding-round-october-2024
+        kind: ir_html
+        description: "Tier 2: SalesTools citing multiple primary reports; $6.6B at $157B post-money valuation."
+        retrieved_at: "2026-03-29"
+
+  last_round_valuation_usd:
+    value: 157000000000  # $157B post-money — Oct 2024
+    notes: "Post-money valuation at Oct 2024 round. Note: by Feb 2026 valuation reached $730B pre-money at $110B round."
+    sources: []
+
+  last_round_date: "2024-10-02"
+  last_round_type: series_x
+
+  arr_usd:
+    value: null  # $3.5B–$4.0B estimated ARR as of late 2024; setting null per protocol
+    notes: "Estimated late-2024 ARR in the $3.5B–$4.0B range consistent with trajectory from $3.7B FY2024 recognized revenue. Standard revenue field uses $3.7B recognized figure."
+    sources: []
+
+  monthly_burn_rate_usd:
+    value: null
+    notes: "FY2024 burn rate not available. H1 2025 cash burn was ~$2.5B (The Information), implying ~$416M/month in H1 2025. FY2024 burn likely lower given smaller compute footprint (0.6 GW in 2024 vs 1.9 GW in 2025)."
+    sources: []
+
+  cash_runway_months:
+    value: null
+    notes: "Not calculable without cash balance and burn rate data."
+    sources: []
+
+  headcount:
+    value: null  # ~3,000–4,000 estimated for end-2024; 4,500 confirmed for early 2026
+    notes: "Reuters (Mar 2026) reports ~4,500 employees currently with plans to reach 8,000 by end-2026. FY2024 end headcount estimated at 3,000–4,000 based on growth trajectory."
+    sources:
+      - url: https://www.reuters.com/business/openai-nearly-double-workforce-8000-by-end-2026-ft-reports-2026-03-21/
+        kind: ir_html
+        description: "Reuters: OpenAI ~4,500 employees as of Mar 2026; doubling to 8,000 by end-2026."
+        retrieved_at: "2026-03-29"
+
+  revenue_per_employee_usd:
+    value: null
+    notes: "Derived estimate not reliable given headcount uncertainty for FY2024."
+    sources: []

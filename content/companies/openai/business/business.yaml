@@ -1,0 +1,964 @@
+layer: models
+profile_version: 1
+
+as_of: "2026-03-29"
+
+# ─── Model catalog ────────────────────────────────────────────────────────────
+# Current active model lineup as of March 2026.
+# GPT-5.4 is the flagship (Mar 2026); o3/o4-mini are reasoning specialists (Apr 2025);
+# GPT-4.1/GPT-4.1-mini are standard production models (Apr 2025); GPT-4o/GPT-4o-mini
+# are now legacy but remain in broad deployment.
+
+products:
+
+  # ── GPT-5.4 ───────────────────────────────────────────────────────────────
+  - name: GPT-5.4
+    vendor: openai
+    model_family: GPT-5
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2026-03-05"
+    knowledge_cutoff: null  # Not yet published
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000  # 1M token context window
+        notes: "1M token context window confirmed at launch."
+        sources:
+          - url: https://openai.com/index/introducing-gpt-5-4/
+            kind: vendor_page
+            description: "OpenAI: GPT-5.4 launch post — 1M token context."
+            retrieved_at: "2026-03-29"
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, file, tool_result]
+        notes: "Text + vision confirmed; computer-use integration confirmed."
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Native computer-use (GUI/browser control) included; function calling strong."
+        sources:
+          - url: https://openai.com/index/introducing-gpt-5-4/
+            kind: vendor_page
+            description: "OpenAI launch post: native computer-use capabilities for agents."
+            retrieved_at: "2026-03-29"
+      computer_use:
+        value: yes
+        notes: "Native computer-use included in GPT-5.4 base model."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Fine-tuning availability for GPT-5.4 not confirmed at launch."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Tier 2 (Artificial Analysis) quality index not yet available for GPT-5.4 as of 2026-03-29. Vendor-reported: 83% on GDPval knowledge-work benchmark. GDPval is a new OpenAI-introduced benchmark — independent replication needed."
+        sources:
+          - url: https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/
+            kind: news_article
+            description: "TechCrunch: GPT-5.4 achieves 83% on GDPval; 33% fewer errors than GPT-5.2."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: "Not yet available for GPT-5.4 (too recent); check lmarena.ai."
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Vendor figure not reported at launch."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: "Vendor figure not reported at launch."
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 2.50
+        notes: "Standard tier pricing as of snapshot date."
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: OpenAI API pricing summary, Mar 2026."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 15.00
+        notes: "GPT-5.4 output pricing. Note: GPT-5.4 Pro variant has higher pricing."
+        sources: []
+      context_caching_input:
+        value: null
+        notes: "Prompt caching availability not confirmed for GPT-5.4 at launch."
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary model — no self-hosted option."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Artificial Analysis latency data not yet available for GPT-5.4 as of 2026-03-29."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: "Launch notes claim 'improved token efficiency vs GPT-5.2'. Independent measurement pending."
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable; cannot compute. Once Artificial Analysis publishes GPT-5.4 quality index, recompute as: quality_index / 15.00."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO unavailable; cannot compute."
+        sources: []
+
+    sources:
+      - url: https://openai.com/index/introducing-gpt-5-4/
+        kind: vendor_page
+        description: "OpenAI official GPT-5.4 launch post."
+        retrieved_at: "2026-03-29"
+
+
+  # ── o3 ────────────────────────────────────────────────────────────────────
+  - name: o3
+    vendor: openai
+    model_family: o-series
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-04"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 200000  # 200K context
+        notes: null
+        sources:
+          - url: https://artificialanalysis.ai/models/o3
+            kind: independent_eval
+            description: "Artificial Analysis: o3 context window 200K tokens."
+            retrieved_at: "2026-03-29"
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Reasoning model; function calling supported. Extended thinking chain visible in API."
+        sources: []
+      computer_use:
+        value: no
+        notes: "Computer-use not included in base o3; available in GPT-5.4 generation."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 63
+        notes: "Artificial Analysis Quality Index. Aggregate score blending reasoning, coding, math, and instruction following. Ranked significantly above GPT-4o (46). Source: BenchLM.ai citing Artificial Analysis aggregation."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: o3 aggregate score 63 vs GPT-4o 46."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: "Not available from current search data; check lmarena.ai."
+        sources: []
+      gpqa_diamond:
+        value: 87.0
+        notes: "Graduate-level reasoning benchmark. Tier 2 independent source."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: o3 GPQA Diamond 87%."
+            retrieved_at: "2026-03-29"
+      swe_bench_verified:
+        value: 71.7
+        notes: "o3's sharpest advantage vs GPT-4o (which scores 20%). Represents frontier coding ability."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: o3 SWE-bench Verified 71.7%; GPT-4o 20%."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: "MMLU (standard, not Pro) reported at 92.3% — standard MMLU is largely saturated by frontier models. MMLU-Pro not available from current sources."
+        sources:
+          - url: https://benchlm.ai/models/gpt-4o
+            kind: independent_eval
+            description: "BenchLM.ai: o3 standard MMLU 92.3% (note: standard MMLU is saturated; MMLU-Pro preferred)."
+            retrieved_at: "2026-03-29"
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 2.00
+        notes: null
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: OpenAI API pricing, Mar 2026. o3: $2/$8."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 8.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: null
+        notes: "Prompt caching availability for o3 not confirmed."
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-29"
+      median_ttft_ms:
+        value: 7730  # 7.73 seconds = 7,730 ms (OpenAI native)
+        notes: "Artificial Analysis: o3 TTFT 7.73s on OpenAI (31.44s on Azure). High TTFT reflects extended thinking chain computation before first token. Not suitable for real-time interactive use."
+        sources:
+          - url: https://artificialanalysis.ai/models/o3
+            kind: independent_eval
+            description: "Artificial Analysis: o3 TTFT 7.73s (OpenAI), 31.44s (Azure)."
+            retrieved_at: "2026-03-29"
+      output_tokens_per_second:
+        value: 94.9
+        notes: "Artificial Analysis: 94.9 t/s on OpenAI. Once generation begins, throughput is strong."
+        sources:
+          - url: https://artificialanalysis.ai/models/o3
+            kind: independent_eval
+            description: "Artificial Analysis: o3 output speed 94.9 t/s (OpenAI), 79.5 t/s (Azure)."
+            retrieved_at: "2026-03-29"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 7.875  # Derived: 63 / 8.00 = 7.875
+        notes: "Derived: quality_index (63) / output_per_million_tokens ($8.00) = 7.875 quality points per output dollar. Recompute if pricing changes. Pricing snapshot: 2026-03-29."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO unavailable; cannot compute."
+        sources: []
+
+    sources:
+      - url: https://artificialanalysis.ai/models/o3
+        kind: independent_eval
+        description: "Artificial Analysis: o3 performance and pricing."
+        retrieved_at: "2026-03-29"
+
+
+  # ── GPT-4.1 ───────────────────────────────────────────────────────────────
+  - name: GPT-4.1
+    vendor: openai
+    model_family: GPT-4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-04"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000  # 1M context window
+        notes: "1M token context window — largest among the Apr 2025 release cohort."
+        sources:
+          - url: https://artificialanalysis.ai/models/gpt-4-1
+            kind: independent_eval
+            description: "Artificial Analysis: GPT-4.1 context 1,000K tokens."
+            retrieved_at: "2026-03-29"
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Strong agentic use case support; recommended for coding agents and pipeline automation."
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: "Fine-tuning available for GPT-4.1."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Artificial Analysis quality index not extracted from current data. o3 vs GPT-4.1 comparison page available at artificialanalysis.ai/models/comparisons/o3-vs-gpt-4-1 — check for current figure."
+        sources:
+          - url: https://artificialanalysis.ai/models/gpt-4-1
+            kind: independent_eval
+            description: "Artificial Analysis: GPT-4.1 performance page."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: "Expected strong coding performance; GPT-4.1 positioned as primary model for coding/agentic workloads."
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 2.00
+        notes: null
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: GPT-4.1 $2/$8 per 1M tokens."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 8.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: 1.00
+        notes: "Batch API typically 50% discount on input."
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-29"
+      median_ttft_ms:
+        value: 1160  # 1.16 seconds = 1,160 ms (OpenAI native)
+        notes: "Artificial Analysis: GPT-4.1 TTFT 1.16s (OpenAI), 1.20s (Azure). Significantly lower than o3 (7.73s) — suited for interactive applications."
+        sources:
+          - url: https://artificialanalysis.ai/models/gpt-4-1
+            kind: independent_eval
+            description: "Artificial Analysis: GPT-4.1 TTFT 1.16s (OpenAI), 1.20s (Azure)."
+            retrieved_at: "2026-03-29"
+      output_tokens_per_second:
+        value: 85.4
+        notes: "Artificial Analysis: 85.4 t/s (OpenAI), 114.5 t/s (Azure). Azure outperforms OpenAI native on throughput."
+        sources:
+          - url: https://artificialanalysis.ai/models/gpt-4-1
+            kind: independent_eval
+            description: "Artificial Analysis: GPT-4.1 output speed 85.4 t/s (OpenAI), 114.5 t/s (Azure)."
+            retrieved_at: "2026-03-29"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable; cannot compute. Once Artificial Analysis quality index is confirmed for GPT-4.1, recompute as: quality_index / 8.00."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://artificialanalysis.ai/models/gpt-4-1
+        kind: independent_eval
+        description: "Artificial Analysis: GPT-4.1 performance, latency, pricing."
+        retrieved_at: "2026-03-29"
+
+
+  # ── GPT-4.1 mini ──────────────────────────────────────────────────────────
+  - name: GPT-4.1 mini
+    vendor: openai
+    model_family: GPT-4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-04"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: "1M token context."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Optimized for agentic/subagent use cases at low cost."
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: null
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 0.40
+        notes: null
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: GPT-4.1 mini $0.40/$1.60."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 1.60
+        notes: null
+        sources: []
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.20
+        notes: "50% batch discount on input."
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable; cannot compute. Expected to be significantly higher ratio than GPT-4.1 given ~5x lower output price."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://pecollective.com/tools/openai-api-pricing/
+        kind: vendor_page
+        description: "PE Collective: OpenAI API pricing, Mar 2026."
+        retrieved_at: "2026-03-29"
+
+
+  # ── GPT-4o ────────────────────────────────────────────────────────────────
+  - name: GPT-4o
+    vendor: openai
+    model_family: GPT-4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga  # ga but increasingly supplanted by GPT-4.1 and GPT-5.x
+    release_date: "2024-05"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 128000
+        notes: "128K context window."
+        sources: []
+      max_output_tokens:
+        value: 16384
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, tool_result]
+        notes: "GPT-4o was the first OpenAI model with native audio input."
+        sources: []
+      modalities_out:
+        value: [text, code, audio]
+        notes: "Native audio output in Realtime API mode."
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 46
+        notes: "Artificial Analysis Quality Index. Tier 2 independent source."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: GPT-4o aggregate score 46 vs o3 63."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: "Not extracted from current sources; check lmarena.ai."
+        sources: []
+      gpqa_diamond:
+        value: 66.0
+        notes: "Tier 2 independent."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: GPT-4o GPQA Diamond 66%."
+            retrieved_at: "2026-03-29"
+      swe_bench_verified:
+        value: 20.0
+        notes: "Significantly below o3 (71.7%). Reflects GPT-4o's limitations on complex multi-file engineering tasks."
+        sources:
+          - url: https://benchlm.ai/compare/gpt-4o-vs-o3
+            kind: independent_eval
+            description: "BenchLM.ai: GPT-4o SWE-bench 20%."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: "Standard MMLU: 66% (largely saturated benchmark — not informative vs frontier models)."
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 2.50
+        notes: null
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: GPT-4o $2.50/$10.00."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 10.00
+        notes: "More expensive output than GPT-4.1 ($8) despite lower benchmark scores — legacy pricing premium."
+        sources: []
+      context_caching_input:
+        value: 1.25
+        notes: "50% cache discount on input."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 1.25
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 4.6  # Derived: 46 / 10.00 = 4.6
+        notes: "Derived: quality_index (46) / output_per_million_tokens ($10.00) = 4.6. Notably worse than o3 (7.875) — higher output price AND lower quality. GPT-4.1 at $8 output likely dominates GPT-4o on this ratio once quality index is confirmed."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://cdn.openai.com/gpt-4o-system-card.pdf
+        kind: vendor_page
+        description: "OpenAI GPT-4o system card."
+        retrieved_at: "2026-03-29"
+
+
+  # ── GPT-4o-mini ───────────────────────────────────────────────────────────
+  - name: GPT-4o-mini
+    vendor: openai
+    model_family: GPT-4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2024-07"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 128000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: 16384
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Widely used for high-volume, low-cost agentic pipelines."
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: null
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 0.15
+        notes: "One of the lowest-priced proprietary models in the market."
+        sources:
+          - url: https://pecollective.com/tools/openai-api-pricing/
+            kind: vendor_page
+            description: "PE Collective: GPT-4o-mini $0.15/$0.60."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 0.60
+        notes: null
+        sources: []
+      context_caching_input:
+        value: 0.075
+        notes: "50% cache discount."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.075
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable. At $0.60 output, even a moderate quality index would yield a very high ratio — GPT-4o-mini's value proposition is volume at low cost, not frontier quality."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://pecollective.com/tools/openai-api-pricing/
+        kind: vendor_page
+        description: "OpenAI API pricing, Mar 2026."
+        retrieved_at: "2026-03-29"
+
+
+# ─── Company-level context ────────────────────────────────────────────────────
+
+api_platform:
+  platform_name:
+    value: "OpenAI API"
+    notes: "Also available via Azure OpenAI Service (Microsoft-hosted) and in ChatGPT products (consumer/enterprise)."
+    sources: []
+  deployment_options:
+    value: ["OpenAI API (direct)", "Azure OpenAI Service (Microsoft-hosted)", "OpenAI Frontier platform (enterprise agents)"]
+    notes: "Azure OpenAI is the exclusive deployment option for stateless API per Microsoft partnership terms. OpenAI Frontier (launched Feb 2026) is the enterprise agent platform."
+    sources:
+      - url: https://blogs.microsoft.com/blog/2026/02/27/microsoft-and-openai-joint-statement-on-continuing-partnership/
+        kind: vendor_page
+        description: "Microsoft/OpenAI joint statement: Azure exclusive for stateless APIs."
+        retrieved_at: "2026-03-29"
+  enterprise_features:
+    value: ["SOC 2 Type II", "HIPAA BAA (available)", "no training on API inputs (enterprise)", "SSO/SAML", "audit logs", "data residency (Azure regions)"]
+    notes: null
+    sources: []
+  sla_uptime:
+    value: "99.9%"
+    notes: "Vendor-stated; independent uptime tracking at status.openai.com."
+    sources: []
+
+compute_dependency:
+  primary_training_infrastructure:
+    value: "Microsoft Azure"
+    notes: "Microsoft has contributed $13B+ in computing infrastructure as part of the partnership. Azure is primary training compute. OpenAI is building additional independent compute capacity (Stargate project)."
+    sources:
+      - url: https://blogs.microsoft.com/blog/2026/02/27/microsoft-and-openai-joint-statement-on-continuing-partnership/
+        kind: vendor_page
+        description: "Microsoft/OpenAI joint statement: $13B+ investment; Azure training compute."
+        retrieved_at: "2026-03-29"
+  primary_inference_infrastructure:
+    value: "Microsoft Azure (exclusive for stateless API)"
+    notes: "Per updated Oct 2025 agreement: Azure remains exclusive for stateless OpenAI APIs. OpenAI retains flexibility to use other providers for non-API inference (e.g., ChatGPT consumer)."
+    sources: []
+  infrastructure_independence:
+    value: low
+    notes: "OpenAI is deeply dependent on Microsoft Azure for both training and API inference. The Stargate project (announced Jan 2025) aims to build independent compute infrastructure with SoftBank and Oracle, but execution risk is high and timeline extends through 2029."
+    sources: []
+
+research_profile:
+  orientation:
+    value: frontier_lab
+    notes: "OpenAI's primary output is advancing frontier model capabilities (GPT-5 series, o-series reasoning, Sora). Commercial products (ChatGPT) are secondary outputs of the research mission."
+    sources: []
+  openness:
+    value: proprietary
+    notes: "All current production models (GPT-4o, GPT-4.1, o3, GPT-5.4) are proprietary — weights not released. OpenAI moved from open research to full proprietary in 2019 with GPT-2 staged release. No open-weight models in current lineup."
+    sources: []
+  safety_approach:
+    value: "RLHF + Constitutional AI principles + Preparedness Framework. Published system cards per model. Red-teaming with external partners before release. OpenAI states commitment to AGI safety aligned with 'broad benefit of humanity'; critics note commercial pressures create tension with stated mission."
+    notes: null
+    sources: []
+
+commercial_traction:
+  business_model:
+    value: [api_pay_per_token, subscription_chatbot, enterprise_contracts]
+    notes: "API (developer/enterprise pay-per-token) + ChatGPT Plus/Team/Enterprise subscriptions ($20–$30/month consumer; enterprise custom) + API platform enterprise contracts. Microsoft revenue share (20% of total revenue through 2032) is a material cost, not revenue. Sora (video) adds incremental subscription tier."
+    sources:
+      - url: https://www.theinformation.com/briefings/openai-pays-20-total-revenue-microsoft-2032
+        kind: news_article
+        description: "The Information: OpenAI pays 20% of total revenue to Microsoft through 2032."
+        retrieved_at: "2026-03-29"
+  notable_deployments:
+    value: ["Microsoft Copilot (Azure OpenAI backbone)", "Intuit", "HP", "Oracle", "State Farm", "Thermo Fisher", "Uber (OpenAI Frontier early adopters)"]
+    notes: "ChatGPT consumer: reported 400M+ weekly active users (early 2025 OpenAI blog)."
+    sources:
+      - url: https://openai.com/index/introducing-openai-frontier/
+        kind: vendor_page
+        description: "OpenAI: Frontier platform launch with HP, Intuit, Oracle, State Farm, Thermo Fisher, Uber as early adopters."
+        retrieved_at: "2026-03-29"
+  api_ecosystem:
+    value: dominant
+    notes: "OpenAI API has the largest third-party developer ecosystem among AI model providers. However, ecosystem share is declining relative to Anthropic (Claude) and Google (Gemini), particularly for enterprise coding and complex workflows."
+    sources:
+      - url: https://zdnet.com/article/anthropic-openai-enterprise-market-share-2025/
+        kind: news_article
+        description: "ZDNet: Anthropic 40% enterprise LLM spend (2025) vs OpenAI 27%, with Anthropic at 54% of coding segment."
+        retrieved_at: "2026-03-29"
+
+roadmap:
+  next_generation:
+    value: "GPT-5.4 Pro variant (higher capability, premium pricing) — announced alongside GPT-5.4 Mar 2026. Stargate compute infrastructure expanding through 2029."
+    notes: "GPT-5.4 Thinking (reasoning-focused) and GPT-5.4 Pro also part of Mar 2026 release. No confirmed successor model name beyond the 5.x series."
+    sources:
+      - url: https://techcrunch.com/2026/03/05/openai-launches-gpt-5-4-with-pro-and-thinking-versions/
+        kind: news_article
+        description: "TechCrunch: GPT-5.4 Thinking and Pro variants alongside standard GPT-5.4."
+        retrieved_at: "2026-03-29"
+  release_cadence:
+    value: "~4–6 week major model updates (2025–2026); major generation jumps ~6–12 months"
+    notes: "GPT-4o (May 2024) → GPT-4.1 + o3 (Apr 2025) → GPT-5 (mid-2025) → GPT-5.4 (Mar 2026). Accelerating cadence with GPT-5.4 mini/nano following GPT-5.4 by 12 days."
+    sources: []
+  roadmap_credibility:
+    value: strong
+    notes: "OpenAI has consistently executed on announced models. Slippage occurs but launches are typically within 1–2 quarters of telegraphed timelines. GPT-5 launch, Sora 2, and GPT-5.4 all delivered."
+    sources: []
+
+sources:
+  - url: https://openai.com/news
+    kind: vendor_page
+    description: "OpenAI news and product announcement index."
+    retrieved_at: "2026-03-29"
+  - url: https://platform.openai.com/docs/pricing
+    kind: vendor_page
+    description: "OpenAI API pricing documentation (canonical source; check before using any pricing figures)."
+    retrieved_at: "2026-03-29"

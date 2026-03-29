@@ -1,0 +1,109 @@
+slug: anthropic
+legal_name: Anthropic, PBC
+
+tickers: []  # Private company — no public equity ticker
+
+summary: |
+  Anthropic is a frontier AI safety company and the creator of the Claude model family.
+  Founded in 2021 by Dario Amodei (CEO), Daniela Amodei (President), and other former
+  OpenAI researchers, Anthropic sits at the models layer of the AI value chain: it trains
+  frontier large language models under a safety-first research mandate and deploys them via
+  API (Anthropic API), consumer products (Claude.ai), and enterprise agent tooling (Claude Code,
+  Claude for Work). Anthropic is incorporated as a Public Benefit Corporation (PBC) with a
+  Long-Term Benefit Trust that holds governance rights to prevent any single investor from
+  gaining control. As of early 2026, Anthropic is the fastest-growing company in enterprise
+  AI by ARR, with annualized revenue of approximately $14B (February 2026) and approximately
+  $19B (March 2026) — a 19x expansion from ~$1B ARR in December 2024.
+
+  Anthropic's primary training compute partner is Amazon Web Services (AWS), with a
+  multi-billion dollar strategic investment ($8B total) and Project Rainier (500K+
+  Trainium2 chips). A parallel multi-year agreement with Google Cloud provides access
+  to up to 1 million TPUs. Anthropic deliberately maintains a multi-cloud inference
+  architecture: Claude is available via the Anthropic API, AWS Bedrock, Google Vertex AI,
+  and Microsoft Foundry — a structural advantage over competitors locked into single-cloud
+  arrangements. Quantitative financials are not publicly disclosed; estimates from press
+  reports are in financials/*.yaml.
+
+corporate_structure:
+  type: private
+  legal_form: "Public Benefit Corporation (PBC), Delaware"
+  governance:
+    long_term_benefit_trust: >
+      The Long-Term Benefit Trust holds governance rights designed to prevent any single
+      shareholder from gaining control and to keep the company mission-focused on the
+      responsible development of AI for the long-term benefit of humanity. The Trust has
+      board representation via multiple independent members. This structure limits
+      investor return-extraction mechanisms compared to standard VC-backed companies.
+  founding_date: "2021"
+  hq: "San Francisco, CA"
+
+founders:
+  - name: Dario Amodei
+    role: "CEO and Co-Founder"
+    prior: "VP Research at OpenAI"
+  - name: Daniela Amodei
+    role: "President and Co-Founder"
+    prior: "VP Operations at OpenAI"
+  - name: Tom Brown
+    role: "Co-Founder"
+    prior: "Lead on GPT-3 at OpenAI"
+  - name: Chris Olah
+    role: "Co-Founder"
+    prior: "OpenAI (interpretability research)"
+  - name: Sam McCandlish
+    role: "Co-Founder"
+    prior: "OpenAI"
+  - name: Jack Clark
+    role: "Co-Founder"
+    prior: "Policy Director at OpenAI"
+  - name: Jared Kaplan
+    role: "Co-Founder"
+    prior: "OpenAI; co-authored neural scaling laws paper"
+
+board_of_directors:
+  - name: Dario Amodei
+    affiliation: CEO, Anthropic
+  - name: Daniela Amodei
+    affiliation: President, Anthropic
+  - name: Yasmin Razavi
+    affiliation: Spark Capital
+  - name: Jay Kreps
+    affiliation: CEO and co-founder, Confluent
+  - name: Reed Hastings
+    affiliation: Netflix co-founder
+  - name: Chris Liddell
+    affiliation: Former CFO at Microsoft, former White House deputy chief of staff
+  - name: Jason Matheny
+    affiliation: Long-Term Benefit Trust; CEO, RAND Corporation
+  - name: Kanika Bahl
+    affiliation: Long-Term Benefit Trust; CEO & President, Evidence Action
+  - name: Neil Buddy Shah
+    affiliation: Long-Term Benefit Trust Chair; CEO, Clinton Health Access Initiative
+  - name: Paul Christiano
+    affiliation: Long-Term Benefit Trust; Founder, Alignment Research Center
+  - name: Zach Robinson
+    affiliation: Long-Term Benefit Trust; Interim CEO, Effective Ventures US
+
+links:
+  investor_relations: null  # No public IR page
+  press_releases_index: https://www.anthropic.com/news
+  api_pricing: https://docs.anthropic.com/en/about-claude/pricing
+  sec_form_d: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=anthropic&CIK=&type=D&dateb=&owner=include&count=40&search_text=
+  company_blog: https://www.anthropic.com/research
+  claude_product: https://claude.ai
+
+reporting:
+  financials_root: financials/
+  cadence: irregular  # No public quarterly reporting; data from press reports and fundraising
+  primary_source: press_reports  # The Information, Bloomberg, Reuters; no SEC filings
+
+notes:
+  - Anthropic is a PRIVATE company. No 10-K/10-Q. Use financials_private.md sourcing rules.
+  - PBC structure with Long-Term Benefit Trust — designed to resist commercial pressure diverging from safety mission.
+  - AWS is primary training compute partner ($8B total investment, Project Rainier Trainium2 cluster).
+  - Google Cloud partnership (Oct 2025): tens of billions deal, up to 1M TPUs, 1GW+ compute capacity by 2026.
+  - Claude is available on Anthropic API, AWS Bedrock, Google Vertex AI, and Microsoft Foundry — multi-cloud inference advantage.
+  - Revenue model: API pay-per-token + Claude.ai consumer/Pro subscriptions + enterprise contracts (Claude for Work, Claude Code Enterprise).
+  - Constitutional AI (CAI) is Anthropic's primary safety/alignment methodology; 2026 constitution expanded to 23,000 words.
+  - Targeting cash flow positive by 2028 (delayed from earlier 2027 target per The Information Feb 2026).
+  - IPO reportedly targeted for October 2026 window at $60B+ raise (Tier 3 estimate; not confirmed by company).

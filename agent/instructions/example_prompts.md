@@ -16,6 +16,26 @@ Work through all seven phases in order. The narrative must include original deri
 math that cannot be found in any single public source.
 ```
 
+## Full deep dive (private company — models layer)
+
+```
+Read agent/instructions/company_deep_dive.md and run the full pipeline for Anthropic.
+This is a PRIVATE company on the MODELS layer — follow these substitutions:
+- Phase 2: use agent/instructions/financials_private.md instead of financials.md.
+  Do NOT look for SEC filings or XBRL. Source financials from press reports (The
+  Information, Bloomberg, WSJ), funding disclosures (Form D), and any voluntary
+  company releases. Use null + documented range for unconfirmed metrics. Populate
+  extended_metrics with funding history and ARR.
+- Phase 3: use the models layer template (content/_meta/business_templates/models.yaml).
+  Populate every current model variant as a separate products[] entry with benchmarks,
+  pricing (snapshot_date required), latency from Artificial Analysis, and compute
+  derived_efficiency ratios.
+Work through all seven phases in order. The narrative must acknowledge data gaps
+explicitly and focus original derived analysis on what IS available: funding efficiency,
+valuation multiples vs public comps, model price-performance trajectory, and competitive
+positioning vs Anthropic and Google.
+```
+
 ## Full deep dive (existing company refresh)
 
 ```

@@ -8,6 +8,7 @@ import {
 import { getFinancialSnapshotRowsForLayer } from "../../data/loaders/layerFramework";
 import type { BusinessProfileView } from "../../data/types/businessProfile";
 import type { ChipsProductView } from "../../data/types/chipsProduct";
+import type { ModelsProductView } from "../../data/types/modelsProduct";
 import type { LatestQuarterView } from "../../data/types/quarter";
 
 type CompanyCol = { slug: string; displayName: string };
@@ -19,6 +20,7 @@ type LayerSummaryTablesProps = {
   quarters: Map<string, LatestQuarterView | null>;
   business: Map<string, BusinessProfileView | null>;
   chipsProducts?: ChipsProductView[];
+  modelsProducts?: ModelsProductView[];
 };
 
 const BUSINESS_ROWS: {
@@ -261,6 +263,129 @@ function formatChipsCell(
   }
 }
 
+const MODELS_PRODUCT_ROWS: {
+  label: string;
+  description: string | null;
+  pick: (p: ModelsProductView) => number | string | null;
+  pickNotes: (p: ModelsProductView) => string | null;
+  format: "text" | "num" | "usd_per_m" | "pct" | "ctx" | "ms" | "tps";
+}[] = [
+  {
+    label: "Status",
+    description: "Product lifecycle stage: preview, ga (generally available), or deprecated.",
+    pick: (p) => p.status,
+    pickNotes: () => null,
+    format: "text",
+  },
+  {
+    label: "Weights access",
+    description: "Whether model weights are proprietary, released as open weights, or fully open source.",
+    pick: (p) => p.weightsAccess,
+    pickNotes: () => null,
+    format: "text",
+  },
+  {
+    label: "Context window",
+    description: "Maximum input context in tokens.",
+    pick: (p) => p.contextWindowTokens,
+    pickNotes: (p) => p.contextWindowTokensNotes,
+    format: "ctx",
+  },
+  {
+    label: "Quality index",
+    description: "Artificial Analysis composite quality score (0–100). Blends reasoning, coding, math, and instruction following. Higher = better overall model.",
+    pick: (p) => p.qualityIndex,
+    pickNotes: (p) => p.qualityIndexNotes,
+    format: "num",
+  },
+  {
+    label: "GPQA Diamond (%)",
+    description: "% correct on GPQA Diamond (PhD-level science/reasoning). Random baseline ~25%. Key frontier reasoning signal.",
+    pick: (p) => p.gpqaDiamond,
+    pickNotes: (p) => p.gpqaDiamondNotes,
+    format: "pct",
+  },
+  {
+    label: "SWE-bench Verified (%)",
+    description: "% of real GitHub issues resolved end-to-end. Best available coding/engineering benchmark.",
+    pick: (p) => p.sweBenchVerified,
+    pickNotes: (p) => p.sweBenchVerifiedNotes,
+    format: "pct",
+  },
+  {
+    label: "Input ($/M tokens)",
+    description: "API price per million input tokens at standard (non-batch) tier. Snapshot date shown in notes.",
+    pick: (p) => p.inputPerMillionTokens,
+    pickNotes: (p) =>
+      p.pricingSnapshotDate
+        ? `Snapshot: ${p.pricingSnapshotDate}${p.inputPerMillionTokensNotes ? ` — ${p.inputPerMillionTokensNotes}` : ""}`
+        : p.inputPerMillionTokensNotes,
+    format: "usd_per_m",
+  },
+  {
+    label: "Output ($/M tokens)",
+    description: "API price per million output tokens — the primary cost driver for high-volume deployments.",
+    pick: (p) => p.outputPerMillionTokens,
+    pickNotes: (p) =>
+      p.pricingSnapshotDate
+        ? `Snapshot: ${p.pricingSnapshotDate}${p.outputPerMillionTokensNotes ? ` — ${p.outputPerMillionTokensNotes}` : ""}`
+        : p.outputPerMillionTokensNotes,
+    format: "usd_per_m",
+  },
+  {
+    label: "Quality / output $",
+    description: "Derived: quality_index ÷ output price per million tokens. Higher = better price-performance. Recomputed when pricing changes.",
+    pick: (p) => p.qualityPerOutputDollar,
+    pickNotes: (p) => p.qualityPerOutputDollarNotes,
+    format: "num",
+  },
+  {
+    label: "TTFT (ms)",
+    description: "Median time to first token in milliseconds (Artificial Analysis). Drives perceived responsiveness in interactive apps.",
+    pick: (p) => p.medianTtftMs,
+    pickNotes: (p) => p.medianTtftMsNotes,
+    format: "ms",
+  },
+  {
+    label: "Output speed (t/s)",
+    description: "Sustained output throughput in tokens per second (Artificial Analysis). Key for batch and agentic workloads.",
+    pick: (p) => p.outputTokensPerSecond,
+    pickNotes: (p) => p.outputTokensPerSecondNotes,
+    format: "tps",
+  },
+];
+
+function formatCtx(v: number | null): string {
+  if (v == null) return "—";
+  if (v >= 1_000_000) return `${(v / 1_000_000).toLocaleString(undefined, { maximumFractionDigits: 1 })}M`;
+  if (v >= 1_000) return `${(v / 1_000).toLocaleString(undefined, { maximumFractionDigits: 0 })}K`;
+  return v.toLocaleString();
+}
+
+function formatModelsCell(
+  format: (typeof MODELS_PRODUCT_ROWS)[number]["format"],
+  v: number | string | null,
+): string {
+  if (v == null) return "—";
+  if (typeof v === "string") return v.trim() || "—";
+  switch (format) {
+    case "usd_per_m":
+      return `$${v.toFixed(2)}`;
+    case "pct":
+      return `${v.toFixed(1)}%`;
+    case "ctx":
+      return formatCtx(v);
+    case "ms":
+      return `${v.toLocaleString()} ms`;
+    case "tps":
+      return `${v.toFixed(1)} t/s`;
+    case "num":
+      return Number.isInteger(v) ? v.toLocaleString() : v.toFixed(2);
+    default:
+      return String(v);
+  }
+}
+
 function formatVendorSlug(slug: string): string {
   return slug.charAt(0).toUpperCase() + slug.slice(1);
 }
@@ -271,6 +396,7 @@ export function LayerSummaryTables({
   quarters,
   business,
   chipsProducts,
+  modelsProducts,
 }: LayerSummaryTablesProps) {
   const financialRows = useMemo(
     () => getFinancialSnapshotRowsForLayer(layerId),
@@ -465,6 +591,105 @@ export function LayerSummaryTables({
                         const raw = pick(p);
                         const notes = pickNotes(p);
                         const text = formatChipsCell(format, raw);
+                        if (notes) {
+                          return (
+                            <td key={`${p.vendor}-${p.name}`}>
+                              <span
+                                className="value-chain__biz-cell value-chain__biz-cell--has-note"
+                                tabIndex={0}
+                              >
+                                <span className="value-chain__biz-cell-value">
+                                  {text}
+                                </span>
+                                <span
+                                  className="value-chain__biz-tooltip"
+                                  role="tooltip"
+                                >
+                                  {notes}
+                                </span>
+                              </span>
+                            </td>
+                          );
+                        }
+                        return (
+                          <td key={`${p.vendor}-${p.name}`}>{text}</td>
+                        );
+                      })}
+                    </tr>
+                  ),
+                )}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      ) : modelsProducts && modelsProducts.length > 0 ? (
+        <section
+          className="value-chain__summary-block"
+          aria-labelledby="layer-biz-heading"
+        >
+          <h4 id="layer-biz-heading" className="value-chain__summary-title">
+            Model comparison
+          </h4>
+          <p className="value-chain__summary-lede">
+            Model specs and benchmarks from{" "}
+            <code className="value-chain__code">business/business.yaml</code>{" "}
+            product entries across vendors. Hover values with a dotted underline
+            to read notes. Pricing snapshot dates are shown in notes — prices
+            change frequently.
+          </p>
+          <div className="value-chain__table-scroll value-chain__table-scroll--biz">
+            <table className="value-chain__compare-table">
+              <thead>
+                <tr>
+                  <th scope="col" className="value-chain__compare-sticky">
+                    Metric
+                  </th>
+                  {modelsProducts.map((p) => (
+                    <th key={`${p.vendor}-${p.name}`} scope="col">
+                      {p.name}
+                    </th>
+                  ))}
+                </tr>
+                <tr className="value-chain__compare-subhead">
+                  <td className="value-chain__compare-sticky">Vendor</td>
+                  {modelsProducts.map((p) => (
+                    <td key={`${p.vendor}-${p.name}`}>
+                      {formatVendorSlug(p.vendor)}
+                    </td>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {MODELS_PRODUCT_ROWS.map(
+                  ({ label, description, pick, pickNotes, format }) => (
+                    <tr key={label}>
+                      <th
+                        scope="row"
+                        className="value-chain__compare-sticky"
+                      >
+                        {description ? (
+                          <span
+                            className="value-chain__biz-cell value-chain__biz-cell--has-note"
+                            tabIndex={0}
+                          >
+                            <span className="value-chain__biz-cell-value">
+                              {label}
+                            </span>
+                            <span
+                              className="value-chain__biz-tooltip"
+                              role="tooltip"
+                            >
+                              {description}
+                            </span>
+                          </span>
+                        ) : (
+                          label
+                        )}
+                      </th>
+                      {modelsProducts.map((p) => {
+                        const raw = pick(p);
+                        const notes = pickNotes(p);
+                        const text = formatModelsCell(format, raw);
                         if (notes) {
                           return (
                             <td key={`${p.vendor}-${p.name}`}>

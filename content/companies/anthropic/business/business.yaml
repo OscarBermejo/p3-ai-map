@@ -1,0 +1,1043 @@
+layer: models
+profile_version: 1
+
+as_of: "2026-03-29"
+
+# ─── Model catalog ────────────────────────────────────────────────────────────
+# Current active model lineup as of March 2026.
+# Claude 4.6 series (Feb 2026) is the current generation: Opus 4.6 is the flagship,
+# Sonnet 4.6 is the coding/agentic workhorse (powers Claude Code).
+# Claude 4.5 series (Opus Nov 2025; Sonnet/Haiku earlier 2025) are still active in production.
+# Claude Haiku 3.5 is legacy but remains widely deployed for budget workloads.
+# Deprecated: Claude 3.7 Sonnet, Claude Opus 3.
+
+products:
+
+  # ── Claude Opus 4.6 ───────────────────────────────────────────────────────
+  - name: Claude Opus 4.6
+    vendor: anthropic
+    model_family: Claude 4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2026-02-05"
+    knowledge_cutoff: null  # Not disclosed by Anthropic
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000  # 1M token context window
+        notes: "1M token context window; full 1M at standard pricing (no long-context surcharge unlike Sonnet 4.5). Confirmed at launch."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-opus-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Opus 4.6 context window 1M tokens."
+            retrieved_at: "2026-03-29"
+      max_output_tokens:
+        value: null
+        notes: "Max output tokens not publicly disclosed by Anthropic."
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: "Text and image input confirmed. No audio or video input."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-opus-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Opus 4.6 supports text and image input."
+            retrieved_at: "2026-03-29"
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Parallel tool calling and complex agentic workflows supported. Computer use available (via computer use API). Opus 4.6 is Anthropic's recommended model for complex multi-tool agent workflows."
+        sources: []
+      computer_use:
+        value: yes
+        notes: "Computer use (GUI/browser control) available via beta API. Claude 4.x models support the computer_use_20250429 tool."
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic pricing page: computer use tool available for Claude 4.x models."
+            retrieved_at: "2026-03-29"
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Fine-tuning not available for Claude Opus 4.6; proprietary weights."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 46
+        notes: >
+          Artificial Analysis Intelligence Index v4.0 (Non-reasoning, High Effort mode).
+          Score: 46; Rank: #1/63 among comparable proprietary models in the >$1/M price tier.
+          The index blends 10 evaluations: GDPval-AA, τ²-Bench Telecom, Terminal-Bench Hard,
+          SciCode, AA-LCR, AA-Omniscience, IFBench, Humanity's Last Exam, GPQA Diamond, CritPt.
+          Note: LinkedIn/Artificial Analysis also cited a score of 53 for Opus 4.6 in the
+          full combined index (including reasoning model comparisons). The 46 is from the
+          direct Artificial Analysis model page; treat as the most reliable single number.
+          Recheck quarterly — Artificial Analysis index composition updated February 2026.
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-opus-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Opus 4.6 Intelligence Index score 46, rank #1/63."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: "Not extracted from current sources; check lmarena.ai for current ELO."
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "GPQA score for Opus 4.6 not found in current sources. Claude Opus 4.5 (prior model) scored 87% on GPQA — Opus 4.6 expected higher."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: "Claude Opus 4.5 (prior generation) scored 80.9% on SWE-bench Verified — the first model to exceed 80% and outperform human engineers on this benchmark. Opus 4.6 performance expected to be similar or higher."
+        sources: []
+      math_500:
+        value: null
+        notes: "Claude Opus 4.5 scored 95.2% on MATH — expected similar for Opus 4.6."
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 5.00
+        notes: null
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic official pricing page: Claude Opus 4.6 $5.00/$25.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 25.00
+        notes: "Significantly cheaper than Claude Opus 4.1 ($75/M output) and comparable to Claude Sonnet 4.6 at 1.67× the output price. Anthropic's 4.6 generation represents a dramatic price reduction at the Opus tier."
+        sources: []
+      context_caching_input:
+        value: 0.50
+        notes: "Cache hit price: $0.50/MTok (10% of standard input). 5-min cache write: $6.25/MTok; 1-hour cache write: $10.00/MTok. Prompt caching is critical for Opus 4.6 agentic workloads with large system prompts."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 2.50
+        notes: "Batch API: 50% discount on input ($2.50/MTok vs $5.00/MTok standard)."
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary model — no self-hosted option."
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-29"
+      median_ttft_ms:
+        value: 1970  # 1.97 seconds = 1,970 ms (Anthropic native API)
+        notes: "Artificial Analysis: Opus 4.6 TTFT 1.97s on Anthropic API; 2.02s on Amazon; 2.04s on Google; 2.25s on Azure. Latency is above average for the price tier (median: 1.47s). Not suited for hard real-time interactive applications."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-opus-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Opus 4.6 TTFT 1.97s (Anthropic), 2.02s (Amazon), 2.04s (Google), 2.25s (Azure)."
+            retrieved_at: "2026-03-29"
+      output_tokens_per_second:
+        value: 40.7
+        notes: "Artificial Analysis: 40.7 t/s (Anthropic API); 43.8 t/s (Amazon); 42.0 t/s (Google); 42.3 t/s (Azure). Notably slow at rank #41/63. High verbosity (11M tokens generated in Intelligence Index eval) partially explains throughput constraints."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-opus-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Opus 4.6 output speed 40.7 t/s (Anthropic); Amazon fastest at 43.8 t/s."
+            retrieved_at: "2026-03-29"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 1.84  # Derived: 46 / 25.00 = 1.84
+        notes: "Derived: quality_index (46) / output_per_million_tokens ($25.00) = 1.84 quality points per output dollar. This is the lowest ratio in the current Claude lineup — Opus 4.6 is the highest quality but lowest price-performance ratio. Use Sonnet 4.6 (ratio 2.93) for cost-sensitive workloads. Recompute if pricing changes."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO unavailable; cannot compute."
+        sources: []
+
+    sources:
+      - url: https://artificialanalysis.ai/models/claude-opus-4-6
+        kind: independent_eval
+        description: "Artificial Analysis: Claude Opus 4.6 performance, latency, pricing."
+        retrieved_at: "2026-03-29"
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing page (canonical source for pricing data)."
+        retrieved_at: "2026-03-29"
+
+
+  # ── Claude Sonnet 4.6 ─────────────────────────────────────────────────────
+  - name: Claude Sonnet 4.6
+    vendor: anthropic
+    model_family: Claude 4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2026-02-17"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: "1M token context window at standard pricing. Released simultaneously with Opus 4.6 as part of the Claude 4.6 generation."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Sonnet 4.6 context window 1M tokens."
+            retrieved_at: "2026-03-29"
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Sonnet 4.6 is the primary model for Claude Code (the terminal/IDE agentic coding product). Leads ALL models on GDPval-AA (agentic real-world work tasks) and TerminalBench benchmarks — including outperforming Opus 4.6 on these agentic measures."
+        sources:
+          - url: https://artificialanalysis.ai/articles/sonnet-4-6-everything-you-need-to-know
+            kind: independent_eval
+            description: "Artificial Analysis: Sonnet 4.6 leads all models on GDPval-AA and TerminalBench."
+            retrieved_at: "2026-03-29"
+      computer_use:
+        value: yes
+        notes: "Computer use available via computer use API."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 44
+        notes: >
+          Artificial Analysis Intelligence Index v4.0 (Non-reasoning, High Effort mode).
+          Score: 44; Rank: #2/63 (behind Opus 4.6 at 46). Despite lower overall Intelligence Index
+          score than Opus 4.6, Sonnet 4.6 LEADS all models on GDPval-AA and TerminalBench —
+          the agentic/coding-specific evaluations most relevant to enterprise deployments.
+          This is not a contradiction: Sonnet 4.6's training was optimized for coding agents,
+          not general knowledge/reasoning. The overall Intelligence Index score understates its
+          practical superiority for its primary use case (Claude Code, software development).
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Sonnet 4.6 Intelligence Index 44, rank #2/63."
+            retrieved_at: "2026-03-29"
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Sonnet 4.5 scored ~87% on GPQA (thinking mode). Sonnet 4.6 GPQA not extracted."
+        sources: []
+      swe_bench_verified:
+        value: 71.4
+        notes: "Sonnet 4.5 Thinking mode scored 71.4% on SWE-bench Verified; Sonnet 4.6 (which builds on 4.5 with further agentic optimization) expected to be similar or higher. Note: Claude Opus 4.5 was the first to exceed 80% SWE-bench."
+        sources:
+          - url: https://claude5.com/news/claude-opus-4-5-release-80-percent-swe-bench-beats-humans
+            kind: news_article
+            description: "Claude5.com: SWE-bench scores context — Opus 4.5 at 80.9%, Sonnet 4.5 thinking at 71.4%."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 3.00
+        notes: null
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic official pricing: Claude Sonnet 4.6 $3.00/$15.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 15.00
+        notes: "Sonnet 4.6 at $15/M output is the primary model behind Claude Code. At $2.5B+ Claude Code ARR, this model drives more revenue than the entire company generated 12 months prior."
+        sources: []
+      context_caching_input:
+        value: 0.30
+        notes: "Cache hit: $0.30/MTok (10% of standard input). 5-min cache write: $3.75/MTok; 1-hour write: $6.00/MTok."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 1.50
+        notes: "50% batch discount: $1.50/MTok input."
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-29"
+      median_ttft_ms:
+        value: 1470  # 1.47 seconds = 1,470 ms (Anthropic native)
+        notes: "Artificial Analysis: 1.47s TTFT on Anthropic API — average for the price tier (median 1.46s). Faster than Opus 4.6 (1.97s)."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Sonnet 4.6 TTFT 1.47s (Anthropic)."
+            retrieved_at: "2026-03-29"
+      output_tokens_per_second:
+        value: 44.2
+        notes: "Artificial Analysis: 44.2 t/s (Anthropic API). Below average for the price tier (median: 59 t/s). Very verbose: generated 14M tokens on Intelligence Index evaluation (vs 3.9M average) — reflects extensive chain-of-thought in high-effort agentic mode."
+        sources:
+          - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+            kind: independent_eval
+            description: "Artificial Analysis: Claude Sonnet 4.6 output speed 44.2 t/s."
+            retrieved_at: "2026-03-29"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 2.93  # Derived: 44 / 15.00 = 2.93
+        notes: "Derived: quality_index (44) / output_per_million_tokens ($15.00) = 2.93. Better price-performance ratio than Opus 4.6 (1.84) at 5x lower output cost per dollar of quality. For agentic/coding tasks specifically (where Sonnet 4.6 leads all models), the effective quality-per-dollar is even higher."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO unavailable."
+        sources: []
+
+    sources:
+      - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+        kind: independent_eval
+        description: "Artificial Analysis: Claude Sonnet 4.6 performance, latency, pricing."
+        retrieved_at: "2026-03-29"
+      - url: https://artificialanalysis.ai/articles/sonnet-4-6-everything-you-need-to-know
+        kind: independent_eval
+        description: "Artificial Analysis article: Sonnet 4.6 leads GDPval-AA and TerminalBench."
+        retrieved_at: "2026-03-29"
+
+
+  # ── Claude Opus 4.5 ───────────────────────────────────────────────────────
+  - name: Claude Opus 4.5
+    vendor: anthropic
+    model_family: Claude 4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga  # Still active; Opus 4.6 is successor but 4.5 remains available
+    release_date: "2025-11-24"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 200000
+        notes: "200K token context window for Opus 4.5. 1M token context window available in beta for tier 4+ users with long-context surcharge pricing."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "First Anthropic model with 'effort' parameter controlling reasoning depth (low/medium/high). High-effort mode adds 29% performance on select benchmarks."
+        sources: []
+      computer_use:
+        value: yes
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Artificial Analysis Intelligence Index not extracted for Opus 4.5. Opus 4.6 supersedes."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: 87.0
+        notes: "Claude Opus 4.5 GPQA Diamond 87%. Vendor-reported at launch. Strong PhD-level scientific reasoning."
+        sources:
+          - url: https://www.anthropic.com/news/claude-opus-4-5
+            kind: vendor_page
+            description: "Anthropic: Claude Opus 4.5 launch announcement — GPQA 87%."
+            retrieved_at: "2026-03-29"
+      swe_bench_verified:
+        value: 80.9
+        notes: "First model to break 80% on SWE-bench Verified (real GitHub issue resolution) and the first to outperform all human engineers on Anthropic's internal coding assessments. This benchmark score was the signal that drove Claude's enterprise coding segment dominance."
+        sources:
+          - url: https://www.anthropic.com/news/claude-opus-4-5
+            kind: vendor_page
+            description: "Anthropic: Claude Opus 4.5 SWE-bench 80.9% — first model to break 80% barrier."
+            retrieved_at: "2026-03-29"
+          - url: https://claude5.com/news/claude-opus-4-5-release-80-percent-swe-bench-beats-humans
+            kind: news_article
+            description: "Claude5.com: Opus 4.5 80.9% SWE-bench, first to beat humans on Anthropic coding assessments."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: 95.2
+        notes: "Vendor-reported. Strong quantitative reasoning."
+        sources:
+          - url: https://automatio.ai/models/claude-opus-4-5
+            kind: news_article
+            description: "Automatio.ai: Claude Opus 4.5 MATH-500 95.2%."
+            retrieved_at: "2026-03-29"
+      mmlu_pro:
+        value: null
+        notes: "Standard MMLU reported at 90.8% (vendor); MMLU-Pro not separately reported."
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 5.00
+        notes: "Same price as Opus 4.6. Opus 4.5 represents strong value — confirmed 80.9% SWE-bench performance at the same price point as the newer 4.6 generation."
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic pricing: Opus 4.5 $5.00/$25.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 25.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: 0.50
+        notes: "Cache hit: $0.50/MTok (10% of standard input)."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 2.50
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Latency data not extracted for Opus 4.5."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: "Anthropic notes 48-76% fewer output tokens vs prior Claude versions in high-effort mode — suggests improved throughput."
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index not available for Opus 4.5. At $25/M output, this is the same compute cost as Opus 4.6 — use Opus 4.6 quality_per_output_dollar (1.84) as approximate proxy."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://www.anthropic.com/news/claude-opus-4-5
+        kind: vendor_page
+        description: "Anthropic: Claude Opus 4.5 launch — first 80%+ SWE-bench model."
+        retrieved_at: "2026-03-29"
+
+
+  # ── Claude Sonnet 4.5 ─────────────────────────────────────────────────────
+  - name: Claude Sonnet 4.5
+    vendor: anthropic
+    model_family: Claude 4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: null  # Exact date not confirmed; 2025 mid-year
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 200000
+        notes: "200K standard; 1M available in beta for tier 4+ orgs with premium long-context pricing (>200K tokens: $6/$22.50 per MTok)."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: yes
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Artificial Analysis score for Sonnet 4.5 not extracted. Sonnet 4.6 (successor) scores 44."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Sonnet 4.5 Thinking mode expected ~87%; standard mode lower."
+        sources: []
+      swe_bench_verified:
+        value: 59.0
+        notes: "Claude Sonnet 4.5 standard mode: 59% SWE-bench Verified. Thinking mode: 71.4%. Best non-Opus SWE-bench score prior to Sonnet 4.6."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/provider/anthropic
+            kind: ir_html
+            description: "Tier 2: Anthropic API pricing aggregator citing Sonnet 4.5 SWE-bench 59% standard, 71.4% thinking."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: 87.5
+        notes: "Claude Sonnet 4.5 Thinking mode: 87.5% MMLU-Pro. Source: Tier 2."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/provider/anthropic
+            kind: ir_html
+            description: "Tier 2: Sonnet 4.5 Thinking MMLU-Pro 87.5%."
+            retrieved_at: "2026-03-29"
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 3.00
+        notes: null
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic pricing: Sonnet 4.5 $3.00/$15.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 15.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: 0.30
+        notes: "Cache hit: $0.30/MTok."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 1.50
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable. Use Sonnet 4.6 (2.93) as proxy for current generation."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing page."
+        retrieved_at: "2026-03-29"
+
+
+  # ── Claude Haiku 4.5 ──────────────────────────────────────────────────────
+  - name: Claude Haiku 4.5
+    vendor: anthropic
+    model_family: Claude 4
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: null  # 2025; exact date not confirmed
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 200000
+        notes: "200K standard; 1M in beta for tier 4+."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Haiku 4.5 positioned as the cost-optimized model for high-volume agentic workflows and subagent tasks."
+        sources: []
+      computer_use:
+        value: yes
+        notes: "Computer use available per Anthropic pricing page noting Claude 4.x models support computer_use."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Not available from current sources."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: 61.5
+        notes: "Claude Haiku 4.5 Thinking mode: 61.5% SWE-bench Verified. Notably stronger than Sonnet 4.5 in thinking mode (71.4%) but competitive for its price tier ($5/M output vs $15/M). General knowledge (MMLU): 80%."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/provider/anthropic
+            kind: ir_html
+            description: "Tier 2: Haiku 4.5 Thinking SWE-bench 61.5%; MMLU 80.0%."
+            retrieved_at: "2026-03-29"
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: "Standard MMLU: 80% (Haiku 4.5). MMLU-Pro not separately reported."
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 1.00
+        notes: "Most affordable Claude 4-generation model. $1/$5 per MTok represents a 3x price reduction vs Sonnet 4.5 on output."
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic pricing: Claude Haiku 4.5 $1.00/$5.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 5.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: 0.10
+        notes: "Cache hit: $0.10/MTok (10% of standard input)."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.50
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Haiku models are typically the fastest-response models in Anthropic's lineup."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable. At $5/M output, SWE-bench thinking performance of 61.5% suggests strong price-performance for coding workloads. If quality_index were even 20 (conservative), ratio would be 20/5 = 4.0 — significantly better than Opus 4.6 (1.84) or Sonnet 4.6 (2.93). Haiku 4.5 is likely the best price-performance model in the Claude 4 lineup for volume use cases."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing page."
+        retrieved_at: "2026-03-29"
+
+
+  # ── Claude Haiku 3.5 ──────────────────────────────────────────────────────
+  - name: Claude Haiku 3.5
+    vendor: anthropic
+    model_family: Claude 3.5
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga  # Legacy; still in broad production use
+    release_date: null  # 2024
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 200000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Legacy fast model; still used for high-volume low-cost workflows."
+        sources: []
+      computer_use:
+        value: no
+        notes: "Computer use not supported for Haiku 3.5 (Claude 3.x generation)."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: null
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-29"
+      input_per_million_tokens:
+        value: 0.80
+        notes: "Claude Haiku 3.5 remains one of the cheapest capable models at $0.80/$4 per MTok. Primarily used for legacy integrations and highest-volume low-complexity workloads."
+        sources:
+          - url: https://docs.anthropic.com/en/about-claude/pricing
+            kind: vendor_page
+            description: "Anthropic pricing: Claude Haiku 3.5 $0.80/$4.00 per MTok."
+            retrieved_at: "2026-03-29"
+      output_per_million_tokens:
+        value: 4.00
+        notes: null
+        sources: []
+      context_caching_input:
+        value: 0.08
+        notes: "Cache hit: $0.08/MTok."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.40
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index unavailable for Haiku 3.5."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing page."
+        retrieved_at: "2026-03-29"
+
+
+# ─── Company-level context ────────────────────────────────────────────────────
+
+api_platform:
+  platform_name:
+    value: "Anthropic Claude API"
+    notes: "Also available via AWS Bedrock (Amazon), Google Vertex AI (Google), and Microsoft Foundry (Microsoft Azure). Anthropic operates a multi-cloud deployment architecture — a structural difference from OpenAI's Azure-exclusive API arrangement."
+    sources: []
+  deployment_options:
+    value: ["Anthropic API (direct)", "AWS Bedrock", "Google Vertex AI", "Microsoft Foundry"]
+    notes: "Multi-cloud strategy: each platform has different pricing (see third-party pricing pages). Regional endpoint premium of 10% applies on AWS and Google starting with Claude 4.5+ models."
+    sources:
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing page: deployment options listed with third-party platform links."
+        retrieved_at: "2026-03-29"
+  enterprise_features:
+    value: ["SOC 2 Type II", "HIPAA (Business Associate Agreement available)", "no training on API inputs", "SSO/SAML", "audit logs", "data residency (US-only inference via inference_geo parameter, 1.1× surcharge)", "Model Context Protocol (MCP) for enterprise integrations", "CLAUDE.md project context files", "Claude Code Enterprise deployment"]
+    notes: "Data residency pricing available for Claude Opus 4.6+ models via inference_geo parameter. MCP server integration allows connecting Claude to internal enterprise tools (CI/CD, Jira, GitHub, databases, APIs)."
+    sources: []
+  sla_uptime:
+    value: null
+    notes: "Vendor-stated uptime SLA not publicly documented. Check status.anthropic.com."
+    sources: []
+
+compute_dependency:
+  primary_training_infrastructure:
+    value: "Amazon Web Services (AWS) — Project Rainier (Trainium2)"
+    notes: >
+      AWS is Anthropic's designated 'primary cloud and training partner' (per Nov 2024 agreement).
+      Project Rainier is operational with nearly 500K Trainium2 chips; scaling to 1M+ chips by
+      end-2025. Total Amazon investment: $8B. Annapurna Labs (AWS custom silicon division) is
+      co-developing future Trainium generations with Anthropic. This relationship is Anthropic's
+      compute foundation for frontier model training.
+    sources:
+      - url: https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster
+        kind: vendor_page
+        description: "Amazon: Project Rainier — 500K Trainium2 chips operational; scaling to 1M+ by end-2025."
+        retrieved_at: "2026-03-29"
+      - url: https://techcrunch.com/2024/11/22/anthropic-raises-an-additional-4b-from-amazon-makes-aws-is-primary-cloud-partner/
+        kind: news_article
+        description: "TechCrunch: Amazon $4B additional investment; AWS primary cloud and training partner designation."
+        retrieved_at: "2026-03-29"
+  primary_inference_infrastructure:
+    value: "Multi-cloud: Anthropic direct + AWS Bedrock + Google Vertex AI + Microsoft Foundry"
+    notes: >
+      Anthropic operates inference across all four platforms without single-cloud exclusivity.
+      Google Cloud deal (Oct 2025): access to up to 1M TPUs with 1GW+ compute capacity by 2026.
+      This multi-cloud inference architecture reduces single-partner dependency risk compared to
+      OpenAI's Azure-exclusive stateless API arrangement.
+    sources:
+      - url: https://stg-aws01pub.cnbc.com/2025/10/23/anthropic-google-cloud-deal-tpu.html
+        kind: news_article
+        description: "CNBC: Anthropic-Google Cloud deal — 1M TPUs, 1GW+ compute capacity."
+        retrieved_at: "2026-03-29"
+  infrastructure_independence:
+    value: medium
+    notes: >
+      Anthropic is dependent on AWS (primary training) and Google (significant training/inference),
+      but the multi-cloud arrangement and the Trainium2/TPU diversification provide meaningful
+      hardware independence compared to single-cloud competitors. However, 'independence' is
+      limited — both AWS and Google are major Anthropic investors and infrastructure partners,
+      creating alignment-of-interest risk if either partner's compute strategy changes.
+      Unlike OpenAI's Stargate (building independent compute infrastructure), Anthropic is
+      deepening its cloud provider dependencies while gaining more favorable terms.
+    sources: []
+
+research_profile:
+  orientation:
+    value: frontier_lab
+    notes: "Anthropic's primary mission is the responsible development of AI for the long-term benefit of humanity — a frontier safety lab that commercializes via Claude products. Safety research (Constitutional AI, interpretability) is core alongside capabilities research."
+    sources: []
+  openness:
+    value: proprietary
+    notes: "All production models are proprietary — weights not released. Anthropic publishes safety research (Constitutional AI papers, model cards, system cards) but does not release model weights. Contrast with Meta (open weights Llama) or Mistral."
+    sources: []
+  safety_approach:
+    value: "Constitutional AI (CAI) + RLHF + Responsible Scaling Policy (RSP). The 2026 CAI constitution expanded to 23,000 words (from 2,700 in 2023). RSP establishes safety thresholds that trigger additional safeguards before deploying more capable models. Interpretability research (led by co-founder Chris Olah) aims to understand model internals — a differentiating research agenda from OpenAI and Google."
+    notes: "Constitutional AI allows Claude to critique its own outputs against a set of principles, reducing dependency on human feedback for safety alignment. The RSP creates a governance commitment that, if broken, would require public explanation."
+    sources:
+      - url: https://en.wikipedia.org/wiki/Constitutional_AI
+        kind: news_article
+        description: "Constitutional AI background; 2026 constitution expanded to 23,000 words."
+        retrieved_at: "2026-03-29"
+
+commercial_traction:
+  business_model:
+    value: [api_pay_per_token, subscription_chatbot, enterprise_contracts]
+    notes: "API (developer/enterprise pay-per-token via Anthropic API and third-party platforms) + Claude.ai consumer/Pro subscriptions + enterprise contracts (Claude Code Enterprise, Claude for Work). Claude Code ($2.5B+ ARR by Feb 2026) is the breakout commercial product."
+    sources: []
+  notable_deployments:
+    value: ["Spotify (79% reduction in time-to-market for features)", "Epic Systems (50%+ Claude Code usage by non-developers)", "Multiple Fortune 500 enterprises in coding/dev acceleration", "AWS (Bedrock backbone)", "Google Vertex AI (enterprise channel)"]
+    notes: "300,000+ businesses using Claude per Anthropic Series G announcement. 44% enterprise production deployment rate; 63% enterprise testing adoption."
+    sources:
+      - url: https://www.claude.com/product/claude-code/enterprise
+        kind: vendor_page
+        description: "Anthropic: Claude Code Enterprise — Spotify, Epic Systems deployment examples."
+        retrieved_at: "2026-03-29"
+      - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+        kind: ir_html
+        description: "Anthropic Series G: 300,000+ businesses using Claude."
+        retrieved_at: "2026-03-29"
+  api_ecosystem:
+    value: dominant
+    notes: >
+      Anthropic holds dominant enterprise API share as of early 2026:
+      ~70% of first-time enterprise AI spending (vs ~10% in Feb 2025);
+      40% of total enterprise LLM spend (Ramp Economics Lab);
+      54% of enterprise coding agent segment (vs OpenAI's 21%).
+      Claude Code is the viral product driving enterprise adoption —
+      Spotify, Epic, and 300K+ businesses represent the scale of the ecosystem.
+    sources:
+      - url: https://aigazette.com/markets/anthropic-claude-captures-70-of-enterprise-ai-market-dethroning-chatgpt--s
+        kind: news_article
+        description: "AI Gazette: Anthropic 70% first-time enterprise AI spending share."
+        retrieved_at: "2026-03-29"
+      - url: https://opentools.ai/news/anthropic-surges-ahead-captures-73percent-of-first-time-enterprise-ai-spending
+        kind: news_article
+        description: "OpenTools: Anthropic 73% first-time enterprise AI spending; Claude Code growth."
+        retrieved_at: "2026-03-29"
+
+roadmap:
+  next_generation:
+    value: "Claude 5 series — expected 2026; IPO reportedly targeting October 2026 (Tier 3 estimate, not company-confirmed)"
+    notes: "No official Claude 5 announcement as of March 2026. Release cadence suggests H2 2026 for a next major generation. IPO reports (Bloomberg/Reuters Tier 2) cite October 2026 window for potential $60B+ raise."
+    sources:
+      - url: https://www.blogarama.com/technology-blogs/1286263-tech-portal-blog/74409483-anthropic-targets-october-2026-window-for-potential-ipo-eying-over-60bn-raise-report
+        kind: news_article
+        description: "Tier 3: Blogarama citing reports of October 2026 IPO window target."
+        retrieved_at: "2026-03-29"
+  release_cadence:
+    value: "~3–6 month major model releases; rapid sub-generation updates within generations (4.x → 4.5 → 4.6)"
+    notes: "Claude 3 (March 2024) → Claude 3.5 Sonnet (June 2024) → Claude 3.7 Sonnet (Feb 2025, deprecated) → Claude 4 (May 2025) → Claude 4.5 Opus (Nov 2025) → Claude 4.6 generation (Feb 2026). Accelerating release cadence in 2025–2026 driven by competitive pressure from OpenAI and Google."
+    sources: []
+  roadmap_credibility:
+    value: strong
+    notes: "Anthropic has consistently delivered models on approximately 3–6 month cycles since 2024. The transition from 3.5 Sonnet to 4-generation to 4.5 to 4.6 within 18 months demonstrates strong execution. No major announced-but-undelivered model."
+    sources: []
+
+sources:
+  - url: https://www.anthropic.com/news
+    kind: vendor_page
+    description: "Anthropic news and announcement index."
+    retrieved_at: "2026-03-29"
+  - url: https://docs.anthropic.com/en/about-claude/pricing
+    kind: vendor_page
+    description: "Anthropic API pricing documentation (canonical source; verify before using any pricing figures)."
+    retrieved_at: "2026-03-29"
+  - url: https://artificialanalysis.ai/models/claude-opus-4-6
+    kind: independent_eval
+    description: "Artificial Analysis: Claude Opus 4.6 performance benchmarks."
+    retrieved_at: "2026-03-29"
+  - url: https://artificialanalysis.ai/models/claude-sonnet-4-6
+    kind: independent_eval
+    description: "Artificial Analysis: Claude Sonnet 4.6 performance benchmarks."
+    retrieved_at: "2026-03-29"
