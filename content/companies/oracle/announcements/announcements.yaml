@@ -1,0 +1,137 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-29"
+items:
+  - date: "2026-03-10"
+    title: "Q3 FY2026 earnings: record $553B RPO, 84% IaaS growth, FY2027 guidance raised to $90B"
+    category: other
+    summary: >
+      Oracle reported Q3 FY2026 revenue of $17.19B (+22% YoY), with cloud infrastructure
+      revenue of $4.9B (+84% YoY) and AI infrastructure revenue up 243% YoY. RPO surged
+      to $553B (+325% YoY). FY2027 revenue target raised to $90B from $89B. Full-year
+      FY2026 capex expected to reach $50B, with 9-month YTD capex at $39.2B.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: 8-K Exhibit 99.1, Oracle Q3 FY2026 earnings release filed March 10, 2026."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-03-10"
+    title: "OCI next-gen Supercluster on NVIDIA Vera Rubin platform announced at GTC 2026"
+    category: product
+    summary: >
+      Oracle announced next-generation OCI Superclusters powered by NVIDIA's Vera Rubin
+      platform (Rubin GPUs, Vera CPUs) at GTC 2026. The announcement extends the
+      Oracle-NVIDIA partnership beyond current Blackwell deployments.
+    sources:
+      - url: https://blogs.oracle.com/cloud-infrastructure/oracle-nvidia-gtc-2026-key-announcements
+        kind: company_web
+        description: "Oracle engineering blog: Oracle-NVIDIA GTC 2026 announcements, Vera Rubin Supercluster."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-04"
+    title: "Oracle enters $40B credit agreement to fund AI infrastructure expansion"
+    category: debt
+    summary: >
+      Oracle entered into a $40B credit agreement to fund data center and AI
+      infrastructure expansion. This is part of the broader $45-50B financing program
+      announced to support the $50B FY2026 capex plan.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526037840/d23732d8k.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: 8-K filed February 4, 2026, disclosing credit agreement."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-01-22"
+    title: "TikTok US joint venture closes; Oracle receives 15% equity stake and board seat"
+    category: deal
+    summary: >
+      The TikTok US Data Security (USDS) joint venture closed with Oracle receiving
+      a 15% equity stake valued at approximately $2B and a board seat. Oracle hosts
+      all U.S. TikTok user data and serves as the trusted security technology partner.
+    sources:
+      - url: https://www.reuters.com/world/china/oracles-stake-tiktok-us-joint-venture-is-worth-roughly-2-billion-filing-shows-2026-03-11/
+        kind: press
+        description: "Reuters: Oracle's TikTok JV stake valued at ~$2B per SEC filing."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-12-10"
+    title: "Q2 FY2026 earnings: $16.1B revenue, 68% IaaS growth, $248B lease commitments"
+    category: other
+    summary: >
+      Oracle reported Q2 FY2026 revenue of $16.06B (+9% YoY), with cloud infrastructure
+      revenue up 68% YoY. Lease commitments surged to $248B (up 148% from Aug 2025).
+      Net income included a ~$2.7B pre-tax gain from sale of Ampere interest. The
+      quarter saw $17.9B in new debt raised and $12B in capex.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525314207/orcl-ex99_1.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: 8-K Exhibit 99.1, Oracle Q2 FY2026 earnings release filed December 10, 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-14"
+    title: "OCI Zettascale10 unveiled: 16 zettaFLOPS, up to 800,000 GPUs across data centers"
+    category: product
+    summary: >
+      Oracle unveiled OCI Zettascale10 at Oracle AI World, a next-generation compute
+      architecture delivering 16 zettaFLOPS peak performance by connecting hundreds
+      of thousands of NVIDIA GPUs across multiple data centers. Designed for OpenAI
+      Stargate and similar large-scale AI training workloads.
+    sources:
+      - url: https://www.oracle.com/news/announcement/ai-world-oracle-unveils-next-generation-oci-zettascale10-cluster-for-ai-2025-10-14/
+        kind: ir_html
+        description: "Oracle press release: OCI Zettascale10 announcement at Oracle AI World."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-09-09"
+    title: "Q1 FY2026 earnings: $14.9B revenue, $8.1B operating cash flow"
+    category: other
+    summary: >
+      Oracle reported Q1 FY2026 revenue of $14.93B (+7% YoY), with cloud infrastructure
+      revenue up 46% YoY. Operating cash flow was $8.14B with $8.5B in capex. The
+      company deployed its first wave of NVIDIA Blackwell GPU superclusters.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+        kind: sec_8k
+        description: "Direct from SEC filing: 8-K Exhibit 99.1, Oracle Q1 FY2026 earnings release filed September 9, 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-09-01"
+    title: "OpenAI signs ~$300B, 5-year cloud computing contract with Oracle"
+    category: deal
+    summary: >
+      OpenAI signed an approximately $300B, 5-year cloud computing contract with
+      Oracle, reportedly one of the largest cloud deals in history. The contract
+      covers compute services for AI training and inference beginning in 2027,
+      utilizing OCI Zettascale10 architecture at Stargate facilities.
+    sources:
+      - url: https://techcrunch.com/2025/09/10/openai-and-oracle-reportedly-ink-historic-cloud-computing-deal/
+        kind: press
+        description: "TechCrunch: OpenAI-Oracle $300B cloud deal reported September 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-09-01"
+    title: "Meta signs ~$20B multiyear cloud infrastructure deal with Oracle"
+    category: deal
+    summary: >
+      Meta signed an approximately $20B multiyear cloud infrastructure deal with
+      Oracle for AI model training and inference workloads. The deal marks Meta's
+      expansion beyond its own data centers to third-party AI compute.
+    sources:
+      - url: https://ts2.tech/en/oracles-massive-20b-meta-cloud-deal-shakes-up-the-ai-cloud-wars/
+        kind: press
+        description: "TS2: Oracle's ~$20B Meta cloud deal, September 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-06-17"
+    title: "xAI Grok models available on Oracle Cloud Infrastructure"
+    category: partnership
+    summary: >
+      Oracle announced xAI's Grok 3 and Grok 3 mini models are available on OCI
+      Generative AI service. The partnership enables OCI customers to access xAI's
+      reasoning models through OCI's managed AI platform.
+    sources:
+      - url: https://www.oracle.com/ca-en/news/announcement/xais-grok-models-are-now-on-oracle-cloud-infrastructure-2025-06-17/
+        kind: ir_html
+        description: "Oracle press release: xAI Grok models on OCI, June 17, 2025."
+        retrieved_at: "2026-03-29"

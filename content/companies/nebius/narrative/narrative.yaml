@@ -1,10 +1,10 @@
 # Capstone narrative — thesis-driven judgment synthesizing Nebius's financials, business
-# profile, announcements, and market perception. Not investment advice.
+# profile, announcements, market perception, and structural analysis. Not investment advice.
 
 kind: financial_narrative
 schema_version: 1
 
-as_of: "2026-03-26"
+as_of: "2026-03-29"
 
 based_on_financials:
   file: financials/2025-Q4.yaml
@@ -12,157 +12,370 @@ based_on_financials:
   period_label: "2025 Q4"
 
 business_profile_as_of: "2025-12-31"
-market_perception_as_of: "2026-03-26"
+market_perception_as_of: "2026-03-29"
+structural_analysis_as_of: "2026-03-29"
 
 central_questions:
-  - "Nebius has solved demand, solved financing, and attracted the strongest strategic backers in AI. The question is no longer whether the company is real — it's whether the market is correctly pricing the gap between what's contracted and what's delivered, and whether the neocloud model itself is a permanent structure or a scarcity-era artifact."
+  - "Nebius has solved demand and attracted the strongest backers in AI. The question is whether the capital cost of delivering that demand leaves anything for equity holders — and whether the market is pricing Nebius on contracted headline values or on the derived economics those contracts actually imply."
 
 sections:
-  - id: the_numbers_tell_two_stories
-    title: "The numbers tell two stories at once"
+  - id: structural_cost_problem
+    title: "The cost structure problem nobody is computing"
     body: |
-      Nebius's Q4 2025 financials tell a story of simultaneous strength and fragility that most commentary collapses into one or the other.
+      Start with Q4 2025 and compute what the market is not showing you.
 
-      **The strength side:** Revenue reached **$227.7M** in Q4, up from $146.1M in Q3 — a 56% sequential jump. Core AI cloud was ~**$214.2M** of that, or 94% of group revenue. Year-end **ARR hit $1.25B**, ahead of prior $900M-$1.1B guidance, and management said the business was **sold out** of capacity. Operating cash flow was **$834.3M**, a number that looks like proof the business generates real money.
+      **Nebius Q4 operating cost stack (all figures USD, one quarter):**
+      - Cost of revenue: $68.5M
+      - Depreciation & amortization: $180.7M
+      - SGA: $159.9M
+      - R&D: $53.1M
+      - **Total operating costs: $462.2M**
+      - Revenue: $227.7M
+      - **All-in cost ratio: 203% of revenue**
 
-      **The fragility side:** That $834.3M of OCF was built on **+$1.57B of deferred revenue** — customer prepayments. Strip that out and the underlying cash economics are negative. Net loss was **$249.6M**. Free cash flow was **-$1.22B** ($834M OCF minus $2.06B capex). Gross margin was 69.9%, which is strong, but operating loss was $234.5M because SGA ($159.9M) and D&A ($180.7M) together exceed gross profit. The company spent **$2.06B on capex** in the quarter alone — 9x revenue.
+      For every dollar of revenue, Nebius spends $2.03 on operations. This is not an early-stage loss ratio — it is a structural cost configuration where infrastructure costs (CoR + D&A) alone consume more than revenue.
 
-      The market currently reads the strength story. The prepayment-driven OCF and the 9x capex-to-revenue ratio are disclosed but underweighted. This is the first information asymmetry: **Nebius's cash flow quality is significantly lower than the headline suggests**, and the model is not self-funding at any point in the current trajectory. Every dollar of growth requires external capital or customer prepayments.
+      **Structural costs (CoR + D&A) = $68.5M + $180.7M = $249.2M = 109.4% of revenue.** Before a single dollar is spent on SGA or R&D, the infrastructure layer already costs more to operate than it generates. This is the key ratio.
 
-  - id: the_deal_cascade_changed_the_category
-    title: "March 2026 changed what category Nebius belongs in"
+      **Adjusted depreciation test:** Nebius depreciates servers on a ~4-year schedule (per 20-F property/equipment notes). The industry standard for GPU infrastructure is trending toward 5 years (CoreWeave uses 5-6 year useful lives per 10-K). Adjusting Nebius's D&A to a 5-year life:
+      - Adjusted D&A: $180.7M × (4/5) = **$144.6M**
+      - Adjusted structural costs: $68.5M + $144.6M = **$213.1M = 93.6% of revenue**
+
+      Even with a more generous depreciation schedule, structural costs consume 94% of revenue. This leaves 6 cents per dollar of revenue to cover $213.0M of quarterly SGA + R&D — which is itself 93.6% of revenue.
+
+      **Path to breakeven at current cost structure:**
+      - Gross margin (ex-D&A): ($227.7M - $68.5M) / $227.7M = **69.9%**
+      - Below-gross-profit costs: adjusted D&A $144.6M + SGA $159.9M + R&D $53.1M = **$357.6M**
+      - Breakeven revenue: $357.6M / 0.699 = **$511.5M per quarter (~$2.05B annualized)**
+      - Current quarterly revenue: $227.7M → **need 2.25x current revenue to break even**
+
+      But this understates the problem: breakeven at $511M assumes D&A stays at $144.6M. If Nebius is deploying $2B+ of capex per quarter, PP&E grows from $5.6B to $15-20B+, and D&A grows proportionally. Revenue must outrun an accelerating cost base, not a static one.
+
+      **Peer comparison — cost structure ratios (Q4 2025):**
+
+      |                         | Nebius     | CoreWeave  | IREN       |
+      |-------------------------|-----------|-----------|-----------|
+      | Revenue                 | $227.7M   | $1,571.9M | $184.7M   |
+      | CoR + D&A               | $249.2M   | $1,329.6M | $165.0M   |
+      | CoR + D&A / Revenue     | **109.4%** | **84.6%** | **89.3%** |
+      | Total opex / Revenue    | **203.0%** | **104.4%** | **143.9%** |
+      | Gross margin (ex-D&A)   | 69.9%     | 67.6%     | 64.4%     |
+      | Operating income        | -$234.5M  | -$89.6M   | -$116.4M  |
+
+      CoreWeave's structural cost ratio (84.6%) means infrastructure costs leave 15 cents per revenue dollar for SGA/R&D. IREN's (89.3%) leaves 11 cents. Nebius's (109.4%) leaves **negative** 9 cents — the infrastructure layer alone generates losses before any corporate overhead.
+
+      CoreWeave is close to operating breakeven at scale (-$89.6M on $1.57B revenue). Nebius at comparable revenue would still face a structural deficit unless D&A growth decelerates sharply relative to revenue growth.
+
+  - id: cash_flow_quality
+    title: "Cash flow quality: the $834M illusion"
     body: |
-      In three weeks, Nebius went from "fast-growing AI infrastructure startup" to "the second-largest neocloud by contracted deal value." The sequence:
+      Nebius reported $834.3M in Q4 operating cash flow. This number will appear in every bull case. Here is what it actually contains:
 
-      - **March 3:** Gigawatt-scale factory approved in Independence, Missouri (up to 1.2 GW)
-      - **March 11:** NVIDIA invested **$2B** and committed to a full-stack strategic partnership targeting **>5 GW** of NVIDIA systems by 2030
-      - **March 16:** Meta signed a **$27B** AI infrastructure deal ($12B committed + $15B optional)
-      - **March 20:** **$4.3375B** convertible notes offering closed
+      **OCF decomposition (Q4 2025):**
+      - Net income: -$249.6M
+      - Add back D&A: +$180.7M
+      - Add back SBC: +$24.9M
+      - Non-cash / working capital adjustments: +$878.3M
+      - **Of which: deferred revenue increase: +$1,570M**
+      - **OCF: $834.3M**
 
-      Combined with the existing **$17.4-19.4B** Microsoft deal and the prior **$700M** Accel/NVIDIA/Orbis equity (Dec 2024), Nebius now has **~$46B+ in contracted deal value** from the highest-quality counterparties in AI. This is not normal for a company generating $228M of quarterly revenue.
+      The deferred revenue increase ($1.57B) is customer prepayments — primarily from the Microsoft and Meta deals. This is not recurring cash generation. It is future revenue collected today to fund today's infrastructure build.
 
-      The market correctly treats this as transformative — analyst consensus shifted to Strong Buy with a median target of **$166.78** (65% upside from ~$101). But the consensus also embeds an assumption that is less examined: **the Meta $27B is $12B committed plus $15B optional**. The headline is the ceiling. The market uses the ceiling.
+      **OCF excluding deferred revenue change: $834.3M - $1,570M = -$735.7M**
 
-  - id: the_funding_model_is_the_real_thesis
-    title: "The funding model — not demand — is the actual thesis"
+      Without prepayments, Nebius burned $736M in operating cash in Q4. This is the "recurring" cash generation rate of the business at current scale.
+
+      **Free cash flow: $834.3M - $2,056M (capex) = -$1,221.7M**
+
+      **Capex intensity: $2,056M / $227.7M = 9.03x revenue** — Nebius spends $9 on infrastructure for every $1 of current revenue.
+
+      **Cash burn and runway:**
+      - Q4 FCF: -$1.22B
+      - Cash at Q4 end: $3.68B
+      - Post-convertible cash (adding ~$4.3B proceeds): ~$8.0B
+      - At Q4 FCF burn rate: **~6.5 quarters of runway** (through mid-2028)
+      - But guided 2026 capex is $16-20B → implies quarterly capex of $4-5B, which would accelerate burn
+
+      **Trend — Nebius OCF by quarter:**
+
+      | Quarter | OCF        | Revenue  | Capex     | FCF         |
+      |---------|-----------|----------|----------|------------|
+      | Q1 2025 | -$197.8M  | $55.3M   | $544.0M  | -$741.8M   |
+      | Q2 2025 | -$167.7M  | $105.1M  | $510.6M  | -$678.3M   |
+      | Q3 2025 | -$80.4M   | $146.1M  | $955.5M  | -$1,035.9M |
+      | Q4 2025 | +$834.3M  | $227.7M  | $2,056.0M | -$1,221.7M |
+
+      Q4's positive OCF is the outlier, driven entirely by the prepayment surge. Every prior quarter was negative OCF. The underlying business has never generated positive operating cash flow from recurring operations.
+
+      **Peer comparison — cash flow quality (Q4 2025):**
+
+      |                         | Nebius     | CoreWeave  | IREN       |
+      |-------------------------|-----------|-----------|-----------|
+      | OCF                     | $834.3M   | $1,558.9M | $71.7M    |
+      | Capex                   | $2,056.0M | $4,059.8M | $539.7M   |
+      | FCF                     | -$1,221.7M | -$2,500.9M | -$468.0M |
+      | Capex / Revenue         | **9.03x** | **2.58x** | **2.92x** |
+      | OCF / Revenue           | 3.66x     | 0.99x     | 0.39x     |
+
+      Nebius's capex intensity (9x revenue) is 3-4x higher than peers. This reflects the fact that Nebius is earlier in its build-out — deploying capital against future revenue that doesn't yet exist. The danger is that this ratio must compress dramatically for the model to work, and compression requires both revenue acceleration and capex discipline.
+
+  - id: capital_structure_stress_test
+    title: "Capital structure: the funding machine and its failure modes"
     body: |
-      The conventional framing of Nebius is about AI demand: will companies need GPU capacity? That question is answered. The real thesis is about the **capital formation machine** Nebius has built and whether it can keep running.
+      **Balance sheet as of Q4 2025 (pre-convertible):**
+      - Total debt: $4.13B (of which $4.10B long-term, $24.5M current)
+      - Cash: $3.68B
+      - Net debt: $0.45B
+      - Equity: $4.61B
+      - Debt / equity: 0.89x
 
-      Here's the math the market is implicitly pricing: **$16-20B of capex in 2026** and **$54.5B through 2028**. Management claims ~60% of 2026 capex is self-funded through customer prepayments and internal cash. That still leaves **$6-8B** from external sources in 2026, and a **~$34.5B** cumulative funding gap through 2028.
+      **Post-convertible close (March 20, 2026):**
+      - Total debt: ~$8.43B ($4.13B + $4.30B convertible)
+      - Cash: ~$7.98B ($3.68B + $4.30B proceeds)
+      - Net debt: ~$0.45B (unchanged, since debt and cash moved in tandem)
+      - But gross leverage surged: $8.43B / ~$4.61B equity = **1.83x debt/equity**
+      - Annualized revenue (Q4 × 4): $910.8M
+      - **Gross debt / annualized revenue: 9.3x**
 
-      Post-period, Nebius raised **$6.3B** in March alone ($4.3B convertibles + $2B NVIDIA). Total debt at year-end was $4.1B; after the convertible close it's ~$8.5B. The balance sheet has gone from net cash ($3.7B cash vs $4.1B debt) to meaningfully leveraged in one quarter.
+      **Interest burden:**
+      - Q4 2025 interest expense: $38.3M → **16.8% of revenue**
+      - Post-convertible: the $4.3B notes carry a ~2.5-3% coupon (convertible notes typically lower than straight debt) → ~$107-129M additional annual interest → ~$27-32M per quarter
+      - New quarterly interest estimate: $38.3M + ~$30M = **~$68M per quarter → ~30% of current revenue**
+      - To bring interest below 10% of revenue: need ~$680M quarterly revenue (~$2.7B annualized)
 
-      This is not necessarily a problem — it's a bet. The bet is that contracted demand ($46B+ over 5+ years) will generate enough cash flow to service the debt and fund the remaining build-out. The competitive advantage of this model is that **Nebius uses customer capital to build the infrastructure those customers need**, creating a self-reinforcing cycle. The risk is that if deployment slips, customer prepayments slow, or capital markets tighten, partially built infrastructure becomes stranded capital with $8.5B+ of debt attached.
+      **Funding gap for 2026:**
+      - Guided 2026 capex: $16-20B (midpoint $18B)
+      - Available cash (post-convertible): ~$8.0B
+      - Projected 2026 OCF (if Q4 run rate holds, but this requires continued prepayments): ~$3.3B
+      - Total available: ~$11.3B
+      - **Funding gap: $6.7-8.7B**
 
-      CoreWeave's experience is instructive: it finances GPUs at 9-11% interest using chips as collateral, and if utilization drops below ~80%, margins turn negative. Nebius's model is healthier (more equity, lower interest, strategic backers) but the structural dependency is the same: **continuous access to capital until the installed base generates self-sustaining cash flow**.
+      Management's claim: ~60% of 2026 capex is "self-funded through customer prepayments and internal cash." At the $18B midpoint, 60% = $10.8B. The remaining 40% = $7.2B needs external financing. This is roughly consistent with the gap above but depends entirely on the prepayment pipeline continuing at or above Q4 rates.
 
-  - id: the_neocloud_durability_question
-    title: "Is Nebius building a utility or riding a scarcity trade?"
+      **What-if: capital markets close for 12 months.**
+      - Nebius could fund ~$11.3B of capex from existing cash + projected OCF
+      - $18B guided capex minus $11.3B = $6.7B shortfall
+      - Build-out slows by ~37%, delaying capacity deployment
+      - Contracted deal timelines slip, potentially triggering penalty clauses or customer optionality
+      - The $4.3B convertible becomes the largest single obligation without a corresponding increase in revenue capacity
+      - The business would survive (cash covers near-term debt service) but growth stalls and the equity story breaks
+
+      **Peer comparison — capital structure:**
+
+      |                              | Nebius         | CoreWeave     | IREN          |
+      |------------------------------|---------------|---------------|---------------|
+      | Total debt                   | ~$8.43B (post) | $21.37B       | $3.84B        |
+      | Cash                         | ~$7.98B (post) | $3.13B        | $3.26B        |
+      | Net debt                     | ~$0.45B        | $18.24B       | $0.58B        |
+      | Interest / Revenue (Q4)      | 16.8%          | 22.3%         | 5.8%          |
+      | Interest / Revenue (post-conv) | ~30%          | 22.3%         | 5.8%          |
+      | Debt / Equity                | ~1.83x (post)  | 6.41x         | 1.53x         |
+
+      CoreWeave's debt profile is objectively worse in absolute terms ($21.4B, 6.4x leverage), but CoreWeave is further along in converting that debt into revenue-generating infrastructure. Nebius's leverage is growing fastest and is highest relative to current revenue. IREN carries the cleanest balance sheet, partly because its Microsoft contract pre-funds GPU capex through financing arrangements.
+
+  - id: unit_economics
+    title: "Unit economics: what each megawatt and each contract dollar actually yields"
     body: |
-      This is the longest-term question and the one the market is most divided on. The neocloud model works brilliantly in scarcity: purpose-built AI infrastructure with better performance-per-dollar than legacy hyperscaler bolt-ons. Nebius was first in Europe to deploy NVIDIA HGX B300 (November 2025), is planning Vera Rubin NVL72 from H2 2026, and has 20+ years of cloud engineering DNA from Yandex.
+      **Revenue per MW (Q4 2025):**
+      - Nebius: $227.7M / ~170 MW active power = **$1.34M per MW per quarter ($5.35M/MW/year)**
+      - IREN: $184.7M / ~810 MW online = **$228K per MW per quarter ($912K/MW/year)**
 
-      But two things are changing. First, **GPU supply is expanding** — Blackwell is ramping, Rubin is launching, and multiple neoclouds are scaling simultaneously. The scarcity window may last 18-24 months more. Second, **the hyperscalers are the customers**. Meta and Microsoft are simultaneously building their own AI infrastructure and buying from Nebius. They are hedging, not outsourcing. If their internal capacity catches up, the premium for external neocloud capacity narrows.
+      Nebius generates **5.9x more revenue per MW** than IREN. This partly reflects workload mix (Nebius is pure GPU cloud; IREN still has bitcoin mining) and partly reflects the density of Nebius's GPU deployment (high-value H200/B300 racks consuming less power per dollar of revenue than mining rigs). But it also means Nebius's revenue is more sensitive to GPU utilization — if utilization drops, revenue per MW drops faster.
 
-      Nebius's hedge against commoditization is the software platform: **Aether 3.0/3.5**, **Token Factory** (managed inference), the **Tavily** acquisition (agentic search), and serverless AI. These are real products with real releases. But Nebius does not disclose software-layer revenue, margins, or adoption separately. The platform narrative is strategic positioning — it is not yet proven economics. The market is giving partial credit for platform value that is so far supported by product announcements, not financials.
+      **Revenue growth vs capacity growth (Nebius Q1-Q4 2025):**
 
-      Where I think the consensus is wrong: **the strongest evidence for neocloud durability is not the software layer — it's that Meta signed $27B**. If the world's fourth-largest GPU operator (Meta's internal fleet) still commits $27B to an external neocloud, the model has value beyond scarcity. The counterargument is that $15B of that is optional, and Meta may be buying time while its own capacity scales. Both interpretations have merit.
+      | Quarter | Revenue  | QoQ Growth | Active MW (est.) | Revenue/MW |
+      |---------|----------|-----------|-----------------|-----------|
+      | Q1      | $55.3M   | —         | ~45 MW          | $1.23M    |
+      | Q2      | $105.1M  | +90%      | ~80 MW (est.)   | $1.31M    |
+      | Q3      | $146.1M  | +39%      | ~120 MW (est.)  | $1.22M    |
+      | Q4      | $227.7M  | +56%      | ~170 MW         | $1.34M    |
 
-  - id: competitive_position_is_stronger_than_recognized
-    title: "Nebius is better-positioned than CoreWeave on the dimensions that matter next"
+      Revenue per MW has been roughly flat ($1.22-1.34M range) as both revenue and capacity scaled. This suggests Nebius is filling capacity at consistent pricing rather than extracting pricing premiums on incremental capacity. It is a healthy sign for utilization but means revenue growth requires capacity growth — there is no "pricing power" lever independent of deployment.
+
+      **Contract economics (implied):**
+      - Meta deal: $12B committed over multi-year term. If the delivery period is 5 years, implied annual revenue: $2.4B/year. At Q4 revenue density, this requires ~450 MW of active power → Nebius needs to roughly triple active capacity just for Meta's committed portion.
+      - Microsoft deal: $17.4-19.4B total. At 5-year delivery, implied ~$3.5-3.9B/year. Requires ~650-730 MW.
+      - Combined Meta + Microsoft committed: ~$5.9-6.3B/year, requiring ~1,100-1,180 MW of active power
+      - Current active power: 170 MW. **Need 6-7x current active capacity** for just the two largest contracts.
+      - Guided end-2026 connected power: 800 MW-1 GW. Even at the top of guidance, this only covers ~75-85% of the Meta + Microsoft steady-state requirement.
+
+  - id: disclosure_quality
+    title: "What Nebius won't show you — and what IREN will"
     body: |
-      The standard comparison is Nebius vs CoreWeave, and CoreWeave wins on current scale: **~$5B revenue**, **250k+ GPUs**, **33 data centers** vs Nebius's **~$900M FY2025 revenue**, **~30,000 GPUs** (stale March 2025 count), and **~170 MW active power**.
+      The structural analysis above is limited by what Nebius discloses, which is materially less than peers. This is not incidental — it creates an information asymmetry that benefits the bull narrative.
 
-      But the dimensions that will matter over the next 12-18 months favor Nebius:
+      **Financial granularity:** Nebius reports a single consolidated revenue line. No segment breakdown (AI cloud vs Toloka vs other), no margin by business line, no customer concentration metrics. IREN reports revenue split by segment (AI Cloud Services vs Digital Assets Mining) and discloses specific contract values ($9.7B Microsoft TCV, $5.8B Dell purchase). CoreWeave discloses RPO with 12-month conversion schedule ($4.3B of $60.7B).
 
-      **Power infrastructure independence.** Nebius has secured **>2 GW of contracted power** and is building owned data centers. CoreWeave relies on third-party data centers and already faced revenue delays from capacity bottlenecks. In an environment where power is the binding constraint, Nebius's model avoids the middleman.
+      **Operational metrics:** Nebius's GPU count (~30,000) is from March 2025 — a full year old. No site-level MW breakdown. No utilization metrics. IREN discloses site-level MW (Childress ~650, Canal Flats ~30, etc.), ~99,900 GPUs installed/on order, and specific development timelines. CoreWeave discloses less than IREN on operations but publishes RPO data that gives forward visibility.
 
-      **Capital structure quality.** CoreWeave carries **~$18.8B of debt** with **$311M in quarterly interest** (23% of revenue). It finances GPUs at 9-11% and uses them as collateral. Nebius's debt burden ($4.1B at year-end, ~$8.5B post-convertible) is lower in absolute terms and has better structural quality (convertible notes and strategic equity rather than secured GPU lending).
+      **Guidance accountability:** Nebius claims "~60% of capex self-funded" without showing the calculation. IREN's illustrative ARR target (>$3.7B) carries an explicit footnote: "internal assumptions, not fully contracted." When IREN gives you a forward number, they tell you what's assumption and what's committed. Nebius's guidance blends committed and aspirational without distinguishing them.
 
-      **Strategic backing depth.** NVIDIA invested $2B in Nebius and committed to a co-building partnership. That level of strategic integration — spanning AI factory design, inference software, fleet management, and next-gen platform access — is deeper than a typical purchase agreement. It gives Nebius a timing and technology advantage that is hard for competitors to replicate.
+      **Format gap:** Nebius does not hold earnings calls with analyst Q&A. Disclosure comes through polished shareholder letters. For a company asking the market to trust $46B+ of forward commitments, the absence of interactive accountability is a red flag. Both CoreWeave and IREN hold regular calls where management must answer pointed questions.
 
-      **Customer diversification trajectory.** Nebius has contracts with Microsoft, Meta, and a broader diversified base (the ARR is not exclusively hyperscaler). CoreWeave's customer concentration is higher (OpenAI $22.4B, Meta $14.2B). Both are concentrated, but Nebius is building from a more balanced starting point.
+      **Why this matters for the structural analysis:** Several computations above (revenue per MW by quarter, contract delivery timelines, adjusted depreciation) required estimation because Nebius does not disclose the underlying data. If Nebius disclosed at IREN's level, the structural analysis would be either more bullish (if the data confirmed the thesis) or more bearish. The current opacity means the market is pricing on faith that the numbers behind the narrative look as good as the narrative sounds. That is a risk in itself.
 
-      Where CoreWeave wins: **operational maturity and current revenue scale**. CoreWeave has run AI workloads at scale for longer and generates 5x the revenue. Those advantages are real but may be less durable than power and capital structure advantages in an industry scaling as fast as this one.
-
-  - id: the_governance_overhang_is_fading_but_real
-    title: "The Yandex legacy is receding but not gone"
+  - id: thesis_destruction_test
+    title: "Destroying the bull case with math"
     body: |
-      Arkady Volozh formally renounced his Russian citizenship in early March 2026, severing the final legal tie to Russia. The $5.4B sale of Yandex's Russian assets closed in 2024. The rebranding from Yandex N.V. to Nebius Group N.V. is complete. On paper, the separation is done.
+      **The bull case:** "Nebius is building the AWS of AI with $46B+ in contracted deals and NVIDIA's strategic backing. Revenue will 10x by 2028 and the company will become profitable at scale."
 
-      In practice, two governance concerns linger. First, Volozh maintains **super-voting share control**, which limits minority shareholder influence on capital allocation and strategy. For a company about to deploy $16-20B of capital in a year, the governance structure means investors are largely trusting one person's judgment. Second, the Yandex brand association still affects some institutional investor screening, particularly ESG-focused and sovereign wealth fund mandates. Volozh's citizenship renunciation was partially aimed at this constituency.
+      **The weakest assumption:** Contracted deals convert to delivered revenue at margins that cover the capital cost of building the infrastructure.
 
-      The market has largely priced through the governance risk — NBIS is at Strong Buy consensus with 9 analysts. But the governance discount may re-emerge if execution stumbles and shareholders want influence they don't structurally have.
+      **Testing with math:**
+
+      Steady-state scenario — assume all contracted deals are delivering by 2030:
+      - Total contracted value: ~$46B over 5+ years → ~$9.2B annual steady-state revenue
+      - At current gross margin (69.9%): gross profit = **$6.4B/year**
+      - PP&E required to support $9.2B revenue at Q4 revenue density ($5.35M/MW/year): ~1,720 MW → at ~$10M PP&E per MW (implied from current $5.6B PP&E / ~170 MW = $32.9M/MW including non-MW assets), total PP&E: $25-35B
+      - Annual D&A at 5-year life on $30B PP&E: **$6.0B/year**
+      - Annual SGA + R&D (assume grows to $1.5B as company scales 10x): **$1.5B/year**
+      - Annual interest on $8.5B debt at 4% blended rate: **$340M/year**
+
+      **At steady state: Revenue $9.2B - CoR $2.76B - D&A $6.0B - SGA/R&D $1.5B - Interest $340M = -$1.4B operating loss**
+
+      Even at $9.2B in annual revenue with all contracts delivering, the business is still unprofitable unless:
+
+      1. **D&A is lower** — possible if useful lives extend to 6-7 years ($4.3-5.0B D&A instead of $6.0B), which narrows the loss to -$0.4B to breakeven. Plausible but requires GPU hardware lasting longer than current generation assumptions.
+
+      2. **Gross margin improves** — possible if software platform (Aether, Token Factory) adds a higher-margin revenue layer on top of infrastructure. At 80% gross margin: gross profit = $7.4B, reducing loss by $1.0B. Combined with extended useful lives, this gets to breakeven or modest profitability.
+
+      3. **Revenue exceeds contracted value** — if pricing power allows revenue to exceed contracted levels (new customers, higher utilization, price increases), $12-15B annual revenue at 75% gross margin with 6-year asset lives produces meaningful operating profit.
+
+      **Verdict:** The bull case is not structurally impossible, but it requires **all three** conditions to hold simultaneously: longer asset lives, a software margin layer, and revenue exceeding current contracted levels. The market is pricing as if these are likely; the structural math shows they are necessary conditions, not certainties.
+
+      **Bear case test:** "Structural costs make profitability impossible."
+      - Not quite true. The math above shows a narrow but real path to profitability at scale. The bear case overstates the structural problem by assuming current cost ratios persist at 10x revenue. In reality, SGA/R&D will not grow 10x with revenue (operating leverage), and gross margin may improve with the software layer.
+      - The honest conclusion is somewhere between the bull and bear: **the path to profitability exists but is narrower than the market assumes, and depends on multiple unproven conditions aligning simultaneously.**
+
+      **Falsifiable events in the next 12 months:**
+      1. Q1-Q2 2026 revenue trajectory: if revenue hits $400-500M/quarter, the breakeven math improves significantly
+      2. Connected power ramp: if 800 MW-1 GW by end-2026 is achieved, capacity supports contract delivery
+      3. D&A policy: any change in useful life assumptions directly impacts profitability timeline
+      4. Meta optional exercise: $15B optional portion exercised = $46B is real; declined = bull case loses $15B
+      5. OCF excluding prepayments: first quarter of positive "recurring" OCF proves the model is self-sustaining
+
+  - id: peer_structural_comparison
+    title: "Peer structural comparison: the numbers side by side"
+    body: |
+      All figures Q4 2025 unless noted. Nebius capital structure shown post-convertible where applicable.
+
+      **Cost structure:**
+      | Metric                    | Nebius    | CoreWeave | IREN      |
+      |--------------------------|----------|----------|----------|
+      | CoR + D&A / Revenue      | 109.4%   | 84.6%    | 89.3%    |
+      | Total opex / Revenue     | 203.0%   | 104.4%   | 143.9%   |
+      | Gross margin (ex-D&A)    | 69.9%    | 67.6%    | 64.4%    |
+
+      **Cash flow:**
+      | Metric                    | Nebius    | CoreWeave | IREN      |
+      |--------------------------|----------|----------|----------|
+      | OCF                       | $834.3M  | $1,558.9M | $71.7M  |
+      | FCF                       | -$1,221.7M | -$2,500.9M | -$468.0M |
+      | Capex / Revenue           | 9.03x    | 2.58x    | 2.92x   |
+      | OCF ex-prepayments (est.) | -$735.7M | n/a*     | n/a*    |
+
+      *CoreWeave and IREN have material deferred revenue but the prepayment structure is less extreme than Nebius's Q4 $1.57B surge.
+
+      **Capital structure:**
+      | Metric                    | Nebius (post) | CoreWeave | IREN      |
+      |--------------------------|--------------|----------|----------|
+      | Total debt                | ~$8.43B      | $21.37B  | $3.84B   |
+      | Net debt                  | ~$0.45B      | $18.24B  | $0.58B   |
+      | Interest / Revenue        | ~30%         | 22.3%    | 5.8%    |
+      | Debt / Equity             | ~1.83x       | 6.41x    | 1.53x   |
+
+      **Disclosure quality (summary score):**
+      | Dimension                  | Nebius  | CoreWeave | IREN      |
+      |---------------------------|---------|----------|----------|
+      | Financial granularity      | Low     | Medium   | High     |
+      | Operational transparency   | Low     | Low      | High     |
+      | Guidance specificity       | Medium  | Medium   | High     |
+      | Interactive accountability | None    | Yes      | Yes      |
+
+      **Interpretation:** CoreWeave is closest to operating breakeven and has the most established revenue base, but carries dangerous leverage ($21.4B debt, 6.4x D/E). IREN has the cleanest balance sheet, the best disclosure, and the most transparent economics, but is smallest in scale and still partly a bitcoin miner. Nebius has the highest structural costs, the most prepayment-dependent cash flow, and the least transparent disclosure — but also the strongest strategic backing (NVIDIA + Meta + Microsoft) and the most aggressive growth trajectory.
 
   - id: what_to_watch
-    title: "The four things that actually matter in the next two quarters"
+    title: "The five things that determine whether the math works"
     body: |
-      **1. Q1 2026 revenue trajectory.** If quarterly revenue jumps from $228M toward $400-500M+, the valuation normalizes rapidly on a forward basis. If it stays below $350M, the gap between contracted value and realized revenue becomes the story. The difference between "validating" and "concerning" is probably $150M of quarterly revenue.
+      **1. Q1 2026 revenue: $400M or bust.** At $400M+, the cost structure ratio (CoR + D&A / revenue) starts compressing toward peer levels. At $350M or below, the structural deficit widens and the breakeven math pushes further out. The difference is ~$50M of revenue.
 
-      **2. Cash flow composition.** Watch whether operating cash flow remains dependent on deferred revenue surges or starts showing recurring cash generation from delivered capacity. A quarter where OCF is strong without a comparable prepayment boost would be the most important signal that the economics are self-sustaining.
+      **2. OCF composition shift.** The single most important signal is a quarter where OCF is positive without a comparable deferred revenue surge. This would prove the business generates cash from operations, not just from collecting future revenue today. Watch deferred revenue line items in the Q1 2026 6-K.
 
-      **3. Connected power ramp.** Nebius ended 2025 with ~170 MW active power and guides 800 MW-1 GW connected by end-2026. That's a 5-6x increase in 12 months. The Independence, Missouri factory (1.2 GW) is approved but not built. If mid-year reports show connected power materially behind the ramp curve, the entire $46B+ contracted deal book becomes harder to fulfill on time.
+      **3. Connected power at mid-year.** Nebius needs to reach 800 MW-1 GW connected by end-2026 to support contract delivery schedules. A mid-year checkpoint of 400-500 MW connected would be on track. Below 300 MW signals the build-out is behind schedule.
 
-      **4. Meta optional capacity exercise.** The $27B deal is $12B committed + $15B optional. Early signals on whether Meta intends to exercise the optional portion — or is shifting demand to internal capacity — will determine whether the headline contract value is real or aspirational.
+      **4. Interest expense trajectory.** With the convertible adding ~$30M in quarterly interest, total quarterly interest should rise from $38M to ~$68M. If it rises significantly above that, it means additional debt financing was required, compounding the capital cost problem.
+
+      **5. Meta optional exercise signals.** Any indication from Meta's earnings calls or capital allocation commentary about exercising the $15B optional portion of the Nebius deal. If Meta signals intent to exercise, the $46B headline becomes more credible. If Meta accelerates internal infrastructure spending instead, the optional portion is at risk.
 
   - id: conclusion
-    title: "How to think about Nebius right now"
+    title: "Where the consensus is wrong and what the math actually shows"
     body: |
-      **Core judgment:** Nebius has accomplished something rare in capital-intensive technology: it went from zero to credible in under two years. The combination of $46B+ in contracted deals, $2B NVIDIA investment, sold-out capacity, and a clear execution playbook makes this one of the most validated AI infrastructure stories outside the hyperscalers themselves.
+      **Core judgment:** Nebius has built something real — the demand validation ($46B+ contracted), strategic backing (NVIDIA $2B), and execution speed (0 to 170 MW in <2 years) are exceptional. But the market is pricing the headline story without computing the structural economics underneath it.
 
-      **Where consensus is right:** Demand is real, the customer quality is exceptional, and the neocloud model has near-term structural advantages over legacy cloud for AI workloads. The deal cascade in March 2026 was genuinely transformative.
+      **Where consensus is right:** AI infrastructure demand is real and growing. Nebius has the highest-quality customer base in the neocloud sector. The NVIDIA partnership creates lasting technology and access advantages. The March 2026 deal cascade was genuinely transformative.
 
-      **Where consensus is incomplete:** The market reads the headline numbers without decomposing them. The $27B Meta deal is $12B committed + $15B optional. The $834M OCF was built on $1.57B of prepayments. The business is not self-funding and won't be at any visible point in the current build-out. The software platform is positioned but not proven as an economic moat. These aren't reasons to be bearish — they're reasons to watch the conversion from commitments to delivered economics more carefully than the market currently does.
+      **Where consensus is wrong:**
+      1. **Cost structure is worse than peers** — Nebius's infrastructure costs (CoR + D&A) consume 109% of revenue vs 85% for CoreWeave and 89% for IREN. The market treats Nebius and CoreWeave as comparable businesses at different stages; the structural math shows Nebius's cost configuration is fundamentally different.
+      2. **Cash flow is an illusion** — the $834M OCF was -$736M excluding $1.57B of customer prepayments. The business has never generated positive recurring operating cash flow. The market cites OCF without decomposing it.
+      3. **The path to profitability is narrower than assumed** — even at $9.2B annual revenue (all contracts delivering), the business is unprofitable unless asset lives extend, a software margin layer materializes, and revenue exceeds contracted levels. All three must hold simultaneously.
+      4. **Disclosure quality is the lowest among peers** — Nebius provides less financial and operational granularity than both CoreWeave and IREN, and does not hold earnings calls. For a company valued on forward commitments, this opacity is a structural risk factor.
 
-      **Where consensus may be wrong:** The market is debating valuation (70x revenue) and capex ($16-20B in 2026) as the main risks. These are real, but the deeper question is **neocloud durability**. If GPU scarcity eases by 2027-2028 and hyperscalers' internal capacity catches up, the premium for external AI infrastructure narrows regardless of Nebius's execution quality. The strongest counter-evidence to this risk — Meta's $27B deal — also contains the strongest caveat: $15B of it is optional. The durability question will be answered not by Nebius's next quarter, but by what the AI infrastructure market looks like in 2028 when the scarcity window closes.
+      **What I would need to see to turn bullish:** (a) A quarter of positive OCF excluding prepayments, proving the economics are self-sustaining. (b) Disclosure of per-segment or per-customer revenue, proving the revenue base is diversified and growing organically. (c) Connected power above 500 MW by mid-2026, proving the physical build-out is on track. (d) Any signal that Meta intends to exercise the $15B optional portion, proving the $46B headline is floor, not ceiling.
 
-      **Best near-term prediction:** Nebius will likely continue to gain credibility over the next 2-3 quarters as contracted deals convert to revenue and connected power ramps. The stock is likely to re-rate higher if Q1 2026 revenue exceeds ~$400M and capex deployment stays on schedule. The harder test comes in 2027-2028 when three things happen simultaneously: the debt matures into real obligations, GPU supply expands, and the optional portions of the mega-deals either exercise or expire. That's when you'll know if Nebius built a utility or rode a wave.
+      **Bottom line:** Nebius is a legitimate infrastructure platform that solved the hardest problem in tech (getting NVIDIA, Meta, and Microsoft to commit). But the derived financial math shows a business that is structurally unprofitable at current and near-term scale, entirely dependent on prepayments for cash generation, and less transparent than its peers about the economics underneath the headline numbers. The market is pricing the destination without computing the cost of the journey. That gap — between narrative and arithmetic — is where the risk lives.
 
 disclosure_gaps: |
-  The most important gaps are now about conversion quality rather than demand existence:
-  (1) **Software-layer economics** — no separate disclosure of Aether/Token Factory revenue, margins, or customer adoption. The platform thesis is unverifiable from public data.
-  (2) **Customer concentration** — no breakdown of revenue by customer. The deal headlines suggest heavy Microsoft/Meta concentration but the actual revenue mix is undisclosed.
-  (3) **Contract economics** — pricing, margin structure, and prepayment terms of the Microsoft and Meta deals are not publicly available. The headline dollar values don't tell you what the steady-state economics look like.
-  (4) **GPU fleet current count** — last explicit total was ~30,000 as of March 2025 (20-F). The fleet has almost certainly grown but no updated count has been disclosed.
-  (5) **Meta optional capacity terms** — the conditions under which Meta can exercise or decline the $15B optional portion are not publicly detailed.
+  Updated structural gaps beyond the original disclosure gaps:
+  (1) **Segment economics** — no revenue or margin breakdown by business line (AI cloud vs other). Cannot verify whether the core cloud business is above or below group-level margins.
+  (2) **Depreciation policy details** — the ~4-year useful life assumption is inferred from total D&A and PP&E growth, not explicitly disclosed in a format that allows precise adjustment. Any change in policy directly impacts all profitability math.
+  (3) **Prepayment schedule** — deferred revenue is disclosed in aggregate (+$1.57B in Q4) but the expected recognition schedule (when prepayments convert to revenue) is not broken out.
+  (4) **Contract delivery milestones** — neither the Microsoft nor Meta deal discloses capacity delivery milestones, penalty terms, or conditions for optional exercise. The $46B headline cannot be stress-tested without these terms.
+  (5) **GPU fleet current count** — ~30,000 as of March 2025 is 12 months stale. At $2B+ quarterly capex, the fleet has likely grown 3-5x but no updated count is available.
+  (6) **Self-funding math** — the "~60% self-funded" claim for 2026 capex has no supporting calculation in any filing. Whether this means 60% from OCF, 60% from customer prepayments, or 60% from cash on hand is undefined.
 
 sources:
   - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-1.htm
     kind: sec_6k
-    description: "Form 6-K Ex.99.1 — Q4/FY2025 financial results and cash flow statements."
-    retrieved_at: "2026-03-26"
+    description: "Form 6-K Ex.99.1 — Q4/FY2025 financial results, cash flow statements, balance sheet."
+    retrieved_at: "2026-03-29"
   - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
     kind: sec_6k
-    description: "Form 6-K Ex.99.2 — Q4 2025 shareholder letter (ARR, capacity, guidance, customer milestones)."
-    retrieved_at: "2026-03-26"
+    description: "Form 6-K Ex.99.2 — Q4 2025 shareholder letter (ARR, capacity, guidance)."
+    retrieved_at: "2026-03-29"
   - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926026163/tm268532d1_ex99-1.htm
     kind: sec_6k
     description: "Form 6-K Ex.99.1 — NVIDIA $2B investment and strategic partnership (Mar 11, 2026)."
-    retrieved_at: "2026-03-26"
+    retrieved_at: "2026-03-29"
   - url: https://group.nebius.com/newsroom/nebius-signs-new-ai-infrastructure-agreement-with-meta
     kind: company_web
     description: "Nebius — Meta $27B AI infrastructure deal ($12B committed + $15B optional, Mar 16, 2026)."
-    retrieved_at: "2026-03-26"
+    retrieved_at: "2026-03-29"
   - url: https://group.nebius.com/newsroom/nebius-group-announces-closing-of-private-offering-of-convertible-senior-notes-with-aggregate-gross-proceeds-of-approximately-4-3-billion
     kind: company_web
     description: "Nebius — $4.3375B convertible notes close (Mar 20, 2026)."
-    retrieved_at: "2026-03-26"
-  - url: https://group.nebius.com/newsroom/nebius-secures-approval-for-its-first-gigawatt-scale-ai-factory
-    kind: company_web
-    description: "Nebius — Independence, Missouri 1.2 GW factory approval (Mar 3, 2026)."
-    retrieved_at: "2026-03-26"
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+    kind: sec_10k
+    description: "CoreWeave 10-K FY2025 — peer financial data for structural comparison."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+    kind: sec_10q
+    description: "IREN 10-Q FY2026 Q2 — peer financial data for structural comparison."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1513845/000155837025005991/nbis-20241231x20f.htm
+    kind: sec_20f
+    description: "Nebius 20-F FY2024 — GPU count (~30,000), property/equipment useful life assumptions."
+    retrieved_at: "2026-03-29"
   - url: https://seekingalpha.com/article/4840996-nebius-vs-coreweave-the-neocloud-battle-shaping-the-future-of-ai-infrastructure
     kind: curated_platform
     description: "Curated platform: Seeking Alpha — Nebius vs CoreWeave competitive analysis."
-    retrieved_at: "2026-03-26"
+    retrieved_at: "2026-03-29"
   - url: https://fusioncapital.substack.com/p/the-neocloud-wars-why-coreweave-is
     kind: specialist_analysis
-    description: "Specialist analysis: Fusion Capital — neocloud model comparison and capital structure analysis."
-    retrieved_at: "2026-03-26"
+    description: "Specialist analysis: Fusion Capital — neocloud model comparison and capital structure."
+    retrieved_at: "2026-03-29"
   - url: https://stockanalysis.com/stocks/nbis/forecast/
     kind: sell_side_summary
-    description: "Sell-side: 9 analysts, Strong Buy, median target $166.78, range $120-$211."
-    retrieved_at: "2026-03-26"
-  - url: https://www.finviz.com/news/334823/reddit-fell-in-love-with-nebius-then-panic-sold-the-wrong-miss
-    kind: social_signal
-    description: "Community: Reddit sentiment trajectory — Q4 panic-sell and March recovery."
-    retrieved_at: "2026-03-26"
+    description: "Sell-side: 9 analysts, Strong Buy, median target $166.78."
+    retrieved_at: "2026-03-29"

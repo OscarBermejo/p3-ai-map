@@ -1,7 +1,7 @@
 kind: market_perception
 schema_version: 1
 
-as_of: "2026-03-26"
+as_of: "2026-03-29"
 
 company: iren
 layer: infrastructure
@@ -9,26 +9,30 @@ layer: infrastructure
 # ── Consensus narrative ─────────────────────────────────────────────────────────
 consensus_narrative:
   summary: >
-    The market broadly views IREN as a credible but high-risk Bitcoin-miner-to-AI-infrastructure
-    pivot story. The $9.7B Microsoft contract and secured power portfolio (~4.5 GW) provide
-    real substance, but execution risk, dilution from a $6B ATM program, and the gap between
-    announced scale and realized AI revenue remain the defining tensions. The stock trades well
-    below analyst targets, reflecting skepticism about conversion speed.
+    The market views IREN as a credible but high-risk Bitcoin-miner-to-AI-infrastructure
+    pivot story at a critical inflection point. The $9.7B Microsoft contract, 4.5 GW
+    secured power portfolio, and 150,000 GPU fleet target provide real substance, but
+    the execution gap between narrative and realized AI economics continues to dominate
+    sentiment. As of late March 2026, the stock trades near $35 — recovered from
+    February lows but well below analyst targets — reflecting deep skepticism about
+    conversion speed and the size of the $6B ATM dilution overhang.
 
   bull_thesis:
     view: >
-      IREN is building a vertically integrated AI infrastructure platform with a durable power
-      moat. The 4.5 GW of secured grid connections — of which only ~810 MW is online — provides
-      massive scaling runway. The $9.7B Microsoft contract validates demand, the 150,000 GPU
-      fleet target is backed by signed procurement, and management has secured ~$9.3B in
-      financing over eight months. The company is being valued like a miner when it should be
-      valued like an AI infrastructure platform — the re-rating upside is substantial.
+      IREN is building a vertically integrated AI infrastructure platform with a durable
+      power moat that peers cannot replicate without years of permitting. The 4.5 GW
+      secured grid portfolio (only 18% operational) provides scaling runway. The $9.7B
+      Microsoft contract validates demand at scale, and the 150,000 GPU fleet target is
+      backed by signed procurement with pre-arranged GPU financing. At ~$12-14B market
+      cap, the power portfolio and contracted revenue make IREN a potential acquisition
+      target at a premium to current prices. The re-rating from miner to AI infrastructure
+      platform remains the core upside.
     key_assumptions:
       - "150,000 GPU fleet deployed on schedule through H2 2026"
       - "AI Cloud annualized run-rate reaches >$3.7B by end-2026"
-      - "Microsoft contract ramp proceeds through four phased tranches without slippage"
-      - "Power infrastructure converts secured MW to operational MW on timeline"
-      - "ATM dilution remains manageable relative to revenue growth"
+      - "Microsoft contract ramps through four phased tranches without slippage"
+      - "Sweetwater 1 substation energizes Q2 2026 calendar (on schedule)"
+      - "ATM dilution remains below $1-2B and is more than offset by revenue growth"
     sources:
       - url: https://seekingalpha.com/article/4845013-iren-arr-could-grow-6-8x-to-3-4b-by-year-end-2026
         kind: curated_platform
@@ -38,25 +42,22 @@ consensus_narrative:
         kind: curated_platform
         description: "Curated platform: Seeking Alpha 'IREN's Power Moat: Winning The AI Race' — bull thesis centered on power infrastructure advantage."
         retrieved_at: "2026-03-26"
-      - url: https://barebirk.substack.com/p/iren-the-45gw-ai-powerhouse
-        kind: specialist_analysis
-        description: "Specialist analysis: Birk substack deep-dive on IREN as a 4.5 GW AI powerhouse."
-        retrieved_at: "2026-03-26"
 
   bear_thesis:
     view: >
-      IREN is an over-leveraged transition story running on illustrative projections.
-      AI Cloud revenue was only ~$17.3M in Q2 FY26 against $184.7M total — 90%+ is still
-      Bitcoin mining. The $6B ATM program represents ~43% of market cap in potential dilution.
-      Management missed earnings expectations (-$0.52 vs -$0.24 expected) and failed to announce
-      a second major deal alongside Q2 results, disappointing investors. Short sellers including
-      Jim Chanos have flagged the gap between narrative and economics. The stock dropped 23.8%
-      in February 2026 for a reason.
+      IREN is an over-leveraged transition story with a $6B dilution overhang and AI
+      Cloud economics that are not yet visible. Q2 FY26 AI Cloud revenue was only $17.3M
+      against $184.7M total — 90%+ remains Bitcoin mining. The illustrative $3.7B ARR
+      target is explicitly labeled "not fully contracted" in the filing's footnote.
+      CoreWeave has 250,000+ GPUs generating ~$5.1B in annual revenue; IREN has $17.3M
+      quarterly from AI Cloud. The structural cost ratio (D&A + SGA + CoR) consumed
+      143.9% of revenue in Q2 FY26 even before impairments. Short sellers including
+      Jim Chanos remain active, and a 2x leveraged short ETF has been launched.
     key_assumptions:
-      - "AI revenue ramp will be slower than illustrative targets suggest"
-      - "ATM dilution will materially erode per-share economics even if revenue grows"
-      - "Second major hyperscaler contract is needed but not secured"
-      - "Execution risk on simultaneous GPU procurement, site buildout, and financing is high"
+      - "AI revenue ramp will be far slower than illustrative targets"
+      - "ATM dilution will materially erode per-share economics"
+      - "Second major hyperscaler contract is not imminent"
+      - "Bitcoin mining decline will weaken the bridge financing before AI revenue scales"
     sources:
       - url: http://seekingalpha.com/article/4882166-iren-massive-atm-filing-hammers-bull-case-rating-downgrade
         kind: curated_platform
@@ -73,38 +74,57 @@ consensus_narrative:
 
   embedded_assumptions:
     - assumption: "The $9.7B Microsoft contract will ramp on schedule through four tranches in 2026"
-      notes: "Contract has ~20% prepayment structure; GPU financing 95% covered per management. But illustrative ARR figures are not fully contracted per issuer footnotes."
+      notes: >
+        Contract has ~20% prepayment structure; GPU financing 95% covered per management.
+        But the illustrative ARR figures are not fully contracted per issuer footnotes.
+        AI Cloud revenue of $17.3M in Q2 FY26 represents an annualized run-rate of
+        ~$69M — a 54x gap to the $3.7B illustrative target.
       sources:
         - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
           kind: sec_8k
           description: "Direct from SEC filing: 8-K Ex.99.1 March 4, 2026 — illustrative ARR footnote explicitly states 'not fully contracted.'"
           retrieved_at: "2026-03-26"
-    - assumption: "ATM dilution will be used gradually and offset by revenue growth"
-      notes: "The $6B ATM is capacity, not commitment — management can issue at its discretion. But the prior $1B ATM was tapped through 66.7M shares. Retail sentiment already frustrated by 'dilution for the past 5 months.'"
+    - assumption: "ATM dilution will be gradual and offset by revenue growth"
+      notes: >
+        The $6B ATM was expanded from $1B on March 4, 2026, adding Goldman Sachs,
+        Citizens JMP Securities, and Jefferies as sales agents (3 new agents joined
+        the existing 8). The prior $1B ATM was fully tapped through 66.7M shares by
+        March 2026. At current prices (~$35), the full $6B represents ~171M additional
+        shares or ~57% dilution of current share count.
       sources:
-        - url: https://www.ainvest.com/news/iren-6b-atm-threat-dilution-time-bomb-ai-moat-builder-2603/
-          kind: curated_platform
-          description: "Curated platform: ainvest analysis — '$6B ATM Threat: Dilution Time Bomb or AI Moat Builder?'"
-          retrieved_at: "2026-03-26"
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007919/ny20064909x2_8k.htm
+          kind: sec_8k
+          description: "Direct from SEC filing: 8-K March 4, 2026 — joinder of Goldman Sachs, Citizens JMP, Jefferies to ATM sales agreement; $6B total capacity."
+          retrieved_at: "2026-03-29"
     - assumption: "Power infrastructure is a durable competitive moat"
-      notes: "4.5 GW secured vs ~810 MW operational. Conversion from secured to operational requires permitting, substation energization, and construction — not automatic."
+      notes: >
+        4.5 GW secured vs ~810 MW operational = 18% utilization rate. Sweetwater 1
+        (~1,400 MW) targeted Q2 2026 calendar; Sweetwater 2 (~600 MW) targeted Q4 2027.
+        CoreWeave has 850MW operational with 3.1GW contracted — similar conversion
+        ratio but with $66.8B in revenue backlog against IREN's $9.7B single contract.
       sources: []
 
   narrative_shift:
     direction: more_bearish
     summary: >
-      Consensus shifted from post-Microsoft-deal euphoria (Nov 2025) to execution skepticism
-      and dilution concern (Feb-Mar 2026). The Q2 FY26 earnings miss (-$0.52 vs -$0.24), the
-      absence of a second major deal, and the $6B ATM filing triggered a 23.8% selloff in
-      February. Bernstein noted the selloff reflects missing AI deal expectations, not
-      fundamental deterioration. Retail sentiment on Reddit turned notably more negative, with
-      unfavorable comparisons to Nebius's $27B Meta deal.
+      Consensus shifted from post-Microsoft-deal euphoria (Nov 2025) through a February
+      selloff (23.8%) to a mixed/cautious state in late March 2026. The stock has
+      partially recovered from February lows to ~$35, but remains well below the
+      median analyst target of $71.69. The CoreWeave IPO (now trading as CRWV) with
+      $5.1B in revenue and $66.8B backlog has raised the bar for what "AI cloud at
+      scale" means, making IREN's $17.3M quarterly AI revenue look even smaller in
+      context. Weiss Ratings upgraded from sell to hold on March 9, 2026 — a minor
+      positive signal at the margin.
     prior_consensus: "Post-$9.7B Microsoft deal: IREN as a validated AI infrastructure platform with massive power moat and clear GPU procurement path."
     sources:
       - url: https://finance.yahoo.com/news/bernstein-says-iren-selloff-reflects-145314002.html
         kind: curated_platform
         description: "Curated platform: Bernstein — 'selloff reflects missing AI deal, not earnings.'"
         retrieved_at: "2026-03-26"
+      - url: https://stockanalysis.com/stocks/iren/financials/
+        kind: curated_platform
+        description: "Curated platform: Stock Analysis — IREN income statement; stock price $35.09 as of March 27, 2026 close."
+        retrieved_at: "2026-03-29"
 
 # ── Key debates ─────────────────────────────────────────────────────────────────
 key_debates:
@@ -112,8 +132,15 @@ key_debates:
     question: "Will the $6B ATM dilution destroy per-share value faster than AI revenue can grow it?"
 
     bull_case:
-      argument: "ATM is capacity, not commitment. Management will issue opportunistically. Revenue growth from $3.7B+ AI ARR target dwarfs dilution if fleet deploys on schedule. Amazon built warehouses ahead of demand too."
-      evidence: "EMJ Capital's Eric Jackson argues IREN is building ahead of demand like Amazon; Microsoft deal uses <10% of total power capacity, leaving massive scaling room."
+      argument: >
+        ATM is capacity, not commitment. Revenue growth from $3.7B+ AI ARR target
+        dwarfs dilution if fleet deploys on schedule. The prior $1B ATM was tapped over
+        ~7 months; at that pace, the $6B could take 3-4 years to exhaust — by which
+        time AI Cloud revenue should be in the billions.
+      evidence: >
+        EMJ Capital's Eric Jackson argues IREN is building ahead of demand like Amazon;
+        Microsoft deal uses <10% of IREN's total power capacity, leaving massive scaling
+        room. With $3.26B cash as of Dec 31, 2025, near-term ATM usage is not urgent.
       sources:
         - url: https://www.sahmcapital.com/news/content/next-amazon-or-costly-dilution-irens-6-billion-equity-filing-sparks-wall-street-debate-2026-03-05
           kind: curated_platform
@@ -121,8 +148,16 @@ key_debates:
           retrieved_at: "2026-03-26"
 
     bear_case:
-      argument: "Even if IREN doubles net income, share count inflation could keep EPS flat. The prior $1B ATM was fully tapped. Comparisons to AMC Entertainment's dilution spiral are circulating. Jim Chanos is short."
-      evidence: "$6B ATM = ~43% of market cap. Prior ATM already issued 66.7M shares. Q2 FY26 EPS missed by over 100% (-$0.52 vs -$0.24). A 2x short ETF has been launched against the stock."
+      argument: >
+        At $35/share, a full $6B ATM represents ~171M new shares — a 57% increase
+        in share count on top of existing dilution from convertible notes. SBC already
+        runs at $58.2M/quarter (31.5% of revenue). The Q2 FY26 EPS miss was -$0.52 vs
+        -$0.24 expected. Even if revenue grows substantially, per-share economics could
+        stay flat or deteriorate if share count grows proportionally faster.
+      evidence: >
+        Prior $1B ATM was fully tapped through 66.7M shares. A 2x short ETF has been
+        launched against IREN. Jim Chanos is short. Q2 FY26 EPS of -$0.52 vs. guided
+        -$0.24 = 116% downside miss.
       sources:
         - url: https://finance.yahoo.com/news/iren-6-billion-stock-offering-134912537.html
           kind: curated_platform
@@ -133,16 +168,30 @@ key_debates:
           description: "Curated platform: Longbridge — 'IREN's AI Pivot And New 2x Short ETF Put Risks In Focus.'"
           retrieved_at: "2026-03-26"
 
-    resolution_evidence: "Q3-Q4 FY26 AI Cloud revenue trajectory. If AI revenue ramps to >$100M/quarter while ATM usage stays modest, bull case strengthens. If ATM taps accelerate while AI revenue stays <$30M/quarter, bear case dominates."
+    resolution_evidence: >
+      Q3-Q4 FY26 AI Cloud revenue trajectory plus ATM usage disclosure. If AI revenue
+      reaches >$100M/quarter while ATM usage stays below $500M over the same period,
+      the bull case strengthens materially. If AI revenue stays below $50M/quarter
+      while the ATM is tapped aggressively, the bear case dominates.
     current_lean: balanced
-    lean_reasoning: "Both sides have real evidence. The ATM risk is genuine and material. But the underlying asset base (power, contracts, GPUs) is also real. The resolution depends on execution speed — which is unknowable until the next 2 quarters report."
+    lean_reasoning: >
+      Both sides have real evidence. With $3.26B cash and GPU financing pre-arranged,
+      IREN can avoid ATM pressure in the near term. The resolution depends entirely on
+      how fast AI Cloud revenue ramps against the deployment schedule.
 
   - id: second_hyperscaler_deal
     question: "Can IREN sign a second major hyperscaler contract, or is Microsoft the only anchor?"
 
     bull_case:
-      argument: "IREN has 4.5 GW of secured power but Microsoft uses only ~200 MW (Childress Horizon). Sweetwater 1-2 (~2,000 MW) and Oklahoma (~1,600 MW) are available for new customers. The power moat makes IREN attractive to any hyperscaler needing GPU infrastructure."
-      evidence: "Management highlighted customer demand for air-cooled GPUs and faster deployment timelines on the Q2 earnings call. Multiple sites under development beyond Microsoft scope."
+      argument: >
+        IREN has 4.5 GW of secured power but Microsoft uses only ~200 MW. Sweetwater
+        1-2 (~2,000 MW) and Oklahoma (~1,600 MW) represent multiple GWs available for
+        new customers. The power moat is real and hyperscaler demand is growing — as
+        demonstrated by Nebius signing $44B+ in hyperscaler contracts in early 2026.
+      evidence: >
+        Management highlighted customer demand for air-cooled GPUs and faster deployment
+        timelines on the Q2 FY26 earnings call. Sweetwater 1 energization Q2 2026 creates
+        the concrete asset to sell. The Nebius Meta deal ($27B) validates demand at scale.
       sources:
         - url: https://www.fool.com/earnings/call-transcripts/2026/02/05/iren-iren-q2-2026-earnings-call-transcript/
           kind: earnings_transcript
@@ -150,24 +199,46 @@ key_debates:
           retrieved_at: "2026-03-26"
 
     bear_case:
-      argument: "The Q2 FY26 earnings selloff was partly driven by the absence of a second deal announcement. Nebius signed $27B with Meta and $17.4B with Microsoft — IREN has only one anchor. Without a second deal, the rest of the power portfolio is unmonetized optionality."
-      evidence: "Bernstein explicitly attributed the February selloff to 'missing AI deal, not earnings.' Retail investors on Reddit compare IREN unfavorably to Nebius deal flow."
+      argument: >
+        The February 2026 selloff was driven partly by the absence of a second deal
+        announcement at Q2 results. Three months after the Microsoft deal, IREN still
+        has a single anchor customer. CoreWeave ($66.8B backlog, 250k+ GPUs) and Nebius
+        ($44B+ contracted) are signing multiple hyperscaler deals while IREN remains
+        at one. The longer IREN goes without a second deal, the more the market questions
+        whether the Microsoft contract was a one-off or a repeatable model.
+      evidence: >
+        Bernstein explicitly attributed the February selloff to 'missing AI deal, not
+        earnings.' Five months since the Microsoft deal and no second announcement.
+        CoreWeave backlog grew $11.2B sequentially in Q4 2025 alone.
       sources:
         - url: https://finance.yahoo.com/news/bernstein-says-iren-selloff-reflects-145314002.html
           kind: curated_platform
           description: "Curated platform: Bernstein — selloff reflects missing AI deal expectations."
           retrieved_at: "2026-03-26"
 
-    resolution_evidence: "Announcement of a second hyperscaler contract (AWS, Meta, Google, Oracle). The next 2-3 quarters are the window — if Sweetwater 1 energizes Q2 2026 as targeted, IREN has a concrete asset to sell to a second customer."
-    current_lean: bull
-    lean_reasoning: "The power portfolio is real and hyperscaler demand for GPU infrastructure is growing. Nebius's Meta deal proves the market exists. IREN has the right assets; the question is timing, not viability."
+    resolution_evidence: >
+      Announcement of a second hyperscaler contract ($5B+ TCV). The Sweetwater 1
+      energization (targeted Q2 2026 calendar) creates the sellable asset. Every quarter
+      without announcement tilts the lean more bearish.
+    current_lean: bear
+    lean_reasoning: >
+      Lean shifted from bull to bear in late March 2026. Five months since Microsoft
+      and no second deal. CoreWeave's Q4 2025 IPO numbers show how far ahead the leading
+      neocloud is. With Nebius also at comparable quarterly revenue but growing 547% YoY,
+      the gap in deal flow velocity is widening, not narrowing.
 
   - id: transition_economics
-    question: "Will AI Cloud unit economics actually be attractive, or is IREN just trading Bitcoin mining margin for AI cloud margin with much more capital intensity?"
+    question: "Will AI Cloud unit economics actually be attractive, or is IREN trading Bitcoin margin for capital-intensive AI margin?"
 
     bull_case:
-      argument: "Management projects >$3.7B annualized run-rate from 150k GPUs. If realized, that implies ~$25k/GPU/year, which is consistent with market GPU-as-a-service pricing. The Microsoft prepayment structure (20%) and GPU financing (<6% interest) keep capital costs manageable."
-      evidence: "Q2 FY26 earnings call: GPU financing at <6% covers 95% of Microsoft contract capex. Revenue per GPU should improve with B300 vs older generations."
+      argument: >
+        Management projects >$3.7B annualized run-rate from 150k GPUs = ~$25K/GPU/year.
+        B300 GPUs at Mackenzie and Childress (H2 2026) should command significantly
+        higher pricing than current fleet. The Microsoft prepayment structure (20%/tranche)
+        de-risks the revenue ramp, and GPU financing at <6% covers 95% of capex.
+      evidence: >
+        Q2 FY26 earnings call: GPU financing at <6% covers 95% of Microsoft contract
+        capex. AI Cloud revenue grew 136% QoQ from Q1 to Q2 — trajectory is improving.
       sources:
         - url: https://www.insidermonkey.com/blog/iren-limited-nasdaqiren-q2-2026-earnings-call-transcript-1690323/
           kind: earnings_transcript
@@ -175,17 +246,33 @@ key_debates:
           retrieved_at: "2026-03-26"
 
     bear_case:
-      argument: "AI Cloud revenue was only $17.3M in Q2 FY26 — that's ~$69M annualized from whatever GPUs are currently deployed, far below the $3.7B target. The gap between current unit economics and projected unit economics is enormous. Margins on GPU-as-a-service are under pressure as supply expands."
-      evidence: "Q2 FY26: $17.3M AI Cloud vs $167.4M Bitcoin Mining revenue. Operating loss was $116.4M. The transition is capital-destructive in the near term."
+      argument: >
+        AI Cloud revenue of $17.3M in Q2 FY26 implies ~$4,600/GPU/year at most generous
+        deployment assumptions — a 5.3x gap to the $24,700/GPU/year required to hit
+        $3.7B ARR from 150k GPUs. The structural cost ratio (CoR + D&A + SGA) already
+        consumes 143.9% of total revenue before impairments. Positive adjusted EBITDA
+        ($75.3M in Q2) is misleading — it adds back SBC ($58.2M = 31.5% of revenue) and
+        D&A ($99.2M) that represent real economic costs.
+      evidence: >
+        Q2 FY26: $17.3M AI Cloud vs $167.4M Bitcoin Mining. Structural cost ratio 143.9%.
+        SBC alone ($58.2M) equals 49% of gross profit. Capex ($539.7M) = 292% of revenue.
       sources:
         - url: https://www.ainvest.com/news/iren-q2-revenue-drops-23-ai-cloud-growth-ramps-2602/
           kind: curated_platform
           description: "Curated platform: ainvest — 'Q2 Revenue Drops 23% as AI Cloud Growth Ramps' with revenue breakdown."
           retrieved_at: "2026-03-26"
 
-    resolution_evidence: "Q3-Q4 FY26 AI Cloud revenue per deployed GPU. If AI Cloud revenue/GPU improves materially as B200/B300 clusters come online, the unit economics thesis gains credibility."
+    resolution_evidence: >
+      Q3-Q4 FY26 AI Cloud revenue per deployed GPU. When IREN discloses how many GPUs
+      are actively generating revenue, the revenue-per-GPU metric becomes computable and
+      directly testable against the $24,700/year target. A disclosure of deployed GPU
+      count (not just "installed or on order") would significantly reduce the unit
+      economics uncertainty.
     current_lean: insufficient_evidence
-    lean_reasoning: "Current AI Cloud revenue is too small to draw conclusions about mature unit economics. The next 2 quarters will show whether deployed GPUs actually generate the revenue the illustrative model assumes."
+    lean_reasoning: >
+      The 136% QoQ growth rate in AI Cloud revenue is encouraging but the base was
+      tiny. Revenue/GPU is unverifiable with disclosed data. The next 2 quarters and
+      actual B300 deployment data will answer this.
 
 # ── Sentiment signals ───────────────────────────────────────────────────────────
 sentiment_signals:
@@ -199,30 +286,37 @@ sentiment_signals:
     consensus_target_high: 105.00
     as_of: "2026-03-27"
     notes: >
-      Consensus 'Moderate Buy' with ~106% upside to median target from ~$35 current price.
-      Notable targets: HC Wainwright $80, Cantor Fitzgerald $82, Canaccord $70. Wide range
-      ($29-$105) reflects deep disagreement on execution probability.
+      Consensus 'Moderate Buy' with ~104% upside to median target from ~$35 current
+      price. Stock closed at $35.09 on March 27, 2026 (after-hours $34.89). Notable
+      targets: HC Wainwright $80, Cantor Fitzgerald $82, Canaccord $70. Wide range
+      ($29-$105) reflects deep disagreement on execution probability. Weiss Ratings
+      upgraded IREN from sell to hold on March 9, 2026 — minor positive.
     sources:
-      - url: https://www.marketbeat.com/stocks/NASDAQ/IREN/forecast/
+      - url: https://www.marketbeat.com/instant-alerts/iren-limited-nasdaqiren-receives-average-recommendation-of-moderate-buy-from-analysts-2026-03-27/
         kind: sell_side_summary
-        description: "Sell-side summary: MarketBeat aggregation of 18 analyst ratings and price targets for IREN."
-        retrieved_at: "2026-03-26"
+        description: "Sell-side summary: MarketBeat March 27, 2026 — IREN receives 'Moderate Buy' average, 18 analysts, $71.69 median target."
+        retrieved_at: "2026-03-29"
+      - url: https://stockanalysis.com/stocks/iren/financials/
+        kind: curated_platform
+        description: "Curated platform: Stock Analysis — IREN price $35.09 close March 27, 2026."
+        retrieved_at: "2026-03-29"
 
   social_sentiment:
     direction: bearish
     summary: >
-      Reddit sentiment on r/irenstocks has turned notably negative in Feb-Mar 2026. Retail
-      investors express frustration over dilution, unfavorable comparisons to Nebius (NBIS),
-      and the lack of a second major deal. Recurring themes: 'dilution for the past 5 months,'
-      'IREN is cooked,' and '$9B deal barely makes a profit compared to NBIS.' Some contrarian
-      bulls argue the ~$14B market cap makes IREN an acquisition target for hyperscalers.
-      Reddit mentions of IREN increased 115% in late March 2026.
+      Reddit sentiment on r/irenstocks remains predominantly negative in late March
+      2026. Retail investors continue to express frustration over dilution, unfavorable
+      comparisons to Nebius (NBIS) and CoreWeave (CRWV), and the lack of a second
+      major deal announcement. CoreWeave's IPO and $66.8B revenue backlog disclosure
+      has intensified the contrast. Some contrarian bulls argue IREN's ~$12-14B market
+      cap makes it a prime acquisition target for a hyperscaler. Reddit mentions of
+      IREN increased 115% in late March 2026 per AltIndex.
     platforms_sampled: ["reddit_r_irenstocks", "reddit_r_wallstreetbets"]
     sources:
       - url: https://www.reddit.com/r/irenstocks/rising/
         kind: social_signal
-        description: "Community signal: r/irenstocks rising posts — bearish tone, dilution complaints, unfavorable Nebius comparisons."
-        retrieved_at: "2026-03-26"
+        description: "Community signal: r/irenstocks rising posts — bearish tone, dilution complaints, CoreWeave IPO comparisons."
+        retrieved_at: "2026-03-29"
       - url: https://altindex.com/ticker/iren
         kind: social_signal
         description: "Community signal: AltIndex showing 115% increase in Reddit mentions for IREN in late March 2026."
@@ -233,27 +327,46 @@ sentiment_signals:
       trigger: "Q2 FY26 earnings miss and absence of second hyperscaler deal announcement"
       from_sentiment: bullish
       to_sentiment: bearish
-      notes: "Stock dropped 23.8% in February. Bernstein attributed selloff to missing AI deal expectations rather than fundamental deterioration."
+      notes: >
+        Stock dropped 23.8% in February. Bernstein attributed selloff to missing AI deal
+        expectations rather than fundamental deterioration.
       sources:
         - url: https://finance.yahoo.com/news/bernstein-says-iren-selloff-reflects-145314002.html
           kind: curated_platform
           description: "Curated platform: Bernstein analysis of February selloff driver."
           retrieved_at: "2026-03-26"
     - date: "2026-03-04"
-      trigger: "150,000 GPU expansion announcement coupled with $6B ATM filing"
+      trigger: "150,000 GPU expansion announcement and $6B ATM upgrade (3 new agents added)"
       from_sentiment: bearish
       to_sentiment: mixed
-      notes: "GPU expansion was bullish signal but the simultaneous $6B ATM filing created competing narratives. Seeking Alpha published both bull and bear pieces within days."
+      notes: >
+        GPU expansion was bullish signal but the $6B ATM expansion (adding Goldman Sachs,
+        Citizens JMP, Jefferies as new sales agents) renewed dilution concerns. Stock
+        partially recovered from February lows to ~$41 then retraced to ~$35 by late March.
       sources:
-        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007919/ny20064909x2_8k.htm
           kind: sec_8k
-          description: "Direct from SEC filing: 8-K March 4, 2026 — 150k GPU target and ATM disclosure."
-          retrieved_at: "2026-03-26"
+          description: "Direct from SEC filing: 8-K March 4, 2026 — ATM expansion joinder (Goldman Sachs, Citizens JMP, Jefferies added)."
+          retrieved_at: "2026-03-29"
+    - date: "2026-03-09"
+      trigger: "Weiss Ratings upgrade from sell to hold"
+      from_sentiment: bearish
+      to_sentiment: slightly_improved
+      notes: "Minor positive signal at the margin; Weiss upgraded IREN as part of broader reassessment."
+      sources:
+        - url: https://www.marketbeat.com/instant-alerts/iren-limited-nasdaqiren-receives-average-recommendation-of-moderate-buy-from-analysts-2026-03-27/
+          kind: sell_side_summary
+          description: "Sell-side summary: MarketBeat — Weiss Ratings upgrade to hold noted."
+          retrieved_at: "2026-03-27"
 
   contrarian_positions:
     - position: "IREN is more likely to be acquired by a hyperscaler than to execute the buildout independently"
       proponent: "r/irenstocks community thesis"
-      reasoning: "At ~$14B market cap, IREN's 4.5 GW power portfolio and 150k GPU fleet target could be cheaper for a hyperscaler to buy than replicate. Acquisition removes execution risk and dilution concern simultaneously."
+      reasoning: >
+        At ~$12-14B market cap, IREN's 4.5 GW power portfolio and contracted Microsoft
+        relationship could be cheaper for a hyperscaler to acquire than replicate. An
+        acquisition removes execution risk, eliminates dilution, and provides a premium
+        exit. The 4.5 GW portfolio would take 5-7 years and $10B+ to replicate from scratch.
       source_tier: 3
       sources:
         - url: https://www.reddit.com/r/irenstocks/rising/
@@ -266,120 +379,255 @@ competitive_positioning:
   key_peers:
     - slug: coreweave
       name: CoreWeave
-      relevance: "Largest pure-play GPU-as-a-Service neocloud. 250k+ GPUs deployed, 33 data centers, $50B+ market cap. Direct competitor for hyperscaler GPU infrastructure contracts."
+      relevance: >
+        Now publicly traded (NASDAQ: CRWV). Q4 2025: $1.572B quarterly revenue, $5.131B
+        FY2025 revenue (up 168% YoY). Revenue backlog $66.8B. 250k+ GPUs deployed across
+        33 data centers. 850 MW operational, 3.1 GW contracted. Adjusted EBITDA margin
+        60% — demonstrating at-scale AI cloud economics IREN aspires to. Direct competitor
+        for hyperscaler GPU infrastructure contracts and the most relevant at-scale benchmark.
       sources:
-        - url: https://tenbaggerexplorer.com/iren-vs-coreweave-comparison/
-          kind: curated_platform
-          description: "Curated platform: Ten Bagger Explorer — IREN vs CoreWeave AI Infrastructure comparison."
-          retrieved_at: "2026-03-26"
+        - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+          kind: sec_8k
+          description: "Direct from SEC filing: CoreWeave Q4 2025 earnings press release — $1.572B revenue, $66.8B backlog, 60% Adj EBITDA margin."
+          retrieved_at: "2026-03-29"
     - slug: nebius
       name: Nebius Group
-      relevance: "Amsterdam-based AI infrastructure specialist. $27B Meta deal + $17.4B Microsoft deal. Direct competitor for hyperscaler dedicated capacity contracts. Most relevant recent benchmark for deal flow."
+      relevance: >
+        Q4 2025 revenue $227.7M (vs IREN $184.7M — similar quarterly scale). Full-year
+        2025: $529.8M revenue, up 479% YoY. $27B Meta deal + $17.4B Microsoft deal =
+        $44B+ in contracted hyperscaler revenue. Growing much faster than IREN from a
+        comparable base. Most relevant benchmark for deal flow velocity and AI Cloud
+        economics at emerging scale.
       sources:
-        - url: https://www.reuters.com/technology/nebius-signs-ai-capacity-deal-with-meta-2026-03-16/
-          kind: curated_platform
-          description: "Curated platform: Reuters — Nebius signs $27B AI infrastructure deal with Meta."
-          retrieved_at: "2026-03-26"
+        - url: https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%2520results_Q4%25202025_11022026.pdf
+          kind: sec_8k
+          description: "Nebius Q4 2025 financial results — $227.7M quarterly revenue, 547% YoY growth, $173M adj EBITDA loss for full year."
+          retrieved_at: "2026-03-29"
     - slug: cipher
       name: Cipher Mining
       relevance: "Fellow Bitcoin-miner-to-AI pivot. Smaller scale but similar strategic trajectory. Useful for valuation comparisons within the miner-to-AI cohort."
       sources: []
 
   where_company_wins:
-    - dimension: "Secured power portfolio (4.5 GW)"
-      summary: "IREN has ~4.5 GW of secured grid connections across 7 sites, with only ~810 MW operational. This is the single largest disclosed power portfolio among neoclouds relative to current utilization — massive scaling runway without needing new grid agreements."
+    - dimension: "Secured power portfolio depth (4.5 GW)"
+      summary: >
+        IREN has ~4.5 GW of secured grid connections across 7 sites. CoreWeave has
+        3.1 GW contracted with 850 MW operational. IREN's power portfolio is larger
+        in aggregate, though CoreWeave converts a higher percentage to operational
+        capacity (27% vs IREN's 18%). IREN's 4.5 GW is the most underpenetrated large
+        power portfolio in the neocloud sector — upside optionality or inefficiency
+        depending on execution.
       durability: strong
       sources:
         - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
           kind: sec_10q
-          description: "Form 10-Q — 4,500 MW secured portfolio across seven sites."
+          description: "Form 10-Q accession 0001878848-26-000015 — 4,500 MW secured across seven sites."
           retrieved_at: "2026-03-26"
-    - dimension: "Vertical integration (own + build + operate)"
-      summary: "IREN designs, builds, and operates its own data centers and owns compute hardware. This vertical model gives cost control and deployment flexibility that pure leaseback models lack."
-      durability: moderate
-      sources:
-        - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
-          kind: sec_10q
-          description: "Form 10-Q — business description of vertically integrated model."
-          retrieved_at: "2026-03-26"
-    - dimension: "Lower relative debt burden"
-      summary: "IREN's total debt (~$3.84B) is dramatically lower than CoreWeave (~$18.8B). Debt-to-revenue ratio is high but balance sheet has more room for additional financing."
+    - dimension: "Relative debt burden vs. CoreWeave"
+      summary: >
+        IREN's total debt (~$3.84B) is dramatically lower than CoreWeave's (~$18.8B).
+        IREN's net debt is only $581M (total debt minus $3.26B cash) — essentially
+        close to net debt neutral. CoreWeave's aggressive leverage has enabled scale
+        but creates real financial risk. IREN has more balance sheet room for incremental
+        financing.
       durability: moderate
       sources:
         - url: https://tenbaggerexplorer.com/iren-vs-coreweave-comparison/
           kind: curated_platform
           description: "Curated platform: comparative financial metrics IREN vs CoreWeave."
           retrieved_at: "2026-03-26"
+    - dimension: "Bitcoin mining bridge cash generation"
+      summary: >
+        IREN's Bitcoin mining segment generated $167.4M in Q2 FY26 and drove essentially
+        all of the $71.7M in operating cash flow. CoreWeave and Nebius have no equivalent
+        legacy cash generator — both are entirely dependent on external financing during
+        their buildout. IREN's mining bridge is an underappreciated advantage for the
+        transition period, contingent on Bitcoin price stability.
+      durability: moderate
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
+          kind: sec_8k
+          description: "Form 8-K Q2 FY26 — revenue breakdown showing Bitcoin Mining $167.4M vs AI Cloud $17.3M."
+          retrieved_at: "2026-03-26"
 
   where_gap_closing:
     - dimension: "Deal flow velocity"
-      summary: "Nebius has signed $44B+ in hyperscaler contracts (Microsoft $17.4B + Meta $27B) vs IREN's single $9.7B Microsoft deal. The gap in contracted revenue is widening, not closing. IREN needs a second deal to stay competitive."
+      summary: >
+        Nebius has signed $44B+ in hyperscaler contracts in 5 months (Microsoft $17.4B +
+        Meta $27B) vs IREN's single $9.7B Microsoft deal signed November 2025. CoreWeave's
+        backlog grew $11.2B sequentially in Q4 2025 alone. The gap in contracted revenue
+        is widening. IREN needs a second deal to stay competitive in the deal-flow narrative.
       pace: rapidly
       sources:
         - url: https://www.reuters.com/technology/nebius-signs-ai-capacity-deal-with-meta-2026-03-16/
           kind: curated_platform
-          description: "Curated platform: Reuters — Nebius $27B Meta deal dwarfs IREN's single contract."
+          description: "Curated platform: Reuters — Nebius $27B Meta deal."
           retrieved_at: "2026-03-26"
 
   where_company_loses:
-    - dimension: "Deployed GPU scale"
+    - dimension: "Deployed GPU scale and AI revenue maturity"
       leading_peer: CoreWeave
-      summary: "CoreWeave has 250,000+ GPUs deployed vs IREN's ~99,900 installed/on-order. CoreWeave's infrastructure is already revenue-generating at scale; IREN's GPU fleet is still in procurement and deployment phase."
+      summary: >
+        CoreWeave: 250,000+ GPUs deployed, $1.572B quarterly AI revenue (Q4 2025).
+        IREN: ~99,900 GPUs installed or on order, $17.3M quarterly AI Cloud revenue (Q2 FY26).
+        Revenue gap: approximately 91x on quarterly AI revenue. Even against Nebius
+        ($227.7M quarterly), IREN's AI Cloud revenue is ~13x smaller. IREN is years
+        behind in demonstrated AI economics, even though its power portfolio is comparable.
       sources:
-        - url: https://tenbaggerexplorer.com/iren-vs-coreweave-comparison/
-          kind: curated_platform
-          description: "Curated platform: GPU fleet comparison — CoreWeave 250k+ vs IREN ~100k."
-          retrieved_at: "2026-03-26"
-    - dimension: "Revenue scale and AI revenue maturity"
-      leading_peer: CoreWeave
-      summary: "CoreWeave generates ~$4.9-5.1B annual revenue from AI compute. IREN's AI Cloud revenue was $17.3M in Q2 FY26 — the gap is roughly 100x. Even with aggressive ramp, IREN is years behind in proven AI economics."
-      sources:
-        - url: https://tenbaggerexplorer.com/iren-vs-coreweave-comparison/
-          kind: curated_platform
-          description: "Curated platform: Revenue comparison — CoreWeave ~$5B vs IREN $17.3M AI Cloud quarterly."
-          retrieved_at: "2026-03-26"
+        - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+          kind: sec_8k
+          description: "CoreWeave Q4 2025 press release — $1.572B quarterly revenue."
+          retrieved_at: "2026-03-29"
     - dimension: "Customer diversification"
       leading_peer: Nebius
-      summary: "Nebius serves Microsoft, Meta, and others. CoreWeave serves OpenAI, Microsoft, Meta. IREN has a single anchor customer (Microsoft). Single-customer concentration is a real risk."
+      summary: >
+        Nebius serves Microsoft, Meta, and others — multiple anchor hyperscaler
+        relationships. CoreWeave serves OpenAI, Microsoft, Meta, and others. IREN has
+        a single anchor customer (Microsoft). Single-customer concentration creates
+        binary risk: if the Microsoft relationship stalls or Microsoft redirects capacity,
+        IREN's entire AI infrastructure narrative stalls with it.
       sources: []
+    - dimension: "Revenue backlog depth"
+      leading_peer: CoreWeave
+      summary: >
+        CoreWeave's revenue backlog reached $66.8B as of December 31, 2025. IREN's
+        $9.7B Microsoft TCV represents the entirety of its long-term contracted
+        AI revenue. The 7x gap in backlog reflects both scale and customer diversification.
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+          kind: sec_8k
+          description: "CoreWeave Q4 2025 — $66.8B revenue backlog."
+          retrieved_at: "2026-03-29"
 
   switching_costs:
-    summary: "GPU cloud infrastructure contracts are typically multi-year with significant deployment costs. Once a hyperscaler is running workloads on IREN infrastructure, switching has meaningful friction — but the switching cost accrues only after deployment, which IREN hasn't fully completed yet."
+    summary: >
+      GPU cloud infrastructure contracts are typically multi-year with significant
+      deployment costs. Once Microsoft is running workloads on IREN infrastructure,
+      switching has meaningful friction — but the switching cost accrues only after
+      deployment, which IREN hasn't fully completed.
     lock_in_factors:
       - "Multi-year contract structure ($9.7B over term)"
-      - "Physical co-location of GPU clusters at IREN sites"
+      - "Physical co-location of GPU clusters at IREN's Childress sites"
       - "Custom power and cooling infrastructure built for specific workloads"
+      - "20% prepayment per tranche structure creates staged commitment"
     switching_enablers:
       - "Hyperscalers operate across multiple neocloud providers simultaneously"
-      - "GPU-as-a-service is increasingly commoditized"
+      - "GPU-as-a-service is increasingly commoditized at the hardware layer"
       - "IREN has no proprietary software stack creating lock-in"
     sources: []
 
+  disclosure_quality_comparison:
+    iren:
+      financial_granularity: >
+        Discloses revenue by segment (Bitcoin Mining vs AI Cloud — the only neocloud
+        that also has a mining segment). Provides total GPU count but only as "installed
+        or on order" (no split between active-generating and on-order). No per-GPU
+        economics, no ARR by deployment phase, no segment-level margin disclosure.
+        Impairments disclosed ($31.8M mining hardware in Q2) which improves transparency
+        on asset lifecycle.
+      operational_transparency: >
+        Discloses MW by site (7 sites), energization timelines (Sweetwater 1 Q2 2026,
+        Sweetwater 2 Q4 2027). GPU count is an aggregate "installed or on order" —
+        investors cannot determine how many GPUs are actively generating AI Cloud revenue.
+        Microsoft contract TCV ($9.7B) is disclosed but not the per-tranche economics.
+      guidance_specificity: >
+        The >$3.7B ARR target is explicitly labeled "illustrative" and "not fully
+        contracted" in the filing footnote. Sweetwater substation timelines are specific.
+        GPU procurement timeline (H2 2026) is specific. ATM usage is not guided.
+      management_deflections: >
+        On the Q2 FY26 earnings call, analysts asked about: (1) revenue per GPU — not
+        answered precisely, management cited ramp timing, (2) second deal timeline —
+        acknowledged demand but no specific commitment, (3) ATM usage cadence —
+        management declined to give specific guidance on how aggressively they would
+        tap the $6B program.
+    coreweave:
+      financial_granularity: >
+        IPO S-1 and quarterly filings disclose detailed revenue by customer concentration
+        (Microsoft ~62% of revenue in 2024). Revenue backlog ($66.8B) broken down by
+        time period. Adjusted EBITDA disclosed with detailed reconciliation. More granular
+        than IREN.
+      operational_transparency: >
+        Discloses active power capacity (850MW) separately from contracted (3.1GW).
+        GPU count not individually broken out but inferred from capacity and economics.
+      guidance_specificity: >
+        Specific revenue backlog timelines and conversion assumptions given in IPO materials.
+        More specific than IREN's illustrative targets.
+    nebius:
+      financial_granularity: >
+        Quarterly revenue by segment, adjusted EBITDA by segment. Discloses GPU hours
+        delivered — better operational granularity than IREN. Revenue/GPU-hour implicitly
+        calculable. Adj EBITDA loss of $173M for FY2025 is clearly disclosed.
+      operational_transparency: >
+        GPU hours sold and implied pricing computable. No detailed per-deal disclosure
+        but better unit-level transparency than IREN's "installed or on order" aggregate.
+      guidance_specificity: >
+        Provides outlook with revenue targets. Less specific on deal-level terms but
+        total contracted value ($44B+) is well-documented across public sources.
+    overall_assessment: >
+      IREN's disclosure quality is below CoreWeave (now public) and Nebius on key
+      dimensions: GPU deployment granularity, per-unit economics, and ARR transparency.
+      The "illustrative" qualifier on the $3.7B ARR target is a significant disclosure
+      gap — investors cannot independently verify the path from current $17.3M quarterly
+      AI Cloud revenue to $925M quarterly implied by the ARR target.
+
   order_changers:
     - event: "IREN signs a second major hyperscaler contract ($5B+ TCV)"
-      impact: "Would validate the power moat thesis, diversify customer base, and likely trigger a significant re-rating. This is the single most important catalyst."
+      impact: >
+        Would validate the power moat thesis, diversify customer concentration away from
+        Microsoft, and likely trigger a significant re-rating. This is the single most
+        important catalyst and the clearest signal that management can convert power
+        optionality into contracted revenue.
       likelihood: medium
       timeline: "Next 2-4 quarters (Sweetwater 1 energization Q2 2026 creates sellable capacity)"
       sources: []
+    - event: "CoreWeave IPO and scale demonstrate the economics of GPU-as-a-Service at 60% adj EBITDA margins"
+      impact: >
+        CoreWeave's IPO data shows that GPU cloud infrastructure CAN achieve 60% adjusted
+        EBITDA margins at scale ($5.1B revenue, $3.1B adj EBITDA). This validates IREN's
+        long-term bull case but also sets a high bar: IREN would need to 10x its AI Cloud
+        revenue to approach CoreWeave's current scale.
+      likelihood: realized
+      timeline: "CoreWeave IPO completed Q1 2026; data now public"
+      sources:
+        - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+          kind: sec_8k
+          description: "CoreWeave Q4 2025 earnings — 60% Adj EBITDA margin validated at $5.1B annual revenue."
+          retrieved_at: "2026-03-29"
     - event: "GPU-as-a-service pricing collapses due to oversupply"
-      impact: "Would undermine the unit economics of the entire neocloud cohort including IREN. The illustrative $3.7B ARR assumes current pricing holds."
+      impact: >
+        Would undermine the unit economics of the entire neocloud cohort. The illustrative
+        $3.7B ARR assumes pricing at ~$24,700/GPU/year; a 50% price decline would cut
+        the ARR target to ~$1.85B and delay cash generation meaningfully.
       likelihood: low
       timeline: "2027+ as massive GPU capacity comes online industry-wide"
       sources: []
     - event: "Hyperscaler acquires IREN for its power portfolio"
-      impact: "Would remove execution risk and reward shareholders at premium to current price. Contrarian thesis circulating on Reddit."
+      impact: >
+        Would remove execution risk and reward shareholders at a premium. At $12-14B market
+        cap, the 4.5 GW portfolio and contracted Microsoft relationship represent
+        assets that would take 5-7 years and $10B+ to replicate. Acquisition is a
+        contrarian but structurally coherent thesis.
       likelihood: low
-      timeline: "Speculative — no disclosed interest"
+      timeline: "Speculative — no disclosed interest; possible in 12-24 months if AI Cloud ramp disappoints"
       sources: []
 
 # ── Information asymmetries ─────────────────────────────────────────────────────
 information_asymmetries:
   - id: illustrative_vs_contracted
-    title: "The market treats illustrative ARR as near-certain revenue"
-    market_believes: "IREN will generate >$3.7B AI Cloud annualized run-rate by end-2026, as stated in the March 2026 8-K headline."
-    evidence_suggests: "The same 8-K's footnote (1) explicitly states this is an 'illustrative estimate' based on 'internal assumptions' including GPU models, utilization, pricing, term, and counterparty — and is 'not fully contracted.' The gap between headline and footnote is material."
+    title: "The market conflates the illustrative $3.7B ARR headline with contracted revenue"
+    market_believes: >
+      IREN will generate >$3.7B AI Cloud annualized run-rate by end-2026, as stated
+      in the March 2026 8-K.
+    evidence_suggests: >
+      The same 8-K's footnote (1) explicitly states this is an "illustrative estimate"
+      based on "internal assumptions" including GPU models, utilization, pricing, term,
+      and counterparty — and is "not fully contracted." Q2 FY26 AI Cloud revenue was
+      $17.3M = $69M annualized. The gap to $3.7B is a 54x multiple. Even accounting
+      for the fleet expansion from ~15,000 to 150,000 GPUs, the implied revenue per GPU
+      must rise from ~$4,600/year (derived from current AI Cloud revenue / estimated
+      deployed GPUs) to ~$24,700/year — a 5.3x per-GPU economics improvement.
     gap_reason: "Headlines travel; footnotes don't. Most coverage cites the $3.7B figure without the 'illustrative' and 'not fully contracted' qualifiers."
-    closing_catalyst: "Actual Q3-Q4 FY26 AI Cloud revenue figures will show whether deployment-to-revenue conversion matches the illustrative model."
+    closing_catalyst: "Actual Q3-Q4 FY26 AI Cloud revenue figures will show whether the unit economics are converging toward or diverging from the target."
     confidence: high
     sources:
       - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
@@ -387,61 +635,165 @@ information_asymmetries:
         description: "Direct from SEC filing: 8-K Ex.99.1 footnote (1) — illustrative, not fully contracted."
         retrieved_at: "2026-03-26"
 
+  - id: sbc_intensity_hidden_dilution
+    title: "Stock-based compensation is 31.5% of revenue and consumes 49% of gross profit — market ignores it"
+    market_believes: >
+      The $6B ATM is the primary dilution risk for IREN shareholders. SBC is a standard
+      tech company add-back that doesn't affect investment thesis.
+    evidence_suggests: >
+      SBC in Q2 FY26 was $58.2M on $184.7M revenue = 31.5% of top-line. Gross profit
+      was $118.9M; SBC of $58.2M = 49% of gross profit. For context, CoreWeave's SBC
+      was ~$180M in FY2025 on $5.1B revenue = 3.5% of revenue — 9x less intensive
+      than IREN. Nebius's SBC was comparable to IREN's per-revenue basis at early
+      stages. The structural cost analysis shows SBC alone (even ignoring D&A) eliminates
+      any path to operating profitability at IREN's current revenue level.
+      Derived: IREN gross profit ex-SBC = $118.9M - $58.2M = $60.7M = 32.9% of revenue.
+      Even if D&A were zero, IREN would be barely profitable on a cash SGA-only basis
+      at current revenue.
+    gap_reason: >
+      Market focuses on ATM dilution (equity issuance) but ignores that SBC is also
+      dilutive (equity compensation) AND is an operating cost that inflates the non-GAAP
+      adjustments that management emphasizes.
+    closing_catalyst: >
+      When AI Cloud revenue scales to where SBC becomes a smaller fraction of revenue
+      (e.g., <10%), or when management provides a path to reducing SBC intensity.
+      Currently no such path is articulated.
+    confidence: high
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q 2025-12-31 — SBC $58.2M disclosed in cash flow add-backs; gross profit $118.9M in income statement."
+        retrieved_at: "2026-03-26"
+
   - id: power_utilization_gap
-    title: "Power utilization rate is extremely low but rarely discussed"
+    title: "Power utilization rate is 18% — the moat is potential, not current capacity"
     market_believes: "IREN's 4.5 GW power portfolio is a massive moat. The narrative focuses on total secured capacity."
-    evidence_suggests: "Only ~810 MW is operational out of ~4,500 MW secured — an 18% utilization rate. Conversion from secured to operational requires permitting, substation construction, grid interconnection, and physical build. Sweetwater timelines (Q2 2026 / Q4 2027) show this takes years, not quarters."
-    gap_reason: "The '4.5 GW secured' headline sounds impressive without context. The multi-year conversion timeline is disclosed but not emphasized."
-    closing_catalyst: "Sweetwater 1 substation energization (targeted Q2 2026). If on schedule, validates the conversion timeline. If delayed, highlights the gap between secured and usable."
+    evidence_suggests: >
+      Only ~810 MW is operational out of ~4,500 MW secured — an 18% utilization rate.
+      CoreWeave has 850 MW operational out of 3.1 GW contracted = 27% utilization rate.
+      Conversion from secured to operational requires permitting, substation construction,
+      and grid interconnection — multi-year timelines (Sweetwater 1 Q2 2026, Sweetwater 2
+      Q4 2027). The power "moat" is real but its economic value depends entirely on
+      successful conversion to operational capacity and then to revenue-generating
+      compute capacity.
+    gap_reason: "The '4.5 GW secured' headline sounds impressive without context. The multi-year conversion timeline is disclosed but not emphasized in coverage."
+    closing_catalyst: "Sweetwater 1 substation energization (targeted Q2 2026 calendar). On-schedule delivery validates the conversion model."
     confidence: medium
     sources:
       - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
         kind: sec_10q
-        description: "Form 10-Q — ~810 MW operational vs ~4,500 MW secured; Sweetwater energization targets."
+        description: "Form 10-Q 2025-12-31 — ~810 MW operational vs ~4,500 MW secured; Sweetwater energization targets."
         retrieved_at: "2026-03-26"
 
-  - id: btc_mining_still_dominant
-    title: "Bitcoin mining still generates 90%+ of revenue but gets minimal narrative attention"
-    market_believes: "IREN is an AI infrastructure company. The Bitcoin mining business is legacy context."
-    evidence_suggests: "Q2 FY26: $167.4M Bitcoin Mining revenue vs $17.3M AI Cloud. The company's entire current cash-generating ability comes from mining. If Bitcoin price drops materially, the transition financing bridge weakens — and this risk receives almost no discussion in the AI-focused coverage."
-    gap_reason: "Management is actively reframing the company as an AI platform (correctly, directionally). But the market has over-rotated to the new narrative before the economics have."
-    closing_catalyst: "A quarter where AI Cloud revenue exceeds Bitcoin Mining revenue would mark the real inflection. Based on current trajectories, that's unlikely before H2 FY2027."
+  - id: btc_mining_bridge_sensitivity
+    title: "Bitcoin mining generates 91% of revenue and all operational cash flow — Bitcoin price is the real swing factor"
+    market_believes: "IREN is an AI infrastructure company. Bitcoin mining is legacy context."
+    evidence_suggests: >
+      Q2 FY26: $167.4M Bitcoin Mining revenue vs $17.3M AI Cloud = 91% mining dependent.
+      Operating cash flow of $71.7M is essentially all attributable to Bitcoin Mining
+      economics. If Bitcoin price dropped 40% from current levels, mining revenue could
+      decline by $40-50M per quarter, turning OCF negative and forcing greater ATM
+      dependency precisely when the market would be weakest. This crypto/AI dual exposure
+      is not priced as a risk factor; it is treated as a non-issue in AI-focused coverage.
+    gap_reason: "Management is correctly reframing the company as an AI platform. The market has over-rotated before the economics have."
+    closing_catalyst: >
+      A quarter where AI Cloud revenue exceeds Bitcoin Mining revenue. Based on current
+      trajectories — AI Cloud growing 136% QoQ but from a tiny base vs. mining at
+      $167M/quarter — that crossover is unlikely before H2 FY2027 at the earliest.
     confidence: high
     sources:
       - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
         kind: sec_8k
-        description: "Form 8-K Q2 FY26 results — revenue segment breakdown showing 90%+ Bitcoin Mining."
+        description: "Form 8-K Q2 FY26 — revenue segment breakdown showing 91% Bitcoin Mining."
+        retrieved_at: "2026-03-26"
+
+  - id: structural_cost_ratio_hidden
+    title: "Structural cost ratio of 143.9% means IREN loses money before interest on every dollar of revenue"
+    market_believes: >
+      IREN's 64.4% gross margin is attractive for an AI infrastructure company, and
+      positive adjusted EBITDA of $75.3M in Q2 shows the business is moving toward
+      profitability.
+    evidence_suggests: >
+      Adjusted EBITDA adds back $58.2M of SBC and $99.2M of D&A — both real economic
+      costs. The structural cost ratio (CoR + D&A + SGA, excluding impairments) = (65.8M
+      + 99.2M + 100.8M) / 184.7M = 143.9% of revenue. IREN spends $1.44 in core
+      operating costs for every $1.00 of revenue. D&A alone ($99.2M = 53.7% of revenue)
+      eliminates the entire gross margin. The path to operating breakeven requires revenue
+      of approximately $310M/quarter at current cost structure — a 68% increase from Q2.
+      At the current 136% QoQ AI Cloud growth rate (from a tiny base), total revenue is
+      not growing fast enough: Q2 total was $184.7M, down from Q1's $240.3M.
+    gap_reason: >
+      Adjusted EBITDA is the primary metric management and coverage use. D&A and SBC
+      are treated as noise when they represent the structural cost reality.
+    closing_catalyst: >
+      When D&A stabilizes as a percentage of revenue (requires substantial revenue growth)
+      and SBC begins to scale sub-linearly. Neither is currently happening.
+    confidence: high
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "Form 10-Q 2025-12-31 — income statement; D&A $99.2M, SGA $100.8M, CoR $65.8M all for the three months ended 2025-12-31."
         retrieved_at: "2026-03-26"
 
 # ── Forward signals ─────────────────────────────────────────────────────────────
 forward_signals:
   - id: sweetwater_energization
-    signal: "Sweetwater 1 substation energization targeted for Q2 2026 (calendar Apr-Jun 2026)"
+    signal: "Sweetwater 1 substation energization targeted for Q2 2026 calendar (Apr-Jun 2026)"
     source_tier: 1
     date_observed: "2026-02-05"
-    implication: "If on schedule, adds ~1,400 MW of capacity and creates a concrete asset to sell to a second hyperscaler customer. The most important near-term execution milestone."
+    implication: >
+      If on schedule, adds ~1,400 MW of capacity and creates a concrete asset to sell
+      to a second hyperscaler customer. The most important near-term execution milestone.
+      A delay would signal wider infrastructure conversion risk and push the second-deal
+      timeline further out.
     sources:
       - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
         kind: sec_10q
-        description: "Form 10-Q — Sweetwater 1 substation energization target."
+        description: "Form 10-Q 2025-12-31 — Sweetwater 1 substation energization target Q2 2026."
         retrieved_at: "2026-03-26"
 
   - id: b300_deployment_h2_2026
-    signal: "NVIDIA B300 GPU deployment phased through H2 2026 at Mackenzie and Childress"
+    signal: "NVIDIA B300 GPU deployment phased through H2 FY2026 (Jan-Jun 2026) at Mackenzie and Childress"
     source_tier: 1
     date_observed: "2026-03-04"
-    implication: "B300 GPUs should deliver significantly better performance-per-watt than current fleet. If deployment stays on track, AI Cloud revenue per GPU should improve materially in Q1-Q2 FY2027."
+    implication: >
+      B300 GPUs should command higher pricing than current fleet. If deployment stays on
+      track, AI Cloud revenue per GPU should improve materially in Q3-Q4 FY2026 (Jan-Jun
+      2026). This is the primary driver of whether the $3.7B ARR illustrative target has
+      any path to realization.
     sources:
       - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007905/ny20064909x3_ex99-1.htm
         kind: sec_8k
-        description: "Form 8-K — B300 procurement and deployment timing."
+        description: "Form 8-K March 4, 2026 — B300 procurement and deployment timing."
         retrieved_at: "2026-03-26"
 
+  - id: coreweave_ipo_benchmark
+    signal: "CoreWeave IPO (NASDAQ: CRWV) completed Q1 2026 with $5.1B annual revenue and $66.8B backlog"
+    source_tier: 1
+    date_observed: "2026-02-26"
+    implication: >
+      CoreWeave's public financials are now the most direct benchmark for at-scale GPU
+      cloud economics. Key takeaways: (1) 60% adjusted EBITDA margin IS achievable at
+      scale, validating IREN's long-term bull case; (2) $66.8B backlog vs. IREN's $9.7B
+      single contract shows the scale of IREN's deal flow gap; (3) CoreWeave has $18.8B
+      in debt — IREN's $3.84B looks conservative by comparison; (4) CoreWeave's IPO
+      also reveals that 250k+ GPU scale is required before economics become compelling.
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+        kind: sec_8k
+        description: "CoreWeave Q4 2025 and FY2025 earnings — $5.1B revenue, 60% adj EBITDA margin, $66.8B backlog."
+        retrieved_at: "2026-03-29"
+
   - id: nebius_meta_deal_precedent
-    signal: "Nebius signed $27B deal with Meta (March 2026), validating hyperscaler appetite for neocloud infrastructure"
+    signal: "Nebius signed $27B deal with Meta (March 2026) alongside $17.4B Microsoft deal"
     source_tier: 1
     date_observed: "2026-03-16"
-    implication: "Proves demand exists at scale for dedicated GPU infrastructure from neoclouds. IREN's power portfolio makes it a natural candidate for similar deals — if management can convert. Bullish for the sector, competitive pressure on IREN specifically."
+    implication: >
+      Validates hyperscaler demand for dedicated GPU infrastructure from neoclouds at
+      $27B+ scale. IREN's power portfolio makes it a natural candidate for similar
+      deals. Nebius reached $227.7M in Q4 2025 quarterly revenue (similar scale to
+      IREN's total revenue) growing at 547% YoY — demonstrating how fast pure AI
+      cloud companies can scale when deals convert.
     sources:
       - url: https://www.reuters.com/technology/nebius-signs-ai-capacity-deal-with-meta-2026-03-16/
         kind: curated_platform
@@ -449,10 +801,14 @@ forward_signals:
         retrieved_at: "2026-03-26"
 
   - id: short_etf_launch
-    signal: "2x short leveraged ETF launched against IREN stock"
+    signal: "2x leveraged short ETF launched against IREN stock"
     source_tier: 2
     date_observed: "2026-03-01"
-    implication: "Increases volatility and signals institutional bearish positioning. Not necessarily a fundamental signal, but creates a reflexive dynamic where price drops attract more short interest."
+    implication: >
+      Increases volatility and signals institutional bearish positioning. Not a
+      fundamental signal, but creates a reflexive dynamic where price declines attract
+      more short interest. The existence of a leveraged short product suggests
+      institutional conviction that the stock is overvalued even at current levels.
     sources:
       - url: https://longbridge.com/en/news/273435254
         kind: curated_platform
@@ -469,35 +825,39 @@ sources:
     kind: sec_8k
     description: "Form 8-K March 4, 2026 — 150k GPU fleet, B300 procurement, illustrative ARR, ATM."
     retrieved_at: "2026-03-26"
+  - url: https://www.sec.gov/Archives/edgar/data/1878848/000114036126007919/ny20064909x2_8k.htm
+    kind: sec_8k
+    description: "Form 8-K March 4, 2026 — ATM Sales Agreement joinder adding Goldman Sachs, Citizens JMP, Jefferies; $6B total capacity confirmed."
+    retrieved_at: "2026-03-29"
   - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000014/a991irenreportsq2fy26res.htm
     kind: sec_8k
     description: "Form 8-K February 5, 2026 — Q2 FY26 results, GPU financing, Oklahoma campus."
     retrieved_at: "2026-03-26"
   - url: https://www.insidermonkey.com/blog/iren-limited-nasdaqiren-q2-2026-earnings-call-transcript-1690323/
     kind: earnings_transcript
-    description: "Earnings transcript: Q2 FY2026 call — management tone, analyst Q&A."
+    description: "Earnings transcript: Q2 FY2026 call — management tone, analyst Q&A on second deals and GPU economics."
     retrieved_at: "2026-03-26"
-  - url: https://www.marketbeat.com/stocks/NASDAQ/IREN/forecast/
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+    kind: sec_8k
+    description: "CoreWeave Q4 2025 and FY2025 earnings press release — $5.1B annual revenue, $3.1B adj EBITDA, $66.8B backlog. Structural peer benchmark."
+    retrieved_at: "2026-03-29"
+  - url: https://assets.nebius.com/assets/04f48f4e-48e9-468e-a428-ef16565c3fb5/Financial%2520results_Q4%25202025_11022026.pdf
+    kind: sec_8k
+    description: "Nebius Q4 2025 financial results — $227.7M quarterly revenue, 547% YoY growth, $173M adj EBITDA loss FY2025."
+    retrieved_at: "2026-03-29"
+  - url: https://www.marketbeat.com/instant-alerts/iren-limited-nasdaqiren-receives-average-recommendation-of-moderate-buy-from-analysts-2026-03-27/
     kind: sell_side_summary
-    description: "Sell-side summary: 18 analyst ratings and price targets aggregated by MarketBeat."
-    retrieved_at: "2026-03-26"
-  - url: https://seekingalpha.com/article/4845013-iren-arr-could-grow-6-8x-to-3-4b-by-year-end-2026
+    description: "Sell-side summary: MarketBeat March 27, 2026 — 18 analyst ratings, $71.69 median target, Weiss upgrade."
+    retrieved_at: "2026-03-29"
+  - url: https://stockanalysis.com/stocks/iren/financials/
     kind: curated_platform
-    description: "Curated platform: Seeking Alpha bull thesis — 6.8x ARR growth projection."
-    retrieved_at: "2026-03-26"
-  - url: http://seekingalpha.com/article/4882166-iren-massive-atm-filing-hammers-bull-case-rating-downgrade
-    kind: curated_platform
-    description: "Curated platform: Seeking Alpha bear thesis — ATM dilution downgrade."
-    retrieved_at: "2026-03-26"
-  - url: https://tenbaggerexplorer.com/iren-vs-coreweave-comparison/
-    kind: curated_platform
-    description: "Curated platform: IREN vs CoreWeave competitive comparison."
-    retrieved_at: "2026-03-26"
+    description: "Curated platform: Stock Analysis income statement data; IREN price $35.09 March 27, 2026."
+    retrieved_at: "2026-03-29"
   - url: https://www.reuters.com/technology/nebius-signs-ai-capacity-deal-with-meta-2026-03-16/
     kind: curated_platform
-    description: "Reuters: Nebius $27B Meta deal — competitive context."
+    description: "Reuters: Nebius $27B Meta deal — competitive context for neocloud deal flow."
     retrieved_at: "2026-03-26"
   - url: https://www.reddit.com/r/irenstocks/rising/
     kind: social_signal
-    description: "Community signal: r/irenstocks — retail sentiment tracking."
-    retrieved_at: "2026-03-26"
+    description: "Community signal: r/irenstocks — retail sentiment tracking, late March 2026."
+    retrieved_at: "2026-03-29"

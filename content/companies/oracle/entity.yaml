@@ -1,0 +1,25 @@
+slug: oracle
+legal_name: Oracle Corporation
+
+tickers:
+  - symbol: ORCL
+    exchange: NYSE
+
+summary: |
+  Oracle is a global enterprise technology company operating across cloud
+  infrastructure, database, middleware, and applications. In the AI value chain,
+  Oracle Cloud Infrastructure (OCI) is a hyperscale cloud platform building
+  GPU supercomputer clusters for AI training and inference workloads. OCI
+  customers include Meta, NVIDIA, OpenAI, xAI, and other large-scale AI
+  companies. Quantitative results belong in financials/*.yaml with sources.
+
+links:
+  investor_relations: https://investor.oracle.com/
+  press_releases_index: https://investor.oracle.com/press-releases/
+  sec_cik: "0001341439"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes: []

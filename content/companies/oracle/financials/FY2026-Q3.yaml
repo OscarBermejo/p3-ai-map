@@ -1,0 +1,127 @@
+# FY2026 Q3 — three months ended 28 February 2026 (8-K filed 2026-03-10).
+# Amounts in USD. Oracle Corporation (ORCL, CIK 0001341439).
+# Cash flow metrics derived: 9-month YTD (Q3 8-K) minus 6-month YTD (Q2 8-K).
+# SBC from the non-GAAP reconciliation table directly.
+
+period:
+  label: Q3 FY2026
+  start: "2025-12-01"
+  end: "2026-02-28"
+  fiscal_year: 2026
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement (flow; three months ended 2026-02-28) ---
+  revenue: 17190000000
+  cost_of_revenue: 6092000000
+  gross_profit: 11098000000
+  research_and_development: 2607000000
+  selling_general_administrative: 2441000000
+  depreciation_and_amortization: null
+  operating_income: 5464000000
+  interest_expense: 1180000000
+  interest_income: null
+  other_income_expense_net: 132000000
+  income_tax_expense_benefit: 695000000
+  net_income: 3721000000
+
+  # --- Cash flows (flow; derived: 9-month YTD minus 6-month YTD) ---
+  operating_cash_flow: 7151000000
+  stock_based_compensation: 1328000000
+  capital_expenditures_cash: 18635000000
+  investing_cash_flow_net: -19544000000
+  financing_cash_flow_net: 31498000000
+
+  # --- Balance sheet (instant at 2026-02-28) ---
+  cash_and_equivalents: 38455000000
+  current_assets: 54874000000
+  current_liabilities: 40737000000
+  property_plant_equipment_net: 83617000000
+  total_assets: 245240000000
+  total_liabilities: 206189000000
+  long_term_debt: 124718000000
+  current_portion_of_long_term_debt: 9887000000
+  total_debt: 134605000000
+  stockholders_equity: 39051000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: 2874000000
+  shares_outstanding_diluted: 2912000000
+  market_cap: null
+
+sources:
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/0001193125-26-100148-index.htm
+  kind: sec_10q
+  description: "Filing index: Oracle 10-Q for period ending February 28, 2026, accession 0001193125-26-101045."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [revenue, operating_income, net_income, interest_expense, other_income_expense_net, income_tax_expense_benefit, shares_outstanding_basic, shares_outstanding_diluted, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, stockholders_equity, stock_based_compensation]
+  description: "Direct from SEC filing: 8-K Exhibit 99.1, Oracle Q3 FY2026 earnings release filed March 10, 2026. Condensed Consolidated Statements of Operations for three months ended February 28, 2026, Condensed Consolidated Balance Sheets, and Condensed Consolidated Statements of Cash Flows (nine months ended). Non-GAAP reconciliation provides quarterly SBC."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [cost_of_revenue]
+  description: "Derived: cost_of_revenue = cloud and software costs ($4,776M) + hardware costs ($183M) + services costs ($1,133M) = $6,092M. Oracle reports cost of revenue broken into three functional lines on the income statement."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [gross_profit]
+  description: "Derived: gross_profit = revenue ($17,190M) - cost_of_revenue ($6,092M) = $11,098M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [selling_general_administrative]
+  description: "Derived: selling_general_administrative = sales and marketing ($2,052M) + general and administrative ($389M) = $2,441M. Oracle reports these as separate line items."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [research_and_development]
+  description: "Direct from SEC filing: research and development expense $2,607M for three months ended February 28, 2026."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [total_liabilities, long_term_debt, current_portion_of_long_term_debt]
+  description: "Direct from SEC filing: total liabilities = current liabilities ($40,737M) + non-current liabilities ($165,452M) = $206,189M; notes payable non-current $124,718M; notes payable current $9,887M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [total_debt]
+  description: "Derived: total_debt = notes payable current ($9,887M) + notes payable non-current ($124,718M) = $134,605M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: documentation
+  covers: [depreciation_and_amortization]
+  description: "depreciation_and_amortization null: PP&E depreciation is not separately reported on the quarterly income statement. Intangible amortization is $413M but full D&A is only available in the 9-month cash flow reconciliation ($5,208M depreciation + $1,239M amortization of intangibles). Single-quarter D&A cannot be derived from this filing alone."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: documentation
+  covers: [interest_income]
+  description: "interest_income null: not separately broken out in the filing; embedded in non-operating income (expenses), net of $132M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [operating_cash_flow]
+  description: "Derived: operating_cash_flow = 9-month YTD OCF ($17,357M from Q3 8-K) minus 6-month YTD OCF ($10,206M from Q2 8-K: Q1 $8,140M + Q2 $2,066M) = $7,151M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [capital_expenditures_cash]
+  description: "Derived: capital_expenditures_cash = 9-month YTD capex ($39,170M from Q3 8-K) minus 6-month YTD capex ($20,535M from Q2 8-K: Q1 $8,502M + Q2 $12,033M) = $18,635M. Stored as non-negative per convention."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [investing_cash_flow_net]
+  description: "Derived: investing_cash_flow_net = 9-month YTD (-$35,976M from Q3 8-K) minus 6-month YTD (-$16,432M from Q2 8-K: Q1 -$8,718M + Q2 -$7,714M) = -$19,544M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [financing_cash_flow_net]
+  description: "Derived: financing_cash_flow_net = 9-month YTD ($46,195M from Q3 8-K) minus 6-month YTD ($14,697M from Q2 8-K: Q1 $210M + Q2 $14,487M) = $31,498M. Driven by ~$26B in senior notes and mandatory convertible preferred stock issued in Q3."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+  kind: documentation
+  covers: [market_cap]
+  description: "market_cap null: not a filed metric; would require share price × shares outstanding at a specific date."
+  retrieved_at: "2026-03-29"

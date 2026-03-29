@@ -340,6 +340,43 @@ competitive_positioning:
       summary: "Nebius total debt was ~$4.1B at year-end 2025, now ~$8.5B+ after the $4.3B convertible close. CoreWeave carries ~$18.8B. Among infrastructure peers, IREN's ~$3.8B is lower relative to its power portfolio. Nebius is rapidly leveraging up."
       sources: []
 
+  disclosure_quality:
+    summary: "Nebius discloses significantly less operational and financial granularity than both CoreWeave and IREN. This matters because the bull case rests on contracted economics that cannot be verified from public filings."
+    comparison:
+      - dimension: "Financial granularity"
+        nebius: "Single consolidated revenue line; no segment breakdown (AI cloud vs other); no margin by business line; no customer concentration data. ARR disclosed as headline ($1.25B) without per-contract or per-customer breakdown."
+        coreweave: "Single consolidated revenue; no segment split; but RPO breakdown ($60.7B total, $4.3B expected within 12 months) gives visibility into backlog conversion timing. No per-customer revenue split, but OpenAI concentration is market-known."
+        iren: "Revenue split by segment (AI Cloud Services vs Digital Assets Mining) in the 10-Q. Reports gross margin per segment implicitly through cost allocation. Discloses specific contract values: Microsoft ~$9.7B TCV, Dell ~$5.8B purchase commitment."
+        assessment: "IREN is materially more transparent. Nebius provides the least financial granularity among the three despite having the most complex business narrative."
+      - dimension: "Operational transparency"
+        nebius: "Active power: ~170 MW. GPU count: ~30,000 (stale, March 2025 — 12 months old). No site-level MW breakdown. No utilization metrics. Power definitions (active vs connected vs contracted) are given but only as aggregate ranges."
+        coreweave: "33 data centers across 6 countries. No aggregate MW or GPU count disclosed in 10-K. Infrastructure described qualitatively ('tens to hundreds of MW per facility'). Less granular operationally than IREN."
+        iren: "Site-level MW breakdown (Childress ~650, Canal Flats ~30, Mackenzie ~80, Prince George ~50). ~99,900 GPUs installed/on order. Specific development timelines (Sweetwater 1 Q2 2026, Sweetwater 2 Q4 2027). Dell order split by tranche."
+        assessment: "IREN discloses site-level capacity, GPU counts, and development timelines with specificity. Nebius gives headline aggregates only. CoreWeave discloses the least on operations."
+      - dimension: "Guidance specificity"
+        nebius: "FY2026 revenue: $3.0-3.4B. Connected power: 800 MW-1 GW by end-2026. Capex: $16-20B in 2026. Self-funding claim: '~60% of capex' from internal sources — no supporting math provided."
+        coreweave: "FY2026 revenue: $8-8.5B (from S-1). Capex run rate evident from quarterly filings. RPO conversion schedule gives implicit revenue floor. No specific power or GPU fleet targets."
+        iren: "Illustrative ARR >$3.7B by end-2026 with explicit footnote: 'internal assumptions, not fully contracted.' ~$3.5B incremental capex H2 2026. Substation energization dates by site. Forward-looking footnotes are honest about assumptions."
+        assessment: "IREN's guidance is the most falsifiable — they give specific site timelines and explicitly caveat illustrative figures. Nebius's 60% self-funding claim lacks the underlying calculation. CoreWeave's RPO schedule is structurally informative."
+      - dimension: "Management deflections"
+        nebius: "Does not hold traditional earnings calls with Q&A. Shareholder letters are polished narratives without analyst pushback. The February 2026 letter mentions 'AI cloud ARR of $1.25B' without explaining what percentage came from prepayments vs recurring delivery."
+        coreweave: "Held IPO roadshow and subsequent earnings calls. Management faces analyst questions. Customer concentration with OpenAI is acknowledged in filings."
+        iren: "Regular earnings calls with Q&A. Management acknowledges development risk in filings. Illustrative metrics carry explicit disclaimers."
+        assessment: "Nebius's letter-only format avoids the accountability that comes with live analyst questioning. For a company asking the market to trust $46B+ in forward commitments, the absence of interactive disclosure is a meaningful gap."
+    sources:
+      - url: https://www.sec.gov/Archives/edgar/data/1513845/000110465926013946/tm266173d1_ex99-2.htm
+        kind: sec_6k
+        description: "Nebius Q4 2025 shareholder letter — disclosure format reference."
+        retrieved_at: "2026-03-29"
+      - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
+        kind: sec_10k
+        description: "CoreWeave 10-K FY2025 — disclosure comparison baseline."
+        retrieved_at: "2026-03-29"
+      - url: https://www.sec.gov/Archives/edgar/data/1878848/000187884826000015/iren-20251231.htm
+        kind: sec_10q
+        description: "IREN 10-Q FY2026 Q2 — disclosure comparison baseline."
+        retrieved_at: "2026-03-29"
+
   switching_costs:
     summary: "Multi-year contracts with hyperscalers create strong lock-in once capacity is deployed. The Microsoft and Meta deals are 5+ year commitments. However, Nebius competes with these same hyperscalers' own infrastructure — switching cost accrues after deployment but the customer always has an internal alternative."
     lock_in_factors:

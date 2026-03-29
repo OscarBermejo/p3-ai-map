@@ -1,0 +1,99 @@
+# AMD FY2025 Q3 (Three months ended September 27, 2025)
+# Source: AMD Q3 FY2025 Earnings Press Release (Nov 4, 2025), 10-Q filed 2025-11-05
+# Accession: 0000002488-25-000166
+# NOTE: Q3 results do not include any revenue from AMD Instinct MI308 GPU products to China
+# (export license applications pending at the time). Includes $67M recovery from contract
+# manufacturer (inventory loss at contract manufacturing facility in prior periods).
+# ZT Systems manufacturing business classified as assets/liabilities held-for-sale;
+# $71M income from discontinued operations in Q3.
+
+period:
+  label: "FY2025-Q3"
+  start: "2025-06-29"
+  end: "2025-09-27"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 9246000000
+  cost_of_revenue: 4206000000
+  gross_profit: 4780000000
+  research_and_development: 2139000000
+  selling_general_administrative: 1069000000
+  depreciation_and_amortization: 562000000
+  operating_income: 1270000000
+  interest_expense: 37000000
+  interest_income: null
+  other_income_expense_net: 82000000
+  income_tax_expense_benefit: 153000000
+  net_income: 1243000000
+
+  # --- Cash flows (Q3 three-month period derived) ---
+  operating_cash_flow: 2159000000
+  stock_based_compensation: 419000000
+  capital_expenditures_cash: 258000000
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at 2025-09-27) ---
+  cash_and_equivalents: 4808000000
+  current_assets: 27000000000
+  current_liabilities: 11700000000
+  property_plant_equipment_net: 2205000000
+  total_assets: 76891000000
+  total_liabilities: 16101000000
+  long_term_debt: 2347000000
+  current_portion_of_long_term_debt: 873000000
+  total_debt: 3220000000
+  stockholders_equity: 60790000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: 1626000000
+  shares_outstanding_diluted: 1641000000
+  market_cap: null
+
+sources:
+  - url: https://ir.amd.com/news-events/press-releases/detail/1265/amd-reports-third-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q3 FY2025 Earnings Press Release, Nov 4, 2025): Condensed Consolidated Statements of Operations — 'Three months ended September 27, 2025'. Revenue $9,246M; cost of sales $4,206M (excl. acq. intangibles); amort. of acq. intangibles in COGS $260M; gross profit $4,780M (52%); R&D $2,139M; MG&A $1,069M; amort. of acq. intangibles in opex $302M; total opex $3,510M; operating income $1,270M (14%); interest expense $(37)M; other income $82M; pre-tax income $1,315M; tax provision $153M; equity income $10M; income from continuing $1,172M; income from discontinued ops $71M (ZT Systems); net income $1,243M. Diluted EPS $0.75, diluted shares 1,641M, basic shares 1,626M."
+    covers: [revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_administrative, operating_income, interest_expense, other_income_expense_net, income_tax_expense_benefit, net_income, shares_outstanding_basic, shares_outstanding_diluted]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1265/amd-reports-third-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q3 FY2025 press release, Nov 4, 2025): Condensed Consolidated Balance Sheet — September 27, 2025. Cash $4,808M; short-term investments $2,435M; AR $6,201M; inventories $7,313M; assets held for sale (ZT Systems) $3,990M; prepaid/other $2,253M; total current assets $27,000M; PP&E net $2,205M; goodwill $25,083M; acq. intangibles net $17,250M; deferred tax $633M; other non-current $4,720M; total assets $76,891M. AP $3,483M; accrued liabilities $5,112M; current portion of LT debt $873M; liabilities held for sale $1,908M; other current $324M; total current liabilities $11,700M; LT debt $2,347M; LT lease $650M; DT liabilities $326M; other LT $1,078M; total stockholders' equity $60,790M."
+    covers: [cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1265/amd-reports-third-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q3 FY2025 press release, Nov 4, 2025): Condensed Consolidated Statements of Cash Flows — 'Three months ended September 27, 2025'. Depreciation and amortization (operational, CF reconciliation) $192M. Stock-based compensation $419M. The nine-month OCF = $5,109M; six-month OCF = $2,950M (from Q2 press release); therefore Q3 OCF = $5,109M - $2,950M = $2,159M (derived, contiguous periods). Nine-month capex = $752M; six-month capex = $494M; Q3 capex = $752M - $494M = $258M (derived)."
+    covers: [stock_based_compensation]
+    supports_derivation_of: [operating_cash_flow, capital_expenditures_cash]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/NetCashProvidedByUsedInOperatingActivities.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): Nine months ended 2025-09-27 OCF = $5,109,000,000 (accn 0000002488-25-000166); six months ended 2025-06-28 OCF = $2,950,000,000 (accn 0000002488-25-000108). Q3 OCF = $5,109M - $2,950M = $2,159M (derived from contiguous YTD periods — same reporting line)."
+    covers: [operating_cash_flow]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/PaymentsToAcquirePropertyPlantAndEquipment.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): Nine months ended 2025-09-27 capex = $752,000,000 (accn 0000002488-25-000166); six months ended 2025-06-28 capex = $494,000,000 (accn 0000002488-25-000108). Q3 capex = $752M - $494M = $258M (derived)."
+    covers: [capital_expenditures_cash]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/StockholdersEquity.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): StockholdersEquity end 2025-09-27: val $60,790,000,000, accn 0000002488-25-000166, frame CY2025Q3I. Confirms stockholders' equity = $60,790M."
+    supports_derivation_of: [stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1265/amd-reports-third-quarter-2025-financial-results
+    kind: documentation
+    description: "depreciation_and_amortization: AMD Q3 D&A shown in two components. (1) Income statement amortization of acquisition-related intangibles: COGS $260M + opex $302M = $562M. (2) Operational D&A from CF reconciliation: $192M. The income statement amortization ($562M) is captured here. total_liabilities Derived: $76,891M total assets minus $60,790M stockholders' equity = $16,101M. total_debt Derived: current portion $873M + long-term $2,347M = $3,220M. investing_cash_flow_net and financing_cash_flow_net null: nine-month totals provided in Q3 press release but Q3-only quarter values not independently verified from CF table. interest_income null: not broken out separately; included in 'Other income (expense), net'. market_cap null: not captured."
+    covers: [depreciation_and_amortization, investing_cash_flow_net, financing_cash_flow_net, interest_income, market_cap]
+    retrieved_at: "2026-03-29"

@@ -1,0 +1,107 @@
+# FY2026 Q1 — three months ended 31 August 2025 (8-K filed 2025-09-09, 10-Q filed 2025-09-10).
+# Amounts in USD. Oracle Corporation (ORCL, CIK 0001341439).
+# Q1 is the first quarter so the 8-K cash flow statement provides standalone
+# three-month figures (no YTD subtraction needed).
+
+period:
+  label: Q1 FY2026
+  start: "2025-06-01"
+  end: "2025-08-31"
+  fiscal_year: 2026
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement (flow; three months ended 2025-08-31) ---
+  revenue: 14926000000
+  cost_of_revenue: 4884000000
+  gross_profit: 10042000000
+  research_and_development: 2491000000
+  selling_general_administrative: 2439000000
+  depreciation_and_amortization: null
+  operating_income: 4277000000
+  interest_expense: 923000000
+  interest_income: null
+  other_income_expense_net: 73000000
+  income_tax_expense_benefit: 500000000
+  net_income: 2927000000
+
+  # --- Cash flows (flow; three months ended 2025-08-31) ---
+  operating_cash_flow: 8140000000
+  stock_based_compensation: 1124000000
+  capital_expenditures_cash: 8502000000
+  investing_cash_flow_net: -8718000000
+  financing_cash_flow_net: 210000000
+
+  # --- Balance sheet (instant at 2025-08-31) ---
+  cash_and_equivalents: 10445000000
+  current_assets: 24634000000
+  current_liabilities: 39874000000
+  property_plant_equipment_net: 53194000000
+  total_assets: 180449000000
+  total_liabilities: 155783000000
+  long_term_debt: 82236000000
+  current_portion_of_long_term_debt: 9079000000
+  total_debt: 91315000000
+  stockholders_equity: 24666000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: 2826000000
+  shares_outstanding_diluted: 2909000000
+  market_cap: null
+
+sources:
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525200095/0001193125-25-200095-index.htm
+  kind: sec_10q
+  description: "Filing index: Oracle 10-Q for period ending August 31, 2025, accession 0001193125-25-200095, filed 2025-09-10."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [revenue, operating_income, net_income, interest_expense, other_income_expense_net, income_tax_expense_benefit, shares_outstanding_basic, shares_outstanding_diluted, cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, stockholders_equity, operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net, financing_cash_flow_net]
+  description: "Direct from SEC filing: 8-K Exhibit 99.1, Oracle Q1 FY2026 earnings release filed September 9, 2025. Condensed Consolidated Statements of Operations for three months ended August 31, 2025, Condensed Consolidated Balance Sheets, and Condensed Consolidated Statements of Cash Flows (three months ended, standalone Q1 figures)."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [cost_of_revenue]
+  description: "Derived: cost_of_revenue = cloud and software costs ($3,607M) + hardware costs ($178M) + services costs ($1,099M) = $4,884M. Oracle reports cost of revenue broken into three functional lines on the income statement."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [gross_profit]
+  description: "Derived: gross_profit = revenue ($14,926M) - cost_of_revenue ($4,884M) = $10,042M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [selling_general_administrative]
+  description: "Derived: selling_general_administrative = sales and marketing ($2,063M) + general and administrative ($376M) = $2,439M. Oracle reports these as separate line items."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [research_and_development]
+  description: "Direct from SEC filing: research and development expense $2,491M for three months ended August 31, 2025."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [total_liabilities, long_term_debt, current_portion_of_long_term_debt]
+  description: "Direct from SEC filing: total liabilities = current liabilities ($39,874M) + non-current liabilities ($115,909M) = $155,783M; notes payable and other borrowings non-current $82,236M; notes payable and other borrowings current $9,079M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: sec_8k
+  covers: [total_debt]
+  description: "Derived: total_debt = notes payable current ($9,079M) + notes payable non-current ($82,236M) = $91,315M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: documentation
+  covers: [depreciation_and_amortization]
+  description: "depreciation_and_amortization null: PP&E depreciation ($1,351M) appears only on the cash flow statement as a reconciling item. Amortization of intangible assets ($420M) is a separate operating expense line. A combined D&A income statement line is not reported by Oracle; the two components sum to $1,771M but are not presented as a single metric."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: documentation
+  covers: [interest_income]
+  description: "interest_income null: not separately broken out in the filing; embedded in non-operating income (expenses), net of $73M."
+  retrieved_at: "2026-03-29"
+- url: https://www.sec.gov/Archives/edgar/data/1341439/000119312525199175/orcl-ex99_1.htm
+  kind: documentation
+  covers: [market_cap]
+  description: "market_cap null: not a filed metric; would require share price × shares outstanding at a specific date."
+  retrieved_at: "2026-03-29"

@@ -1,0 +1,247 @@
+# Applied Digital Corporation — infrastructure business profile (profile_version 4).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2025-11-30"
+
+capacity:
+  online:
+    value: 100
+    notes: |
+      ~100 MW energized at Polaris Forge 1 (ELN-02 building, Ellendale, ND) for CoreWeave as of Q2 FY2026. Additionally, legacy Data Center Hosting facilities provide energized capacity for crypto mining customers (Garden City, TX and Jamestown, ND).
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital Q2 FY2026 earnings release — 100 MW energized on schedule at Polaris Forge 1."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: 500
+    notes: |
+      Polaris Forge 1: total 400 MW under ~15-year lease with CoreWeave (~$11B prospective lease revenue over term). ELN-02 (100 MW) operational; ELN-03 and remaining buildings under construction.
+      Polaris Forge 2: 200 MW under 15-year lease with Oracle (~$5B prospective revenue over term). Groundbreaking Aug 2025; initial capacity expected 2026.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press releases — CoreWeave 400 MW lease at Polaris Forge 1; Oracle 200 MW lease at Polaris Forge 2."
+        retrieved_at: "2026-03-29"
+  secured:
+    value: ">3500"
+    notes: |
+      Active pipeline of ~3.5 GW of utility power across multiple sites. Extended pipeline exceeds 5 GW per management commentary. Includes Delta Forge 1 (430 MW campus, southern U.S., groundbreaking Jan 2026).
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital investor presentations and press releases — 3.5 GW active pipeline, 5+ GW extended pipeline."
+        retrieved_at: "2026-03-29"
+
+gpus:
+  online:
+    value: null
+    notes: |
+      Applied Digital's core HPC Hosting business is a lease model — the company builds and leases data center facilities, not GPU compute. GPU procurement and deployment is performed by the tenant (CoreWeave, Oracle). Applied Digital does not disclose GPU counts for tenant-operated facilities. The legacy Cloud Services segment (being spun out as ChronoScale) operated GPUs directly.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Business model: Applied Digital operates as a data center landlord in its HPC Hosting segment; GPU fleet is tenant-owned."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: null
+    notes: "Not applicable — HPC Hosting is a facility lease model, not a GPU-as-a-service model."
+    sources: []
+  secured:
+    value: null
+    notes: "Not applicable."
+    sources: []
+  by_model: []
+
+contracts_usd:
+  online:
+    value: null
+    notes: |
+      No clean annual rental ARR scalar disclosed. HPC Hosting segment reported $85.0M revenue in Q2 FY2026 (three months ended Nov 30, 2025), implying ~$340M annualized run-rate — but this includes both lease revenue and tenant fit-out/construction management revenue, which are not separated in filings. The lease revenue component alone is not broken out.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Q2 FY2026 earnings: HPC Hosting segment revenue $85.0M."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: null
+    notes: |
+      Total prospective lease revenue: ~$16B over contract terms.
+      Polaris Forge 1 (CoreWeave): ~$11B over ~15-year lease (400 MW).
+      Polaris Forge 2 (Oracle): ~$5B over ~15-year lease (200 MW).
+      These are total contract values over 15+ years, not annual rental ARR — cannot be honestly annualized without knowing the ramp schedule and pricing structure per tranche.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press releases — CoreWeave ~$11B TCV, Oracle ~$5B TCV."
+        retrieved_at: "2026-03-29"
+  secured:
+    value: null
+    notes: "No additional secured rental ARR disclosed beyond the contracted CoreWeave and Oracle deals."
+    sources: []
+
+deals_and_contracts:
+  summary:
+    value: |
+      CoreWeave — 15-year lease at Polaris Forge 1, Ellendale, ND; 400 MW total; ~$11B prospective lease revenue over term. 100 MW energized Q2 FY26; remaining under construction.
+      Oracle — 15-year lease at Polaris Forge 2, Ellendale, ND; 200 MW; ~$5B prospective revenue over term. Groundbreaking Aug 2025; initial capacity expected 2026. Funded by $2.15B senior notes (Mar 2026).
+      Macquarie — up to $5.0B preferred equity facility for data center development. $900M drawn as of Nov 30, 2025; additional $337.5M post-quarter.
+      $2.35B Senior Secured Notes (9.25%, due 2030) — issued Q2 FY26 for Polaris Forge 1 construction and SMBC loan repayment.
+      $2.15B Senior Secured Notes (6.75%, due 2031) — issued Mar 2026 for Polaris Forge 2 Oracle build.
+    notes: null
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press releases and SEC filings for deal terms."
+        retrieved_at: "2026-03-29"
+  highlights:
+    - value: "2026-03 — $2.15B senior secured notes (6.75%, 2031) for Polaris Forge 2 / Oracle 200 MW build."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Applied Digital press release: $2.15B notes offering completed March 2026."
+          retrieved_at: "2026-03-29"
+    - value: "2025-10 — Oracle 15-year lease for 200 MW at Polaris Forge 2; ~$5B prospective revenue."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Applied Digital press release: Oracle lease announcement Oct 2025."
+          retrieved_at: "2026-03-29"
+    - value: "Q2 FY2026 — 100 MW energized at Polaris Forge 1 for CoreWeave on schedule."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Q2 FY2026 earnings release: Polaris Forge 1 ready-for-service milestone."
+          retrieved_at: "2026-03-29"
+    - value: "2026-01 — Delta Forge 1 groundbreaking (430 MW campus, southern U.S.); initial operations mid-2027."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Applied Digital press release: Delta Forge 1 groundbreaking Jan 2026."
+          retrieved_at: "2026-03-29"
+
+platform:
+  offers_managed_platform:
+    value: false
+    notes: "Core HPC Hosting business is facility leasing (landlord model), not managed compute. The Cloud Services segment (GPU-as-a-service) is being spun out into ChronoScale."
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Business structure: HPC Hosting (facility lease), Data Center Hosting (crypto), Cloud Services (being spun out)."
+        retrieved_at: "2026-03-29"
+  summary:
+    value: "Build-and-lease hyperscale AI data center developer. Designs, constructs, and leases purpose-built liquid-cooled facilities to hyperscalers under long-term leases. No managed compute platform in core business."
+    notes: null
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Business description from Applied Digital IR materials."
+        retrieved_at: "2026-03-29"
+
+datacenters:
+  reported_count:
+    value: 5
+    notes: "Polaris Forge 1 (Ellendale, ND), Polaris Forge 2 (Ellendale, ND), Delta Forge 1 (southern U.S.), Garden City (TX — legacy hosting), Jamestown (ND — legacy hosting). Additional sites in pipeline."
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Applied Digital IR materials and filings — data center campus listing."
+        retrieved_at: "2026-03-29"
+  sites_or_regions:
+    value:
+      - "Ellendale, North Dakota, United States (Polaris Forge 1 & 2)"
+      - "Southern United States (Delta Forge 1)"
+      - "Garden City, Texas, United States (legacy hosting)"
+      - "Jamestown, North Dakota, United States (legacy hosting)"
+    notes: "Strategic focus on North Dakota for cool climate, low-cost power, and abundant renewable energy access. Delta Forge 1 location not publicly specified beyond 'southern U.S.'"
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Applied Digital filings and press releases — site locations."
+        retrieved_at: "2026-03-29"
+
+integration:
+  model:
+    value: own_build_operate
+    notes: "Applied Digital designs, builds, and owns the data center facilities. Leases the powered shell and infrastructure to hyperscaler tenants under long-term (15+ year) triple-net style leases. Proprietary closed-loop direct-to-chip liquid cooling system (design PUE 1.18)."
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Business model: build-own-lease from Applied Digital IR materials."
+        retrieved_at: "2026-03-29"
+  summary:
+    value: "Vertically integrated AI data center developer: site selection, power procurement, facility design/construction, and long-term lease operation. Tenant deploys and owns the compute equipment."
+    notes: null
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Business model description from Applied Digital investor materials."
+        retrieved_at: "2026-03-29"
+
+guidance:
+  summary:
+    value: null
+    notes: |
+      Management expects to exceed $1B annual NOI within five years, driven primarily by Polaris Forge 1 (CoreWeave) and Polaris Forge 2 (Oracle) reaching full operation. Polaris Forge 1 alone expected to generate ~$500M annualized NOI once fully operational. Active 3.5 GW power pipeline for continued expansion.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Management commentary from earnings calls and investor presentations."
+        retrieved_at: "2026-03-29"
+  targets:
+    - kind: other
+      horizon: "within five years"
+      value_low: 1000000000
+      value_high: null
+      value_text: ">$1B annual NOI"
+      notes: "Management target for consolidated annual NOI. Driven by Polaris Forge campuses at full operation."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Management guidance: >$1B NOI target within five years."
+          retrieved_at: "2026-03-29"
+    - kind: other
+      horizon: "Polaris Forge 1 full operation"
+      value_low: null
+      value_high: null
+      value_text: "~$500M annualized NOI from Polaris Forge 1 alone"
+      notes: "CoreWeave 400 MW lease at full operation."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Polaris Forge 1 NOI target from earnings commentary."
+          retrieved_at: "2026-03-29"
+    - kind: capacity_mw_active
+      horizon: "near-term (construction in progress)"
+      value_low: null
+      value_high: null
+      value_text: "600 MW contracted (400 MW CoreWeave + 200 MW Oracle)"
+      notes: "Currently 100 MW operational; remaining 500 MW under construction at Polaris Forge 1 and 2."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Contracted MW from CoreWeave and Oracle lease announcements."
+          retrieved_at: "2026-03-29"
+    - kind: contracted_power_mw
+      horizon: "pipeline"
+      value_low: 3500
+      value_high: null
+      value_text: "~3.5 GW active pipeline, 5+ GW extended"
+      notes: "Active pipeline of utility power; extended pipeline exceeds 5 GW per management."
+      sources:
+        - url: https://ir.applieddigital.com/news-events/press-releases
+          kind: ir_html
+          description: "Pipeline disclosure from Applied Digital investor materials."
+          retrieved_at: "2026-03-29"
+
+sources:
+  - url: https://ir.applieddigital.com/news-events/press-releases
+    kind: ir_html
+    description: "Applied Digital official press releases index."
+    retrieved_at: "2026-03-29"
+  - url: https://ir.applieddigital.com/
+    kind: ir_html
+    description: "Applied Digital investor relations homepage."
+    retrieved_at: "2026-03-29"

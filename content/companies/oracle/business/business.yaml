@@ -1,0 +1,432 @@
+# Oracle Corporation — infrastructure business profile (profile_version 4).
+
+layer: infrastructure
+profile_version: 4
+
+as_of: "2026-02-28"
+
+capacity:
+  online:
+    value: null
+    notes: |
+      Oracle does not disclose a single aggregate "online MW" figure for its
+      cloud data centers. During Q3 FY2026 the company deployed 400 MW of
+      incremental data center capacity. OCI operates 50+ public cloud regions
+      across 28 countries. The Stargate / Abilene TX facility has ~200 MW
+      operational as of 2025 with the balance of 1.2 GW coming online through
+      2026.
+    sources:
+      - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+        kind: ir_html
+        description: "Oracle Q3 FY2026 press release: 400 MW of data center capacity delivered in Q3."
+        retrieved_at: "2026-03-29"
+      - url: https://www.oracle.com/cloud/public-cloud-regions/
+        kind: product_page
+        description: "Oracle public cloud regions page: 50+ regions across 28 countries."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: null
+    notes: |
+      Oracle has secured 10 gigawatts of power and data center capacity to come
+      online over the next three years (through ~2029). Over 90% of this 10 GW
+      is already fully funded through partner prepayments and bring-your-own-
+      hardware contracts. The Stargate project in Abilene, TX is capped at
+      1.2 GW due to grid constraints; originally planned for larger scale.
+    sources:
+      - url: https://finance.yahoo.com/news/oracle-corporation-q3-2026-earnings-123000761.html
+        kind: press
+        description: "Oracle Q3 FY2026 earnings call summary: 10 GW of power and data capacity secured over next three years, 90% fully funded."
+        retrieved_at: "2026-03-29"
+      - url: https://winbuzzer.com/2026/03/09/openai-oracle-cap-texas-ai-data-center-abilene-stargate-xcxwbn/
+        kind: press
+        description: "Stargate Abilene TX capped at 1.2 GW due to power grid delays."
+        retrieved_at: "2026-03-29"
+  secured:
+    value: ">10000"
+    notes: |
+      10 GW secured capacity is the headline figure from Q3 FY2026 earnings.
+      Includes Stargate JV capacity, multi-cloud expansion, and contracted
+      customer deals. Pipeline likely exceeds this given $553B RPO.
+    sources:
+      - url: https://energy.media/industry-hubs/oracle-secures-10-gw-for-data-centers-over-next-three-years/
+        kind: press
+        description: "Oracle secures 10 GW for data centers over next three years."
+        retrieved_at: "2026-03-29"
+
+gpus:
+  online:
+    value: null
+    notes: |
+      Oracle does not disclose an aggregate GPU count across OCI. The company
+      deploys NVIDIA and AMD GPUs at scale. OCI Superclusters can scale up to
+      131,072 NVIDIA Blackwell B200 GPUs in a single cluster. Thousands of
+      NVIDIA Blackwell GB200 NVL72 racks are deployed. OCI plans to deploy
+      50,000 AMD MI450 GPUs starting Q3 2026. The Stargate Abilene facility's
+      initial ~200 MW supports an estimated ~54,000 GB200 superchips. Oracle
+      reportedly planned $40B worth of NVIDIA GPUs for the full Stargate build.
+    sources:
+      - url: https://blogs.nvidia.com/blog/oracle-cloud-infrastructure-blackwell-gpus-agentic-ai-reasoning-models/
+        kind: vendor_blog
+        description: "NVIDIA blog: OCI deploys thousands of Blackwell GPUs (GB200 NVL72), plans 100k+ Blackwell cluster."
+        retrieved_at: "2026-03-29"
+      - url: https://datacenternews.ca/story/oracle-to-launch-ai-supercluster-with-amd-mi450-gpus-in-2026
+        kind: press
+        description: "Oracle to deploy 50,000 AMD MI450 GPUs in Q3 2026 supercluster."
+        retrieved_at: "2026-03-29"
+      - url: http://www.theregister.com/2025/05/27/oracle_openai_40b/
+        kind: press
+        description: "Oracle reportedly plans $40B of NVIDIA GPUs for OpenAI data center."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: null
+    notes: |
+      Not separately disclosed. Many contracts use a bring-your-own-hardware
+      model where customers purchase their own GPUs and Oracle operates them.
+      Over $29B in contracts signed under this model.
+    sources:
+      - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+        kind: ir_html
+        description: "Q3 FY2026 press release: $29B+ in bring-your-own-hardware contracts."
+        retrieved_at: "2026-03-29"
+  secured:
+    value: null
+    notes: null
+    sources: []
+  by_model:
+    - model: "NVIDIA Blackwell B200 / GB200 NVL72"
+      count: null
+      notes: "Thousands deployed; single supercluster scales to 131,072. Plans to build one of world's largest Blackwell clusters (100k+). Stargate initial phase ~54,000 GB200."
+    - model: "AMD Instinct MI450"
+      count: 50000
+      notes: "50,000 AMD MI450 GPUs planned for public OCI supercluster, Q3 2026 deployment."
+    - model: "NVIDIA Vera Rubin (next-gen)"
+      count: null
+      notes: "Announced OCI Supercluster powered by NVIDIA Vera Rubin platform (Rubin GPUs, Vera CPUs) — next generation after Blackwell."
+
+contracts_usd:
+  online:
+    value: null
+    notes: |
+      Cloud infrastructure (IaaS) revenue: $4.9B in Q3 FY2026 (three months
+      ended Feb 28, 2026), up 84% YoY. Implies ~$19.6B annualized IaaS run rate.
+      Total cloud revenue (IaaS + SaaS): $8.9B in Q3 FY2026, up 44% YoY.
+      AI infrastructure revenue specifically grew 243% YoY.
+    sources:
+      - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+        kind: sec_8k
+        description: "Oracle Q3 FY2026 8-K: Cloud infrastructure $4.9B (+84%), total cloud $8.9B (+44%)."
+        retrieved_at: "2026-03-29"
+  contracted:
+    value: 553000000000
+    notes: |
+      Remaining Performance Obligations (RPO) reached $553B as of Q3 FY2026,
+      up 325% YoY from $130B a year earlier. This is primarily driven by
+      large-scale AI contracts (OpenAI $300B, Meta ~$20B, and others).
+      Most equipment for these contracts is funded via customer prepayments
+      or bring-your-own-hardware models.
+    sources:
+      - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+        kind: sec_8k
+        description: "Oracle Q3 FY2026 8-K press release: RPO $553B, up 325% YoY."
+        retrieved_at: "2026-03-29"
+  secured:
+    value: null
+    notes: null
+    sources: []
+
+deals_and_contracts:
+  summary:
+    value: |
+      OpenAI — $300B, 5-year cloud computing contract; compute services beginning 2027. Includes Stargate JV (with SoftBank, MGX) in Abilene, TX; 1.2 GW facility using OCI Zettascale10 architecture. One of the largest cloud contracts in history.
+      Meta — ~$20B multiyear cloud infrastructure deal (announced Sep 2025) for AI model training and inference. Final commitment may grow larger.
+      xAI — Partnership to deliver Grok models via OCI Generative AI service (announced Jun 2025). Grok 3 and Grok 3 mini available on OCI. Infrastructure deal terms not separately disclosed.
+      NVIDIA — Deep partnership: OCI deploys NVIDIA Blackwell at scale, co-developed Acceleron networking. Next-gen OCI Supercluster planned on NVIDIA Vera Rubin platform. OCI available on DGX Cloud.
+      TikTok USDS — 15% equity stake (~$2B value) and board seat in TikTok US JV. Oracle hosts all U.S. user data and serves as trusted security partner.
+      Stargate JV — $500B joint venture with SoftBank, OpenAI, and MGX announced Jan 2025 at White House. Initial $100B commitment; up to $500B over four years. ~20 data centers planned.
+    notes: null
+    sources:
+      - url: https://theaitrack.com/oracle-openai-300b-cloud-deal/
+        kind: press
+        description: "Oracle signs $300B OpenAI cloud deal — 5 year contract."
+        retrieved_at: "2026-03-29"
+      - url: https://ts2.tech/en/oracles-massive-20b-meta-cloud-deal-shakes-up-the-ai-cloud-wars/
+        kind: press
+        description: "Oracle's ~$20B Meta cloud deal, announced September 2025."
+        retrieved_at: "2026-03-29"
+      - url: https://www.oracle.com/ca-en/news/announcement/xais-grok-models-are-now-on-oracle-cloud-infrastructure-2025-06-17/
+        kind: ir_html
+        description: "Oracle press release: xAI Grok models on OCI, June 2025."
+        retrieved_at: "2026-03-29"
+      - url: https://techcrunch.com/2025/01/21/openai-teams-up-with-softbank-and-oracle-on-50b-data-center-project
+        kind: press
+        description: "TechCrunch: Stargate $500B JV announcement, Jan 2025."
+        retrieved_at: "2026-03-29"
+      - url: https://www.cnbc.com/2026/03/11/oracle-tiktok-us-stake-outages.html
+        kind: press
+        description: "CNBC: Oracle's TikTok US stake valued at ~$2B."
+        retrieved_at: "2026-03-29"
+  highlights:
+    - value: "2026-03-10 — Q3 FY2026 earnings: RPO surges to $553B (+325% YoY); cloud infrastructure revenue $4.9B (+84%); FY2027 guidance raised to $90B."
+      sources:
+        - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+          kind: sec_8k
+          description: "Oracle Q3 FY2026 8-K earnings release."
+          retrieved_at: "2026-03-29"
+    - value: "2026-01-22 — TikTok US JV closes; Oracle receives 15% equity stake (~$2B) and board seat."
+      sources:
+        - url: https://www.reuters.com/world/china/oracles-stake-tiktok-us-joint-venture-is-worth-roughly-2-billion-filing-shows-2026-03-11/
+          kind: press
+          description: "Reuters: Oracle TikTok JV stake ~$2B, deal closed Jan 22, 2026."
+          retrieved_at: "2026-03-29"
+    - value: "2025-10-14 — OCI Zettascale10 unveiled at Oracle AI World; up to 800,000 NVIDIA GPUs, 16 zettaFLOPS peak. Deployed for OpenAI Stargate."
+      sources:
+        - url: https://www.oracle.com/news/announcement/ai-world-oracle-unveils-next-generation-oci-zettascale10-cluster-for-ai-2025-10-14/
+          kind: ir_html
+          description: "Oracle press release: OCI Zettascale10 announcement."
+          retrieved_at: "2026-03-29"
+    - value: "2025-09 — ~$20B multiyear Meta cloud infrastructure deal announced."
+      sources:
+        - url: https://ts2.tech/en/oracles-massive-20b-meta-cloud-deal-shakes-up-the-ai-cloud-wars/
+          kind: press
+          description: "Oracle ~$20B Meta deal, September 2025."
+          retrieved_at: "2026-03-29"
+    - value: "2025-09 — OpenAI and Oracle ink ~$300B, 5-year cloud computing contract (reportedly largest cloud deal ever)."
+      sources:
+        - url: https://techcrunch.com/2025/09/10/openai-and-oracle-reportedly-ink-historic-cloud-computing-deal/
+          kind: press
+          description: "TechCrunch: OpenAI-Oracle $300B cloud deal, September 2025."
+          retrieved_at: "2026-03-29"
+    - value: "2025-06 — xAI partnership: Grok 3 and Grok 3 mini available on OCI Generative AI."
+      sources:
+        - url: https://www.oracle.com/ca-en/news/announcement/xais-grok-models-are-now-on-oracle-cloud-infrastructure-2025-06-17/
+          kind: ir_html
+          description: "Oracle press release: xAI Grok on OCI, June 2025."
+          retrieved_at: "2026-03-29"
+    - value: "2025-01-21 — Stargate JV announced ($500B over 4 years) with SoftBank, OpenAI, MGX at White House."
+      sources:
+        - url: https://techcrunch.com/2025/01/21/openai-teams-up-with-softbank-and-oracle-on-50b-data-center-project
+          kind: press
+          description: "Stargate $500B JV announcement."
+          retrieved_at: "2026-03-29"
+
+platform:
+  offers_managed_platform:
+    value: true
+    notes: |
+      OCI provides a full managed cloud platform with 200+ services. AI-specific
+      offerings include OCI Generative AI (hosting models from Cohere, Meta,
+      xAI/Grok), OCI AI Infrastructure (GPU superclusters), OCI Data Science,
+      OCI Vision/Speech/Language, and Oracle Database with AI Vector Search.
+      OCI Superclusters scale up to 131,072 NVIDIA Blackwell GPUs with
+      Acceleron RoCE networking (52 Pbps, sub-2µs latency). DGX Cloud available
+      on OCI. Deployment options include public cloud, Dedicated Region
+      (on-premises), Cloud@Customer, OCI Alloy (partner-operated), and
+      sovereign cloud.
+    sources:
+      - url: https://www.oracle.com/cloud/
+        kind: product_page
+        description: "Oracle Cloud homepage: 200+ services overview."
+        retrieved_at: "2026-03-29"
+      - url: https://blogs.oracle.com/cloud-infrastructure/oracle-nvidia-gtc-2026-key-announcements
+        kind: vendor_blog
+        description: "Oracle-NVIDIA GTC 2026: supercluster, Acceleron networking, Vera Rubin."
+        retrieved_at: "2026-03-29"
+  summary:
+    value: |
+      Hyperscale cloud platform (OCI) with full IaaS/PaaS/SaaS stack. Primary AI
+      infrastructure differentiators: (1) OCI Superclusters — bare-metal GPU clusters
+      scaling to 131,072 Blackwell GPUs with ultra-low-latency RDMA networking;
+      (2) Zettascale10 architecture connecting hundreds of thousands of GPUs across
+      data centers for multi-zettaFLOPS AI training; (3) Multicloud strategy with
+      low-latency interconnects to AWS, Azure, GCP (Oracle Database@Azure/AWS/GCP);
+      (4) Distributed cloud deployment via Dedicated Region, Cloud@Customer, Alloy;
+      (5) 1:1 Core Factor BYOL licensing (50% savings vs. AWS/Azure); (6) native
+      Exadata and RAC for Oracle Database workloads.
+    notes: |
+      Key differentiation vs. AWS/Azure/GCP: purpose-built bare-metal GPU
+      infrastructure, Acceleron custom networking fabric, native Oracle Database
+      support, and price/performance advantage on Oracle workloads. Multicloud
+      database revenue grew 531% YoY in Q3 FY2026.
+    sources:
+      - url: https://pretius.com/blog/oci-azure-aws
+        kind: press
+        description: "OCI vs Azure vs AWS strategic positioning analysis, 2026."
+        retrieved_at: "2026-03-29"
+      - url: https://www.oracle.com/apac/cloud/compute/gpu/
+        kind: product_page
+        description: "OCI GPU compute: bare metal, superclusters up to 131,072 GPUs."
+        retrieved_at: "2026-03-29"
+
+datacenters:
+  reported_count:
+    value: ">50 cloud regions"
+    notes: |
+      Oracle operates 50+ public cloud regions across 28 countries. These include
+      commercial, sovereign (EU), and government regions. Additionally, Oracle
+      deploys Dedicated Region (Cloud@Customer) instances in customer data centers.
+      The company is building ~20 new Stargate data centers (each ~500K sq ft).
+      Oracle also has 22 AWS multicloud regions live as of end of Q3 FY2026.
+    sources:
+      - url: https://www.oracle.com/cloud/public-cloud-regions/
+        kind: product_page
+        description: "Oracle cloud regions page: 50+ public cloud regions, 28 countries."
+        retrieved_at: "2026-03-29"
+  sites_or_regions:
+    value:
+      - "North America: US (multiple including Ashburn, Phoenix, Chicago, San Jose), Canada"
+      - "Europe: UK, Germany, France, Netherlands, Switzerland, Sweden, Italy, Spain"
+      - "Asia Pacific: Japan, South Korea, Australia, India, Singapore"
+      - "Middle East & Africa: UAE, Saudi Arabia, Israel, South Africa"
+      - "South America: Brazil, Chile"
+      - "Sovereign: EU Sovereign Cloud (Frankfurt, Madrid)"
+      - "Under construction: Stargate — Abilene, TX (1.2 GW, for OpenAI)"
+    notes: |
+      Full region list at oracle.com/cloud/public-cloud-regions/. Key AI
+      infrastructure concentrated at Stargate (Abilene, TX) and major US regions.
+      Government and isolated regions serve US defense/intelligence agencies.
+    sources:
+      - url: https://www.oracle.com/cloud/public-cloud-regions/
+        kind: product_page
+        description: "Oracle cloud regions listing."
+        retrieved_at: "2026-03-29"
+
+integration:
+  model:
+    value: lease_equip_own
+    notes: |
+      Oracle does NOT own the data center buildings; it leases facility space and
+      owns the equipment (servers, GPUs, networking) deployed within them. As of
+      Nov 30, 2025, Oracle had $248B in lease commitments for data centers
+      running 15-19 years (up 148% from Aug 2025). Of this, $10B was for cloud
+      capacity arrangements. The company's significant PP&E ($83.6B as of
+      Feb 2026) reflects owned compute/networking equipment, not buildings.
+      For some contracts, customers bring their own hardware (GPUs) and Oracle
+      operates the infrastructure around it.
+    sources:
+      - url: https://www.cnbc.com/2025/12/11/oracle-lease-commitments-increase-almost-150percent-to-accommodate-ai-demand.html
+        kind: press
+        description: "CNBC: Oracle lease commitments $248B, up 148%; Oracle owns equipment, leases facilities."
+        retrieved_at: "2026-03-29"
+      - url: https://www.nextplatform.com/2026/02/02/oracles-financing-primes-the-openai-pump/
+        kind: press
+        description: "Next Platform: Oracle does not own data centers, owns equipment within them."
+        retrieved_at: "2026-03-29"
+  summary:
+    value: |
+      Hybrid infrastructure model: Oracle leases data center facility space under
+      long-term commitments ($248B in lease obligations) and owns/operates the
+      compute, networking, and storage equipment within those facilities. For
+      large AI deals, a bring-your-own-hardware model is common — customers
+      purchase GPUs and Oracle provides the facility, networking, and management
+      layer. Capital expansion funded primarily through debt ($134.6B total debt
+      as of Feb 2026) and customer prepayments, distinguishing Oracle from cash-
+      rich hyperscalers (AWS, Azure, GCP) that self-fund from operations.
+    notes: null
+    sources:
+      - url: https://www.cnbc.com/2026/03/09/oracle-is-building-yesterdays-data-centers-with-tomorrows-debt.html
+        kind: press
+        description: "CNBC analysis: Oracle's debt-funded infrastructure model vs. cash-rich hyperscalers."
+        retrieved_at: "2026-03-29"
+
+guidance:
+  summary:
+    value: null
+    notes: |
+      Q4 FY2026 guidance: revenue growth 19-20%, adjusted EPS $1.92-$1.96.
+      FY2027 revenue target raised to $90B (from $89B prior). FY2026 full-year
+      capex target: $50B (more than double FY2025's ~$21B). Cloud infrastructure
+      growth expected to exceed 70% for FY2026 (vs. 50% in FY2025). AI
+      infrastructure gross margin reached 32% in Q3 (above 30% guidance).
+      $45-50B financing program: $30B already raised through investment-grade
+      bonds and mandatory convertible preferred stock.
+    sources:
+      - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+        kind: sec_8k
+        description: "Oracle Q3 FY2026 earnings release: Q4 guidance and FY2027 target."
+        retrieved_at: "2026-03-29"
+      - url: https://www.indexbox.io/blog/oracle-q3-2026-earnings-beats-forecasts-raises-2027-outlook/
+        kind: press
+        description: "IndexBox: Oracle raises FY2027 guidance to $90B, $50B capex plan."
+        retrieved_at: "2026-03-29"
+  targets:
+    - kind: revenue
+      horizon: "Q4 FY2026 (Mar-May 2026)"
+      value_low: null
+      value_high: null
+      value_text: "19-20% revenue growth YoY"
+      notes: "Q4 FY2026 guidance from March 10, 2026 earnings call. Cloud revenue projected +46-50%."
+      sources:
+        - url: https://www.indexbox.io/blog/oracle-q3-fiscal-2026-results-cloud-revenue-soars-44-ai-infrastructure-drives-growth/
+          kind: press
+          description: "Q4 FY2026 cloud revenue growth guidance: 46-50%."
+          retrieved_at: "2026-03-29"
+    - kind: revenue
+      horizon: "FY2027 (Jun 2026 - May 2027)"
+      value_low: 90000000000
+      value_high: 90000000000
+      value_text: "$90B revenue target"
+      notes: "Raised by $1B from prior $89B guidance. Consensus was $86.6B before the raise."
+      sources:
+        - url: https://www.cnbc.com/2026/03/10/oracle-orcl-q3-earnings-report-2026.html/
+          kind: press
+          description: "CNBC: Oracle raises FY2027 revenue guidance to $90B."
+          retrieved_at: "2026-03-29"
+    - kind: capex
+      horizon: "FY2026 (Jun 2025 - May 2026)"
+      value_low: 50000000000
+      value_high: 50000000000
+      value_text: "$50B full-year capex"
+      notes: "More than double FY2025's ~$21B. 9-month YTD capex was $39.2B through Q3 FY2026."
+      sources:
+        - url: https://udit.co/blog/raw/oracle-50-billion-ai-infrastructure-capex
+          kind: press
+          description: "Oracle pledges $50B for AI data centers."
+          retrieved_at: "2026-03-29"
+    - kind: capacity_power
+      horizon: "next three years (through ~2029)"
+      value_low: 10000
+      value_high: 10000
+      value_text: "10 GW of power and data center capacity"
+      notes: "Secured as of Q3 FY2026; 90%+ fully funded through partner prepayments."
+      sources:
+        - url: https://energy.media/industry-hubs/oracle-secures-10-gw-for-data-centers-over-next-three-years/
+          kind: press
+          description: "Oracle secures 10 GW data center capacity."
+          retrieved_at: "2026-03-29"
+    - kind: cloud_growth
+      horizon: "FY2026"
+      value_low: null
+      value_high: null
+      value_text: "Cloud infrastructure growth >70% (full year)"
+      notes: "Management target from FY2025 Q4 earnings; Q3 FY2026 came in at 84% YoY."
+      sources:
+        - url: https://investor.oracle.com/investor-news/news-details/2025/Oracle-Announces-Fiscal-2025-Fourth-Quarter-and-Fiscal-Full-Year-Financial-Results/default.aspx
+          kind: ir_html
+          description: "Oracle FY2025 Q4 earnings: FY2026 cloud infrastructure growth >70% guidance."
+          retrieved_at: "2026-03-29"
+
+sources:
+  - url: https://investor.oracle.com/
+    kind: ir_html
+    description: "Oracle investor relations homepage."
+    retrieved_at: "2026-03-29"
+  - url: https://www.oracle.com/ae/news/announcement/q3fy26-earnings-release-2026-03-10/
+    kind: sec_8k
+    description: "Oracle Q3 FY2026 earnings release (8-K filed March 10, 2026)."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526100148/orcl-ex99_1.htm
+    kind: sec_8k
+    description: "SEC EDGAR: Oracle Q3 FY2026 8-K Exhibit 99.1."
+    retrieved_at: "2026-03-29"
+  - url: https://investor.oracle.com/investor-news/news-details/2025/Oracle-Announces-Fiscal-2025-Fourth-Quarter-and-Fiscal-Full-Year-Financial-Results/default.aspx
+    kind: ir_html
+    description: "Oracle FY2025 Q4 / full-year earnings release."
+    retrieved_at: "2026-03-29"
+  - url: https://www.oracle.com/cloud/public-cloud-regions/
+    kind: product_page
+    description: "Oracle cloud regions and data centers listing."
+    retrieved_at: "2026-03-29"
+  - url: https://www.oracle.com/cloud/
+    kind: product_page
+    description: "Oracle Cloud Infrastructure homepage."
+    retrieved_at: "2026-03-29"

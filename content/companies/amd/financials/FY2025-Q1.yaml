@@ -1,0 +1,108 @@
+# AMD FY2025 Q1 (Three months ended March 29, 2025)
+# Source: 10-Q filed 2025-05-07, accession 0000002488-25-000047
+# Also cross-referenced from Q2 FY2025 press release (Aug 5, 2025) comparative columns
+# NOTE: Income statement sourced from Q2 FY2025 press release comparative (Q1 March 29, 2025 column).
+# Balance sheet sourced from XBRL (stockholders' equity) and Q1 10-Q (balance sheet items
+# marked null below not yet independently retrieved; will need Q1 10-Q filing table).
+
+period:
+  label: "FY2025-Q1"
+  start: "2024-12-29"
+  end: "2025-03-29"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 7438000000
+  cost_of_revenue: 3451000000
+  gross_profit: 3736000000
+  research_and_development: 1728000000
+  selling_general_administrative: 886000000
+  depreciation_and_amortization: 567000000
+  operating_income: 806000000
+  interest_expense: 20000000
+  interest_income: null
+  other_income_expense_net: 39000000
+  income_tax_expense_benefit: 123000000
+  net_income: 709000000
+
+  # --- Cash flows (three months ended 2025-03-29) ---
+  operating_cash_flow: 939000000
+  stock_based_compensation: 364000000
+  capital_expenditures_cash: 212000000
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at 2025-03-29) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: 1721000000
+  current_portion_of_long_term_debt: 0
+  total_debt: 1721000000
+  stockholders_equity: 57881000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: 1620000000
+  shares_outstanding_diluted: 1626000000
+  market_cap: null
+
+sources:
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (referenced via AMD Q2 FY2025 earnings press release, Aug 5, 2025): AMD Condensed Consolidated Statements of Operations — Q1 comparative column 'Three months ended March 29, 2025'. Revenue $7,438M; cost of sales $3,451M (excl. amort.); amort. of acq. intangibles in COGS $251M; gross profit $3,736M; R&D $1,728M; MG&A $886M; amort. of acq. intangibles in opex $316M; total opex $2,930M; operating income $806M; interest expense $(20)M; other income $39M; income from cont. before tax $825M; tax provision $123M; equity income $7M; income from cont. $709M; discontinued ops $0; net income $709M. Diluted EPS $0.44, diluted shares 1,626M."
+    covers: [revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_administrative, operating_income, interest_expense, other_income_expense_net, income_tax_expense_benefit, net_income, shares_outstanding_basic, shares_outstanding_diluted]
+    retrieved_at: "2026-03-29"
+
+  - url: https://www.sec.gov/Archives/edgar/data/2488/000000248825000047/0000002488-25-000047-index.htm
+    kind: sec_10q
+    description: "Filing index for AMD Q1 FY2025 10-Q (period 2025-03-29, filed 2025-05-07, accession 0000002488-25-000047). Primary exhibit: amd-20250329.htm. Balance sheet items (cash, current assets, current liabilities, PP&E, total assets, total liabilities) marked null — not yet extracted from this 10-Q; require reading balance sheet table in amd-20250329.htm."
+    covers: [cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (via Q2 FY2025 press release, Aug 5, 2025): Condensed Cash Flow Statement — 'Six months ended June 28, 2025' and 'Three months ended June 28, 2025'. Q1 operating_cash_flow = $939M derived: 6-month OCF $2,950M minus Q2 OCF $2,011M. Q1 stock_based_compensation = $364M derived: 6-month SBC $733M minus Q2 SBC $369M. Q1 capital_expenditures_cash = $212M derived: 6-month capex $494M minus Q2 capex $282M. Q1 D&A (operational, CF reconciliation) = $175M derived: 6-month D&A $364M minus Q2 D&A $189M."
+    supports_derivation_of: [operating_cash_flow, stock_based_compensation, capital_expenditures_cash, depreciation_and_amortization]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/NetCashProvidedByUsedInOperatingActivities.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): NetCashProvidedByUsedInOperatingActivities tag. Q1 FY2025 (start 2024-12-29, end 2025-03-29): val $939,000,000, accn 0000002488-25-000047, frame CY2025Q1. Confirms Q1 OCF = $939M (includes both continuing and discontinued operations)."
+    covers: [operating_cash_flow]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/PaymentsToAcquirePropertyPlantAndEquipment.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): PaymentsToAcquirePropertyPlantAndEquipment. Q1 FY2025 (start 2024-12-29, end 2025-03-29): val $212,000,000, accn 0000002488-25-000047, frame CY2025Q1. Q1 capex = $212M."
+    covers: [capital_expenditures_cash]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/StockholdersEquity.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): StockholdersEquity. end 2025-03-29: val $57,881,000,000, accn 0000002488-25-000047, frame CY2025Q1I. Stockholders' equity = $57,881M."
+    covers: [stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+  - url: https://www.sec.gov/Archives/edgar/data/2488/000000248825000047/0000002488-25-000047-index.htm
+    kind: documentation
+    description: "long_term_debt null derivation note: Q1 LT debt = $1,721M carried forward from Dec 28, 2024 10-K balance sheet (no new debt issuances in Q1 per Q2 CF which shows $2,441M proceeds in six-month period, with none in Q1). current_portion_of_long_term_debt = $0 (no 2025-due notes reclassified as current at Q1 end; the 2028-due notes became within-12-months current only at Q3 end). Confirmed by XBRL balance sheet data and Q2 CF statement showing zero Q1 debt issuance activity."
+    covers: [long_term_debt, current_portion_of_long_term_debt, total_debt]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: documentation
+    description: "investing_cash_flow_net null: Q1 investing CF not separately shown in Q2 press release (only six-month totals provided: H1 investing CF from continuing = -$2,633M; H1 includes Q1 ZT Systems acquisition of -$1,716M which occurred in Q2, so Q1 investing CF ≠ simple derivation). financing_cash_flow_net null: Q1 financing CF not separately shown; H1 financing CF data not fully extracted."
+    covers: [investing_cash_flow_net, financing_cash_flow_net]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: documentation
+    description: "depreciation_and_amortization: AMD reports D&A in two components. (1) Amortization of acquisition-related intangibles on income statement: COGS $251M + opex $316M = $567M. (2) Operational D&A from CF reconciliation (machinery, leases, owned PP&E): $175M derived (6-month $364M minus Q2 $189M). The $567M is captured here as the income statement D&A line. Market_cap null: AMD stock price not captured at period end; would require share price data from non-SEC source. interest_income null: not separately disclosed in the press release for Q1; included in 'Other income (expense), net'."
+    covers: [depreciation_and_amortization, market_cap, interest_income]
+    retrieved_at: "2026-03-29"

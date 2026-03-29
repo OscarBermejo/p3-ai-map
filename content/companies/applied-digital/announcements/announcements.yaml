@@ -1,0 +1,144 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-29"
+
+items:
+  - date: "2026-03-17"
+    title: "Applied Digital completes $2.15B senior secured notes offering for Polaris Forge 2"
+    category: debt
+    summary: >
+      Applied Digital completed a $2.15 billion offering of 6.750% senior secured notes
+      due 2031. Proceeds fund construction of 200 MW at Polaris Forge 2 for the Oracle
+      lease, which is expected to generate approximately $5 billion in revenue over the
+      lease term.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release announcing completion of $2.15B senior notes offering, March 2026."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-01-28"
+    title: "Delta Forge 1 groundbreaking — 430 MW AI factory campus"
+    category: capacity
+    summary: >
+      Applied Digital broke ground on Delta Forge 1, a 430 MW AI factory campus in
+      a southern U.S. state supporting 300 MW of critical IT load. Initial operations
+      are expected mid-2027. The campus further expands the company's geographic
+      footprint beyond North Dakota.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release — Delta Forge 1 groundbreaking, January 2026."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-01-08"
+    title: "Applied Digital reports Q2 FY2026 results — revenue $126.6M, HPC Hosting $85.0M"
+    category: other
+    summary: >
+      Applied Digital reported Q2 FY2026 revenue of $126.6 million, up 250% year-over-year.
+      HPC Hosting revenue reached $85.0 million including tenant fit-out and lease revenue.
+      The company announced 100 MW energized at Polaris Forge 1 for CoreWeave on schedule
+      and adjusted EBITDA of $20.2 million.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital Q2 FY2026 earnings press release, January 8, 2026."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-11-19"
+    title: "Applied Digital announces ChronoScale spinout — Cloud Services to merge with EKSO Bionics"
+    category: restructuring
+    summary: >
+      Applied Digital announced plans to spin out its Cloud Services (GPU-as-a-service)
+      business and merge it with EKSO Bionics (Nasdaq: EKSO) to form ChronoScale, a
+      dedicated GPU-optimized AI infrastructure platform. Applied Digital expected to
+      retain over 80% ownership of the combined entity.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release announcing ChronoScale spinout transaction."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-30"
+    title: "$2.35B senior secured notes offering completed — 9.25% due 2030"
+    category: debt
+    summary: >
+      Applied Digital completed a $2.35 billion offering of 9.25% senior secured
+      notes due 2030. Proceeds fund Polaris Forge 1 construction (ELN-02 and ELN-03
+      buildings for CoreWeave) and repayment of the SMBC secured term loan.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release — $2.35B notes offering, October 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-15"
+    title: "Oracle signs 15-year lease for 200 MW at Polaris Forge 2"
+    category: deal
+    summary: >
+      Applied Digital announced a 15-year lease with Oracle (described as a U.S.
+      investment-grade hyperscaler) for 200 MW at Polaris Forge 2 in Ellendale,
+      North Dakota. The lease is expected to generate approximately $5 billion in
+      revenue over the term. Groundbreaking occurred in August 2025 with initial
+      capacity expected in 2026.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release — Oracle lease at Polaris Forge 2."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-09"
+    title: "Applied Digital reports Q1 FY2026 results — revenue $64.2M"
+    category: other
+    summary: >
+      Applied Digital reported Q1 FY2026 revenue of $64.2 million, up 84%
+      year-over-year. The company classified its Cloud Services segment as
+      discontinued operations in connection with the ChronoScale spinout. Data
+      Center Hosting and HPC Hosting comprise continuing operations.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Q1 FY2026 earnings press release, October 9, 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-08-01"
+    title: "Macquarie preferred equity facility — up to $5.0B for data center development"
+    category: funding
+    summary: >
+      Applied Digital disclosed a preferred equity facility with Macquarie Asset
+      Management providing up to $5.0 billion in total capacity for data center
+      development. As of the announcement, $900 million was drawn with additional
+      draws planned. The facility supports the company's multi-campus AI factory
+      construction program.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital disclosure of Macquarie preferred equity facility."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-07-30"
+    title: "Applied Digital files 10-K for FY2025 — annual revenue $144.2M"
+    category: other
+    summary: >
+      Applied Digital filed its annual report for FY2025 (year ended May 31, 2025)
+      reporting total revenue of $144.2 million and a net loss of $231.1 million.
+      The filing disclosed the Polaris Forge campus development program and the
+      multi-segment business structure (Data Center Hosting, Cloud Services, HPC Hosting).
+    sources:
+      - url: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001144879&type=10-K&dateb=&owner=include&count=10
+        kind: sec_10k
+        description: "Direct from SEC filing: Form 10-K accession 0001144879-25-000021; fiscal year ended 2025-05-31."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-06-15"
+    title: "$15M investment in Corintis — advanced liquid cooling technology"
+    category: partnership
+    summary: >
+      Applied Digital led a $25 million funding round for Corintis, a developer of
+      advanced direct-to-chip liquid cooling technology. Applied Digital invested
+      $15 million, strengthening its proprietary cooling capabilities for AI data centers.
+    sources:
+      - url: https://ir.applieddigital.com/news-events/press-releases
+        kind: ir_html
+        description: "Primary source: Applied Digital press release — Corintis investment."
+        retrieved_at: "2026-03-29"

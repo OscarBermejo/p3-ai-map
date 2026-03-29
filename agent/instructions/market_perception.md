@@ -113,21 +113,25 @@ Quantitative or semi-quantitative measures of market mood:
 
 ### 4. Information asymmetries
 
-This is the most valuable section. Where might the market be wrong?
+This is the most valuable section. Where might the market be wrong? This is not about collecting what others have said — it is about doing **original analysis** that challenges the consensus.
 
 Types of asymmetry to look for:
 
 - **Underappreciated strengths**: capabilities, moats, or tailwinds the market is not pricing
 - **Hidden risks**: concentration, supply chain fragility, competitive threats, execution gaps the market is ignoring
+- **Structural impossibilities**: cases where the math shows the business model cannot work as described (e.g., cost structure that exceeds revenue regardless of scale, capex requirements that exceed any realistic funding path)
 - **Misunderstood dynamics**: cases where the market narrative is based on a flawed mental model
 - **Timing disconnects**: the market is directionally right but wrong about when something will matter
+- **Disclosure gaps as risk signals**: when a company refuses to disclose something that peers disclose freely, that itself is information. The refusal to break out contract-level economics, customer concentration, or segment margins when peers do is a signal about what management does not want you to see.
 
 Each asymmetry should include:
 
 - What the market believes (with source)
-- What the evidence suggests instead (with source)
-- Why the gap exists (complexity, recency, attention)
+- What the evidence suggests instead (with source — preferably including **original derived analysis**: a ratio you computed, a comparison you built, or a stress test you ran)
+- Why the gap exists (complexity, recency, attention, or deliberate obfuscation)
 - What would close the gap (catalyst, filing, product launch)
+
+**The best information asymmetries require math to find.** "The market is undervaluing the software platform" is a Tier 2 observation anyone can parrot from Seeking Alpha. "Structural costs consume 110% of revenue even after adjusting depreciation to industry standard, meaning profitability requires pricing power the company has not demonstrated in its bare-metal hyperscaler contracts" is an original finding that requires opening the filing, computing the ratios, and understanding the business model.
 
 ### 5. Competitive positioning
 
@@ -143,6 +147,15 @@ This section should capture:
 - **What would change the competitive order** — a specific product launch, pricing move, technology shift, or regulatory change that could reshuffle rankings
 
 Focus on the dimensions that **actually drive customer decisions and economic outcomes** in this layer, not generic strategy-framework comparisons. For chips that might be performance-per-dollar, software ecosystem, supply availability, and total cost of ownership at rack scale. For infrastructure it might be power cost, permitting speed, customer concentration, and interconnect density.
+
+**Disclosure quality comparison** (required sub-section): For each key peer, assess and compare:
+
+- **Financial granularity**: Does the company break out segment revenue, customer concentration, contract-level economics, or margin by business line? Or does it report only top-line numbers?
+- **Operational transparency**: Does it disclose GPU counts, power capacity utilization, contract terms, capex per deal? Or only headline ARR and total deal value?
+- **Guidance specificity**: Specific and falsifiable ("$X revenue by Q2") vs. vague directional ("continued growth expected")?
+- **Management deflections**: From the most recent earnings transcript, what questions did analysts ask that management avoided, deflected, or answered vaguely? List them. These are often the most important topics.
+
+Rate each company as a peer comparison: "IREN discloses contract-level P&L and cash flow for each hyperscaler deal; Nebius discloses only headline ARR and total deal value; CoreWeave discloses backlog but not per-deal economics." This tells the reader whether they can actually model this company’s future economics or are taking management’s word for it.
 
 Use peer data from their own `business/business.yaml` and `financials/*.yaml` when available in the repo. When peer data is not in the repo, use the same source tiers as the rest of market perception — prefer Tier 1 analytical (SemiAnalysis, vendor datasheets, MLPerf) for hard comparisons, Tier 2 for competitive framing.
 

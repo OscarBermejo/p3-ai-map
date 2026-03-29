@@ -17,5 +17,11 @@ companies:
     layer: infrastructure
   - slug: coreweave
     layer: infrastructure
+  - slug: applied-digital
+    layer: infrastructure
+  - slug: oracle
+    layer: infrastructure
   - slug: nvidia
+    layer: chips
+  - slug: amd
     layer: chips

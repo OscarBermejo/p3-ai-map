@@ -1,7 +1,10 @@
+# Capstone narrative — thesis-driven judgment synthesizing CoreWeave's financials, business
+# profile, announcements, market perception, and structural analysis. Not investment advice.
+
 kind: financial_narrative
 schema_version: 1
 
-as_of: "2026-03-26"
+as_of: "2026-03-29"
 
 based_on_financials:
   file: financials/2025-Q4.yaml
@@ -11,96 +14,284 @@ based_on_financials:
 business_profile_as_of: "2025-12-31"
 
 central_questions:
-  - "CoreWeave has already proven demand and revenue scale; the harder question is whether its execution edge and backlog can outrun the financing burden and concentration risk embedded in the model."
+  - "CoreWeave has proven demand and execution speed at a scale no other neocloud has matched. The question is whether the capital structure required to achieve that speed — $21.4B in debt, $8.2B in lease obligations, and a GPU fleet depreciating on a 5-6 year schedule — leaves room for the economics to mature before the market normalizes."
 
 sections:
-  - id: this_is_not_a_fake_ai_story
-    title: "This is not a fake AI story"
+  - id: the_hybrid_model
+    title: "CoreWeave is neither a pure builder nor a pure lessee — and that changes how you read every number"
     body: |
-      The first thing to understand about CoreWeave is that the company is no longer asking investors to believe in a future AI infrastructure business that has not shown up in the numbers. In **Q4 2025**, CoreWeave generated about **$1.57B** of **revenue** and about **$1.06B** of **gross profit**, while the business profile points to about **$60.7B** of **remaining performance obligations** as of year-end. That is not promotional vapor; it is evidence of a company that has already become a major delivery vehicle for AI compute.
+      The first thing to understand about CoreWeave is that its business model sits between two poles. IREN builds, owns, and operates everything from the land to the grid connection to the data center shell to the GPUs. Nebius leases nearly all its physical infrastructure from third-party colocation providers and deploys GPUs into rented space. CoreWeave does both: it operates "purpose-built" data centers and also leases or licenses third-party data center space — what the 10-K describes as a "hybrid" integration model.
 
-      The announcement history reinforces that read. CoreWeave signed an **OpenAI** infrastructure agreement with contract value of up to **$11.9B**, later closed a **$2.6B** delayed-draw financing facility specifically tied to supporting that delivery, and then deepened its strategic relationship with **NVIDIA**, which invested **$2B** and backed a plan to build more than **5 gigawatts** of AI factories by 2030. In other words, CoreWeave is clearly winning real demand, real counterparties, and real capital.
+      **What CoreWeave owns (on the balance sheet):**
+      - Property, plant & equipment (net): $30.6B as of Q4 2025. This is primarily GPU servers, networking equipment, and data center buildout. PP&E grew from $11.9B at the start of 2025 to $30.6B at year-end — a $18.6B increase in 12 months. That pace of physical asset accumulation is extraordinary.
+      - Goodwill and intangibles: $1.3B, largely from the Weights & Biases and other acquisitions.
 
-  - id: the_real_strength_is_execution_speed
-    title: "The real strength is execution speed, not just access to GPUs"
+      **What CoreWeave leases (off the visible balance sheet, but on it under ASC 842):**
+      - Operating lease right-of-use assets: $8.2B.
+      - Operating lease liabilities: $8.2B ($427M current + $7,768M non-current).
+      - These are multi-year data center leases. The company occupies space it does not own and pays rent that escalates over time.
+
+      **Why this matters for reading the financials:** CoreWeave carries both the heavy D&A of an infrastructure owner ($2.45B in FY2025) AND $8.2B of lease obligations that a pure owner like IREN does not have. The $30.6B in PP&E is mostly GPU hardware with a 5-6 year useful life per the 10-K depreciation schedules. Unlike IREN's land, grid connections, and data center shells — assets with 20-40 year useful lives — CoreWeave's PP&E is dominated by rapidly depreciating compute equipment. When the GPUs reach end-of-life, CoreWeave still owes the lease payments on the buildings they're housed in.
+
+      This is the fundamental structural difference. IREN's asset base includes appreciating long-lived infrastructure underneath depreciating hardware. CoreWeave's asset base is primarily the depreciating hardware itself, housed in leased space with continuing obligations. The hybrid model gives CoreWeave speed and flexibility to deploy capacity rapidly (you can lease space faster than you can build it), but it creates a narrower residual value story than a full build-own-operate model.
+
+  - id: what_coreweave_has_proven
+    title: "The demand and execution story is real — and it is the strongest of any neocloud"
     body: |
-      CoreWeave's most credible advantage appears to be operational and commercial execution rather than a simple hardware arbitrage. The company keeps showing up early on new NVIDIA platforms, from the planned **Rubin** deployment to the March 2026 **HGX B300** launch, and it is trying to combine infrastructure with software and workflow control through **Mission Control**, **Flexible Capacity Plans**, and the **Weights & Biases** acquisition.
+      CoreWeave's Q4 2025 revenue of $1.57B and FY2025 revenue of $5.13B (168% YoY growth) represent the fastest revenue ramp in cloud infrastructure history. No neocloud — not Nebius, not IREN — is within an order of magnitude of this run rate. For context:
+      - IREN's trailing four-quarter revenue: ~$740M (90% still from Bitcoin mining)
+      - Nebius Q4 2025 quarterly revenue: $228M
+      - CoreWeave Q4 2025 quarterly revenue: $1,572M — 6.9x Nebius, 8.5x IREN's total
 
-      That matters because many competitors can eventually buy hardware, raise money, or sign marketing partnerships. Fewer can repeatedly bring frontier systems into production quickly enough to attract customers like OpenAI and Perplexity while also adding tools that make the platform easier to use in production. This does not prove a durable moat yet, but it does suggest CoreWeave is genuinely good at compressing time-to-capacity and time-to-customer in a market where speed still matters enormously.
+      The demand signal is equally strong. Revenue backlog stood at $66.8B as of year-end (management's figure, which includes RPO of $60.7B per XBRL plus an estimated additional $6.1B from committed contracts). This gives CoreWeave multi-year revenue visibility that neither peer can match. IREN has a single $9.7B Microsoft contract. Nebius has disclosed $44B+ in contracted deals (Microsoft + Meta), but is much earlier in the delivery curve.
 
-  - id: under_the_growth_is_a_heavy_financing_machine
-    title: "Under the growth is a heavy financing machine"
+      **What CoreWeave appears genuinely good at:** Execution speed. The company added ~260 MW of active power capacity in Q4 alone, bringing the total to 850+ MW. It was the first cloud named an NVIDIA Exemplar Cloud for training on GB200 NVL72. It holds SemiAnalysis' only Platinum ClusterMAX rating. These are not marketing claims — they are third-party validations of operational capability. CoreWeave repeatedly turns frontier NVIDIA hardware, customer demand, and capital into live production infrastructure faster than any competitor.
+
+      The customer base is diversifying: OpenAI (infrastructure deal up to $11.9B), Perplexity (inference partnership), Cursor, Cognition, CrowdStrike, Midjourney, Runway, Mercado Libre. Two hyperscaler customers are described as having expanded relationships. This is a real, production-scale AI cloud — not a paper business.
+
+      FY2026 guidance of $12-13B revenue (134-153% YoY growth) is backed by the backlog. At the midpoint of $12.5B, that's only 18.7% of the $66.8B backlog, implying the backlog extends multiple years beyond 2026. Whether the FULL backlog converts is a separate question — but 2026 revenue appears well-supported.
+
+  - id: the_structural_cost_challenge
+    title: "D&A + interest: the $1.17B quarterly burden that gross profit barely covers"
     body: |
-      The non-obvious part of the CoreWeave story is that spectacular top-line growth does **not** yet mean the model is economically self-supporting. Q4 operating cash flow was about **$1.56B**, which looks strong on first glance, but the same quarter also required about **$4.06B** of **capital expenditures** and about **$3.53B** of **financing cash inflow**. That is the signature of a company still building far ahead of current free-cash-generation capacity.
+      CoreWeave's cost structure is dominated by two items that are the direct consequence of its capital-intensive, debt-financed growth model: depreciation on owned GPU hardware, and interest on the debt used to buy it.
 
-      The income statement tells the same story in another way. CoreWeave produced about **$1.06B** of gross profit in Q4, but about **$820.5M** of **depreciation and amortization** and about **$351.1M** of **interest expense** still drove about **$451.7M** of **net loss**. So the right way to read CoreWeave is not “high growth cloud, therefore economic leverage is already solved.” It is “high growth cloud with real gross economics, but still carrying a capital structure and depreciation load that can easily consume those economics.”
+      **Q4 2025 cost decomposition:**
 
-  - id: backlog_is_powerful_but_quality_matters
-    title: "Backlog is powerful, but backlog quality matters more than headline size"
+      | Line | Q4 2025 | % of Revenue | Trend (Q1→Q4) |
+      |------|---------|-------------|---------------|
+      | Cost of revenue | $509M | 32.4% | 26.7% → 32.4% (rising) |
+      | D&A | $821M | 52.2% | 45.2% → 52.2% (rising) |
+      | SGA | $202M | 12.9% | 18.9% → 12.9% (improving) |
+      | R&D | $109M | 6.9% | 7.1% → 6.9% (stable) |
+      | **Total opex** | **$1,662M** | **105.7%** | 102.8% → 105.7% |
+      | Interest expense | $351M | 22.3% | 26.2% → 22.3% (improving) |
+
+      **The all-in operating cost ratio was 105.7% in Q4** — meaning CoreWeave spent $1.06 for every $1.00 of revenue before interest. This is worse than Q2 (98.4%) and Q3 (96.2%), driven by the D&A surge as $10B of new PP&E came online.
+
+      **The critical computation: D&A + interest vs. gross profit.**
+      - Q4 gross profit: $1,063M
+      - Q4 D&A: $821M
+      - Q4 interest expense: $351M
+      - D&A + interest: $1,172M
+      - **D&A + interest exceeds gross profit by $109M.**
+
+      This means CoreWeave cannot cover the cost of depreciating its hardware and servicing its debt from the revenue those assets generate — not in Q4. Every dollar of gross profit, plus $109M more, goes to asset depreciation and debt service before any SGA, R&D, or other costs are paid.
+
+      **Gross margin after D&A — the most alarming trend:**
+      - Q1: (GP $719M - D&A $443M) / Revenue $982M = **28.1%**
+      - Q2: (GP $900M - D&A $559M) / Revenue $1,213M = **28.1%**
+      - Q3: (GP $996M - D&A $630M) / Revenue $1,365M = **26.8%**
+      - Q4: (GP $1,063M - D&A $821M) / Revenue $1,572M = **15.4%**
+
+      Gross margin after D&A has been cut nearly in half from Q3 to Q4. The D&A increase of $191M ($630M→$821M) is driven by the massive Q4 PP&E build ($20.7B→$30.6B). This is the cost of deploying capacity at record speed — each new tranche of GPU hardware immediately begins depreciating, but the revenue from that hardware ramps over subsequent quarters. The margin should recover as the newly deployed capacity fills with paying customers. But this dynamic — D&A stepping up ahead of revenue — will repeat every time CoreWeave deploys a large tranche of new hardware. It is a structural feature of the capital-intensive model, not a one-time event.
+
+      **Is this the price of strategy or a structural problem?**
+
+      Both, partially. The D&A burden is the expected cost of CoreWeave's growth strategy — buying GPUs ahead of demand to maintain execution speed. This is analogous to Amazon's heavy fulfillment center capex or a chip company investing in next-gen capacity ahead of orders. The D&A is temporary (the GPUs depreciate to zero over 5-6 years) and the revenue from those GPUs should compound.
+
+      BUT the interest burden is different. Interest is the cost of FINANCING the strategy with debt rather than equity or operating cash flow. CoreWeave's $21.4B in debt generates $1.15B in annual interest expense — that cost does not depreciate away. As debt grows (it must, to fund the buildout), interest grows with it. Interest expense as a share of revenue improved from 26.2% (Q1) to 22.3% (Q4), but in absolute dollars it grew from $257M to $351M. At the FY2026 debt levels implied by continued buildout, interest expense could reach $1.5-2.0B annually.
+
+      The combination of depreciating assets + non-depreciating debt service is what makes CoreWeave's capital structure riskier than a pure equity-funded buildout. The company needs revenue to grow faster than the combined D&A + interest trajectory — and it needs that to happen while gross margin stabilizes, not compresses.
+
+  - id: the_deferred_revenue_engine
+    title: "Positive OCF is real, but it is funded by customer prepayments — not operational cash generation"
     body: |
-      The **$60.7B** remaining performance obligation number is obviously impressive and gives CoreWeave much more visibility than a typical fast-growing infrastructure name. But backlog should not be read as if it were the same thing as revenue already earned, margin already locked, or customer diversification already achieved. The filing and broader disclosure set still suggest a business dependent on a relatively limited number of very large counterparties, even if that mix is improving.
+      CoreWeave's Q4 operating cash flow of $1.56B looks strong. But decomposing it reveals what is driving the number.
 
-      That distinction matters because CoreWeave's financing strategy depends on those contracts being durable enough to support more debt, more equipment, and more site buildout. If customers remain sticky and utilization stays high, the backlog can justify a lot of capital formation. If contract economics tighten, deployments slip, or large customers reallocate demand, the balance sheet gives management much less room for error than the revenue growth alone might suggest.
+      **Q4 OCF decomposition:**
+      - Net loss: -$452M
+      - Add back D&A: +$821M
+      - Add back SBC: +$157M
+      - Add back non-cash interest: +$22M (debt discount amortization)
+      - **Cash earnings before working capital: ~$548M**
+      - Deferred revenue increase: +$2,772M
+      - Other working capital changes: -$1,791M (AR increases, prepaid expenses, etc.)
+      - **Net OCF: $1,559M**
 
-  - id: software_and_product_moves_are_strategic_not_yet_proven
-    title: "The software and product moves are strategic, not yet economically proven"
+      Strip out the deferred revenue change and OCF is approximately **-$1,213M**. The business does not generate operational cash without customer prepayments.
+
+      **Deferred revenue on the balance sheet:**
+      - Current deferred revenue: $1,709M
+      - Non-current deferred revenue: $6,476M
+      - **Total: $8,185M** — 1.6x quarterly revenue
+
+      This $8.2B represents cash CoreWeave has already collected from customers for services not yet delivered. It is real cash from creditworthy counterparties (OpenAI, hyperscalers, enterprises) tied to real delivery obligations. It is NOT the same as subscription-based deferred revenue that auto-renews — these are large infrastructure deployment contracts with specific delivery milestones.
+
+      The FY2025 pattern tells the same story. Full-year OCF was $3,058M, but deferred revenue increased by $4,174M during the year. Without prepayments, operating cash flow was approximately -$1,116M.
+
+      **This is not necessarily a red flag — but it bounds the analysis.** Customer prepayments from counterparties like OpenAI and Microsoft are among the highest-quality forms of working capital financing available. The risk is not that the prepayments are fake, but that CoreWeave's operating cash generation depends on continued new contract signings (which produce new prepayments). If the pace of new deals slows, the prepayment inflow slows, and OCF turns negative.
+
+  - id: the_capital_structure
+    title: "$29.6B of total obligations: the debt and lease stack that makes execution non-optional"
     body: |
-      CoreWeave's March 2026 announcements are important because they show management trying to become more than a capacity merchant. The **Perplexity** partnership leans into inference, **Flexible Capacity Plans** are an attempt to make AI consumption more cloud-like, and the **B300** / **Rubin** roadmap plus Weights & Biases integration are meant to position CoreWeave as a fuller-stack production platform rather than just a cluster provider.
+      CoreWeave's capital structure is the most leveraged of any neocloud, and it is the lens through which every other metric must be filtered.
 
-      Strategically, that is exactly the right direction. It is how CoreWeave might defend itself if raw compute becomes less scarce or if hyperscalers narrow the performance gap. But those product moves should still be treated as evidence of intent and platform progress, not as proof that CoreWeave has already built a software moat. Today the business still looks primarily monetized through infrastructure delivery, with software and workflow layers helping win and retain customers rather than standing alone as a separately demonstrated profit engine.
+      **Debt:**
+      - Total debt: $21.4B ($6.7B current + $14.7B non-current)
+      - Cash: $3.1B
+      - Net debt: $18.2B
+      - Net debt / TTM revenue ($5.1B): **3.6x**
+      - Net debt / Adjusted EBITDA ($3.1B): **5.9x**
+
+      **Operating leases:**
+      - Total operating lease liabilities: $8.2B ($427M current + $7,768M non-current)
+
+      **Combined obligations: $29.6B** in debt + lease liabilities, against $49.3B in total assets and $3.3B in stockholders' equity.
+
+      **The refinancing wall:** $6.7B of debt is classified as current, meaning it matures within 12 months. CoreWeave must refinance this while continuing to fund ~$10B+ in annual capex. This requires continuous, uninterrupted access to debt markets at reasonable rates. The $2.6B convertible note offering in Q4 2025 and the $2.5B revolving credit expansion demonstrate the company can access capital — but at SOFR + 4% (the OpenAI facility rate), the cost of that capital compounds into the interest burden described above.
+
+      **What-if scenario: capital markets close for 12 months.**
+      - Current cash ($3.1B) plus deferred revenue already collected (~$8.2B represents already-received cash)
+      - Against: $6.7B current debt maturities + continued capex obligations
+      - CoreWeave could likely survive by cutting capex and delivering on existing committed capacity, but it could NOT continue the current buildout pace. The growth thesis requires capital markets access.
+
+      **The equity cushion is thin:** Stockholders' equity of $3.3B supports $49.3B in total assets — a 14.8x asset-to-equity ratio. This is banking-level leverage. It works as long as asset values hold and revenue grows. If GPU values decline (technology obsolescence, market normalization) or customer contracts underperform, the equity buffer is small relative to the obligations.
+
+      **Comparison to peers:**
+      - IREN: $3.84B total debt, $3.26B cash, $0.58B net debt. Debt backed by $3.17B PP&E plus 4.5 GW of secured grid connections (long-lived appreciating assets). Leverage is modest.
+      - Nebius: $4.13B total debt, $3.68B cash, $0.45B net debt. Minimal leverage.
+      - CoreWeave: $21.4B total debt, $3.1B cash, $18.2B net debt. Backed by $30.6B PP&E (primarily depreciating GPU hardware). Leverage is extreme but asset-backed.
+
+      The comparison reveals why business model matters for reading debt. IREN's $3.84B is backed by land and grid connections worth billions independent of the GPU business. CoreWeave's $21.4B is backed primarily by GPU servers worth $30.6B today but depreciating to zero over 5-6 years. The debt persists; the asset value declines. This is the structural tension in CoreWeave's capital structure.
+
+  - id: peer_comparison_through_the_model
+    title: "CoreWeave vs. IREN vs. Nebius — three models, same market, very different risk profiles"
+    body: |
+      Comparing cost ratios across these three companies without adjusting for business model differences produces misleading conclusions. Here is the same-quarter comparison with context.
+
+      **Q4 2025 structural comparison (all figures quarterly):**
+
+      | Metric | CoreWeave | IREN (FY26 Q2) | Nebius (Q4 2025) |
+      |--------|-----------|-----------------|------------------|
+      | Revenue | $1,572M | $185M | $228M |
+      | Gross margin | 67.6% | 64.4% | 69.9% |
+      | All-in cost ratio | 105.7% | 143.9% | 203% |
+      | D&A / Revenue | 52.2% | 53.7% | 79.4% |
+      | Interest / Revenue | 22.3% | 5.8% | 16.8% |
+      | Net debt | $18.2B | $0.58B | $0.45B |
+      | PP&E | $30.6B | $3.17B | $5.57B |
+      | Operating lease obligations | $8.2B | minimal | not disclosed |
+
+      **Why the raw comparison misleads:**
+
+      CoreWeave's 105.7% cost ratio is the "best" of the three — but this is because CoreWeave is 7-10x further along the revenue ramp, not because its cost structure is inherently more efficient. At IREN's current revenue level ($185M), CoreWeave's Q1 2025 cost ratio was also above 100%. The question is trajectory, not point-in-time ratio.
+
+      **The business model differences that matter:**
+
+      1. **Residual value divergence.** IREN keeps land, grid connections, and data center shells after GPUs depreciate — assets with 20-40 year lives in a power-constrained market. CoreWeave keeps depreciating GPU hardware housed in leased space with continuing rent obligations. Nebius keeps essentially nothing — leased space reverts to the provider, and GPUs depreciate. CoreWeave's residual position is better than Nebius's (it owns the hardware) but structurally weaker than IREN's (it doesn't own the underlying infrastructure).
+
+      2. **Leverage profiles are inversely correlated with asset durability.** The company with the most durable assets (IREN) has the lowest leverage ($0.58B net debt). The company with the least durable assets (CoreWeave — rapid-depreciation hardware) has the highest leverage ($18.2B net debt). This is not coincidence — it reflects the higher capital intensity required when the assets must be continuously replaced.
+
+      3. **Revenue quality.** CoreWeave's $5.1B in actual recognized revenue at 60% adjusted EBITDA margin demonstrates the demand is real. IREN's AI Cloud revenue is $17.3M/quarter — it has not yet proven the unit economics of its AI business. Nebius is growing fast (547% YoY) but at a much smaller scale than CoreWeave. CoreWeave has already passed through the proof-of-demand stage that IREN and Nebius are still navigating.
+
+      4. **The lease exposure differentiator.** CoreWeave's $8.2B in operating lease obligations is a cost that IREN (which owns its facilities) does not have and that Nebius likely bears but does not disclose as clearly. These obligations represent the ongoing price of CoreWeave's hybrid model — the speed of leased capacity comes with the permanence of lease payments.
+
+  - id: what_would_need_to_be_true
+    title: "For CoreWeave to work: the specific conditions and what evidence says about each"
+    body: |
+      **1. Revenue must continue compounding faster than D&A + interest.**
+      Evidence: FY2026 guidance of $12-13B implies 134-153% growth. FY2025 D&A was $2.45B; with PP&E nearly tripled, FY2026 D&A could reach $4-5B. Interest expense was $1.15B in FY2025; with higher average debt balances, FY2026 could reach $1.5-2.0B. At $12.5B revenue with ~$6B D&A+interest, the burden drops to ~48% of revenue (from 70% in FY2025). Assessment: Revenue growth is outpacing the cost escalation — but not by a comfortable margin. Any revenue miss tightens the ratio quickly.
+
+      **2. Gross margin must stabilize, not continue compressing.**
+      Evidence: Gross margin fell from 73-74% in Q1-Q2 to 67.6% in Q4. This could be mix shift (lower-margin workloads), scaling into more expensive capacity, or price competition. If gross margin declines to 60% while D&A stays at 50%+ of revenue, there is essentially no margin left after depreciation. Assessment: This is the most important trend to monitor. One more quarter of compression toward 60% would be a structural concern. Recovery toward 70%+ in Q1 2026 would alleviate it.
+
+      **3. The backlog must convert at contracted terms.**
+      Evidence: $66.8B backlog, with $60.7B in strict RPO. CoreWeave's FY2026 guidance requires only ~19% of backlog. But backlog conversion depends on CoreWeave delivering capacity on schedule AND customers maintaining demand. The "other amounts we estimate" portion (~$6.1B) is looser than RPO. Assessment: Near-term conversion risk is low given the contracted nature. The longer-term risk is whether contracts signed during peak demand hold if the market normalizes.
+
+      **4. The debt stack must remain refinanceable at serviceable rates.**
+      Evidence: CoreWeave refinanced and raised new debt multiple times in 2025 ($2.6B convertible notes, $2.5B revolver expansion, $2.6B OpenAI facility). NVIDIA invested $2B in equity at $87.20/share. Credit markets are currently accessible. Assessment: No near-term refinancing crisis, but $6.7B of current debt must be addressed in 2026. In a credit tightening scenario, refinancing costs could rise, adding to the interest burden.
+
+      **5. Customer concentration must continue diversifying.**
+      Evidence: CoreWeave names more customers each quarter (OpenAI, Perplexity, Cursor, Cognition, CrowdStrike, Midjourney, etc.) and describes expanded relationships with two hyperscalers. But the filing does not disclose customer concentration percentages. The OpenAI deal alone ($11.9B) likely represents a significant share of the backlog. Assessment: Improving but unquantifiable from public disclosures. If OpenAI is >30% of revenue, that is a material concentration risk regardless of backlog diversification.
 
   - id: conclusion
-    title: "Takeaway"
+    title: "How to read CoreWeave right now"
     body: |
-      **Core judgment:** CoreWeave looks like one of the most commercially real AI infrastructure companies in the market, but it still behaves financially like a company sprinting to industrial scale before the market normalizes. The demand side of the story is strong: Q4 2025 revenue was about **$1.57B**, remaining performance obligations were about **$60.7B**, and the company continues to attract blue-chip customers, strategic backing from **NVIDIA**, and large financing commitments tied to real delivery programs.
+      CoreWeave is the most commercially validated AI infrastructure company in the neocloud space. $5.1B in FY2025 revenue, 168% YoY growth, $66.8B in backlog, $3.1B adjusted EBITDA at 60% margins, first-mover status on NVIDIA platforms, blue-chip customers from OpenAI to CrowdStrike — the demand story is settled. This is not a company you need to believe in on faith. The revenue is real.
 
-      **What CoreWeave appears genuinely good at:** speed of execution. The company seems unusually strong at turning frontier NVIDIA roadmaps, customer demand, and external capital into live platform capacity quickly enough to matter. That is a real advantage in the current market, and it helps explain why major counterparties keep choosing CoreWeave.
+      **What CoreWeave is doing well:**
+      - Execution speed is the genuine competitive advantage. CoreWeave repeatedly converts frontier hardware, capital, and customer demand into live production capacity faster than anyone else. The SemiAnalysis Platinum rating, the NVIDIA Exemplar Cloud designation, and the pace of MW additions (260 MW in Q4 alone) are third-party evidence, not just management claims.
+      - The 60% adjusted EBITDA margin at $5.1B revenue demonstrates the underlying economics work at the unit level. The gross margin of 67.6% on infrastructure delivery is healthy. The problem is not the business model — it is the cost of scaling the business model.
+      - Backlog of $66.8B provides multi-year visibility that no peer can match.
+      - The Weights & Biases acquisition and platform moves (Mission Control, Flexible Capacity Plans, Serverless RL) show management is building beyond infrastructure-as-capacity toward a platform with software differentiation. This is the right strategic direction.
 
-      **What still looks structurally weak:** the capital structure is heavy, and the margin for execution mistakes is thinner than the revenue trajectory implies. Q4 showed about **$4.06B** of capex against about **$1.56B** of operating cash flow, while year-end **total debt** was about **$21.37B** against about **$3.13B** of **cash**, or roughly **$18.2B** of implied net debt. Current liabilities of about **$16.44B** also sat well above current assets of about **$7.49B**. That does not make the company broken, but it does mean the model still depends on continued access to capital and continued clean execution on customer commitments.
+      **Where the genuine risks lie — not the expected costs:**
+      - **The interest burden is the structural constraint, not D&A.** D&A is the expected cost of owning GPU hardware — it is temporary and declines as assets depreciate. Interest expense ($1.15B FY2025, growing) is the cost of FINANCING the hardware with debt — it does not depreciate away, and it grows as debt grows. The combination of $21.4B in debt + $8.2B in lease obligations = $29.6B of total obligations, supported by $30.6B of rapidly depreciating PP&E and $3.3B of equity. This is not the same risk profile as a company with the same debt backed by long-lived appreciating assets.
+      - **Gross margin compression (73% → 68% over 4 quarters)** is the most important trend to track. If it stabilizes, the path to operating leverage is intact. If it continues toward 60%, the economics break even at scale — because D&A at 50%+ of revenue would consume all gross profit.
+      - **OCF without prepayments is negative (~-$1.2B in Q4).** Positive OCF depends on continued new deal signings that generate customer prepayments. This is high-quality working capital financing, but it makes cash flow dependent on commercial momentum, not just operational performance.
+      - **Customer concentration is undisclosed but likely high.** The OpenAI deal alone is up to $11.9B. Without concentration percentages in the filing, investors are estimating.
 
-      **Best near-term prediction:** CoreWeave is likely to keep looking strategically strong over the next few quarters if demand for frontier AI capacity remains tight and if the company continues converting its backlog into delivered infrastructure without major operational slips. The harder medium-term test is whether this can mature into durable economics once the market becomes less supply-constrained and more competitive. If CoreWeave proves it can keep the execution edge while lowering financing dependence over time, it could emerge as one of the few AI cloud specialists with a real long-term position. If not, investors may eventually decide they were underwriting a very effective buildout engine rather than a durable cloud franchise.
+      **Where the consensus appears off:**
+      - The market focuses on adjusted EBITDA ($3.1B, 60% margin) as proof the model works. But adjusted EBITDA adds back $2.45B of D&A and $630M of SBC — real costs with real economic substance. Adjusted operating income ($666M, 13% margin) and GAAP net loss (-$1.17B) give a more complete picture. CoreWeave is operationally profitable on an adjusted operating basis, but the margin is thin — not the 60% the EBITDA headline suggests.
+      - The $66.8B backlog headline is powerful but includes ~$6.1B of "other amounts we estimate" beyond strict RPO. The RPO of $60.7B is the harder number.
+      - The stock at $74.81 (March 27) implies ~$38B market cap. Against FY2025 revenue of $5.1B, that's 7.4x trailing revenue. Against FY2026 guided midpoint of $12.5B, it's 3.0x forward revenue. For a company growing 150%+ with 60% EBITDA margins, the forward multiple is not demanding — IF the gross margin compression stabilizes and the debt remains serviceable.
+
+      **What to watch next:**
+      1. **Q1 2026 gross margin.** If it recovers toward 70%+, the Q4 dip was a timing artifact from the massive PP&E build. If it stays at 67% or declines further, it signals a structural compression that changes the thesis.
+      2. **Q1 2026 revenue vs. $1.9-2.0B guidance.** First data point on whether the guided 134-153% FY growth is tracking.
+      3. **Debt refinancing activity.** How CoreWeave handles the $6.7B in current maturities will signal the capital market's continued confidence.
+      4. **Customer concentration disclosure.** If CoreWeave provides this in future filings (as a public company should), it will either confirm or alleviate the concentration concern.
+      5. **Insider selling patterns.** The March 2026 insider sales (CFO and co-founders selling ~$37M combined) coincided with a 12% stock decline. This is normal post-IPO lockup activity, but the cadence matters for sentiment.
+
+      **What remains unknown:** Per-GPU unit economics (not disclosed — CoreWeave does not report GPU counts or revenue per unit of capacity). Contract-level margins (the filing describes RPO but not the margin structure per deal). Exact customer concentration percentages. Steady-state D&A run rate once the current buildout phase stabilizes. Whether the $6.1B of backlog beyond strict RPO will convert at the same quality as the contracted portion. These gaps make it impossible to model CoreWeave's long-term profitability with precision — you can model revenue (backlog supports it), but you cannot model margins (the building blocks are not disclosed).
 
 disclosure_gaps: |
-  The biggest unanswered questions are around concentration and unit economics rather than demand existence. CoreWeave clearly has very large customer commitments and backlog, but the disclosures still leave limited visibility into customer mix durability, contract-level margin structure, how quickly product-layer additions become economically meaningful, and what steady-state returns look like after depreciation, interest burden, and ongoing equipment refresh. Those gaps matter because they determine whether CoreWeave is building a lasting AI cloud franchise or a highly effective but financing-intensive bridge into the current shortage cycle.
+  - CoreWeave does not disclose GPU fleet counts (active, total, or on-order), preventing computation of
+    per-unit capacity metrics or revenue per GPU — the most granular unit economics measure.
+  - Customer concentration percentages are not reported. The OpenAI contract ($11.9B) is disclosed, but its
+    share of current revenue, backlog, or RPO is not. The 10-K describes "two hyperscaler" relationships
+    without naming or quantifying them.
+  - The $66.8B backlog includes ~$6.1B beyond strict RPO ($60.7B) described as "other amounts we estimate
+    will be recognized as revenue" — the conversion criteria for this portion are not defined.
+  - Depreciation schedule by asset class (GPUs vs. network equipment vs. leasehold improvements) is
+    described qualitatively in accounting policies but the weighted average useful life is not stated as a
+    single figure. The 5-6 year range used in this narrative is from the 10-K property/equipment note.
+  - Operating lease terms (escalation rates, renewal options, termination provisions) are summarized but
+    not disclosed at the individual facility level.
+  - Earnings call transcript reviewed via secondary summaries and press release, not the full primary
+    transcript.
+  - Market cap computed from March 27 closing price ($74.81) x approximate shares (~506M); not a filing
+    figure.
 
 sources:
   - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm
     kind: sec_10k
-    description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31 (filed 2026-03-02); annual report used for financial statement context, debt structure, and overall company disclosures."
-    retrieved_at: "2026-03-26"
-  - url: https://d18rn0p25nwr6d.cloudfront.net/CIK-0001769628/85549f0b-319d-4440-a131-ab85fd6fbad0.html
-    kind: sec_10k
-    description: "Primary source: CoreWeave 2025 annual report in structured HTML format; reviewed for debt, customer concentration risk, and note structure."
-    retrieved_at: "2026-03-26"
+    description: "Direct from SEC filing: Form 10-K for fiscal year ended 2025-12-31 (filed 2026-03-02); annual report reviewed for financial statements, debt structure, lease obligations, depreciation policies, revenue recognition, customer disclosures, and risk factors."
+    retrieved_at: "2026-03-29"
+  - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000094/coreweave4q25earningspress.htm
+    kind: sec_8k
+    description: "Direct from SEC filing: Q4 2025 and FY2025 earnings press release (8-K Ex.99.1 filed 2026-02-26); revenue, operating expenses, GAAP-to-non-GAAP reconciliation, revenue backlog ($66.8B), active power (850+ MW), contracted power (~3.1 GW), FY2026 guidance ($12-13B)."
+    retrieved_at: "2026-03-29"
+  - url: https://data.sec.gov/api/xbrl/companyfacts/CIK0001769628.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): All quarterly and annual financial facts for CoreWeave (CIK 0001769628); used for revenue, cost of revenue, D&A, operating income, interest expense, cash flow, balance sheet line items across Q1-Q4 2025."
+    retrieved_at: "2026-03-29"
   - url: https://www.sec.gov/Archives/edgar/data/1769628/000176962826000044/ex991pressrelease_final.htm
     kind: sec_8k
-    description: "Primary source: Form 8-K Exhibit 99.1 filed 2026-01-26 announcing the expanded NVIDIA collaboration and $2 billion investment."
-    retrieved_at: "2026-03-26"
+    description: "Direct from SEC filing: 8-K Ex.99.1 (2026-01-26) announcing expanded NVIDIA collaboration, $2B equity investment at $87.20/share, >5 GW AI factory buildout target by 2030."
+    retrieved_at: "2026-03-29"
   - url: https://www.coreweave.com/news/coreweave-announces-agreement-with-openai-to-deliver-ai-infrastructure
     kind: company_web
-    description: "Primary source: official CoreWeave release dated 2025-03-10 announcing the OpenAI infrastructure agreement with contract value up to $11.9 billion and related $350 million equity investment."
-    retrieved_at: "2026-03-26"
+    description: "Primary source: CoreWeave release (2025-03-10) announcing OpenAI infrastructure agreement, contract value up to $11.9B, $350M equity investment."
+    retrieved_at: "2026-03-29"
   - url: https://investors.coreweave.com/news/news-details/2025/CoreWeave-Closes-2-6-Billion-Secured-Debt-Financing-Facility-Strengthening-Market-Position-as-AI-Cloud-Leader/default.aspx
     kind: ir_html
-    description: "Primary source: official CoreWeave investor relations release dated 2025-07-31 announcing the $2.6 billion delayed draw term loan facility tied to the OpenAI delivery program."
-    retrieved_at: "2026-03-26"
-  - url: https://www.coreweave.com/news/coreweave-to-acquire-weights-biases---industry-leading-ai-developer-platform-for-building-and-deploying-ai-applications
-    kind: company_web
-    description: "Primary source: official CoreWeave release dated 2025-03-04 announcing the agreement to acquire Weights & Biases."
-    retrieved_at: "2026-03-26"
-  - url: https://www.coreweave.com/news/coreweave-extends-its-cloud-platform-with-nvidia-rubin-platform
-    kind: company_web
-    description: "Primary source: official CoreWeave release dated 2026-01-05 announcing planned deployment of NVIDIA Rubin on the CoreWeave platform."
-    retrieved_at: "2026-03-26"
+    description: "Primary source: CoreWeave IR release (2025-07-31) announcing $2.6B delayed draw term loan facility at SOFR + 4%, maturing 2030-08-21, tied to OpenAI delivery."
+    retrieved_at: "2026-03-29"
   - url: https://www.coreweave.com/news/coreweave-announces-agreement-to-power-perplexitys-ai-inference-workloads
     kind: company_web
-    description: "Primary source: official CoreWeave release dated 2026-03-04 announcing the multi-year strategic partnership with Perplexity."
-    retrieved_at: "2026-03-26"
-  - url: https://www.coreweave.com/news/coreweave-introduces-flexible-capacity-plans-to-accelerate-ai-innovation
-    kind: company_web
-    description: "Primary source: official CoreWeave release dated 2026-03-10 announcing Flexible Capacity Plans, including Flex Reservations and Spot."
-    retrieved_at: "2026-03-26"
+    description: "Primary source: CoreWeave release (2026-03-04) announcing multi-year Perplexity inference partnership on GB200 NVL72 clusters."
+    retrieved_at: "2026-03-29"
   - url: https://www.coreweave.com/news/coreweave-advances-ai-native-cloud-platform-for-the-next-phase-of-production-scale-ai
     kind: company_web
-    description: "Primary source: official CoreWeave release dated 2026-03-16 announcing NVIDIA HGX B300 availability and new Weights & Biases workflow capabilities."
-    retrieved_at: "2026-03-26"
+    description: "Primary source: CoreWeave release (2026-03-16) announcing NVIDIA HGX B300 availability, Vera Rubin NVL72 deployment plans, NVIDIA Dynamo 1.0 collaboration."
+    retrieved_at: "2026-03-29"
+  - url: https://stockanalysis.com/stocks/crwv/
+    kind: curated_platform
+    description: "Primary source: Stock Analysis — CRWV closing price $74.81 on March 27, 2026; analyst consensus 19 Buy / 11 Hold / 2 Sell, average target $121.06."
+    retrieved_at: "2026-03-29"
+  - url: https://www.marketbeat.com/stocks/NASDAQ/CRWV/
+    kind: sell_side_summary
+    description: "Primary source: MarketBeat — CRWV analyst ratings, Bank of America upgrade to Buy with $100 target (2026-03-24), insider selling activity (McBee, Venturo)."
+    retrieved_at: "2026-03-29"

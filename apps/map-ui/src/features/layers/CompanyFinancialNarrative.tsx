@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import type { FinancialNarrativeView } from "../../data/types/financialNarrative";
 
@@ -7,15 +8,60 @@ type Props = {
   displayName: string;
 };
 
-function bodyParagraphs(body: string): string[] {
-  return body
-    .trim()
-    .split(/\n\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
+/**
+ * Split body text into renderable chunks while keeping markdown table blocks
+ * intact. A "table block" is any contiguous group of lines that start with `|`.
+ */
+function bodyChunks(body: string): string[] {
+  const lines = body.trim().split("\n");
+  const chunks: string[] = [];
+  let current: string[] = [];
+  let inTable = false;
+
+  for (const line of lines) {
+    const isTableRow = /^\s*\|/.test(line);
+
+    if (isTableRow) {
+      if (!inTable && current.length > 0) {
+        // flush prose collected so far
+        const prose = current.join("\n").trim();
+        if (prose) chunks.push(prose);
+        current = [];
+      }
+      inTable = true;
+      current.push(line);
+    } else {
+      if (inTable) {
+        // flush the table block
+        const table = current.join("\n").trim();
+        if (table) chunks.push(table);
+        current = [];
+        inTable = false;
+      }
+      current.push(line);
+    }
+  }
+
+  if (current.length > 0) {
+    const last = current.join("\n").trim();
+    if (last) chunks.push(last);
+  }
+
+  // For non-table prose chunks, further split on blank lines
+  const result: string[] = [];
+  for (const chunk of chunks) {
+    if (/^\s*\|/.test(chunk)) {
+      result.push(chunk);
+    } else {
+      const paras = chunk.split(/\n\n+/).map((p) => p.trim()).filter(Boolean);
+      result.push(...paras);
+    }
+  }
+
+  return result;
 }
 
-/** Renders YAML narrative prose (bold, inline code, etc.) — not plain text. */
+/** Renders YAML narrative prose (bold, inline code, tables, etc.) */
 const narrativeMdComponents: Components = {
   p: ({ children }) => (
     <p className="value-chain__narrative-p">{children}</p>
@@ -25,14 +71,34 @@ const narrativeMdComponents: Components = {
   code: ({ children }) => (
     <code className="value-chain__code">{children}</code>
   ),
+  table: ({ children }) => (
+    <div className="value-chain__narrative-table-wrap">
+      <table className="value-chain__narrative-table">{children}</table>
+    </div>
+  ),
+  thead: ({ children }) => (
+    <thead className="value-chain__narrative-thead">{children}</thead>
+  ),
+  tbody: ({ children }) => (
+    <tbody>{children}</tbody>
+  ),
+  tr: ({ children }) => (
+    <tr className="value-chain__narrative-tr">{children}</tr>
+  ),
+  th: ({ children }) => (
+    <th className="value-chain__narrative-th">{children}</th>
+  ),
+  td: ({ children }) => (
+    <td className="value-chain__narrative-td">{children}</td>
+  ),
 };
 
 function NarrativeMarkdownBody({ text }: { text: string }) {
   return (
     <>
-      {bodyParagraphs(text).map((para, i) => (
-        <ReactMarkdown key={i} components={narrativeMdComponents}>
-          {para}
+      {bodyChunks(text).map((chunk, i) => (
+        <ReactMarkdown key={i} remarkPlugins={[remarkGfm]} components={narrativeMdComponents}>
+          {chunk}
         </ReactMarkdown>
       ))}
     </>

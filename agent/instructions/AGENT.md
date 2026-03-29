@@ -83,5 +83,6 @@ When you add a script under `agent/tools/`, append a one-line description to the
 | [business.md](./business.md) | Business profile rules → layer resolution, template shape, metric semantics, guidance, and staleness |
 | [business_workflows.md](./business_workflows.md) | Business workflows → create `business/business.yaml`, or validate / update an existing profile |
 | [announcements.md](./announcements.md) | `announcements/announcements.yaml` → latest material company announcements from official channels; newest first |
-| [narrative.md](./narrative.md) | `narrative/narrative.yaml` → thesis-driven company judgment connecting filings, business, announcements, and context; not new authoritative metrics |
-| [market_perception.md](./market_perception.md) | `market_perception/market_perception.yaml` → external market signal: consensus narrative, key debates, sentiment, information asymmetries, and forward signals |
+| [structural_analysis.md](./structural_analysis.md) | Adversarial derived analysis → cost structure ratios, cash flow decomposition, capital stress tests, unit economics, disclosure quality vs peers, thesis destruction test. Run before writing narrative. |
+| [narrative.md](./narrative.md) | `narrative/narrative.yaml` → thesis-driven company judgment connecting filings, business, announcements, structural analysis, and context; must include original derived math |
+| [market_perception.md](./market_perception.md) | `market_perception/market_perception.yaml` → external market signal: consensus narrative, key debates, sentiment, information asymmetries (with original analysis), disclosure quality comparison, and forward signals |

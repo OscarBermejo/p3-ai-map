@@ -1,0 +1,87 @@
+# AMD FY2025 Q2 (Three months ended June 28, 2025)
+# Source: AMD Q2 FY2025 Earnings Press Release (Aug 5, 2025), 10-Q filed 2025-08-06
+# Accession: 0000002488-25-000108
+# NOTE: Q2 gross profit impacted by ~$800M in inventory and related charges from U.S. export
+# control on AMD Instinct MI308 GPU products to China. Excluding these charges, non-GAAP gross
+# margin would have been ~54%. This makes Q2 GAAP gross margin (40%) non-comparable to prior/later
+# quarters for trend analysis.
+# ZT Systems manufacturing business classified as held-for-sale; income from discontinued ops $104M.
+# AMD issued $2,441M in new senior notes in Q2 and repaid $950M (retiring 2024-due notes).
+
+period:
+  label: "FY2025-Q2"
+  start: "2025-03-30"
+  end: "2025-06-28"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: 7685000000
+  cost_of_revenue: 4366000000
+  gross_profit: 3059000000
+  research_and_development: 1894000000
+  selling_general_administrative: 991000000
+  depreciation_and_amortization: 568000000
+  operating_income: -134000000
+  interest_expense: 38000000
+  interest_income: null
+  other_income_expense_net: 98000000
+  income_tax_expense_benefit: -834000000
+  net_income: 872000000
+
+  # --- Cash flows ---
+  operating_cash_flow: 2011000000
+  stock_based_compensation: 369000000
+  capital_expenditures_cash: 282000000
+  investing_cash_flow_net: -2298000000
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at 2025-06-28) ---
+  cash_and_equivalents: 4442000000
+  current_assets: 24519000000
+  current_liabilities: 9843000000
+  property_plant_equipment_net: 2128000000
+  total_assets: 74820000000
+  total_liabilities: 15155000000
+  long_term_debt: 3218000000
+  current_portion_of_long_term_debt: 0
+  total_debt: 3218000000
+  stockholders_equity: 59665000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: 1623000000
+  shares_outstanding_diluted: 1630000000
+  market_cap: null
+
+sources:
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q2 FY2025 Earnings Press Release, Aug 5, 2025): Condensed Consolidated Statements of Operations — 'Three months ended June 28, 2025'. Revenue $7,685M; cost of sales $4,366M (excl. acq. intangibles amort.); amort. of acq. intangibles in COGS $260M; gross profit $3,059M (40% GAAP; includes ~$800M MI308 export control inventory charge); R&D $1,894M; MG&A $991M; amort. of acq. intangibles in opex $308M; total opex $3,193M; operating loss $(134)M; interest expense $(38)M; other income $98M; pre-tax loss $(74)M; income tax benefit $(834)M (includes $853M IRS tax reserve release); equity income $8M; income from continuing $768M; income from discontinued ops $104M (ZT Systems); net income $872M. Diluted EPS $0.54, diluted shares 1,630M, basic shares 1,623M."
+    covers: [revenue, cost_of_revenue, gross_profit, research_and_development, selling_general_administrative, operating_income, interest_expense, other_income_expense_net, income_tax_expense_benefit, net_income, shares_outstanding_basic, shares_outstanding_diluted]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q2 FY2025 press release, Aug 5, 2025): Condensed Consolidated Balance Sheet — June 28, 2025. Cash $4,442M; short-term investments $1,425M; AR $5,115M; inventories $6,677M; assets held for sale $4,326M (ZT Systems); prepaid/other $2,534M; total current assets $24,519M; PP&E net $2,128M; goodwill $25,083M; acq. intangibles net $17,812M; deferred tax $860M; other non-current $4,418M; total assets $74,820M. Accounts payable $3,080M; accrued liabilities $4,479M; liabilities held for sale $1,968M; other current $316M; total current liabilities $9,843M; LT debt $3,218M; LT lease $668M; DT liabilities $341M; other LT $1,085M; total stockholders' equity $59,665M; total liabilities + equity $74,820M."
+    covers: [cash_and_equivalents, current_assets, current_liabilities, property_plant_equipment_net, total_assets, total_liabilities, long_term_debt, current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: ir_html
+    description: "Direct from SEC filing (AMD Q2 FY2025 press release, Aug 5, 2025): Condensed Consolidated Statements of Cash Flows — 'Three months ended June 28, 2025'. Net cash from operating activities of continuing operations $1,462M; net cash from operating activities of discontinued operations (ZT Systems) $549M; total OCF $2,011M. Depreciation and amortization (operational) $189M. Stock-based compensation $369M. Purchases of PP&E $282M. Net cash used in investing activities of continuing operations $(2,276)M; net cash used in investing activities of discontinued operations $(22)M; total investing CF $(2,298)M. Includes acquisition of ZT Systems final consideration and net proceeds."
+    covers: [operating_cash_flow, stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net]
+    retrieved_at: "2026-03-29"
+
+  - url: https://data.sec.gov/api/xbrl/companyconcept/CIK0000002488/us-gaap/StockholdersEquity.json
+    kind: sec_companyfacts_json
+    description: "From SEC company facts API (XBRL): StockholdersEquity. end 2025-06-28: val $59,665,000,000, accn 0000002488-25-000108, frame CY2025Q2I. Confirms stockholders' equity = $59,665M."
+    supports_derivation_of: [stockholders_equity]
+    retrieved_at: "2026-03-29"
+
+  - url: https://ir.amd.com/news-events/press-releases/detail/1257/amd-reports-second-quarter-2025-financial-results
+    kind: documentation
+    description: "depreciation_and_amortization: AMD Q2 D&A shown in two components. (1) Amortization of acquisition-related intangibles on income statement: COGS $260M + opex $308M = $568M. (2) Operational D&A from CF reconciliation: $189M. The income statement amortization ($568M) is captured here. total_liabilities Derived: $74,820M total assets minus $59,665M stockholders' equity = $15,155M. financing_cash_flow_net null: AMD Q2 financing activities (debt issuance $2,441M, repayment $950M, buybacks ~$429M) net is approximately $1,062M but exact figure not extracted from filing table. interest_income null: included in 'Other income (expense), net' but not broken out separately in press release. market_cap null: not captured."
+    covers: [depreciation_and_amortization, financing_cash_flow_net, interest_income, market_cap]
+    retrieved_at: "2026-03-29"

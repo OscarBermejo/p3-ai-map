@@ -1,0 +1,789 @@
+layer: chips
+profile_version: 1
+
+as_of: "2026-03-29"
+
+# AMD AI accelerator product catalog — chips layer
+# Covers Instinct GPU family (CDNA 3 and CDNA 4 generations) plus EPYC CPUs as
+# supporting data-center hardware. Gaming/Client GPUs (Radeon RX 9000 series) are
+# noted but not the focus of the AI value chain positioning.
+
+products:
+
+  # ─── CDNA 3 Generation ──────────────────────────────────────────────────────────
+
+  - name: "Instinct MI300X"
+    vendor: amd
+    generation: "CDNA 3"
+    status: production
+    launch_date: "2023-12-06"
+
+    architecture:
+      process_node:
+        value: "TSMC N5 + N6 (chiplet)"
+        notes: "Three CDNA 3 compute dies (GCDs) on TSMC N5 + one I/O die on TSMC N6. Multi-chip module (MCM) using AMD 3D-stacked HBM approach."
+        sources:
+          - "AMD Instinct MI300X Product Brief, Dec 2023 — https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html"
+      transistor_count:
+        value: 153
+        notes: "~153B transistors total (3 × GCDs + 1 × IO die). Sometimes cited as 8 chiplets including HBM die stacks."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      die_size_mm2:
+        value: 1042
+        notes: "Reported active die area of compute complex; full package area larger. Per AMD CES 2024 press materials."
+        sources:
+          - "AMD MI300X die area reported in Hot Chips 35 (2023) and product brief"
+      memory_type:
+        value: "HBM3"
+        notes: "Eight HBM3 stacks integrated in the multi-chip package."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      memory_capacity_gb:
+        value: 192
+        notes: "192 GB HBM3 per GPU — largest memory capacity among commercially available AI accelerators at launch. Critical for large-model inference (fitting 70B+ parameter models on a single accelerator)."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      memory_bandwidth_tb_s:
+        value: 5.3
+        notes: "5.3 TB/s peak HBM3 bandwidth per card."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      interconnect:
+        value: "Infinity Fabric (900 GB/s total, 7th-gen xGMI)"
+        notes: "Chip-to-chip within OAM module via xGMI3 (Generation 4, 7th-gen IF). Supports multi-GPU scale-up in an 8-GPU system with point-to-point NIM links."
+        sources:
+          - "AMD Instinct MI300X Product Brief; AMD Hot Chips 35 presentation"
+
+    performance:
+      tdp_watts:
+        value: 750
+        notes: "750W OAM module TDP."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      peak_flops_fp8_tflops:
+        value: 1307
+        notes: "1,307 FP8 TFLOPS sparse (AMD headline). Dense FP8 not separately published; AMD typically headlines sparse."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      peak_flops_fp16_tflops:
+        value: 1307
+        notes: "1,307 BF16/FP16 TFLOPS sparse per AMD spec sheet. Dense BF16 = ~655 TFLOPS."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      peak_flops_fp32_tflops:
+        value: 163.4
+        notes: "163.4 FP32 TFLOPS (scalar compute; not matrix)."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+      peak_flops_int8_tops:
+        value: 2614
+        notes: "2,614 INT8 TOPS sparse per AMD spec sheet."
+        sources:
+          - "AMD Instinct MI300X Product Brief"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 1.74
+        notes: "Derived: 1,307 FP8 TFLOPS / 750W = 1.743 TFLOPS/W (sparse). Memory bandwidth per watt is where MI300X excels vs. H100 (5.3 TB/s / 750W = 7.07 GB/s/W)."
+        sources: []
+      flops_per_watt_fp16:
+        value: 1.74
+        notes: "Derived: 1,307 BF16 TFLOPS sparse / 750W = 1.743 TFLOPS/W. Lower dense figure: 655/750 = 0.87 TFLOPS/W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.00707
+        notes: "Derived: 5.3 TB/s / 750W = 0.00707 TB/s per W = 7.07 GB/s per W. Key differentiator for memory-bound inference workloads."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "AMD Instinct MI300X Universal Baseboard (UBB)"
+        notes: "8-GPU OAM-based UBB reference design. Used by Dell, HPE, Lenovo, Supermicro in their MI300X server platforms."
+        sources:
+          - "AMD Instinct MI300X Launch Materials, Dec 2023"
+      gpus_per_system:
+        value: 8
+        notes: "8 × MI300X OAM modules per UBB server. GPU-to-GPU bandwidth via PCIe + xGMI fabric; AMD provides reference interconnect topology."
+        sources:
+          - "AMD UBB system specification"
+      system_tdp_watts:
+        value: 6400
+        notes: "8 × 750W = 6,000W GPU power; system-level TDP (with CPUs, cooling, etc.) typically cited around 6,400–7,200W depending on EPYC configuration."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Rack-level density not published by AMD; depends on OEM chassis design."
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR 400G or Ethernet (400GbE/800GbE) — OEM choice"
+        notes: "AMD does not supply scale-out interconnect; MI300X servers connect via standard RDMA fabrics. No AMD equivalent to NVIDIA NVLink Switch for scale-out."
+        sources: []
+
+    workload_fit:
+      training:
+        value: competitive
+        notes: "ROCm + PyTorch/JAX support enables training at scale. Winning some hyperscaler training wins (Meta Llama 3, Microsoft Azure). Still behind NVIDIA in software breadth; some models require ROCm-specific modifications. MLPerf Training v4.0 results below H100 system."
+        sources: []
+      inference:
+        value: strong
+        notes: "192 GB VRAM is the defining advantage — can load 70B parameter FP16 models without tensor parallelism, 405B models with minimal sharding. Low $/token for large inference batches documented by multiple hyperscalers. Microsoft Azure ND MI300X v5 GA in 2024 specifically for inference."
+        sources: []
+      fine_tuning:
+        value: competitive
+        notes: "LoRA/QLoRA fine-tuning benefits from large VRAM. Full-rank fine-tuning of large models (70B+) is a natural fit."
+        sources: []
+      target_model_scale:
+        value: ">70B inference, all scales training"
+        notes: "Primary competitive moat is large-model inference. For training, competitive but not dominant."
+        sources: []
+      workload_notes:
+        value: "LLM inference is MI300X's strongest use case. The 192 GB memory pool allows deploying models like Llama-3-70B, Mixtral-8x22B, or Llama-3.1-405B on fewer GPUs than H100. Disaggregated prefill-decode deployments also benefit from memory headroom."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: "MLPerf Training v4.0 (closed division): AMD submitted MI300X 8-GPU results for GPT-3 175B. Did not achieve time-to-train competitive with NVIDIA H100 SXM5 8-GPU on most benchmarks."
+        notes: "AMD's training software stack (ROCm, FlashAttention-ROCm) maturity gap is visible in MLPerf results. Improving with each round."
+        sources:
+          - "MLPerf Training v4.0 results — https://mlcommons.org/benchmarks/training/"
+      mlperf_inference:
+        value: "MLPerf Inference v4.0 (open division): AMD MI300X results submitted for text summarization (Llama-2-70B) and image generation. Competitive throughput in memory-bound workloads."
+        notes: "Closed division inference results limited; AMD primarily participates in open division."
+        sources:
+          - "MLPerf Inference v4.0 — https://mlcommons.org/benchmarks/inference-datacenter/"
+      vendor_published:
+        value: "AMD published MI300X vs. H100 benchmarks showing 1.3–1.6× throughput advantage on Llama-2-70B inference in FP16 (Tier 3 — vendor claim, not independently verified by MLPerf closed division)."
+        notes: "Treat as marketing data; actual performance depends on software optimization level."
+        sources:
+          - "AMD Instinct MI300X Benchmark blog post, Dec 2023"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "AMD does not publish list pricing for data-center Instinct GPUs. Server-level OEM pricing used for market estimates."
+        sources: []
+      cloud_price_usd_hr:
+        value: 13.20
+        notes: "Microsoft Azure ND MI300X v5 (8 × MI300X per instance): list on-demand price ~$105.80/hr ÷ 8 GPUs = ~$13.23/GPU-hr as of Q1 2025 snapshot. Region: eastus."
+        sources:
+          - "Microsoft Azure pricing page — https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/ (snapshot Q1 2025)"
+      cloud_providers:
+        value: ["Microsoft Azure", "Oracle Cloud (OCI)", "Google Cloud (limited preview)"]
+        notes: "Microsoft Azure ND MI300X v5 GA as of late 2024. OCI MI300X Compute shapes available 2024. GCP preview."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: ["Dell PowerEdge XE9680", "HPE ProLiant DL380 Gen11", "Lenovo ThinkSystem SR685a V3", "Supermicro SYS-821GE-TNHR", "Inspur NF5688M7"]
+        notes: "All major OEM server vendors offer MI300X-based systems via the AMD UBB reference design."
+        sources:
+          - "AMD partner ecosystem listings, AMD.com"
+      lead_time:
+        value: "4–8 weeks (estimated, varies by OEM/region)"
+        notes: "MI300X not in as severe allocation-constrained status as H100/H200. Lead times normalize in 2024 as supply ramps."
+        sources: []
+
+    sources:
+      - "AMD Instinct MI300X Product Brief — https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html"
+      - "AMD Instinct MI300X Architecture — Hot Chips 35, Aug 2023"
+
+  # ─── CDNA 3 Refresh ─────────────────────────────────────────────────────────────
+
+  - name: "Instinct MI325X"
+    vendor: amd
+    generation: "CDNA 3 (refresh)"
+    status: production
+    launch_date: "2024-Q4"
+
+    architecture:
+      process_node:
+        value: "TSMC N5 + N6 (chiplet, same as MI300X)"
+        notes: "Same three CDNA 3 GCDs on N5 + N6 IO die as MI300X. Primary change is HBM3e memory upgrade and new stacks."
+        sources:
+          - "AMD MI325X product announcement, Oct 2024"
+      transistor_count:
+        value: 153
+        notes: "Same GCDs as MI300X; transistor count unchanged."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Same die as MI300X; no separate die size published."
+        sources: []
+      memory_type:
+        value: "HBM3e"
+        notes: "Upgraded from HBM3 to HBM3e enabling higher capacity and bandwidth vs. MI300X."
+        sources:
+          - "AMD MI325X product brief"
+      memory_capacity_gb:
+        value: 256
+        notes: "256 GB HBM3e — largest capacity among commercially available AI accelerators as of Q4 2024 (vs. H200's 141 GB HBM3e and MI300X's 192 GB HBM3)."
+        sources:
+          - "AMD MI325X product brief"
+      memory_bandwidth_tb_s:
+        value: 6.0
+        notes: "6.0 TB/s — approximately 13% higher than MI300X's 5.3 TB/s."
+        sources:
+          - "AMD MI325X product brief"
+      interconnect:
+        value: "Infinity Fabric (same xGMI as MI300X)"
+        notes: "Chip-to-chip interconnect topology unchanged from MI300X."
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: 750
+        notes: "750W OAM module TDP — unchanged from MI300X."
+        sources:
+          - "AMD MI325X product brief"
+      peak_flops_fp8_tflops:
+        value: 1307
+        notes: "Same FP8 TFLOPS as MI300X — compute architecture unchanged. Performance gain comes entirely from higher-BW HBM3e for memory-bound workloads."
+        sources:
+          - "AMD MI325X product brief"
+      peak_flops_fp16_tflops:
+        value: 1307
+        notes: "Same BF16 TFLOPS as MI300X."
+        sources:
+          - "AMD MI325X product brief"
+      peak_flops_fp32_tflops:
+        value: 163.4
+        notes: "Unchanged from MI300X."
+        sources: []
+      peak_flops_int8_tops:
+        value: 2614
+        notes: "Unchanged from MI300X."
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 1.74
+        notes: "Unchanged from MI300X (same compute, same TDP)."
+        sources: []
+      flops_per_watt_fp16:
+        value: 1.74
+        notes: "Same as MI300X."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.008
+        notes: "Derived: 6.0 TB/s / 750W = 0.008 TB/s per W = 8 GB/s per W. ~13% improvement in memory BW efficiency over MI300X."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "AMD Instinct MI325X OAM (drop-in replacement for MI300X UBB)"
+        notes: "MI325X is OAM-compatible with MI300X systems, enabling infrastructure reuse for customers with MI300X deployments."
+        sources: []
+      gpus_per_system:
+        value: 8
+        notes: "8 × MI325X OAM modules per UBB server, same as MI300X."
+        sources: []
+      system_tdp_watts:
+        value: 6400
+        notes: "Same per-GPU TDP as MI300X; 8 × 750W = 6,000W GPUs."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: "InfiniBand NDR 400G or Ethernet — OEM choice (same as MI300X)"
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: competitive
+        notes: "Same compute as MI300X; higher bandwidth helps attention-compute-heavy training (transformer attention is often memory-BW-bound)."
+        sources: []
+      inference:
+        value: strong
+        notes: "256 GB VRAM further extends single-GPU model footprint. Can fit 405B parameter FP8 models on 2 GPUs vs. 4+ H200s. Bandwidth improvement benefits token generation throughput."
+        sources: []
+      fine_tuning:
+        value: competitive
+        notes: null
+        sources: []
+      target_model_scale:
+        value: ">100B inference, 70B+ fine-tuning"
+        notes: null
+        sources: []
+      workload_notes:
+        value: "MI325X is a drop-in upgrade for MI300X inference clusters. Key use case is fitting very large models (Llama-3.1-405B, Mixtral-8x22B in FP16) with fewer GPUs."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "No separate MI325X MLPerf submission as of Q1 2026; AMD submits under MI300X for most training benchmarks."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: "Limited MI325X inference submission data available. Drop-in compatibility with MI300X means most operator benchmarks use MI300X results."
+        sources: []
+      vendor_published:
+        value: "AMD published MI325X offers 1.3× more tokens-per-second vs. MI300X on Llama-3-70B inference due to bandwidth improvement (vendor claim)."
+        notes: "Tier 3 — vendor benchmark only."
+        sources:
+          - "AMD MI325X launch press release, Oct 2024"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: "MI325X cloud pricing not yet widely published as of Q1 2026; still ramping. Expected higher premium vs. MI300X given 256 GB capacity."
+        sources: []
+      cloud_providers:
+        value: ["Oracle Cloud (OCI)", "Microsoft Azure (preview)"]
+        notes: "Limited availability as of early 2026."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: ["HPE ProLiant DL395 Gen11", "Dell (roadmap)", "Supermicro (roadmap)"]
+        notes: "OAM compatibility allows drop-in replacement, but not all OEMs have validated MI325X by Q1 2026."
+        sources: []
+      lead_time:
+        value: "allocation-constrained (Q1 2026)"
+        notes: "Supply tighter than MI300X; HBM3e allocation from Samsung/SK Hynix is a gating factor."
+        sources: []
+
+    sources:
+      - "AMD Instinct MI325X Product Brief — https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html"
+      - "AMD MI325X announcement, Oct 2024 — https://ir.amd.com/news-events/press-releases/detail/1234/"
+
+  # ─── CDNA 4 Generation ──────────────────────────────────────────────────────────
+
+  - name: "Instinct MI350"
+    vendor: amd
+    generation: "CDNA 4"
+    status: sampling
+    launch_date: "2025-H2"
+
+    architecture:
+      process_node:
+        value: "TSMC N3 (3nm class)"
+        notes: "CDNA 4 moves to TSMC 3nm-class process. AMD indicated CDNA 4 GCDs will use TSMC's N3E node. Announced at Advancing AI event, Nov 2023, and updated at SC24."
+        sources:
+          - "AMD Instinct MI350 roadmap slide, Advancing AI event Nov 2023"
+          - "AMD SC24 roadmap update, Nov 2024"
+      transistor_count:
+        value: null
+        notes: "Not disclosed as of Q1 2026."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      memory_type:
+        value: "HBM3e"
+        notes: "AMD has confirmed HBM3e on MI350. HBM4 is planned for subsequent generation (MI400-series / CDNA 5)."
+        sources:
+          - "AMD roadmap disclosures, SC24"
+      memory_capacity_gb:
+        value: 288
+        notes: "288 GB HBM3e disclosed. An AMD investor/analyst briefing in Q4 2025 referenced 288 GB per OAM."
+        sources:
+          - "AMD roadmap update, Nov 2024 / analyst day materials"
+      memory_bandwidth_tb_s:
+        value: 8.0
+        notes: "AMD targeting ~8 TB/s bandwidth. Not finalized; estimate based on HBM3e 12-high stacks extrapolation."
+        sources:
+          - "AMD roadmap materials; Tier 3 estimate"
+      interconnect:
+        value: "Infinity Fabric (next-gen xGMI — specifics not disclosed)"
+        notes: "Expected improved xGMI bandwidth vs. CDNA 3 to match compute scaling."
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: 750
+        notes: "AMD targeting same OAM 750W TDP envelope for MI350 per roadmap disclosures, though could increase."
+        sources:
+          - "AMD roadmap materials"
+      peak_flops_fp8_tflops:
+        value: 5230
+        notes: "AMD has previewed ~5,230 FP8 TFLOPS for MI350 — a roughly 4× improvement over MI300X's 1,307 TFLOPS. This is a key headline from AMD CES 2025 AI strategy presentation. Cite as Tier 1 (vendor announcement) but pre-sampling spec."
+        sources:
+          - "AMD CES 2025 / analyst day roadmap slides"
+      peak_flops_fp16_tflops:
+        value: 2615
+        notes: "Estimate based on FP8/FP16 ratio being 2:1 (same as CDNA 3). Not confirmed."
+        sources: []
+      peak_flops_fp32_tflops:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      peak_flops_int8_tops:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 6.97
+        notes: "Derived estimate: 5,230 FP8 TFLOPS / 750W = 6.97 TFLOPS/W. Would represent ~4× efficiency improvement over MI300X if realized at same TDP."
+        sources: []
+      flops_per_watt_fp16:
+        value: null
+        notes: "Depends on confirmed TDP; estimate 3.49 TFLOPS/W if FP16 = 2,615."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Estimate: 8.0 TB/s / 750W = 0.0107 TB/s per W = 10.7 GB/s per W (if 750W TDP confirmed)."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "AMD Instinct MI350 OAM platform (next-gen UBB)"
+        notes: "AMD targeting OAM compatibility for infrastructure reuse. Full system spec not released."
+        sources: []
+      gpus_per_system:
+        value: 8
+        notes: "Assumed 8 per system based on OAM format; not confirmed."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: null
+        notes: "Not announced; likely InfiniBand or 400GbE compatible."
+        sources: []
+
+    workload_fit:
+      training:
+        value: strong
+        notes: "4× compute uplift + higher bandwidth expected to close training gap with NVIDIA Blackwell. Critical for AMD's competitive position in hyperscaler training procurement."
+        sources: []
+      inference:
+        value: strong
+        notes: "288 GB + 8 TB/s bandwidth + 4× FP8 compute = significantly enhanced inference capability. Key for CDNA 4 to win next wave of inference cluster deployments."
+        sources: []
+      fine_tuning:
+        value: strong
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "All scales; frontier model training targeted"
+        notes: null
+        sources: []
+      workload_notes:
+        value: "MI350 is AMD's response to NVIDIA Blackwell (B200/B300). The critical question is whether AMD can close not just the compute gap but the software ecosystem gap by the time MI350 ships at volume (estimated H2 2025 / early 2026 ramp)."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "Pre-production; no MLPerf submissions as of Q1 2026."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: "Pre-production."
+        sources: []
+      vendor_published:
+        value: "AMD claims MI350 delivers >4× the performance of MI300X on LLM training workloads."
+        notes: "Tier 3 — pre-release vendor projections only; not independently verified."
+        sources:
+          - "AMD roadmap announcements 2024–2025"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: "Not yet available; expected H2 2025 / H1 2026 for cloud deployments."
+        sources: []
+      cloud_providers:
+        value: []
+        notes: "Cloud availability pending sampling/production milestone."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "OEM design wins not yet announced as of Q1 2026."
+        sources: []
+      lead_time:
+        value: "Not in production as of Q1 2026"
+        notes: null
+        sources: []
+
+    sources:
+      - "AMD Advancing AI event roadmap, Nov 2023 — https://www.amd.com/en/products/accelerators/instinct/mi300/mi325x.html"
+      - "AMD SC24 roadmap update, Nov 2024"
+      - "AMD CES 2025 AI strategy slides"
+
+  # ─── EPYC 9005 Series (Turin) — Data Center CPU ─────────────────────────────────
+  # Included because AMD data center GPU wins often co-exist with EPYC in reference
+  # systems; EPYC is the CPU substrate of the AMD data center compute stack.
+
+  - name: "EPYC 9965 (Turin flagship)"
+    vendor: amd
+    generation: "EPYC 9005 (Turin, 5th Gen)"
+    status: production
+    launch_date: "2024-11-11"
+
+    architecture:
+      process_node:
+        value: "TSMC N3 (Zen 5 CCD) + TSMC N6 (IOD chiplet)"
+        notes: "Turin is AMD's fifth-generation EPYC. Core Complex Dies (CCDs) use TSMC N3 with Zen 5 cores; IO Die (IOD) on TSMC N6 for memory controllers, PCIe, interconnect. Chiplet MCM architecture."
+        sources:
+          - "AMD EPYC Turin Architecture White Paper, Nov 2024"
+      transistor_count:
+        value: null
+        notes: "Not separately disclosed for CPU configuration; complex multi-die SoC."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: null
+        sources: []
+      memory_type:
+        value: "DDR5-6400"
+        notes: "12 × DDR5-6400 memory channels (96-bit wide per socket). Significantly higher memory bandwidth than prior generation."
+        sources:
+          - "AMD EPYC 9005 product page"
+      memory_capacity_gb:
+        value: 3072
+        notes: "Maximum 3 TB per socket (12 channels × 256 GB RDIMM). Per-socket RAM not accelerator GPU memory."
+        sources:
+          - "AMD EPYC 9005 product page"
+      memory_bandwidth_tb_s:
+        value: 0.922
+        notes: "12 channels × 6400 MT/s × 8 bytes = 921.6 GB/s = ~0.92 TB/s per socket. More than 2× over prior-gen EPYC Genoa."
+        sources:
+          - "AMD EPYC Turin architecture white paper"
+      interconnect:
+        value: "AMD Infinity Fabric (96-lane per socket; 5th-gen IF)"
+        notes: "For 2P NUMA systems, inter-socket bandwidth via 3rd-gen IF4 links. EPYC MI300X co-deployment uses PCIe 5.0 x16 (128 GB/s) GPU attach."
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: 500
+        notes: "EPYC 9965 (192-core) TDP is 500W. Lower-core-count SKUs range 200–320W."
+        sources:
+          - "AMD EPYC 9965 product page"
+      peak_flops_fp8_tflops:
+        value: null
+        notes: "CPU; FP8 not a primary metric. AVX-512 VNNI support for INT8/FP16/BF16 in ML inference."
+        sources: []
+      peak_flops_fp16_tflops:
+        value: null
+        notes: "Not a primary CPU metric. Zen 5 CCD supports AVX-512 FP16/BF16."
+        sources: []
+      peak_flops_fp32_tflops:
+        value: null
+        notes: null
+        sources: []
+      peak_flops_int8_tops:
+        value: null
+        notes: null
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: null
+        notes: null
+        sources: []
+      flops_per_watt_fp16:
+        value: null
+        notes: null
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: null
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "2P EPYC 9005 server (e.g. Dell PowerEdge R7625, HPE ProLiant DL385 Gen11)"
+        notes: "EPYC Turin is used as the host CPU in MI300X UBB servers. The reference MI300X system uses 2× EPYC for CPU-side control plane."
+        sources: []
+      gpus_per_system:
+        value: null
+        notes: "CPU-only compute node; co-deployed with MI300X in AI servers."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: null
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: not_applicable
+        notes: "CPU; not used for GPU training compute. Handles orchestration, preprocessing, checkpointing."
+        sources: []
+      inference:
+        value: competitive
+        notes: "EPYC Turin with AMX (Zen 5 AVX-512 FP16/BF16/INT8) supports CPU-only LLM inference for smaller models (<13B parameters) and high-efficiency pre/post-processing in disaggregated inference pipelines."
+        sources: []
+      fine_tuning:
+        value: not_applicable
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "CPU inference: <13B parameters; CPU+GPU orchestration: all scales"
+        notes: null
+        sources: []
+      workload_notes:
+        value: "EPYC is revenue-material within Data Center segment; ~30% of AMD Data Center revenue in FY2025 is estimated to be EPYC CPU vs. ~70% Instinct GPU (Tier 3 estimate based on AMD data center segment trends and press release commentary)."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: "AMD EPYC Turin achieves industry-leading SPECrate2017_fp_base and STREAM bandwidth vs. Intel Sapphire Rapids (AMD vendor claim)."
+        notes: "Tier 3 — vendor benchmarks only."
+        sources:
+          - "AMD EPYC Turin launch benchmarks, Nov 2024"
+
+    pricing:
+      list_price_usd:
+        value: 12900
+        notes: "EPYC 9965 (192-core, 500W) MSRP approximately $12,900 per 1K units pricing. Typical server component pricing."
+        sources:
+          - "AMD EPYC 9005 series product pricing (1K unit tray)"
+      cloud_price_usd_hr:
+        value: null
+        notes: "Cloud pricing for EPYC Turin instances not separately tracked here."
+        sources: []
+      cloud_providers:
+        value: ["AWS (EC2 r8g, c8g)", "Google Cloud (C4A, Axion)", "Azure (Ebsv6)"]
+        notes: "EPYC Genoa widely deployed; Turin ramp in 2025–2026. Note: AMD Zen 5 CPUs (Bergamo variant) are also used by hyperscalers."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: ["Dell PowerEdge R7625 / R7525", "HPE ProLiant DL385 Gen11 Plus", "Lenovo SR685a V3", "Supermicro AS-2115GT"]
+        notes: null
+        sources: []
+      lead_time:
+        value: "2–4 weeks (standard production)"
+        notes: null
+        sources: []
+
+    sources:
+      - "AMD EPYC 9005 (Turin) Architecture White Paper — https://www.amd.com/en/products/processors/server/epyc.html"
+      - "AMD EPYC 9965 product page"
+
+# ─── Company-level context ──────────────────────────────────────────────────────
+
+software_ecosystem:
+  stack_name:
+    value: "ROCm (Radeon Open Compute)"
+    notes: "AMD's open-source GPU compute stack equivalent to NVIDIA's CUDA ecosystem. ROCm 6.x (released 2024) brought improved PyTorch 2.x and JAX support, FlashAttention-2-ROCm, and vLLM ROCm backend. Core gap vs. CUDA: ecosystem breadth, library coverage (especially for custom CUDA kernels), and community size."
+    sources:
+      - "ROCm GitHub — https://github.com/ROCm/ROCm"
+      - "AMD ROCm 6.0 release blog, Jan 2024"
+  framework_support:
+    value: ["PyTorch", "JAX", "TensorFlow (limited)", "ONNX Runtime", "triton-rocm", "vLLM (ROCm fork)", "DeepSpeed"]
+    notes: "PyTorch 2.x is the primary first-class framework; most major inference frameworks now support ROCm. TensorFlow ROCm support is community-maintained and lags. CUDA kernel compatibility via HIP (HIP C++) still requires manual porting for custom kernels."
+    sources:
+      - "ROCm compatibility matrix — https://rocm.docs.amd.com/projects/install-on-linux/en/latest/reference/system-requirements.html"
+  ecosystem_maturity:
+    value: growing
+    notes: "ROCm ecosystem maturity rated 'growing' — improving rapidly since 2023 but still meaningfully behind NVIDIA CUDA in library breadth, debugger/profiler tooling (Omnitrace/Omniperf vs. Nsight), and kernel optimization depth. Major hyperscalers (Microsoft, Meta) have invested in ROCm development to reduce CUDA lock-in. AMD contributor base to PyTorch growing."
+    sources:
+      - "AMD earnings calls Q2–Q4 FY2025 ROCm ecosystem commentary"
+      - "Meta open-source ROCm contributions GitHub"
+
+manufacturing_and_supply:
+  foundry_partners:
+    value: ["TSMC"]
+    notes: "AMD is fabless; 100% outsourced to TSMC. Instinct MI300X/MI325X use TSMC N5+N6 chiplets. EPYC Turin uses TSMC N3+N6. MI350 (CDNA 4) targets TSMC N3. HBM memory supplied separately by Samsung and SK Hynix (not AMD-manufactured)."
+    sources:
+      - "AMD 10-K FY2025 (supplier disclosure)"
+  process_nodes:
+    value: ["TSMC N5", "TSMC N6", "TSMC N3"]
+    notes: "N5/N6 for current Instinct and EPYC Genoa. N3 (Turin CPU, MI350 GPU). AMD is one of TSMC's top N3 customers alongside Apple and NVIDIA."
+    sources:
+      - "AMD product specifications; industry supply chain reports"
+  packaging:
+    value: "CoWoS-L (AMD calls it 3D packaging / multi-die module for MI300X)"
+    notes: "AMD's MI300X uses a custom multi-die stacking approach with HBM3 on-package. The specific TSMC CoWoS variant used is not publicly disclosed as CoWoS-S or CoWoS-L by AMD; often referred to as 'advanced packaging'. TSMC CoWoS capacity is a bottleneck shared with NVIDIA. AMD has had CoWoS capacity priority issues in 2023–2024 limiting MI300X supply ramp."
+    sources:
+      - "AMD supply chain commentary in earnings calls; TSMC CoWoS capacity reports"
+  supply_constraints:
+    value: "CoWoS packaging capacity at TSMC was primary supply bottleneck through mid-2024; improved in H2 2024. HBM3e allocation (Samsung/SK Hynix) is a gating factor for MI325X ramp in 2025. TSMC N3 capacity prioritization is a 2025–2026 risk for MI350."
+    notes: "AMD competes with NVIDIA for the same CoWoS and HBM pools. AMD's smaller volume relative to NVIDIA gives less leverage in HBM and advanced packaging negotiations, though AMD has been securing multi-year supply agreements."
+    sources:
+      - "AMD earnings calls FY2025; analyst supply chain reports"
+
+commercial_traction:
+  deployment_channels:
+    value: ["CSP instances (Azure, OCI, GCP)", "OEM servers (Dell, HPE, Lenovo, Supermicro)", "direct enterprise AI clusters", "HPC research (DOE national labs)"]
+    notes: "CSP is primary go-to-market for AI accelerators. OEM server channel for on-premise enterprise AI. HPC segment (DOD, DOE) benefits from AMD EPYC + Instinct co-deployment (El Capitan supercomputer)."
+    sources: []
+  notable_customers_or_design_wins:
+    value:
+      - "Microsoft Azure: ND MI300X v5 GA (inference workloads); AMD CPUs in Azure Cobalt VMs"
+      - "Meta: MI300X procurement for Llama-3 training/inference; Meta is AMD's largest known GPU customer by volume (FY2025 commentary)"
+      - "Oracle Cloud Infrastructure (OCI): MI300X and MI325X Compute shapes"
+      - "Microsoft (Copilot/OpenAI via Azure): MI300X inference for Azure AI services"
+      - "El Capitan Supercomputer (Lawrence Livermore, DOE): AMD EPYC + Instinct MI300A (APU variant) — fastest supercomputer in world at launch (2024)"
+      - "Frontier Supercomputer (ORNL): MI250X GPU cluster — prior generation"
+      - "Cisco: Instinct MI300X cluster for enterprise AI"
+    notes: "AMD does not disclose individual customer revenue. Meta's public commentary on AMD deployment is the primary third-party customer signal. Azure deployment of MI300X is significant but Microsoft also uses H100/H200 for majority of OpenAI workloads."
+    sources:
+      - "AMD earnings call Q3 FY2025 (CEO Lisa Su customer commentary)"
+      - "Meta LLM infrastructure blog posts 2024"
+      - "El Capitan TOP500 announcement Nov 2024"
+  revenue_segment:
+    value: "Data Center"
+    notes: "AMD's Data Center segment includes both Instinct GPU revenue and EPYC server CPU revenue. AMD does not break out GPU vs. CPU within the Data Center segment. Instinct GPU revenue likely represented ~60–70% of Data Center segment revenue in FY2025 (Tier 3 estimate based on rapid Instinct growth vs. steady EPYC). FY2025 Data Center segment revenue approximately $26.7B (~77% of total FY2025 revenue of $34.6B — derived from press release segment tables)."
+    sources:
+      - "AMD FY2025 Q4 Earnings Press Release, Feb 3, 2026 (segment breakdown)"
+
+roadmap:
+  next_generation:
+    value: "Instinct MI355X (CDNA 4 refresh, 2026) → MI400 (CDNA 5, HBM4, ~2026–2027)"
+    notes: "AMD follows a cadence of annual GPU generation + mid-cycle refresh. MI350 (CDNA 4, TSMC N3) is the FY2025 new generation. MI355X (CDNA 4 refresh with potential HBM3e upgrade) is expected in 2026. MI400 (CDNA 5 with HBM4) targets 2027. AMD also developing next-gen CPU-GPU unified architecture for HPC (successor to MI300A APU). Intel is not a meaningful competitive threat in data-center AI accelerators; NVIDIA Blackwell (B200/B300) is the primary benchmark."
+    sources:
+      - "AMD Technology Summit roadmap, Nov 2024"
+      - "AMD SC24 roadmap slides"
+  cadence:
+    value: "annual (CDNA new generation) + mid-cycle refresh (~12–18 months)"
+    notes: "AMD's stated cadence is annual GPU generation releases. CDNA 1 (MI100, 2020) → CDNA 2 (MI210/250/250X, 2021–2022) → CDNA 3 (MI300X, 2023) → CDNA 3 refresh (MI325X, 2024) → CDNA 4 (MI350, 2025). AMD has generally held to this cadence but historically had gaps in software maturation between hardware releases."
+    sources:
+      - "AMD Instinct GPU Roadmap history"
+  roadmap_credibility:
+    value: moderate
+    notes: "AMD's hardware roadmap execution has been strong — EPYC has gained 4 consecutive server CPU share gains vs. Intel; MI300X delivered on its specs and achieved significant commercial traction faster than skeptics expected. CDNA 4 (MI350) is the next major test. Credibility risk: software (ROCm) has consistently lagged hardware specifications, meaning GPU hardware excellence does not automatically translate to full workload capture. AMD has improved ROCm cadence and has increased software headcount significantly (FY2025 R&D $7.6B LTM). The go-to-market execution risk is real — NVIDIA has 5+ years of hyperscaler relationship lead time."
+    sources:
+      - "AMD earnings calls FY2025; analyst consensus"
+
+sources:
+  - "AMD Instinct product page — https://www.amd.com/en/products/accelerators/instinct.html"
+  - "AMD ROCm documentation — https://rocm.docs.amd.com"
+  - "AMD EPYC product page — https://www.amd.com/en/products/processors/server/epyc.html"
+  - "AMD Q4 FY2025 Earnings Press Release (Feb 3, 2026) — segment data"
+  - "El Capitan Supercomputer announcement, Lawrence Livermore National Lab, Nov 2024"

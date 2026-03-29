@@ -16,7 +16,7 @@ summary: |
 links:
   investor_relations: https://ir.applieddigital.com/
   press_releases_index: https://ir.applieddigital.com/news-events/press-releases
-  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001144879&owner=include&count=40
+  sec_cik: "0001144879"
 
 reporting:
   financials_root: financials/

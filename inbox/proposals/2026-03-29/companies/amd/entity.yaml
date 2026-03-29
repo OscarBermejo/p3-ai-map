@@ -1,0 +1,30 @@
+slug: amd
+legal_name: Advanced Micro Devices, Inc.
+
+tickers:
+  - symbol: AMD
+    exchange: NASDAQ
+
+summary: |
+  Advanced Micro Devices (AMD) designs and sells CPUs, GPUs, and adaptive computing
+  products for data center, client, gaming, and embedded markets. In the AI value chain,
+  AMD occupies the chips layer as NVIDIA's primary GPU competitor, with the Instinct GPU
+  family (MI300X, MI325X, MI350) targeting AI training and inference workloads. AMD also
+  leads in server CPUs via EPYC, holds significant share in gaming consoles (semi-custom
+  SoCs for Sony/Microsoft), and offers Ryzen CPUs and Radeon GPUs for the client market.
+  AMD is fabless, outsourcing manufacturing primarily to TSMC. Quantitative results belong
+  in financials/*.yaml with sources.
+
+links:
+  investor_relations: https://ir.amd.com
+  press_releases_index: https://ir.amd.com/news-events/press-releases
+  sec_cik: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000002488&owner=include&count=40
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: FYyyyy-Qn.yaml
+
+notes:
+  - AMD fiscal year ends on the last Saturday of December. FY2025 ended 2025-12-27.
+  - Segments: Data Center, Client and Gaming (reported together with sub-segments Client and Gaming), Embedded, All Other.
+  - AMD acquired Xilinx in 2022 (adding FPGAs/Embedded) and ZT Systems in 2024 (AI server assembly), divesting ZT Systems' manufacturing to Sanmina in Q4 FY2025.
