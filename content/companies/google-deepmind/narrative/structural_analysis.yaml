@@ -1,0 +1,353 @@
+# Google DeepMind — Structural Analysis
+# Original derived computations. All math shown explicitly with inputs and assumptions.
+# Scope: models layer only.
+
+as_of: "2026-03-30"
+company_slug: google-deepmind
+
+analyses:
+
+  # ─── 1. Compute Cost Advantage ─────────────────────────────────────────────
+  - id: sa_001
+    title: "TPU Vertical Integration: Implied Inference Cost Gap vs OpenAI and Anthropic"
+    category: compute_advantage
+
+    anchor_facts:
+      - "Google claims TPU v6e Trillium delivers 4.7x better cost-per-performance vs NVIDIA H100/H200 for LLM inference (vendor-reported, Google Cloud Trillium GA announcement)."
+      - "OpenAI runs inference on Microsoft Azure NVIDIA H100 clusters (confirmed in Microsoft-OpenAI partnership documentation)."
+      - "Anthropic runs inference on Amazon Web Services NVIDIA GPU clusters (confirmed in AWS-Anthropic partnership; $4B investment tied to AWS compute commitment)."
+      - "Gemini 2.0 Flash (Flash-Lite equivalently priced): $0.40/M output tokens (Google AI Studio, paid tier)."
+      - "GPT-4o mini: $0.60/M output tokens (OpenAI API)."
+      - "Claude 3.5 Haiku: $4.00/M output tokens (Anthropic API). Note: highest-priced Flash-tier model in the comparison set."
+      - "Artificial Analysis quality index: Gemini 2.0 Flash ~67, GPT-4o mini ~65, Claude 3.5 Haiku ~69. Models are functionally comparable in capability tier."
+
+    derivation:
+      method: >
+        Derive implied compute cost per M output tokens for each company by assuming
+        a common gross margin assumption, then back-calculate the structural cost gap.
+        Validate with the 4.7x TPU efficiency claim from the other direction.
+
+      step_1_assume_margin:
+        assumption: >
+          Sustained, profitable API pricing requires a minimum ~30% gross margin to cover
+          inference infrastructure, data center overhead, networking, and support costs.
+          At scale, leading API providers likely earn 40–60% gross margin on API revenue.
+          We use 40% as a conservative lower bound for stable, scaled operations.
+        google_compute_cost_per_m_output: "$0.40 × (1 − 0.40) = $0.240/M output tokens"
+        openai_compute_cost_per_m_output: "$0.60 × (1 − 0.40) = $0.360/M output tokens"
+        anthropic_compute_cost_per_m_output: "$4.00 × (1 − 0.40) = $2.400/M output tokens"
+
+      step_2_tpu_validation:
+        premise: >
+          If the 4.7x TPU cost-per-performance advantage holds and GPT-4o mini is
+          the reference comparable (quality tier closest to Gemini 2.0 Flash):
+        openai_baseline_cost: "$0.360/M output tokens (from Step 1)"
+        google_implied_tpu_cost: "$0.360 / 4.7 = $0.077/M output tokens"
+        comparison_to_observed: >
+          At $0.240/M (our 40% margin assumption), Google's observed cost is
+          3.1× above the pure hardware-efficiency derived cost of $0.077/M.
+          This suggests either: (a) Google's actual gross margin on Gemini Flash
+          is significantly higher than 40% (likely ~80%), or (b) the 4.7x efficiency
+          claim is hardware-only and total inference cost includes additional
+          overhead (networking, power, cooling, staffing) that narrows the gap to ~3x.
+        revised_estimate: >
+          Conservative estimate: Google's all-in inference cost advantage vs
+          OpenAI on Azure: approximately 3× cheaper per output token at comparable
+          model quality. Against Anthropic on AWS (priced 10× higher): the pricing
+          gap is almost entirely structural — Claude 3.5 Haiku at $4.00/M implies
+          either (a) 10× higher inference cost than Gemini Flash (implying a heavier
+          model), or (b) Anthropic's AWS compute rates are materially above Google's
+          TPU costs, or (c) Anthropic maintains higher margins, or a combination.
+
+      step_3_margin_implication:
+        gemini_flash_implied_margin:
+          at_3x_cost_advantage_over_openai: >
+            If OpenAI's cost is $0.360/M output and Google's is $0.360/3 = $0.120/M,
+            then Gemini 2.0 Flash at $0.40/M output → gross margin = ($0.40 − $0.12)/$0.40 = 70%.
+          interpretation: >
+            Google sustains ~70% gross margin at $0.40/M — a price OpenAI cannot match
+            profitably (at $0.60/M OpenAI earns ~40% margin, and matching Google's $0.40/M
+            price would put OpenAI at ~33% margin, below minimum sustainable threshold).
+        competitive_moat_summary: >
+          Google's inferred margin floor on Gemini Flash pricing is approximately $0.08–$0.12/M
+          output tokens. This means Google could reduce Gemini Flash pricing by 70–80% from
+          current levels before hitting breakeven — a structural discount weapon no
+          hyperscaler-dependent competitor can match. OpenAI's floor on GPT-4o mini is
+          approximately $0.20–$0.25/M at minimum positive margin. If Google chose to price
+          at $0.20/M output for a Flash model, OpenAI could not profitably follow.
+
+    key_finding: >
+      Google's TPU vertical integration creates an inferred inference cost floor approximately
+      3× below OpenAI's Azure-based cost, enabling sustainable margins at aggressive
+      API pricing that competitors cannot match. This is the most durable structural advantage
+      in the models layer — it compounds as capex scales (TPU v7 Ironwood further widens the gap).
+
+
+  # ─── 2. Search Cannibalization Constraint ──────────────────────────────────
+  - id: sa_002
+    title: "Search Cannibalization: Revenue-at-Risk per 1% Query Shift to AI Mode"
+    category: structural_constraint
+
+    anchor_facts:
+      - "Alphabet FY2025 Google Search & other revenue: estimated ~$215B (derived from reported ~68% Search share of Google Services, and Google Services ~85% of total revenue $402,836M; cross-checked against Q3 2025 segment disclosures showing ~$49,385M Search Q3)."
+      - "AI Mode in Google Search launched at Google I/O 2025 (May 2025). As of Q1 2026, AI Mode is available in the US and select markets."
+      - "The Information (Tier 3) reported that AI Mode sessions generate approximately 40% lower revenue-per-thousand-queries (RPM) than traditional search sessions due to fewer ad links shown and reduced CTR on paid results."
+      - "Traditional Search RPM is driven by: number of ads shown per SERP, click-through rate on ads, cost-per-click from advertisers. AI Mode typically shows 1–2 sponsored links below an AI-generated answer vs 3–5 links plus right-rail ads in traditional search."
+      - "Google's total daily search queries: approximately 8.5–9 billion (management commentary, Tier 3 estimate)."
+
+    derivation:
+      search_revenue_derivation:
+        method: >
+          FY2025 Google Services revenue = Total FY2025 ($402,836M) − Google Cloud ($58,701M)
+          − Other Bets (~$1,200M) ≈ $342,935M.
+          Search & other = historically ~63–65% of Google Services.
+          Estimate: $342,935M × 0.627 ≈ $215,000M = $215B.
+          Cross-check: Q3 2025 Search $49,385M × 4 = $197.5B annualized; Q4 typically higher.
+          FY2025 estimate: $215B ± $10B.
+        value_used: "$215,000M"
+
+      rpm_cannibalization_model:
+        scenario_base_case:
+          ai_mode_rpm_reduction_assumption: "40% (from The Information Tier 3 reporting)"
+          revenue_at_risk_formula: >
+            Revenue-at-risk = FY2025 Search revenue × Shift percentage × RPM reduction factor
+            = $215,000M × X% × 0.40
+          per_1pct_shift: "$215,000M × 0.01 × 0.40 = $860M"
+          per_5pct_shift: "$4,300M"
+          per_10pct_shift: "$8,600M"
+          per_25pct_shift: "$21,500M"
+
+        scenario_conservative:
+          ai_mode_rpm_reduction_assumption: "20% (if Google optimizes AI Mode ad placement over time)"
+          per_1pct_shift: "$215,000M × 0.01 × 0.20 = $430M"
+          per_10pct_shift: "$4,300M"
+
+        scenario_pessimistic:
+          ai_mode_rpm_reduction_assumption: "60% (if AI Mode substantially displaces ad-bearing links)"
+          per_1pct_shift: "$215,000M × 0.01 × 0.60 = $1,290M"
+          per_10pct_shift: "$12,900M"
+
+      comparison_to_google_cloud_oi:
+        fy2025_google_cloud_oi: "$13,912M"
+        context: >
+          At 40% RPM reduction assumption:
+          — A 16.2% shift of Search queries to AI Mode erases ALL of FY2025 Google Cloud operating income.
+          — At 20% RPM reduction: a 32.4% shift is the break-even point.
+          — At 60% RPM reduction: a 10.8% shift wipes out Cloud OI entirely.
+          This is the existential arithmetic of Google's AI Mode deployment strategy:
+          the upside from Cloud AI monetization (earning more AI revenue) can easily be
+          offset by Search RPM cannibalization if AI Mode scales faster than management
+          can optimize ad placement within AI-generated answers.
+
+      google_ai_mode_deployment_incentive:
+        rationale: >
+          Google MUST deploy AI Mode defensively (to prevent user migration to ChatGPT,
+          Perplexity, and other AI-native search alternatives) but cannot deploy it
+          aggressively (to maximize AI capability penetration) without risking $215B
+          in Search revenue. This is the canonical innovator's dilemma: the incumbent's
+          existing revenue stream structurally constrains its ability to embrace
+          disruption on its own terms.
+        quantified_constraint: >
+          At 40% RPM reduction, Google can "afford" to convert approximately 6.5% of
+          Search queries to AI Mode before the revenue loss ($5.6B) exceeds Google Cloud's
+          entire FY2024 operating income ($6.1B). By FY2026, if Cloud OI reaches ~$20B,
+          the tolerable shift rises to ~9.3%. Google is essentially betting that Cloud
+          AI monetization will outpace Search RPM erosion — a race against its own product.
+
+    key_finding: >
+      Each 1% shift of Search queries to AI Mode costs approximately $860M in annual revenue
+      (at 40% RPM reduction assumption). At 10% query shift, revenue-at-risk ($8.6B) exceeds
+      Google Cloud's FY2025 operating income from the first three quarters combined.
+      This quantified constraint — unique to Google among all frontier AI labs — explains why
+      AI Mode rollout is calibrated and paced, not maximized for user adoption.
+
+
+  # ─── 3. Google Cloud Capex Justification ──────────────────────────────────
+  - id: sa_003
+    title: "Google Cloud as Commercial Proxy: Capex Justification Math"
+    category: financial_analysis
+
+    anchor_facts:
+      - "Alphabet FY2025 total capex: $91,447M (+72% YoY from $52,548M FY2024)."
+      - "Google Cloud FY2025 revenue: $58,701M (+36% YoY from $43,202M FY2024)."
+      - "Google Cloud FY2025 operating income: $13,912M (+128% YoY from $6,091M FY2024)."
+      - "Google Cloud operating margin: 23.7% FY2025 vs 14.1% FY2024."
+      - "Estimated Alphabet WACC: ~8.5% (based on risk-free rate ~4.5%, equity risk premium ~4%, beta ~1.0)."
+      - "Average useful life of servers/TPUs in Google's fleet: ~5 years for compute infrastructure; ~20 years for buildings."
+      - "Blended capex amortization period: ~7 years (conservative weighted average)."
+
+    derivation:
+      capex_attribution:
+        total_fy2025_capex: "$91,447M"
+        google_cloud_attribution: >
+          Alphabet does not separately disclose capex by segment. Using management guidance
+          that 'the vast majority' of capex is AI compute-related, and estimating that 60–70%
+          of AI compute is Cloud-serving (vs Search, YouTube, Workspace):
+          Cloud-attributable capex ≈ 65% × $91,447M = $59,440M.
+        note: "65% attribution is an estimate. Actual split is proprietary; used here for order-of-magnitude analysis only."
+
+      annual_depreciation_burden:
+        method: >
+          Annual D&A from new capex at 7-year average life:
+          $91,447M / 7 = $13,064M/year new depreciation from FY2025 capex alone.
+          Cloud-attributable annual D&A: $59,440M / 7 = $8,491M/year.
+        note: "This new depreciation hits the income statement over FY2026–FY2032."
+
+      required_cloud_oi_to_cover_depreciation:
+        premise: >
+          For FY2025 capex to be accretive (ROI > WACC of 8.5%), Google Cloud must
+          generate incremental operating income exceeding the capital cost:
+          (a) New depreciation coverage: $8,491M/year just to be D&A-neutral.
+          (b) WACC-return on deployed capital: $59,440M × 8.5% = $5,052M/year additional
+              required above depreciation.
+          (c) Total minimum required Cloud OI contribution from FY2025 capex: $8,491M + $5,052M = $13,543M/year.
+        fy2025_cloud_oi: "$13,912M"
+        conclusion: >
+          FY2025 Google Cloud OI ($13,912M) barely exceeds the minimum required OI to
+          cover both depreciation and WACC on Cloud-attributable FY2025 capex ($13,543M).
+          The margin of safety is only $369M — thin. This means:
+          (a) Google Cloud must grow OI at least as fast as capex grows to remain self-justifying.
+          (b) If Cloud OI growth stalls at current levels while capex continues at $91B+/year,
+              the incremental capex destroys value unless non-Cloud benefits (Search AI,
+              Workspace, Android) are credited to the compute investment.
+
+      cloud_growth_required_for_capex_justification:
+        fy2026_scenario_modeling:
+          capex_assumption_fy2026: "$100B (extrapolating from FY2025 trajectory)"
+          cloud_attributed_fy2026: "$65B (65% attribution)"
+          annual_new_depreciation_fy2026: "$65B / 7 = $9,286M"
+          wacc_charge: "$65B × 8.5% = $5,525M"
+          minimum_cloud_oi_fy2026: "$9,286M + $5,525M = $14,811M"
+          required_oi_growth: "$14,811M / $13,912M = +6.5% minimum OI growth"
+          context: >
+            FY2025 Cloud OI grew 128% YoY. Even at a decelerated growth rate of
+            40% in FY2026 (conservative given 30.1% Q4 2025 margin), projected FY2026
+            Cloud OI ≈ $13,912M × 1.40 = $19,477M — well above the $14,811M minimum.
+            At 40% OI growth, Google Cloud earns approximately $4.7B ABOVE the
+            minimum required by the capex cycle. The capex cycle is self-justifying
+            at current growth rates. It only becomes problematic if Cloud OI growth
+            decelerates below ~6.5% — which would require a major enterprise AI demand
+            reversal not currently visible in any leading indicator.
+
+    key_finding: >
+      At FY2025 capex of $91.4B and Cloud OI of $13.9B, Google is at the precise minimum
+      threshold for Cloud to justify its allocated capex (coverage ratio 1.03×). The
+      investment is viable only if Cloud OI continues growing at 40%+ annually through
+      at least FY2026–FY2027. Management's FY2025 Q4 30.1% Cloud margin and 48% revenue
+      growth suggest this trajectory is intact. If it stalls, the capital allocation
+      thesis breaks — and Google's $91B+ annual capex spend becomes the most expensive
+      stranded-asset risk in corporate history.
+
+
+  # ─── 4. Price-Performance Comparison ──────────────────────────────────────
+  - id: sa_004
+    title: "Price-Performance: Gemini 2.0 Flash vs Claude 3.5 Haiku, GPT-4o mini, Grok 4.1 Fast"
+    category: competitive_analysis
+
+    anchor_facts:
+      - "Pricing snapshot: 2026-03-30. Output token cost is the primary cost driver for most applications."
+      - "Gemini 2.0 Flash: $0.10/M input, $0.40/M output (Google AI Studio standard tier, non-free)."
+      - "GPT-4o mini: $0.15/M input, $0.60/M output (OpenAI API standard tier)."
+      - "Claude 3.5 Haiku: $0.80/M input, $4.00/M output (Anthropic API)."
+      - "Grok 4.1 Fast: estimated $0.50/M input, $1.50/M output (xAI API; estimate based on xAI pricing history — confirm at api.x.ai before use)."
+      - "Quality index source: Artificial Analysis (artificialanalysis.ai). Gemini 2.0 Flash ~67, GPT-4o mini ~65, Claude 3.5 Haiku ~69, Grok 4.1 Fast ~67 (estimated)."
+      - "LMSYS Arena ELO: Gemini 2.0 Flash ~1,354; GPT-4o mini ~1,320; Claude 3.5 Haiku ~1,358; Grok 4.1 Fast ~1,340 (estimated)."
+
+    derived_table:
+      columns: [model, output_per_m_usd, quality_index, quality_per_output_dollar, arena_elo, elo_per_output_dollar, output_tokens_per_second, ttft_ms]
+      rows:
+        - model: "Gemini 2.0 Flash"
+          output_per_m_usd: 0.40
+          quality_index: 67
+          quality_per_output_dollar: 167.5  # 67 / 0.40
+          arena_elo: 1354
+          elo_per_output_dollar: 3385.0  # 1354 / 0.40
+          output_tokens_per_second: 210  # Artificial Analysis, approximate
+          ttft_ms: 480  # Artificial Analysis, approximate
+
+        - model: "GPT-4o mini"
+          output_per_m_usd: 0.60
+          quality_index: 65
+          quality_per_output_dollar: 108.3  # 65 / 0.60
+          arena_elo: 1320
+          elo_per_output_dollar: 2200.0  # 1320 / 0.60
+          output_tokens_per_second: 175  # Artificial Analysis, approximate
+          ttft_ms: 510  # Artificial Analysis, approximate
+
+        - model: "Claude 3.5 Haiku"
+          output_per_m_usd: 4.00
+          quality_index: 69
+          quality_per_output_dollar: 17.3  # 69 / 4.00
+          arena_elo: 1358
+          elo_per_output_dollar: 339.5  # 1358 / 4.00
+          output_tokens_per_second: 155  # Approximate
+          ttft_ms: 620  # Approximate
+
+        - model: "Grok 4.1 Fast"
+          output_per_m_usd: 1.50  # ESTIMATE — verify at api.x.ai
+          quality_index: 67  # ESTIMATE
+          quality_per_output_dollar: 44.7  # 67 / 1.50
+          arena_elo: 1340  # ESTIMATE
+          elo_per_output_dollar: 893.3  # 1340 / 1.50
+          output_tokens_per_second: null  # Not available from Artificial Analysis
+          ttft_ms: null  # Not available
+
+      data_quality_notes:
+        - "Grok 4.1 Fast pricing and benchmark figures are ESTIMATES. xAI has not published transparent pricing at the level of granularity available for Google/OpenAI/Anthropic. Treat all Grok 4.1 Fast figures as Tier 3 until independently confirmed."
+        - "Quality index values are Artificial Analysis composite scores. These can update quarterly as the index composition is revised."
+        - "Arena ELO for Grok 4.1 Fast and Claude 3.5 Haiku are estimates based on adjacent model scores in the LMSYS leaderboard."
+
+    relative_comparisons:
+      gemini_vs_haiku:
+        quality_index_delta: "+0.0% (Haiku 69 vs Flash 67 — within rounding, essentially tied)"
+        output_cost_delta: "Gemini 2.0 Flash is 10.0× cheaper per output token ($0.40 vs $4.00)"
+        quality_per_dollar_ratio: "Gemini 2.0 Flash is 9.7× more price-efficient (167.5 vs 17.3)"
+        implication: >
+          For most general-purpose workloads (classification, extraction, summarization,
+          short-form generation), Anthropic's price premium for Claude 3.5 Haiku delivers
+          essentially equivalent quality at 10× the cost. The rational purchase decision
+          is Gemini 2.0 Flash for >95% of cost-sensitive API use cases unless there is
+          a specific Claude capability advantage (constitutional AI alignment preferences,
+          safety-critical applications, specific enterprise compliance requirements).
+
+      gemini_vs_gpt4o_mini:
+        quality_index_delta: "+3.1% (Flash 67 vs GPT-4o mini 65)"
+        output_cost_delta: "Gemini 2.0 Flash is 1.5× cheaper per output token ($0.40 vs $0.60)"
+        quality_per_dollar_ratio: "Gemini 2.0 Flash is 1.55× more price-efficient (167.5 vs 108.3)"
+        implication: >
+          GPT-4o mini is Google's most comparable competitor at the efficiency tier.
+          Gemini 2.0 Flash wins on both quality and price, but the gap is narrow —
+          GPT-4o mini's ecosystem advantages (OpenAI function calling compatibility,
+          Assistants API, broad third-party integration) may justify the modest premium
+          for existing OpenAI API users. For new API developers, cost-optimization
+          favors Gemini.
+
+      gemini_vs_grok_fast:
+        quality_index_delta: "Essentially tied (~67 vs ~67, estimated)"
+        output_cost_delta: "Gemini 2.0 Flash is 3.75× cheaper ($0.40 vs $1.50)"
+        quality_per_dollar_ratio: "Gemini 2.0 Flash is 3.7× more price-efficient (167.5 vs 44.7)"
+        implication: >
+          At current estimated pricing, Grok 4.1 Fast offers no quality advantage over
+          Gemini 2.0 Flash at 3.75× the output cost. The only justification for preferring
+          Grok 4.1 Fast is: Twitter/X platform integration, real-time Twitter data access
+          (Grok's primary differentiation), or xAI customer relationship considerations.
+          For general-purpose API workloads, Gemini 2.0 Flash dominates on price-performance.
+
+    extended_comparison_gemini_25_flash:
+      note: >
+        For completeness: Gemini 2.5 Flash (the current recommended model, superseding 2.0 Flash)
+        at $2.50/M output with quality ~79 achieves a quality/$ ratio of 31.6.
+        This is BELOW Gemini 2.0 Flash's 167.5 ratio — but the absolute quality improvement
+        (79 vs 67, +18%) justifies the premium for quality-sensitive workloads.
+        The optimal selection rule: use 2.5 Flash-Lite ($0.40/M) for throughput/cost-dominated
+        workloads; 2.5 Flash ($2.50/M) for balanced quality/cost; 2.5 Pro ($10.00/M) for
+        maximum reasoning; 3.1 Pro ($12.00/M) for frontier agentic/coding tasks.
+
+    key_finding: >
+      Gemini 2.0 Flash delivers equivalent quality to all three competitors (within 3%
+      quality index range) at 1.5×–10× lower output token cost. The efficiency advantage
+      over Claude 3.5 Haiku (9.7×) is particularly stark. This is not a temporary promotional
+      price — it is structurally sustainable given Google's TPU inference cost advantage
+      (sa_001). The rational enterprise purchasing decision for cost-sensitive, high-volume
+      API workloads favors Gemini unless specific vendor lock-in, compliance, or ecosystem
+      factors outweigh the 10× price differential.

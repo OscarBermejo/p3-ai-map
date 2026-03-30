@@ -19,7 +19,7 @@ math that cannot be found in any single public source.
 ## Full deep dive (private company — models layer)
 
 ```
-Read agent/instructions/company_deep_dive.md and run the full pipeline for Anthropic.
+Read agent/instructions/company_deep_dive.md and run the full pipeline for XAI.
 This is a PRIVATE company on the MODELS layer — follow these substitutions:
 - Phase 2: use agent/instructions/financials_private.md instead of financials.md.
   Do NOT look for SEC filings or XBRL. Source financials from press reports (The

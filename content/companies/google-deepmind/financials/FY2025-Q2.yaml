@@ -1,0 +1,198 @@
+# Alphabet Inc. — Q2 2025 (April 1 – June 30, 2025)
+# All financial data is Alphabet consolidated.
+# Google Cloud segment in extended_notes as commercial proxy for AI model traction.
+
+period:
+  label: "Q2 2025"
+  start: "2025-04-01"
+  end: "2025-06-30"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  # Revenue: Direct from Q2 2025 earnings release.
+  revenue: 96428000000
+
+  # COGS: Derived. H1 2025 CostOfRevenue = $75,400M (Q2 ER); Q1 = $36,361M.
+  # Q2 = $75,400M − $36,361M = $39,039M.
+  cost_of_revenue: 39039000000
+
+  # Gross profit: Derived.
+  gross_profit: 57389000000
+
+  # R&D: Derived. H1 2025 R&D = $27,364M (Q2 ER); Q1 = $13,556M.
+  # Q2 = $27,364M − $13,556M = $13,808M.
+  research_and_development: 13808000000
+
+  # SGA: S&M $7,101M + G&A $5,209M — both direct from Q2 2025 earnings release.
+  selling_general_administrative: 12310000000
+
+  # D&A: Direct from Q2 2025 cash-flow reconciliation = $4,998M.
+  depreciation_and_amortization: 4998000000
+
+  # Operating income: Direct from Q2 2025 earnings release.
+  operating_income: 31271000000
+
+  # Interest income: Direct from Q2 2025 earnings release OI&E breakdown = $1,050M.
+  interest_income: 1050000000
+
+  # Interest expense: Direct from Q2 2025 earnings release = $(261)M.
+  # Stored as a positive expense value per template convention.
+  interest_expense: 261000000
+
+  # Other income net: Includes equity investment gains/losses.
+  # Q2 2025 net income ($28,196M) below operating income ($31,271M) due to equity investment
+  # mark-to-market losses and higher effective tax. Not separately extracted.
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+
+  # Net income: Direct from Q2 2025 earnings release.
+  net_income: 28196000000
+
+  # --- Cash flows ---
+  # Operating cash flow: Direct from Q2 2025 earnings release.
+  operating_cash_flow: 27747000000
+
+  # SBC: Direct from Q2 2025 cash-flow reconciliation = $5,998M.
+  stock_based_compensation: 5998000000
+
+  # D&A: Stored above; also in cash-flow reconciliation = $4,998M.
+
+  # Capex: Derived. H1 2025 = $39,643M (Q2 ER cash-flow statement);
+  # Q1 = $17,197M (direct). Q2 = $39,643M − $17,197M = $22,446M.
+  capital_expenditures_cash: 22446000000
+
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (June 30, 2025) ---
+  # Cash: Direct from Q2 2025 earnings release balance sheet.
+  cash_and_equivalents: 21036000000
+
+  # Current assets: Direct from Q2 2025 earnings release balance sheet.
+  current_assets: 166216000000
+
+  # Current liabilities: Direct from Q2 2025 earnings release.
+  current_liabilities: 87310000000
+
+  # PP&E net: Direct from Q2 2025 earnings release.
+  property_plant_equipment_net: 203231000000
+
+  # Total assets: Direct from Q2 2025 earnings release / SEC XBRL.
+  total_assets: 502053000000
+
+  # Total liabilities: Derived = total_assets − stockholders_equity.
+  total_liabilities: 139137000000
+
+  # Long-term debt: Direct from Q2 2025 balance sheet = $23,607M.
+  # Alphabet issued $12.5B senior unsecured notes in May 2025, lifting long-term
+  # debt from $10,883M (Dec 31, 2024) to $23,607M at Jun 30, 2025.
+  long_term_debt: 23607000000
+
+  current_portion_of_long_term_debt: null
+  total_debt: null
+
+  # Stockholders' equity: Direct from Q2 2025 earnings release / SEC XBRL.
+  stockholders_equity: 362916000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  # Diluted shares: Direct from Q2 2025 earnings release.
+  shares_outstanding_diluted: 12198000000
+  market_cap: null
+
+extended_notes:
+  google_cloud_segment:
+    description: |
+      Google Cloud is the closest commercial proxy for AI model/API traction available
+      in Alphabet's public disclosures. Gemini API revenue, Vertex AI AI-specific revenue,
+      and model-level margins are NOT separately disclosed by Alphabet.
+    q2_2025:
+      revenue_usd: 13624000000
+      revenue_yoy_pct: 32.0
+      prior_year_revenue_usd: 10320000000  # Q2 2024
+      operating_income_usd: 2826000000
+      operating_margin_pct: 20.7
+      prior_year_operating_margin_pct: 11.3  # Q2 2024
+      note: >
+        Both revenue and operating income direct from Q2 2025 earnings release segment table.
+        Margin expansion (+9.4 ppts YoY) driven by AI workload scale economies and
+        efficiency gains in infrastructure. AI Overviews integration and Gemini API growth
+        cited by management as primary drivers of Google Cloud acceleration.
+    non_disclosed_items:
+      - "Gemini API revenue — not broken out in any Alphabet filing"
+      - "Vertex AI AI-specific revenue — not separately reported"
+      - "Model-level gross margin or contribution margin — not disclosed"
+      - "Number of active Gemini API customers — not disclosed"
+
+sources:
+  - id: s_q2_er
+    url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q2/2025q2-alphabet-earnings-release.pdf"
+    kind: earnings_release
+    description: >
+      Direct from Q2 2025 Alphabet earnings release (July 29, 2025):
+      revenue = $96,428M, operating_income = $31,271M, net_income = $28,196M,
+      interest_income = $1,050M, interest_expense = $261M,
+      diluted_shares = 12,198M, operating_cash_flow = $27,747M,
+      stock_based_compensation = $5,998M, depreciation_and_amortization = $4,998M,
+      long_term_debt = $23,607M, current_assets = $166,216M,
+      current_liabilities = $87,310M, PP&E_net = $203,231M,
+      total_assets = $502,053M, stockholders_equity = $362,916M.
+      Also provides H1 2025 YTD figures used in Q1 and Q2 derivations.
+    covers:
+      - revenue
+      - operating_income
+      - net_income
+      - interest_income
+      - interest_expense
+      - shares_outstanding_diluted
+      - operating_cash_flow
+      - stock_based_compensation
+      - depreciation_and_amortization
+      - long_term_debt
+      - current_assets
+      - current_liabilities
+      - property_plant_equipment_net
+      - total_assets
+      - stockholders_equity
+    supports_derivation_of:
+      - cost_of_revenue
+      - research_and_development
+      - selling_general_administrative
+      - capital_expenditures_cash
+      - gross_profit
+      - total_liabilities
+    retrieved_at: "2026-03-30"
+
+  - id: s_xbrl
+    url: "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+    kind: sec_companyfacts_json
+    description: >
+      SEC XBRL company facts API (CIK 0001652044). Provides cross-check for
+      quarterly instant metrics at June 30, 2025 and H1 2025 flow metrics.
+      CostOfRevenue H1 2025 YTD = $75,400M.
+      ResearchAndDevelopmentExpense H1 2025 YTD = $27,364M.
+      PaymentsToAcquirePropertyPlantAndEquipment H1 2025 = $39,643M.
+    covers:
+      - cost_of_revenue
+      - research_and_development
+      - capital_expenditures_cash
+    retrieved_at: "2026-03-30"
+
+  - id: s_nondisclosure
+    url: "https://abc.xyz/investor/"
+    kind: documentation
+    description: >
+      NON-DISCLOSED ITEMS: Gemini API revenue, Vertex AI AI-specific revenue,
+      and model-level margins are not reported in any Alphabet public filing.
+      Google Cloud (revenue + OI) is the sole available commercial proxy.
+    covers:
+      - other_income_expense_net
+      - income_tax_expense_benefit
+      - current_portion_of_long_term_debt
+      - total_debt
+      - shares_outstanding_basic
+      - market_cap
+    retrieved_at: "2026-03-30"

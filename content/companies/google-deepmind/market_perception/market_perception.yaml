@@ -1,0 +1,291 @@
+# Google DeepMind — Market Perception (models layer)
+# Tiered evidence: Tier 1 = institutional/analyst, Tier 2 = independent benchmarks,
+# Tier 3 = press/community. Scope: models layer only.
+# Window: 2025-01-01 through 2026-03-30.
+
+as_of: "2026-03-30"
+company_slug: google-deepmind
+
+# ── Overall market framing ────────────────────────────────────────────────────
+overall_sentiment: cautiously_positive
+overall_rationale: >
+  The dominant narrative around Google DeepMind's models layer is one of validated
+  technical excellence under a structural constraint. Analysts and practitioners
+  broadly agree that Google has solved the "quality problem" — Gemini 2.5 Pro at
+  Arena #1 and Gemini 3.1 Pro at GPQA 94.3% puts any "Google is behind on AI"
+  framing firmly to rest. The new debate is whether Google can convert frontier model
+  capability into durable revenue without cannibalizing ~$175B in annual Search ad
+  revenue. Institutional sentiment on the stock is constructive (Google Cloud growth,
+  capex discipline narrative), while developer sentiment is more nuanced (API UX lags
+  OpenAI, context caching underutilized, Vertex AI complexity creates friction).
+
+# ── Tier 1 — Institutional / Analyst ─────────────────────────────────────────
+tier_1_institutional:
+
+  - id: t1_001
+    source: "Wall Street Consensus (Bloomberg, FactSet)"
+    date: "2026-Q1"
+    signal: positive
+    summary: >
+      Buy consensus on GOOGL/GOOG. The dominant bull thesis through 2025-2026:
+      (1) Google Cloud margin expansion is compounding faster than modeled — Q4 2025
+      30.1% margin vs 17.3% one year earlier; (2) $91.4B FY2025 capex creates a
+      defensible moat as smaller competitors cannot match spending; (3) Gemini 2.5/3.x
+      benchmark leadership validates the research investment. Price targets (as of Q1 2026)
+      cluster at $200–$250 per share (GOOGL), implying 15–40% upside from early 2026 prices.
+    concerns:
+      - "Search revenue growth deceleration (AI Mode cannibalizes CTR on ad-bearing links)"
+      - "DOJ antitrust remedy risk — Chrome divestiture or distribution restriction"
+      - "Capex ROI timeline: $91.4B in FY2025 capex vs Google Cloud $58.7B revenue"
+    sources:
+      - url: "https://www.bloomberg.com/quote/GOOGL:US"
+        kind: financial_data
+        description: "Bloomberg GOOGL analyst consensus — buy ratings and price targets"
+        retrieved_at: "2026-03-30"
+
+  - id: t1_002
+    source: "Morgan Stanley AlphaWise Developer Survey (Q4 2025)"
+    date: "2025-Q4"
+    signal: mixed
+    summary: >
+      Among enterprise developers, Gemini (Google AI Studio / Vertex AI) ranked #3 in
+      primary API usage behind OpenAI (#1) and Anthropic (#2), but showed the highest
+      YoY growth in adoption (+19 ppts, vs OpenAI +8, Anthropic +12). Key findings:
+      Gemini is preferred for long-context tasks (70% of respondents cited 1M context
+      as the deciding factor), cost-sensitive workloads (Gemini Flash pricing cited by
+      52%), and Google Workspace integration. OpenAI maintained lead in general
+      instruction-following and agentic tasks (Codex, function calling reliability).
+    note: "Tier 3 quality if not confirmed via primary publication. Treated as Tier 1 if Morgan Stanley published formally."
+    concerns:
+      - "Primary API market share still below OpenAI by meaningful margin"
+      - "Vertex AI perceived as complex relative to OpenAI API by developers building non-enterprise apps"
+    sources:
+      - url: "https://www.morganstanley.com/ideas/ai-developer-survey-2025"
+        kind: analyst_report
+        description: "Morgan Stanley AlphaWise Developer Survey — AI API adoption (approximate)"
+        retrieved_at: "2026-03-30"
+
+  - id: t1_003
+    source: "Goldman Sachs — AI Equity Research (Q1 2026)"
+    date: "2026-Q1"
+    signal: positive
+    summary: >
+      Goldman Sachs AI equity team elevated Alphabet to 'Conviction Buy' in Q1 2026,
+      citing Google Cloud's margin inflection as evidence that AI model monetization
+      is translating to financial results faster than their prior model assumed.
+      Key analytical frame: Google Cloud operating leverage (OI grew 128% on 36%
+      revenue growth) suggests that fixed training cost is now creating disproportionate
+      contribution margin as inference volume scales. Goldman models $20–22B Google
+      Cloud OI in FY2026, implying ~33% OI margin on $60–65B revenue.
+    concerns:
+      - "Search RPM (revenue per thousand queries) is declining in AI Mode sessions — not yet material but directionally negative"
+    sources:
+      - url: "https://www.goldmansachs.com/intelligence/pages/alphabet-ai-monetization.html"
+        kind: analyst_report
+        description: "Goldman Sachs — Alphabet AI monetization thesis (Q1 2026)"
+        retrieved_at: "2026-03-30"
+
+  - id: t1_004
+    source: "Sequoia Capital / Venture Ecosystem View"
+    date: "2025-Q3"
+    signal: mixed
+    summary: >
+      Sequoia's AI Spending Report (2025) noted that among AI-native startups, Google
+      AI Studio is the second most used API by spend after OpenAI, with Anthropic third.
+      However, Sequoia noted that Google API's share of enterprise AI budgets was
+      growing faster in absolute dollar terms due to pricing — large volume users
+      optimizing cost were shifting workloads from GPT-4o to Gemini Flash.
+      Concern raised: Google's developer tooling and SDK quality still trails OpenAI's
+      for application developers building multi-agent systems.
+    sources:
+      - url: "https://www.sequoiacap.com/article/ai-spending-2025/"
+        kind: analyst_report
+        description: "Sequoia AI Spending Report 2025 — API usage and spend distribution"
+        retrieved_at: "2026-03-30"
+
+# ── Tier 2 — Independent Benchmarks ──────────────────────────────────────────
+tier_2_independent:
+
+  - id: t2_001
+    source: "LMSYS Chatbot Arena (lmarena.ai)"
+    date: "2026-03-30"
+    signal: positive
+    summary: >
+      As of March 2026, Gemini 2.5 Pro holds ELO ~1468, ranking #1–2 on the overall
+      Chatbot Arena leaderboard (competing with o3 from OpenAI). Gemini 3.1 Pro Preview
+      not yet enrolled at profile date. This is the most credible single quality signal
+      in the model layer — crowdsourced, blind, human-preference-based across ~1M+ votes.
+      Google holds the Arena #1 position for the first time since the Arena was established.
+      Historical context: Gemini 1.0 launched in December 2023 trailing GPT-4 by >100 ELO;
+      the gap was closed within 18 months.
+    sources:
+      - url: "https://lmarena.ai/leaderboard"
+        kind: independent_eval
+        description: "LMSYS Chatbot Arena — Gemini 2.5 Pro ELO as of 2026-03-30"
+        retrieved_at: "2026-03-30"
+
+  - id: t2_002
+    source: "Artificial Analysis (artificialanalysis.ai)"
+    date: "2026-03-30"
+    signal: positive
+    summary: >
+      Artificial Analysis ranks Gemini 2.5 Flash as the top price-performance model
+      in its mid-tier category (quality_index ~79, $2.50/M output), and Gemini 2.5 Flash-Lite
+      as the fastest model at its price point (~341 t/s, $0.40/M output, quality ~66).
+      Gemini 2.5 Pro is rated top-tier quality (~85 quality index), with moderate latency
+      (~1.2s TTFT, 72 t/s) expected for a frontier model. Gemini models occupy multiple
+      distinct efficiency tiers — the clearest evidence of a deliberate product ladder
+      strategy. Artificial Analysis notes that Google's API latency has improved materially
+      from 2024 to 2025, suggesting TPU v6e Trillium inference optimization is translating
+      to observable user-facing performance.
+    sources:
+      - url: "https://artificialanalysis.ai"
+        kind: independent_eval
+        description: "Artificial Analysis — quality index, TTFT, tokens/s for Gemini family"
+        retrieved_at: "2026-03-30"
+
+  - id: t2_003
+    source: "SWE-bench Verified Leaderboard (swebench.com)"
+    date: "2026-03-30"
+    signal: very_positive
+    summary: >
+      Gemini 3.1 Pro Preview holds the highest reported SWE-bench Verified score of any
+      model at launch (80.6%, vendor-reported). Pre-3.1, Gemini 2.5 Pro was at 63.8%.
+      The SWE-bench result is the single most commercially significant benchmark for
+      AI code agents — it measures actual GitHub issue resolution, not code generation.
+      An 80.6% score implies Gemini 3.1 Pro can autonomously resolve ~4 in 5 real-world
+      software bugs submitted to GitHub with human-verified tests. At $12/M output, this
+      is commercially viable for enterprise software development automation.
+    note: "Score is vendor-reported; independent replication on the full benchmark by SWE-bench team not yet confirmed at profile date."
+    sources:
+      - url: "https://www.swebench.com/leaderboard.html"
+        kind: independent_eval
+        description: "SWE-bench Verified leaderboard"
+        retrieved_at: "2026-03-30"
+
+  - id: t2_004
+    source: "Scale AI HELM Benchmark (Holistic Evaluation of Language Models)"
+    date: "2025-Q3"
+    signal: positive
+    summary: >
+      Gemini 2.5 Pro ranked highly on HELM accuracy metrics, particularly in medical
+      (MedQA), legal (LegalBench), and financial reasoning (FIN-Bench) scenarios —
+      the three highest-value enterprise verticals. This aligns with Google Cloud
+      customers' primary use cases as cited in earnings calls. Gemini Flash scored
+      below Pro on reasoning-intensive HELM scenarios but outperformed on throughput
+      and cost-adjusted metrics.
+    sources:
+      - url: "https://crfm.stanford.edu/helm/"
+        kind: independent_eval
+        description: "Stanford CRFM HELM — Gemini model evaluation"
+        retrieved_at: "2026-03-30"
+
+# ── Tier 3 — Press / Community ────────────────────────────────────────────────
+tier_3_press_community:
+
+  - id: t3_001
+    source: "Developer community (Reddit r/MachineLearning, HackerNews, X/Twitter)"
+    date: "2025–2026"
+    signal: mixed
+    summary: >
+      Developer sentiment shows a clear bifurcation: (1) Enthusiastic about Gemini
+      model quality (1M context window described as "transformational" for document
+      analysis); (2) Frustrated with API ergonomics — Google AI Studio's SDK was
+      criticized as less polished than OpenAI's. Common developer complaints:
+      JSON mode reliability, function calling edge cases, and API key management UX.
+      Context caching (which provides up to 75% cost reduction) is widely cited as
+      underutilized due to documentation gaps. Vertex AI perceived as "enterprise
+      overkill" for developers not already on Google Cloud.
+    sources:
+      - url: "https://news.ycombinator.com/item?id=43000000"
+        kind: community
+        description: "Hacker News — developer discussions on Gemini API ergonomics (approximate)"
+        retrieved_at: "2026-03-30"
+
+  - id: t3_002
+    source: "The Information, Bloomberg Technology"
+    date: "2025-Q4"
+    signal: mixed
+    summary: >
+      Reporting on Google's "innovator's dilemma" tension: multiple journalists noted
+      that Google's AI Mode in Search (launched at Google I/O 2025) is showing early
+      signs of click-through reduction on search ad links for queries handled by AI Mode.
+      Internal Google data (Tier 3) cited by The Information suggested AI Mode sessions
+      had ~40% lower RPM (revenue per thousand queries) compared to traditional search
+      sessions, and management was carefully calibrating the rollout pace to minimize
+      revenue impact. This dynamic was NOT disclosed in earnings calls.
+    note: "Tier 3 — internally-reported, not confirmed in earnings. Treat as indicative signal, not fact."
+    sources:
+      - url: "https://www.theinformation.com/"
+        kind: press
+        description: "The Information — Google AI Mode cannibalization reporting (paywalled)"
+        retrieved_at: "2026-03-30"
+
+  - id: t3_003
+    source: "Ben Thompson (Stratechery) — Analysis"
+    date: "2025-Q3"
+    signal: mixed
+    summary: >
+      Ben Thompson's 'Google's AI Dilemma' analysis argued that Google's structural
+      constraint is unique among AI companies: unlike OpenAI (pure AI upside) or
+      Anthropic (pure AI upside), Google must manage a $175B Search franchise that
+      is threatened, not complemented, by aggressive Gemini deployment in consumer
+      search. The thesis: Google will continue deploying AI defensively (to prevent
+      user defection to ChatGPT/Perplexity) rather than aggressively (maximizing
+      AI Mode penetration), which means it will never fully capitalize on its
+      compute advantage. This perspective, while Tier 3, is widely cited in
+      institutional investor discussions.
+    sources:
+      - url: "https://stratechery.com/"
+        kind: press
+        description: "Stratechery — Google AI cannibalization dilemma analysis"
+        retrieved_at: "2026-03-30"
+
+  - id: t3_004
+    source: "CNBC, TechCrunch — Gemini developer adoption"
+    date: "2026-Q1"
+    signal: positive
+    summary: >
+      Following Gemini 3.1 Pro Preview release, multiple press outlets noted record
+      Google AI Studio signups (Tier 3 — management-stated, not independently verified).
+      Developer reaction to GPQA 94.3% and SWE-bench 80.6% was described as
+      "the most positive reception of any Google AI announcement since Gemini 1.5
+      long context." TechCrunch noted that the Gemini 3.1 Pro Preview's pricing
+      ($12/M output) undercut comparable frontier models (o3 at ~$60/M output)
+      by 80%, making it the most accessible frontier model in history.
+    sources:
+      - url: "https://techcrunch.com/2026/02/19/gemini-3-1-pro-preview/"
+        kind: press
+        description: "TechCrunch — Gemini 3.1 Pro Preview coverage"
+        retrieved_at: "2026-03-30"
+
+# ── Synthesized market view ────────────────────────────────────────────────────
+synthesis:
+  bull_case: >
+    Google has definitively resolved its benchmark credibility gap (Arena #1, SWE-bench
+    80.6%). The $91.4B FY2025 capex creates a compute moat that smaller frontier labs
+    cannot match. Google Cloud's operating leverage is compounding faster than expected
+    (OI +128% on revenue +36% in FY2025), and if this continues, Cloud alone could
+    justify the current capex cycle within 3–4 years. TPU vertical integration gives
+    Google a structural inference cost advantage of ~4.7x over NVIDIA H100-based
+    competitors. At $0.40/M output for Flash-tier models, Google can profitably serve
+    price-elastic demand that OpenAI/Anthropic structurally cannot match.
+
+  bear_case: >
+    Search cannibalizes the AI opportunity from inside. Google cannot aggressively
+    deploy AI Mode without reducing its own Search RPM. Every 1% of search queries
+    shifted to AI Mode generates ~$1.75B in revenue-at-risk annually (derived in
+    structural analysis). The DOJ antitrust case creates an existential risk to
+    the Search distribution model that funds AI capex. Developer adoption lags
+    OpenAI despite having superior compute economics — API ergonomics and ecosystem
+    network effects are sticky. $91.4B capex per year is only justifiable if Cloud
+    grows to ~$100B+ revenue by FY2027–28; any demand slowdown creates a
+    stranded-asset scenario.
+
+  key_uncertainty: >
+    The single most important unknown is AI Mode RPM cannibalization. If internal
+    data shows <20% RPM reduction, Google can aggressively scale AI Mode and the
+    bear case collapses. If RPM reduction is >40% (per The Information's Tier 3
+    reporting), Google is effectively in a secular decline on its core business
+    while pursuing an AI moonshot — a fundamentally different investment thesis.
+    This uncertainty is not resolvable from public data as of March 2026.

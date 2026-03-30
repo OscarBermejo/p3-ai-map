@@ -1,0 +1,104 @@
+slug: xai
+legal_name: xAI Corp
+
+tickers: []  # Private company — no public equity ticker; wholly-owned subsidiary of SpaceX Inc. as of February 2026
+
+summary: |
+  xAI is Elon Musk's frontier AI research and deployment company, founded in March 2023 and
+  headquartered in Palo Alto, CA. In the AI value chain, xAI sits at the models layer: it
+  trains frontier large language models (the Grok family) and deploys them via API (xAI API),
+  consumer products (Grok on X, SuperGrok subscriptions), and enterprise API. xAI is notable
+  for three structural differences from other models-layer competitors: (1) it owns and operates
+  the world's largest privately held AI training supercluster — Colossus — with 555,000+ GPUs
+  in Memphis, Tennessee as of January 2026; (2) it acquired X (formerly Twitter) in March 2025
+  in an all-stock deal, giving Grok exclusive access to real-time social graph and X post data
+  as a training and context signal; and (3) in February 2026, xAI was itself acquired by SpaceX
+  in a landmark $1.25 trillion deal — the largest M&A transaction in history — making xAI a
+  wholly-owned subsidiary of SpaceX.
+
+  As of March 2026, xAI's Grok 4.20 is among the leading frontier models (Artificial Analysis
+  Intelligence Index: 48/63). Grok 4 Heavy was the first model to exceed 50% on Humanity's Last
+  Exam (HLE). Revenue is complex to interpret: standalone xAI API/subscription ARR was ~$100M
+  at end-2024; combined with X's advertising and subscription revenue, the combined entity
+  exited 2025 at ~$3.8B ARR. The company burns approximately $1B per month and targets
+  profitability by 2027. Quantitative financials are not publicly disclosed; estimates from
+  press reports are in financials/*.yaml.
+
+corporate_structure:
+  type: private
+  parent: "SpaceX Inc. (wholly-owned subsidiary as of February 2026)"
+  prior_structure: "Independent private company from founding (March 2023) through February 2026"
+  merger_note: >
+    xAI was acquired by SpaceX in February 2026 in a triangular merger structure. SpaceX
+    valued at $1T, xAI at $250B — total combined deal value $1.25T (largest M&A transaction
+    in history). xAI operates as a wholly-owned subsidiary, keeping its debts, liabilities,
+    and contracts legally separate from SpaceX's balance sheet. xAI shareholders received
+    0.1433 SpaceX shares per xAI share (tax-free reorganization). Prior to this, xAI had
+    acquired X (formerly Twitter) in March 2025 at $33B X / $80B xAI valuations in an
+    all-stock deal, folding X's ~600M monthly active users and social data assets into xAI.
+  founding_date: "2023-03-09"
+  hq: "Palo Alto, CA (offices); Memphis, TN (Colossus supercomputer facility)"
+
+founders:
+  - name: Elon Musk
+    role: "Founder and CEO"
+    prior: "CEO Tesla, SpaceX; co-founder OpenAI (departed 2018)"
+  - name: Greg Yang
+    role: "Co-Founder"
+    prior: "Microsoft Research (Theory of Large Neural Networks)"
+  - name: Guodong Zhang
+    role: "Co-Founder (expanded leadership role post-SpaceX acquisition)"
+    prior: "Google DeepMind"
+  - name: Toby Pohlen
+    role: "Co-Founder (expanded leadership role post-SpaceX acquisition)"
+    prior: "Google DeepMind"
+  - name: Igor Babuschkin
+    role: "Co-Founder"
+    prior: "Google DeepMind"
+  - name: Manuel Kroiss
+    role: "Co-Founder"
+    prior: "Google DeepMind"
+  - name: Yuhuai (Tony) Wu
+    role: "Co-Founder (departed post-SpaceX acquisition)"
+    prior: "Google Brain"
+  - name: Jimmy Ba
+    role: "Co-Founder (departed post-SpaceX acquisition)"
+    prior: "University of Toronto; Google Brain"
+  - name: Kyle Kosic
+    role: "Co-Founder"
+    prior: "OpenAI"
+
+key_executives:
+  - name: Elon Musk
+    role: "CEO, xAI (also CEO SpaceX, CEO Tesla)"
+  - name: Gwynne Shotwell
+    role: "President and COO, SpaceX (oversight role for xAI)"
+  - name: Bret Johnsen
+    role: "CFO, SpaceX (financial oversight of xAI)"
+  - name: Anthony Armstrong
+    role: "CFO, xAI (newly hired post-acquisition)"
+
+links:
+  investor_relations: null  # No public IR page — private subsidiary
+  press_releases_index: https://x.ai/blog
+  api_pricing: https://docs.x.ai/docs/models
+  api_docs: https://docs.x.ai
+  sec_form_d: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&company=xai&CIK=&type=D&dateb=&owner=include&count=40&search_text=
+  company_site: https://x.ai
+  grok_product: https://grok.com
+
+reporting:
+  financials_root: financials/
+  cadence: irregular  # No public quarterly reporting; data from press reports and fundraising disclosures
+  primary_source: press_reports  # The Information, Bloomberg, Reuters; no SEC filings
+
+notes:
+  - xAI is a PRIVATE company (SpaceX subsidiary). No 10-K/10-Q. Use financials_private.md sourcing rules.
+  - Elon Musk's multi-company structure creates significant related-party complexity: xAI trains on X data, runs on SpaceX's future satellite infrastructure, and uses Tesla's Dojo as a supplemental compute resource.
+  - The Colossus supercluster in Memphis is a key asset — 555K+ GPUs as of Jan 2026, ~2GW power capacity, world's largest single-site AI training facility.
+  - xAI acquired X (Twitter) in March 2025 at a $33B X valuation/$80B xAI valuation (all-stock). Revenue figures post-March 2025 include X advertising and subscription revenue.
+  - SpaceX acquired xAI in February 2026 for $250B (xAI valuation in the deal). Combined SpaceX+xAI deal size was $1.25T — largest M&A transaction in history.
+  - Grok 4 Heavy was the first AI model to exceed 50% on Humanity's Last Exam (HLE), a graduate-level multi-domain reasoning benchmark.
+  - Revenue model: xAI API (pay-per-token) + SuperGrok consumer subscriptions ($30/month; $300/month Heavy tier) + X advertising + X Premium subscriptions (~$1B ARR as of Feb 2026).
+  - Burn rate approximately $1B/month; targeting profitability by 2027 per management.
+  - Multiple xAI co-founders departed following SpaceX acquisition (Jimmy Ba, Tony Wu); Guodong Zhang and Toby Pohlen took expanded roles.

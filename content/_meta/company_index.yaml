@@ -29,3 +29,7 @@ companies:
     layer: models
   - slug: anthropic
     layer: models
+  - slug: xai
+    layer: models
+  - slug: google-deepmind
+    layer: models

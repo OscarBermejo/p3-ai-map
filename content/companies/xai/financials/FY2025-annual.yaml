@@ -1,0 +1,247 @@
+period:
+  label: "FY2025-annual"
+  start: "2025-01-01"
+  end: "2025-12-31"
+  fiscal_year: 2025
+  period_type: annual_estimate  # Private company; data from press reports
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  # IMPORTANT: xAI acquired X (Twitter) in March 2025 (all-stock deal). All 2025 revenue figures
+  # that are "combined" include X advertising and X subscription revenue. Standalone xAI API/
+  # SuperGrok ARR at end-2025 was ~$500M (Sacra Tier 2). Combined end-2025 ARR was ~$3.8B
+  # (including X ad revenue, X subscriptions ~$1B ARR, and xAI API). Full-year 2025 recognized
+  # revenue (combined) is not a confirmed figure; field null per protocol.
+  revenue: null  # Combined ARR exited 2025 at ~$3.8B; full-year 2025 recognized revenue not available; see sources
+  cost_of_revenue: null
+  gross_profit: null
+  research_and_development: null
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null  # Very large — Colossus II and 3rd facility build-out; 555K+ GPUs by Jan 2026
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null  # Private; see extended_metrics
+
+sources:
+  - url: https://sacra.com/c/xai/
+    kind: ir_html
+    description: >
+      Tier 2 (Sacra research): xAI exited 2025 at approximately $3.8B combined ARR (post-X merger).
+      On a standalone basis (xAI API + SuperGrok, excluding X ad/subscription revenue), xAI exited
+      2025 at ~$500M ARR. The gap between $500M standalone and $3.8B combined reflects X's advertising
+      and subscription contributions post-merger. Sacra also notes 38x year-over-year ARR growth
+      from ~$100M at end-2024 to ~$3.8B combined at end-2025.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - url: https://www.theinformation.com/briefings/musks-xai-burning-1-billion-month
+    kind: ir_html
+    description: >
+      Tier 2 (The Information): xAI burn rate approximately $1B/month in 2025/early 2026.
+      Management targeting profitability by 2027. At $1B/month, FY2025 gross burn was approximately
+      $12B — implying substantial net cash consumption even after revenue.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - url: https://www.techmeme.com/260212/p18
+    kind: news_article
+    description: >
+      Tier 2 (The Information via Techmeme): X subscriptions hit $1B ARR by February 2026.
+      Reported by Nikita Bier at xAI all-hands. X subscription revenue includes X Premium
+      tiers ($3–$40/month). Managed by ~30 people including 25 engineers.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - url: null
+    kind: documentation
+    description: >
+      revenue: No full-year 2025 recognized revenue figure available from any public source.
+      The best estimates come from ARR run-rate data:
+      - End-2025 combined ARR: ~$3.8B (Sacra, Tier 2). Full-year recognized revenue is lower than
+        exit ARR because revenue ramp was weighted to H2 2025 following Grok 4 launch (July 2025)
+        and X integration deepening. Working estimate for full-year 2025 combined recognized revenue:
+        $1.5B–$2.5B, with the wide range reflecting uncertainty about when X revenue contributions
+        were consolidated. Standard field null per protocol.
+    covers: [revenue]
+    retrieved_at: "2026-03-30"
+
+  - url: null
+    kind: documentation
+    description: >
+      All P&L, cash flow, and balance sheet fields: not disclosed. Key context for structural
+      analysis: (1) Burn rate of ~$1B/month implies ~$12B FY2025 gross cash burn. (2) Colossus
+      expansion from 200K to 555K+ GPUs in 2025 was capex-intensive — the majority of debt rounds
+      (July and October 2025) were directed at infrastructure financing. (3) The X acquisition
+      (March 2025) added X's operating losses/costs to the combined entity; X's ad revenue
+      partially offsets these but the full cost structure is unknown. (4) As of January 2026
+      the $12.5B debt facility from Apollo/Diameter Capital was secured — likely to finance
+      ongoing GPU procurement and infrastructure expansion toward 1M GPUs.
+    covers: [cost_of_revenue, gross_profit, research_and_development, selling_general_administrative,
+             depreciation_and_amortization, operating_income, interest_expense, interest_income,
+             other_income_expense_net, income_tax_expense_benefit, net_income, operating_cash_flow,
+             stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net,
+             financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities,
+             property_plant_equipment_net, total_assets, total_liabilities, long_term_debt,
+             current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-30"
+
+data_quality:
+  overall: low
+  confirmed_fields: []
+  estimated_fields: []
+  unavailable_fields:
+    - revenue
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: >
+    FY2025 was xAI's transformative year: Grok 3 (February), X acquisition (March), Grok 4
+    (July), Grok 4.1 Fast (November). Revenue is further complicated by the X merger —
+    the combined entity's financials blend two fundamentally different businesses (AI API/
+    subscriptions vs. social media advertising). No audited or reliable P&L data is available.
+    The most important anchors are: end-2025 combined ARR ~$3.8B, standalone xAI API ARR
+    ~$500M, and burn rate ~$1B/month. Quality rating 'low'.
+
+extended_metrics:
+  total_funding_raised_usd:
+    value: null  # Complex: $12.135B through 2024 + undisclosed debt rounds Jul/Oct 2025 + $20B equity + $12.5B debt (Jan 2026)
+    notes: >
+      Total equity funding as of December 31, 2025 (before Series E in Jan 2026):
+      $12.135B (through Series C). Two debt rounds in July and October 2025 also occurred;
+      amounts not publicly disclosed. The full $20B Series E closed January 6, 2026 (just
+      after year-end). Total cumulative funding as of ~January 2026 was ~$45B-50B including
+      debt ($12.5B from Apollo/Diameter Capital).
+    sources:
+      - url: https://techcrunch.com/2026/01/06/xai-says-it-raised-20b-in-series-e-funding/
+        kind: news_article
+        description: "Tier 2 (TechCrunch): Series E $20B closed January 6, 2026 at $230B valuation."
+        retrieved_at: "2026-03-30"
+
+  last_round_amount_usd:
+    value: 20000000000  # $20B Series E, January 2026 (equity component)
+    notes: "Series E closed January 6, 2026. $20B equity (upsized from original $15B target) plus $12.5B debt from Apollo Global Management and Diameter Capital."
+    sources:
+      - url: https://www.reuters.com/business/musks-xai-raises-20-billion-upsized-series-e-funding-round-2026-01-06/
+        kind: news_article
+        description: "Tier 1 (Reuters): Series E $20B closed January 6, 2026. Upsized from $15B target. Investors: Valor Equity Partners, Stepstone, Fidelity, Qatar Investment Authority, MGX, Baron Capital, NVIDIA (strategic), Cisco Investments (strategic)."
+        retrieved_at: "2026-03-30"
+
+  last_round_valuation_usd:
+    value: 230000000000  # $230B post-money valuation at Series E
+    notes: >
+      $230B post-money valuation at January 2026 Series E (Reuters, Business Insider, TechCrunch —
+      Tier 2 consensus). Two weeks later, SpaceX acquired xAI at a $250B implied xAI valuation
+      ($1.25T combined deal). The step-up from $230B to $250B in two weeks reflects the merger
+      premium and combined synergies.
+    sources:
+      - url: https://www.reuters.com/business/musks-spacex-merge-with-xai-combined-valuation-125-trillion-bloomberg-news-2026-02-02/
+        kind: news_article
+        description: "Tier 2 (Reuters): SpaceX acquires xAI at $250B xAI valuation. Combined deal $1.25T. Largest M&A transaction in history."
+        retrieved_at: "2026-03-30"
+
+  last_round_date: "2026-01-06"
+  last_round_type: series_e
+
+  arr_usd:
+    value: null  # ~$3.8B combined ARR (xAI API + X subscriptions + X ads) at end-2025 — Tier 2 estimate; field null
+    notes: >
+      Sacra research (Tier 2) estimates combined ARR of ~$3.8B at end-2025 after the X merger.
+      This includes: X advertising revenue (~$2B+ annualized estimate), X Premium subscriptions
+      (~$1B ARR confirmed as of Feb 2026 by Nikita Bier per The Information), and xAI standalone
+      API/SuperGrok (~$500M ARR). The rapid jump from $100M standalone ARR (end-2024) to $3.8B
+      combined (end-2025) is driven more by the X revenue consolidation than organic xAI growth.
+      Standalone xAI API ARR of ~$500M represents the "pure AI model company" revenue trajectory
+      and the figure most comparable to Anthropic or OpenAI's API revenue.
+    sources:
+      - url: https://sacra.com/c/xai/
+        kind: ir_html
+        description: "Tier 2 (Sacra): xAI ~$3.8B combined ARR end-2025; ~$500M standalone."
+        retrieved_at: "2026-03-30"
+
+  monthly_burn_rate_usd:
+    value: null  # ~$1B/month — Tier 2 estimate; field null
+    notes: >
+      The Information (Tier 2) reports xAI burning approximately $1B/month. At $1B/month,
+      FY2025 gross burn was ~$12B. Net burn after revenue is lower but still very large —
+      even at $3.8B ARR combined exit run rate ($317M/month), the net burn would be
+      approximately $683M/month. This is the highest monthly burn rate of any private AI lab.
+    sources:
+      - url: https://www.theinformation.com/briefings/musks-xai-burning-1-billion-month
+        kind: ir_html
+        description: "Tier 2 (The Information): xAI burning ~$1B/month, targeting profitability 2027."
+        retrieved_at: "2026-03-30"
+
+  cash_runway_months:
+    value: null
+    notes: >
+      Not precisely calculable. Following the January 2026 Series E ($20B equity) and $12.5B
+      debt facility, xAI has substantial liquidity. At $1B/month gross burn minus ~$317M/month
+      in combined revenue, net burn is ~$683M/month. $32.5B in combined equity+debt financing
+      since inception (including Series E) would theoretically provide 47 months of runway at
+      net burn rates — but the company is simultaneously deploying capital into GPU infrastructure,
+      making runway less relevant than growth trajectory and financing access.
+    sources: []
+
+  headcount:
+    value: null
+    notes: >
+      xAI headcount not officially disclosed. Estimates from LinkedIn and press suggest 1,500–3,000
+      employees as of end-2025, growing rapidly post-X integration. Combined entity (xAI+X) is
+      larger; X employed ~1,500 people post-Musk's layoffs in 2022–2023.
+    sources: []
+
+  revenue_per_employee_usd:
+    value: null
+    notes: "Not calculable with precision: both revenue and headcount uncertain."
+    sources: []

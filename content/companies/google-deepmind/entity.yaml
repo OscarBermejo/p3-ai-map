@@ -1,0 +1,55 @@
+# Google DeepMind / Alphabet Inc. — profile scoped to models layer only.
+# This profile covers Google's model products (Gemini family, Imagen, Veo) and
+# the Gemini API / Vertex AI platform. It does NOT cover Google Cloud infrastructure,
+# TPU hardware, or Google Search/Workspace applications — those are separate profiles.
+
+slug: google-deepmind
+legal_name: Alphabet Inc.
+
+tickers:
+  - symbol: GOOGL
+    exchange: NASDAQ
+  - symbol: GOOG
+    exchange: NASDAQ
+
+summary: |
+  Google DeepMind is Alphabet's unified AI research and product organization, formed
+  from the merger of Google Brain and DeepMind in April 2023. It is the source of the
+  Gemini model family — Alphabet's flagship large language and multimodal models —
+  as well as Imagen (text-to-image) and Veo (text-to-video). Models are deployed
+  through Google AI Studio (developer API) and Vertex AI (enterprise). Alphabet is
+  unique among frontier AI labs in owning its entire AI compute stack end-to-end:
+  training and inference run on proprietary TPUs (v5, v6 Trillium, v7 Ironwood),
+  removing the hyperscaler dependency that constrains OpenAI and Anthropic.
+  Commercial AI traction is measured through Google Cloud (the disclosed segment),
+  which reached $58.7B revenue in FY2025 (+36% YoY) driven by AI Infrastructure and
+  Generative AI Solutions. Gemini API revenue, Vertex AI AI-specific revenue, and
+  model-level margins are not separately disclosed.
+
+  Profile scope: models layer only. Alphabet's other AI-adjacent activities
+  (TPU/chip design, Google Search AI features, Google Cloud infrastructure capacity,
+  Waymo, DeepMind life sciences) are out of scope for this profile.
+
+links:
+  investor_relations: "https://abc.xyz/investor/"
+  press_releases_index: "https://abc.xyz/investor/"
+  sec_cik: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-K&dateb=&owner=include&count=10"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: "FY{year}-Q{n}.yaml"
+  fiscal_year_end: "December 31"
+  sec_cik_number: "0001652044"
+  filing_types:
+    - 10-K  # Annual report
+    - 10-Q  # Quarterly report
+  notes:
+    - "Alphabet files calendar-year (Jan 1 – Dec 31). Files labeled FY2025-Q1 through FY2025-Q4."
+    - "Google Cloud is the commercially disclosed segment used as the AI revenue proxy."
+    - "Gemini API revenue, Vertex AI AI-specific revenue, and model-level margins are NOT disclosed by Alphabet."
+    - "CIK 0001652044 corresponds to Alphabet Inc. (parent); Google LLC is a subsidiary."
+
+notes:
+  - "Profile entity is Alphabet Inc. (GOOGL/GOOG); the research organization is Google DeepMind, wholly owned by Alphabet."
+  - "Google DeepMind was formed April 2023 via merger of Google Brain and DeepMind."
+  - "Slug google-deepmind reflects the AI research/models layer entity; slug alphabet would be used for a hypothetical consolidated profile."

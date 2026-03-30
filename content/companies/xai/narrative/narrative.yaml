@@ -1,0 +1,424 @@
+kind: financial_narrative
+schema_version: 1
+
+as_of: "2026-03-30"
+
+based_on_financials:
+  file: financials/FY2025-annual.yaml
+  period_end: "2025-12-31"
+  period_label: "FY2025-annual (combined xAI+X post-merger)"
+
+business_profile_as_of: "2026-03-30"
+
+central_questions:
+  - "Is xAI a world-class AI model company temporarily disguised as a social media holding company — or is the reverse true?"
+  - "At what standalone AI ARR growth rate does the $250B SpaceX-acquisition valuation make sense?"
+
+sections:
+
+  - id: business_model_lens
+    title: "The Business Model Before the Numbers"
+    body: |
+      Reading xAI through a traditional AI-model-company lens produces the wrong answer. xAI
+      is not OpenAI. It is not Anthropic. It is a compute-infrastructure company that has
+      annexed a social media platform and happens to train frontier AI models on top.
+
+      The correct business model lens for xAI as of March 2026 is a holding company with three
+      distinct and financially intertwined assets:
+
+      1. **AI Compute Infrastructure (Colossus)**: A 555,000+ GPU supercluster in Memphis —
+         the world's largest privately owned AI training facility. This is a capital asset with
+         ~$16B+ in replacement cost, financed by equity ($32B raised) and debt ($12.5B Apollo/
+         Diameter Capital facility, January 2026). It generates value by enabling the fastest
+         AI training iterations of any frontier lab, and by providing inference capacity for
+         Grok products.
+
+      2. **AI Model Products (Grok API + SuperGrok)**: The model company — Grok 3/4/4.20
+         served via API and consumer subscriptions. This is the unit comparable to OpenAI's
+         API business or Anthropic's Claude API. Standalone ARR at end-2025: ~$500M. This
+         is the ONLY segment that should be compared to Anthropic or OpenAI for competitive
+         benchmarking purposes.
+
+      3. **Social Media Platform (X / formerly Twitter)**: ~600M monthly active users,
+         X Premium subscriptions ($1B ARR as of February 2026), and advertising revenue.
+         Post-March 2025, this segment is consolidated into xAI. It is structurally a declining
+         advertising business (X's ad revenue fell significantly post-Musk acquisition vs.
+         pre-2022) with a growing subscription business.
+
+      Every metric in this file — ARR, burn, valuation multiples — must be read through this
+      three-segment lens. Most public coverage conflates segments 2 and 3 into a single "xAI
+      revenue" number. That conflation produces misleading comparisons.
+
+  - id: funding_efficiency
+    title: "Funding Efficiency: The Worst Capital Ratio in the Frontier Lab Cohort"
+    body: |
+      The most important original computation for xAI is its funding efficiency — what the
+      company has achieved per dollar of capital raised.
+
+      **Computation: Capital-to-ARR ratio (standalone AI business only)**
+
+      As of end-2025:
+      - Capital raised (cumulative equity through Series C + estimated debt rounds): ~$12.135B equity + undisclosed debt
+      - Standalone xAI AI ARR: ~$500M (Sacra, Tier 2)
+      - Capital-to-ARR ratio: ~24:1 (12.135B / 500M) on equity raised through Series C alone
+
+      As of Series E close (January 2026):
+      - Cumulative equity raised: ~$32.1B ($12.135B + $20B Series E) plus $12.5B debt
+      - Standalone xAI AI ARR: ~$500M (no step-change between Dec 2025 and Jan 2026)
+      - Capital-to-ARR ratio (equity only): **64:1**
+      - Capital-to-ARR ratio (equity + debt): **89:1**
+
+      **Peer comparison:**
+      | Company | Total funding (approx.) | ARR (AI API only) | Capital-to-ARR |
+      |---------|------------------------|-------------------|----------------|
+      | Anthropic | ~$12B | ~$19B (Mar 2026) | **0.63:1** |
+      | OpenAI | ~$175B | ~$25B | **7:1** |
+      | xAI | ~$32B equity + $12.5B debt | ~$500M standalone | **64:1 to 89:1** |
+
+      xAI has consumed between 10× and 140× more capital per unit of AI API revenue than its
+      primary competitors. Anthropic has achieved what no VC-backed AI lab has done before:
+      growing ARR 19× from $1B to $19B in 15 months on ~$12B in total capital — a 0.63:1
+      ratio. xAI is at the opposite extreme.
+
+      **Why is this ratio so bad — and does it matter?**
+
+      It matters for two different reasons depending on the business model lens:
+
+      For the AI Model business (segment 2): the ratio reflects a genuine execution gap. xAI
+      launched its commercial API later than competitors (Grok 2 API in late 2024, vs Anthropic's
+      commercial Claude API in 2023). Benchmark leadership has not yet converted to enterprise
+      contract volume. The $1B/month burn rate includes massive GPU capex that Anthropic treats
+      as variable cloud cost — so some of the apparent inefficiency is an accounting difference,
+      not an operational one.
+
+      But the accounting argument only partially rehabilitates the ratio. Anthropic's $12B
+      in cloud costs over its lifetime (paying AWS/Google rates) is still substantially less
+      than xAI's $32B+ in GPU procurement, financing, and operations. The owned-compute model
+      does not yet appear to have produced materially cheaper inference or superior model
+      training outcomes vs Anthropic's cloud-native approach.
+
+      The ratio improves dramatically once the X revenue base is included: $3.8B combined ARR
+      on $32B+ capital = ~8.5:1 — comparable to OpenAI. But this comparison requires accepting
+      that a declining social media advertising business is equivalent to frontier AI model
+      revenue in terms of investable quality. It is not.
+
+      **Assumption disclosed**: The $500M standalone AI ARR figure is a single Tier 2 source
+      (Sacra). If the true figure is $1–2B standalone (possible given SuperGrok Heavy subscription
+      success), the capital efficiency ratio improves to 16:1–32:1 — still worse than peers but
+      not catastrophic. This uncertainty materially affects the analysis.
+
+  - id: valuation_multiples
+    title: "Valuation Multiples vs Public and Private Comps: What Is Actually Priced In"
+    body: |
+      **Computation: Revenue multiples at the SpaceX acquisition price**
+
+      xAI was acquired by SpaceX in February 2026 at a $250B implied valuation.
+
+      Multiple scenarios at $250B:
+
+      **Scenario 1: Combined ARR multiple (xAI+X)**
+      - Combined ARR exit-2025: ~$3.8B
+      - Implied multiple: 250B / 3.8B = **65.8× ARR**
+      - Benchmark: OpenAI at $730B on ~$25B ARR = 29× ARR; Anthropic at ~$60B on ~$19B ARR = 3.2× ARR
+      - xAI's 65.8× multiple is 2.3× OpenAI's and 20.6× Anthropic's on a combined ARR basis
+      - This multiple is only justifiable if xAI's combined ARR grows 10× in the next 3–4 years
+
+      **Scenario 2: Standalone AI ARR multiple**
+      - Standalone xAI AI ARR: ~$500M
+      - Implied multiple: 250B / 500M = **500× ARR** — essentially unlimited forward value pricing
+      - At this multiple, the market is saying: "We are pricing pure optionality. Current revenue is irrelevant."
+      - The only precedent for 500× ARR in technology history is early-stage pre-revenue businesses
+
+      **Compute asset-adjusted valuation:**
+      - GPU replacement value: 555K GPUs × $30K avg = $16.65B
+      - Debt: $12.5B
+      - Net compute asset value: $16.65B - $12.5B = $4.15B net of debt
+      - $250B valuation - $4.15B compute net assets = **$245.85B for the AI + X business**
+      - Even after crediting the GPU assets, the company is priced at ~$246B on ~$3.8B combined ARR = 64.7× ARR
+
+      **Interpretation through the business model lens:**
+
+      The $250B valuation is fundamentally a bet on three things that have zero current revenue:
+      (1) SpaceX satellite AI compute infrastructure (LEO data centers) — 5–10 year timeline;
+      (2) Aurora autonomous driving AI becoming xAI's breakthrough commercial application;
+      (3) Grok becoming the dominant AI layer for X's 600M MAU, scaling ARPU from ~$6/year
+      (X Premium) to $30–100/year (SuperGrok tiers).
+
+      If any one of these materializes at scale, the $250B valuation is defensible. If all three
+      disappoint, the valuation reflects only the current AI model business — which at $500M ARR
+      and 64:1+ capital efficiency is far below the quality threshold that would justify $250B on
+      its own merits.
+
+  - id: model_price_performance_trajectory
+    title: "Model Price-Performance Trajectory: The Most Underappreciated xAI Metric"
+    body: |
+      The most analytically compelling data in the xAI file is the price-performance trajectory
+      of the Grok model family — a signal that gets far less coverage than the funding and
+      valuation headlines.
+
+      **Computation: Quality per output dollar across Grok generations**
+      (Formula: Artificial Analysis Intelligence Index / output price per 1M tokens)
+
+      | Model | Release | AA Quality Index | Output price $/M | Quality/$ | Change vs prior |
+      |-------|---------|-----------------|------------------|-----------|-----------------|
+      | Grok 3 | Feb 2025 | 25 | $15.00 | **1.67** | baseline |
+      | Grok 4 | Jul 2025 | 42 | $15.00 | **2.80** | +68% (same price, +68% quality) |
+      | Grok 4.20 | early 2026 | 48 | $6.00 | **8.00** | +186% vs Grok 4 |
+      | Grok 4.1 Fast | Nov 2025 | 39 | $0.50 | **78.0** | +2,686% vs Grok 4 |
+
+      **From Grok 3 to Grok 4.1 Fast in 9 months: 47× improvement in quality per output dollar.**
+
+      For context on what this means competitively:
+
+      - Anthropic Claude 3.5 Haiku: ~$1.25/M output, quality index estimated ~30–35 = ~24–28 quality/$
+      - Google Gemini 2.0 Flash: ~$0.40/M output, quality index estimated ~35–40 = ~87–100 quality/$
+      - OpenAI GPT-4o mini: ~$0.60/M output, quality index ~30 = ~50 quality/$
+
+      Grok 4.1 Fast at 78.0 quality/$ positions xAI as genuinely competitive on price-performance
+      in the cost-efficient tier — a segment where Anthropic Haiku and Google Flash had been
+      unchallenged. The 47× trajectory improvement in 9 months is not explained by any single
+      innovation; it reflects the combination of model architecture improvements, training on
+      larger compute (Colossus scale-up), and aggressive pricing strategy.
+
+      **What this trajectory implies:**
+
+      If xAI maintains this rate of price-performance improvement — even at half the observed
+      47× rate over the next 12 months — the cost-efficient AI model market will face
+      unprecedented pricing pressure. A hypothetical Grok 5.1 Fast at similar improvement
+      trajectory would deliver ~150+ quality/$ at sub-$0.25/M output pricing. That scenario
+      breaks the business models of most mid-tier AI API providers.
+
+      **Assumption disclosed:** The trajectory extrapolation assumes improvement rate continues.
+      It may not. The 47× jump from Grok 3 to Grok 4.1 Fast was partly driven by xAI's
+      decision to price Grok 4.1 Fast at $0.50/M (an aggressive commercial choice, not a
+      technical achievement). The quality improvement (25→39) was substantial but less dramatic
+      (56%). Continued aggressive pricing may compress xAI's own API margins if volume does not
+      compensate.
+
+  - id: structural_burn_multiple
+    title: "Burn Multiple Analysis: When Does xAI's Cash Consumption Become Self-Sustaining?"
+    body: |
+      **Computation: Burn multiple and payback analysis**
+
+      Burn multiple = Gross burn / Net new ARR added
+
+      Known values:
+      - Monthly gross burn: ~$1B ($12B/year) — The Information, Tier 2
+      - Combined ARR end-2025: ~$3.8B; end-2024 proxy: ~$100M standalone (pre-X merger, pre-Grok 3)
+      - Combined ARR end-2024 (post-X merger retroactive basis): ~$2B estimated (X ad revenue
+        was ~$1.5–2B annualized at the time of the March 2025 merger plus ~$100M xAI standalone)
+      - Net new combined ARR in 2025: ~$1.8B ($3.8B - $2.0B)
+      - 2025 gross burn: ~$12B
+      - **2025 burn multiple: ~6.7× net new ARR** (12B / 1.8B)
+
+      Benchmark: A burn multiple below 1.5× is considered healthy for SaaS growth companies.
+      Above 2× is a concern. Above 4× implies a company consuming capital 4x faster than it
+      grows revenue — unsustainable without continued external financing.
+
+      At 6.7×, xAI consumed $6.70 in capital for every $1 of new ARR added in 2025. This is
+      among the highest burn multiples of any company at this revenue scale.
+
+      **Assumption disclosed:** The $2B combined ARR baseline for end-2024 is an estimate;
+      the X revenue figure at time of merger is not confirmed. If combined baseline was lower
+      (e.g., $1.5B), net new ARR in 2025 was $2.3B and burn multiple falls to 5.2× — still
+      extreme. If higher (e.g., $2.5B), net new ARR was $1.3B and multiple rises to 9.2×.
+      The range 5–9× appears robust across reasonable assumptions.
+
+      **Payback period at current trajectory:**
+      For xAI to achieve a 1× burn multiple (break-even revenue growth covering burn), it
+      needs to add ~$12B in new ARR per year. On a $3.8B base, that requires 316% year-over-year
+      ARR growth. Anthropic is the only private AI company that has demonstrated this kind of
+      growth rate (ARR grew ~19× in 15 months, implying ~12–14× annual rate). xAI would need
+      to replicate Anthropic's extraordinary growth pace — which Anthropic achieved primarily
+      in enterprise, a segment where xAI has negligible presence.
+
+      The most credible path to reducing the burn multiple is the one in the bull case: Grok 4
+      and 4.20's frontier benchmark performance finally converts to enterprise contracts, AWS
+      Bedrock distribution is added, and standalone AI ARR grows from $500M to $3–5B in 24
+      months. At $5B standalone ARR, net new AI ARR of $4.5B/year against $12B gross burn
+      gives a burn multiple of 2.7× — still high but approaching the range of justifiable
+      pre-profitability growth spending.
+
+  - id: thesis_destruction
+    title: "Thesis Destruction Test: The Bull and Bear Cases Under Math"
+    body: |
+      **The bull case weakest assumption:**
+
+      The bull thesis rests on: owned compute → superior model quality → Grok becomes the default
+      enterprise AI layer → $10B+ standalone AI ARR by 2028 → profitability.
+
+      The weakest link is "owned compute → superior model quality." This assumes that:
+      (a) scaling compute linearly scales model intelligence indefinitely, and
+      (b) xAI's owned compute advantage persists as other labs catch up via cloud commitments.
+
+      (a) is actively contested by researchers citing diminishing returns to pure compute scaling
+      and the demonstrated efficiency gains from synthetic data (DeepSeek showed a model trained
+      on 2% of Grok 3's estimated compute can match it on benchmarks). If algorithmic efficiency
+      improvements allow Anthropic or Google to match Grok 4 on much smaller compute runs, xAI's
+      555K GPU investment produces no durable model quality advantage.
+
+      (b) is challenged by the fact that AWS has committed $100B+ to AI infrastructure and Google
+      has built >1M TPU capacity — the hyperscalers can match xAI's compute at scale without
+      xAI's capex concentration risk.
+
+      **Test:** If owned compute provides no durable model quality advantage over a hyperscaler-
+      financed competitor running on cloud TPUs/H100s, what is xAI worth?
+      - Subtract the compute moat narrative → xAI is a model API company with ~$500M ARR
+      - Subtract the X data advantage → Grok 4's post-training still benchmarks above average
+        without exclusive X data (Grok 1 was trained without X data integration)
+      - Remaining case for $250B valuation: Musk brand, X distribution, SpaceX synergies
+      - X distribution alone (600M MAU) is a genuine durable asset even if the compute moat doesn't hold
+      - At 30× ARR of a hypothetical $5B AI ARR in 3 years: $150B valuation — 40% downside from current
+
+      **The bear case weakest assumption:**
+
+      The bear thesis rests on: capital inefficiency persists → enterprise never adopts Grok →
+      burn exceeds revenue forever → SpaceX shareholders absorb the losses.
+
+      The weakest link is "enterprise never adopts Grok." This assumes the compliance/
+      certification/ecosystem gap is permanent. But:
+      - OpenAI went from no enterprise to dominant enterprise in 2–3 years (ChatGPT launched
+        November 2022; OpenAI Enterprise launched August 2023; ~$13B ARR by 2025)
+      - Anthropic went from zero to $19B ARR in ~3 years
+      - xAI's Grok 4 scores are in the same tier as both of those companies' current models
+
+      **Test:** If xAI replicates Anthropic's enterprise growth trajectory — starting from
+      $500M standalone ARR in 2025 and growing to $19B over the following 3 years (Anthropic's
+      actual pace) — what does the model imply?
+      - $19B standalone AI ARR by 2028 on $3.8B combined ARR
+      - At 30× ARR (Anthropic's implied multiple in mid-2025 at ~$60B / ~$2B ARR): $570B
+      - At this trajectory, $250B is a ~56% discount to an Anthropic-equivalent growth outcome
+      - The bear case's "enterprise never adopts" assumption IS the weakest link — the historical
+        precedent shows enterprise adoption follows frontier model quality within 2–3 years
+
+      **Synthesis:** The bull case's weakest assumption (compute moat durability) is more
+      precarious than it appears but is not fully testable yet. The bear case's weakest
+      assumption (no enterprise adoption) is historically falsified by every prior frontier
+      model lab. The structurally honest position: xAI at $250B is reasonably priced if and only
+      if it executes a credible path to AWS Bedrock distribution + enterprise compliance
+      certification within 18 months, while continuing to invest in Grok quality.
+
+  - id: data_gaps_and_unknown_risks
+    title: "What We Don't Know and Why It Matters"
+    body: |
+      This analysis has three material data gaps that a future analyst should prioritize:
+
+      **1. Standalone xAI AI ARR confirmation**
+      The $500M standalone AI ARR figure (Sacra, Tier 2) is the single most important unconfirmed
+      number in this file. If the true figure is $200M, the capital efficiency story is dramatically
+      worse. If it's $1.5B, the narrative shifts materially toward a legitimate growth story.
+      No Tier 1 source confirms this split. xAI should be pressed to disclose AI-specific vs X-specific
+      revenue in any future public filing or acquisition disclosure.
+
+      **2. X advertising revenue trajectory post-Musk**
+      X's advertising revenue post-Musk acquisition (2022–2025) is not disclosed with specificity.
+      If X ad revenue is declining (consistent with advertiser boycott reports in 2022–2024),
+      the combined $3.8B ARR may be shrinking in its largest component even as AI ARR grows.
+      The combined ARR metric hides this composition risk.
+
+      **3. Colossus operational costs and depreciation**
+      The 555K GPU Colossus cluster has never disclosed its power costs, networking costs,
+      cooling costs, or depreciation schedule. At $30K average GPU cost, the ~$16.65B hardware
+      base depreciated over 5 years = ~$3.3B/year in depreciation alone — a massive below-the-line
+      cost that would appear in any GAAP financial statement. xAI's GAAP losses are almost
+      certainly far larger than the $1B/month burn figure (which likely reflects operating cash
+      burn, not GAAP net income). If and when xAI is required to publish audited financials
+      (e.g., upon SpaceX public offering, or if xAI itself lists), this depreciation will
+      be a headline number.
+
+  - id: conclusion
+    title: "Takeaway: A Compute-Infrastructure Bet Dressed as an AI Company, at a Price That Requires Execution"
+    body: |
+      xAI is the most paradoxical company in the AI landscape: it trains the world's most capable
+      reasoning model (Grok 4 Heavy: first >50% HLE), operates the world's largest private AI
+      supercluster, and simultaneously has the worst capital efficiency ratio of any frontier AI
+      lab — spending 64–89 dollars for every dollar of standalone AI ARR.
+
+      The paradox resolves when you apply the correct business model lens. xAI is not a software
+      company. It is a compute infrastructure company with a model product and a social media
+      business stapled together by an all-stock merger. The $250B SpaceX acquisition price values:
+      the compute assets (~$4B net of debt), the current combined revenue (~$3.8B ARR at 66×),
+      and overwhelmingly — optionality on three bets that have no current revenue: satellite LEO
+      compute, Aurora autonomous AI, and X platform AI ARPU expansion.
+
+      **What is working:** Model quality. Grok 4 Heavy is genuinely at the frontier. The
+      price-performance trajectory of Grok 4.1 Fast (78.0 quality/$ vs Grok 3's 1.67 quality/$
+      — a 47× improvement in 9 months) is the most underreported xAI metric and the best
+      evidence of genuine operational excellence in AI development. If this trajectory continues,
+      xAI will be cost-competitive in every tier of the API market within 12–18 months.
+
+      **What is a genuine risk:** Capital efficiency. At $1B/month burn and $500M standalone
+      AI ARR, xAI is burning 24× its AI-specific monthly revenue. The debt service on the
+      $12.5B Apollo/Diameter facility adds ~$800M–$1B/year in interest (at 6–8% rates). Unless
+      enterprise adoption begins in earnest — requiring AWS Bedrock distribution and SOC2/HIPAA
+      certification — xAI will remain dependent on the Musk premium and SpaceX's balance sheet
+      to sustain operations. That is a single-person dependency risk at a $250B valuation.
+
+      **Where consensus appears wrong:** The market conflates xAI's combined $3.8B ARR with
+      organic AI model growth. The correct standalone AI comparison figure is $500M — which
+      paints a very different picture. At the same time, the bear case's "enterprise never
+      adopts" premise is historically refuted. The real question is timing: is the enterprise
+      adoption gap 18 months or 36 months?
+
+      **What to watch:** The two binary events that would change this thesis are: (1) xAI
+      announces AWS Bedrock and/or Google Vertex AI availability for Grok 4+ (changes enterprise
+      reach overnight); (2) xAI discloses standalone AI ARR publicly, which would either confirm
+      or refute the capital efficiency story. Both events are possible in 2026.
+
+      **Honest unknowns:** X advertising revenue trajectory, Colossus depreciation and GAAP
+      losses, Grok API standalone ARR, enterprise pipeline size. This analysis is limited by
+      the extreme data sparsity of a private company that has chosen to be less transparent
+      than its peers. The narrative would strengthen materially with any one confirmed P&L line.
+
+disclosure_gaps:
+  - "No audited P&L, cash flow statement, or balance sheet — standard private company limitation"
+  - "Standalone xAI AI ARR vs combined xAI+X ARR breakdown not confirmed; $500M standalone is Tier 2 only"
+  - "X advertising revenue trajectory post-2022 Musk acquisition not disclosed"
+  - "Colossus operational costs (power, cooling, networking, depreciation) not disclosed"
+  - "Headcount not confirmed; estimated 1,500–3,000 combined"
+  - "Grok API gross margin not disclosed; inference cost per token not published"
+  - "Interest expense on $12.5B debt facility rate not disclosed"
+  - "Aurora (Tesla Dojo / xAI compute) revenue/commercial status not confirmed"
+  - "X's trailing 12-month ad revenue not confirmed post-merger"
+
+sources:
+  - url: https://sacra.com/c/xai/
+    kind: ir_html
+    description: "Tier 2 (Sacra): xAI revenue breakdown, burn rate, ARR trajectory."
+    retrieved_at: "2026-03-30"
+  - url: https://artificialanalysis.ai/models/grok-3
+    kind: ir_html
+    description: "Tier 2 (Artificial Analysis): Grok 3 independent benchmarks — quality index 25, speed 74.8 t/s, pricing, latency."
+    retrieved_at: "2026-03-30"
+  - url: https://artificialanalysis.ai/providers/xai
+    kind: ir_html
+    description: "Tier 2 (Artificial Analysis): xAI provider-level benchmarks and model comparisons."
+    retrieved_at: "2026-03-30"
+  - url: https://x.ai/news/grok-4
+    kind: vendor_page
+    description: "Tier 1 (xAI official): Grok 4 launch — benchmarks, architecture, Humanity's Last Exam performance."
+    retrieved_at: "2026-03-30"
+  - url: https://x.ai/blog/series-c
+    kind: vendor_page
+    description: "Tier 1 (xAI official): Series C $6B announcement — investors, capital use."
+    retrieved_at: "2026-03-30"
+  - url: https://www.reuters.com/business/musks-xai-raises-20-billion-upsized-series-e-funding-round-2026-01-06/
+    kind: news_article
+    description: "Tier 2 (Reuters): Series E $20B + $12.5B debt, January 2026."
+    retrieved_at: "2026-03-30"
+  - url: https://www.reuters.com/business/musks-spacex-merge-with-xai-combined-valuation-125-trillion-bloomberg-news-2026-02-02/
+    kind: news_article
+    description: "Tier 2 (Reuters): SpaceX acquires xAI at $250B / $1.25T combined."
+    retrieved_at: "2026-03-30"
+  - url: https://www.cnbc.com/2025/03/28/elon-musk-says-xai-has-acquired-x-in-deal-that-values-social-media-site-at-33-billion.html/
+    kind: news_article
+    description: "Tier 2 (CNBC): xAI acquires X at $33B/$80B/$113B combined valuation."
+    retrieved_at: "2026-03-30"
+  - url: https://www.theinformation.com/briefings/musks-xai-burning-1-billion-month
+    kind: ir_html
+    description: "Tier 2 (The Information): $1B/month burn rate, profitability target 2027."
+    retrieved_at: "2026-03-30"
+  - url: https://introl.com/blog/xai-colossus-2-gigawatt-expansion-555k-gpus-january-2026
+    kind: ir_html
+    description: "Tier 2: Colossus 555K GPUs, ~2GW power capacity, January 2026."
+    retrieved_at: "2026-03-30"

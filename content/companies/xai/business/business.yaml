@@ -1,0 +1,1047 @@
+# xAI — Models Layer Business Profile
+# Based on models.yaml template (content/_meta/business_templates/models.yaml)
+# Layer: models | Profile version: 1
+# As of: 2026-03-30
+
+layer: models
+profile_version: 1
+
+as_of: "2026-03-30"
+
+# ─── Model catalog ────────────────────────────────────────────────────────────
+# Coverage: current and recent models in the Grok family.
+# Grok 1 (open weights, Mar 2024) and Grok 1.5/2 (proprietary, deprecated) included
+# for historical context. Active commercially deployed models: Grok 3, Grok 4 family, Grok 4.20.
+
+products:
+
+  # ── Grok 4.20 (flagship reasoning model, March 2026) ──────────────────────
+  - name: "Grok 4.20"
+    vendor: xai
+    model_family: "Grok 4"
+    architecture_type: mixture_of_experts
+    weights_access: proprietary
+    status: ga
+    release_date: "2026"
+    knowledge_cutoff: null  # Not officially disclosed
+
+    capabilities:
+      context_window_tokens:
+        value: 2000000  # 2M token context window
+        notes: "2M context window introduced with Grok 4.20 series. Significantly larger than Grok 4 base (256K)."
+        sources:
+          - url: https://mem0.ai/blog/xai-grok-api-pricing
+            kind: vendor_page
+            description: "Tier 2: xAI Grok API pricing page documenting 2M context for Grok 4.20."
+            retrieved_at: "2026-03-30"
+      max_output_tokens:
+        value: null
+        notes: "Not separately disclosed."
+        sources: []
+      modalities_in:
+        value: [text, image]
+        notes: "Text and image input confirmed."
+        sources: []
+      modalities_out:
+        value: [text]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Native tool use including code execution and web search. Function calling supported."
+        sources: []
+      computer_use:
+        value: null
+        notes: "Not yet confirmed for Grok 4.20 as of March 2026."
+        sources: []
+      structured_output:
+        value: yes
+        notes: "Structured outputs (JSON mode) supported via xAI API."
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Fine-tuning not available via xAI API as of March 2026."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 48
+        notes: "Artificial Analysis Intelligence Index v4.0: 48/63 for Grok 4.20 Beta 0309 — the highest score in the Grok family as of March 2026. Source: Artificial Analysis (artificialanalysis.ai)."
+        sources:
+          - url: https://artificialanalysis.ai/providers/xai
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): xAI model intelligence index scores. Grok 4.20 Beta 0309: 48."
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: null
+        notes: "Grok 4.20-specific Arena ELO not separately confirmed. Grok 4.1 Thinking scored 1483 on LMArena text leaderboard (Tier 2 estimate)."
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Grok 4.20 GPQA Diamond not separately reported; Grok 4 base scored 87.5% (vendor-reported)."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: "Not separately reported for Grok 4.20."
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: "Multimodal — potentially applicable but not yet benchmarked independently."
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 2.00
+        notes: "$2.00/M input tokens (standard tier)."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official docs): Grok 4.20 pricing."
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 6.00
+        notes: "$6.00/M output tokens."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official docs): Grok 4.20 output pricing."
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        notes: "Caching pricing not confirmed for Grok 4.20 as of this snapshot."
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary model — vendor API price used."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Independent latency measurement for Grok 4.20 not yet available from Artificial Analysis as of March 2026."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 8.00  # Derived: 48 / 6.00 = 8.00
+        notes: "Derived: AA quality index 48 / $6.00 per 1M output tokens = 8.0 quality per output dollar. Recompute when pricing changes."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO not confirmed for Grok 4.20; cannot compute."
+        sources: []
+
+    sources:
+      - url: https://docs.x.ai/docs/models
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Model catalog and pricing for Grok 4.20."
+        retrieved_at: "2026-03-30"
+
+  # ── Grok 4.1 Fast (reasoning, November 2025) ──────────────────────────────
+  - name: "Grok 4.1 Fast"
+    vendor: xai
+    model_family: "Grok 4"
+    architecture_type: mixture_of_experts
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-11-17"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 2000000
+        notes: "2M token context window."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: null
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 39
+        notes: "Artificial Analysis Intelligence Index: 39 (Tier 2, Artificial Analysis). Strong reasoning model."
+        sources:
+          - url: https://artificialanalysis.ai/providers/xai
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 4.1 Fast quality index 39."
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1465
+        notes: "LMArena text leaderboard: Grok 4.1 scored 1465. Tier 2 estimate."
+        sources:
+          - url: https://llm-stats.com/benchmarks/lmarena-text
+            kind: ir_html
+            description: "Tier 2: LMArena text leaderboard. Grok-4.1: 1465."
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: null
+        notes: "Not separately benchmarked for Grok 4.1 Fast."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.20
+        notes: "$0.20/M input tokens — very aggressive pricing for frontier-class reasoning."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 4.1 Fast pricing."
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 0.50
+        notes: "$0.50/M output tokens."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 4.1 Fast output pricing."
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: null
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 78.0  # Derived: 39 / 0.50 = 78.0
+        notes: >
+          Derived: AA quality index 39 / $0.50 per 1M output tokens = 78.0 quality per output dollar.
+          This is the highest price-performance ratio in the xAI model lineup by a wide margin —
+          38x more efficient than Grok 3 (1.67) and 28x more efficient than Grok 4 (2.80).
+          Positions Grok 4.1 Fast as an aggressive value play vs Anthropic Haiku and Google Flash.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 2930.0  # Derived: 1465 / 0.50 = 2930
+        notes: "Derived: Arena ELO 1465 / $0.50 output = 2930 ELO per output dollar."
+        sources: []
+
+    sources:
+      - url: https://docs.x.ai/docs/release-notes
+        kind: vendor_page
+        description: "Tier 1 (xAI release notes): Grok 4.1 released November 17, 2025."
+        retrieved_at: "2026-03-30"
+
+  # ── Grok 4 (flagship, July 2025) ──────────────────────────────────────────
+  - name: "Grok 4"
+    vendor: xai
+    model_family: "Grok 4"
+    architecture_type: mixture_of_experts
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-07-09"
+    knowledge_cutoff: "2024-12-31"
+
+    capabilities:
+      context_window_tokens:
+        value: 256000
+        notes: "256K token context window for Grok 4 standard."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Native tool use: code execution, web search, X search. Strong function calling."
+        sources: []
+      computer_use:
+        value: null
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 42
+        notes: "Artificial Analysis Intelligence Index: 42 (Tier 2, Artificial Analysis)."
+        sources:
+          - url: https://artificialanalysis.ai/providers/xai
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 4 quality index 42."
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1430
+        notes: "Chatbot Arena ELO: 1430 (Tier 2 — serenitiesai.com benchmark aggregator)."
+        sources:
+          - url: https://serenitiesai.com/benchmark/models/grok-4
+            kind: ir_html
+            description: "Tier 2 benchmark aggregator: Grok 4 Arena ELO 1430."
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: 87.5
+        notes: >
+          87.5% on GPQA Diamond (vendor-reported, xAI release post July 2025). Note: vendor-reported.
+          Grok 4 Heavy variant scored 88.4%. These scores place Grok 4 at or near frontier on
+          scientific reasoning, comparable to GPT-5 and Claude 3.7 Sonnet tier.
+        sources:
+          - url: https://x.ai/news/grok-4
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 4 GPQA Diamond 87.5%; Grok 4 Heavy 88.4%. Vendor-reported."
+            retrieved_at: "2026-03-30"
+      swe_bench_verified:
+        value: 72.0
+        notes: "72% on SWE-bench Verified (Tier 2 benchmark aggregator). Among the highest published scores for this benchmark."
+        sources:
+          - url: https://serenitiesai.com/benchmark/models/grok-4
+            kind: ir_html
+            description: "Tier 2: Grok 4 SWE-bench Verified 72%."
+            retrieved_at: "2026-03-30"
+      math_500:
+        value: 91.0
+        notes: "91% on MATH benchmark (Tier 2). Grok 4 AIME 2025: 93% (vendor-reported)."
+        sources:
+          - url: https://serenitiesai.com/benchmark/models/grok-4
+            kind: ir_html
+            description: "Tier 2: Grok 4 MATH 91%, AIME 2025 93%."
+            retrieved_at: "2026-03-30"
+      mmlu_pro:
+        value: 87.0
+        notes: "87% on MMLU-Pro (Tier 2 benchmark aggregator)."
+        sources:
+          - url: https://serenitiesai.com/benchmark/models/grok-4
+            kind: ir_html
+            description: "Tier 2: Grok 4 MMLU-Pro 87%."
+            retrieved_at: "2026-03-30"
+      mmmu:
+        value: null
+        notes: "Not yet independently benchmarked on MMMU as of March 2026."
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 3.00
+        notes: "$3.00/M input tokens."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 4 pricing."
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 15.00
+        notes: "$15.00/M output tokens. Same price point as Grok 3 despite substantially higher capability."
+        sources:
+          - url: https://docs.x.ai/docs/models
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 4 output pricing."
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: null
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-30"
+      median_ttft_ms:
+        value: null
+        notes: "Not yet measured by Artificial Analysis for Grok 4 as a separate standalone entry."
+        sources: []
+      output_tokens_per_second:
+        value: 55.0
+        notes: "Approximately 55 t/s output speed (Tier 2 — serenitiesai.com). Slower than Grok 3 (74.8 t/s) due to larger model size."
+        sources:
+          - url: https://serenitiesai.com/benchmark/models/grok-4
+            kind: ir_html
+            description: "Tier 2: Grok 4 output speed ~55 t/s."
+            retrieved_at: "2026-03-30"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 2.80  # Derived: 42 / 15.00 = 2.80
+        notes: >
+          Derived: AA quality index 42 / $15.00 per 1M output tokens = 2.80 quality per output dollar.
+          67% improvement in price-performance vs Grok 3 (1.67) despite same output price, driven by
+          higher intelligence index (42 vs 25). Still below average price-performance in the >$1/M
+          output tier compared to OpenAI o3 or Anthropic Claude 3.7 Sonnet.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 95.3  # Derived: 1430 / 15.00 = 95.3
+        notes: "Derived: Arena ELO 1430 / $15.00 output = 95.3 ELO per output dollar."
+        sources: []
+
+    sources:
+      - url: https://x.ai/news/grok-4
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 4 announcement. Trained on 200K H100s. First model to exceed 50% HLE (Heavy variant: 50%+). AIME 2025: 91.7% standard, 100% Heavy."
+        retrieved_at: "2026-03-30"
+
+  # ── Grok 3 Mini (reasoning, February 2025) ────────────────────────────────
+  - name: "Grok 3 Mini"
+    vendor: xai
+    model_family: "Grok 3"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-02"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 131072  # 131K context window
+        notes: "131K context window. Smaller than Grok 3 base (1M)."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text]
+        notes: "Text-only input."
+        sources: []
+      modalities_out:
+        value: [text]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: null
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Separate Artificial Analysis quality index for Grok 3 Mini not confirmed as of March 2026."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Not independently benchmarked as a standalone entry."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.30
+        notes: "$0.30/M input tokens."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/provider/xai
+            kind: ir_html
+            description: "Tier 2: Grok 3 Mini pricing $0.25–0.30/M input."
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 0.50
+        notes: "$0.50/M output tokens. Extremely cost-efficient tier."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/provider/xai
+            kind: ir_html
+            description: "Tier 2: Grok 3 Mini $0.50/M output."
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: null
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Cannot compute — quality index not confirmed for Grok 3 Mini."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources: []
+
+  # ── Grok 3 (flagship, February 2025) ──────────────────────────────────────
+  - name: "Grok 3"
+    vendor: xai
+    model_family: "Grok 3"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-02-19"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000  # 1M token context window
+        notes: "1M token context window. Note: Artificial Analysis reports this as 1M; xAI docs may differ slightly."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 context window 1M tokens."
+            retrieved_at: "2026-03-30"
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text]
+        notes: "Text-only input. Grok 3 does not support image input (confirmed by Artificial Analysis)."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 input modality is text only."
+            retrieved_at: "2026-03-30"
+      modalities_out:
+        value: [text, image]
+        notes: "Text and image generation output."
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: null
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 25
+        notes: "Artificial Analysis Intelligence Index v4.0: 25/63, placing Grok 3 above average (median for price tier: 22) but below the frontier. Evaluated February 2025; note xAI has since launched Grok 4 with significantly higher scores."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 quality index 25. Cost $311.71 to evaluate. Generated 5.3M output tokens (above average verbosity)."
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1402
+        notes: "LMSYS Chatbot Arena ELO: 1402 (Tier 2 — multiple benchmark aggregators). Placed Grok 3 among leading models at launch."
+        sources:
+          - url: https://x.ai/news/grok-3
+            kind: vendor_page
+            description: "Tier 1 (xAI): Grok 3 Beta announcement; ELO figure corroborated by Tier 2 aggregators."
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: 84.6
+        notes: "84.6% on GPQA Diamond (Think mode). Vendor-reported in Grok 3 Beta announcement."
+        sources:
+          - url: https://x.ai/news/grok-3
+            kind: vendor_page
+            description: "Tier 1 (xAI official): Grok 3 Think mode GPQA Diamond 84.6%. Vendor-reported."
+            retrieved_at: "2026-03-30"
+      swe_bench_verified:
+        value: null
+        notes: "Not reported by xAI for Grok 3."
+        sources: []
+      math_500:
+        value: null
+        notes: "AIME 2025 (Think mode, cons@64): 93.3% (vendor-reported). MATH-500 not separately reported."
+        sources: []
+      mmlu_pro:
+        value: 79.9
+        notes: "79.9% on MMLU-Pro base model (Tier 2 benchmark aggregator)."
+        sources:
+          - url: https://aimodels.fyi/llm-directory/grok-3
+            kind: ir_html
+            description: "Tier 2: Grok 3 MMLU-Pro 79.9%."
+            retrieved_at: "2026-03-30"
+      mmmu:
+        value: 78.0
+        notes: "78% on MMMU (Think mode, vendor-reported). Note: Artificial Analysis states Grok 3 does NOT support image input despite MMMU score."
+        sources:
+          - url: https://aimodels.fyi/llm-directory/grok-3
+            kind: ir_html
+            description: "Tier 2: Grok 3 MMMU 78% (Think mode)."
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 3.00
+        notes: "$3.00/M input tokens. 'Somewhat expensive' vs. price-tier average of $2.00 (per Artificial Analysis)."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 input $3.00/M vs tier median $2.00."
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 15.00
+        notes: "$15.00/M output tokens. 'Somewhat expensive' vs. price-tier average of $8.00 (per Artificial Analysis)."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 output $15.00/M vs tier median $8.00."
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: 0.75
+        notes: "$0.75/M cached input tokens."
+        sources:
+          - url: https://pricepertoken.com/pricing-page/model/xai-grok-3
+            kind: ir_html
+            description: "Tier 2: Grok 3 cached pricing $0.75/M input."
+            retrieved_at: "2026-03-30"
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary model."
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-30"
+      median_ttft_ms:
+        value: 1330
+        notes: "TTFT 1.33 seconds via xAI API. Better than median for price tier (1.45s). Source: Artificial Analysis."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 TTFT 1.33s (xAI API)."
+            retrieved_at: "2026-03-30"
+      output_tokens_per_second:
+        value: 74.8
+        notes: "74.8 t/s output speed (xAI API). Above median for price tier (60.4 t/s). Source: Artificial Analysis."
+        sources:
+          - url: https://artificialanalysis.ai/models/grok-3
+            kind: ir_html
+            description: "Tier 2 (Artificial Analysis): Grok 3 output speed 74.8 t/s."
+            retrieved_at: "2026-03-30"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 1.67  # Derived: 25 / 15.00 = 1.67
+        notes: >
+          Derived: AA quality index 25 / $15.00 per 1M output tokens = 1.67 quality per output dollar.
+          Below average for its price tier — Grok 3 is expensive relative to its intelligence score.
+          By comparison, Grok 4.1 Fast delivers 78.0 (47x more efficient) at $0.50/M output.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 93.5  # Derived: 1402 / 15.00 = 93.5
+        notes: "Derived: Arena ELO 1402 / $15.00 output = 93.5 ELO per output dollar."
+        sources: []
+
+    sources:
+      - url: https://x.ai/news/grok-3
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 3 Beta announcement. 'The Age of Reasoning Agents.' 10x compute of prior SOTA. Large-scale RL training on Colossus."
+        retrieved_at: "2026-03-30"
+      - url: https://artificialanalysis.ai/models/grok-3
+        kind: ir_html
+        description: "Tier 2 (Artificial Analysis): Full performance, latency, and pricing analysis for Grok 3."
+        retrieved_at: "2026-03-30"
+
+  # ── Grok 1 (open weights, March 2024 — historical) ─────────────────────────
+  - name: "Grok 1"
+    vendor: xai
+    model_family: "Grok 1"
+    architecture_type: mixture_of_experts
+    weights_access: open_weights
+    status: deprecated
+    release_date: "2024-03-17"
+    knowledge_cutoff: "2023-10-01"
+
+    capabilities:
+      context_window_tokens:
+        value: 8192
+        notes: "8K context window. Pre-commercial era model."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text]
+        notes: null
+        sources: []
+      tool_use:
+        value: limited
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: no
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: open_weights
+        notes: "Weights open-sourced under Apache 2.0 on March 17, 2024. 314B MoE architecture, 25% active parameters."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Pre-dates Artificial Analysis quality index tracking. Not benchmarked."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: null
+        sources: []
+      math_500:
+        value: null
+        notes: null
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: null
+        sources: []
+      mmmu:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: null
+        notes: "No vendor API offered. Open weights — self-hosted only."
+        sources: []
+      output_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      context_caching_input:
+        value: null
+        notes: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Self-hosted via open weights; third-party hosting not widely established for Grok 1 due to size (314B params)."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Not computable — no commercial API, no quality index score."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: https://x.ai/blog/grok-os
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 1 open-sourced March 17, 2024 under Apache 2.0. 314B MoE, 25% active parameters, 8K context."
+        retrieved_at: "2026-03-30"
+
+# ─── Company-level context ────────────────────────────────────────────────────
+
+api_platform:
+  platform_name:
+    value: "xAI API"
+    notes: null
+    sources:
+      - url: https://x.ai/api
+        kind: vendor_page
+        description: "Tier 1 (xAI official): xAI API platform page."
+        retrieved_at: "2026-03-30"
+  deployment_options:
+    value: ["xAI API (direct)", "Azure AI (Grok 3 via Microsoft, announced 2025)"]
+    notes: "xAI API is the primary deployment channel. Unlike OpenAI/Anthropic, xAI is NOT natively available on AWS Bedrock or Google Vertex AI as of March 2026. An Azure partnership for Grok 3 was announced in 2025. Server-side tool pricing charged separately ($5/1K calls for web/X search; $5 for code execution)."
+    sources:
+      - url: https://docs.x.ai/docs/models
+        kind: vendor_page
+        description: "Tier 1 (xAI): API deployment options and server-side tool pricing."
+        retrieved_at: "2026-03-30"
+  enterprise_features:
+    value: ["structured outputs", "tool use/function calling", "image generation", "video generation", "code execution (server-side)", "X/web search (server-side)"]
+    notes: "Enterprise features are growing but behind OpenAI and Anthropic in SOC2, HIPAA BAA, SSO/SAML, and enterprise contract infrastructure."
+    sources: []
+  sla_uptime:
+    value: null
+    notes: "Not publicly disclosed as of March 2026."
+    sources: []
+
+compute_dependency:
+  primary_training_infrastructure:
+    value: "Owned — xAI's Colossus supercluster, Memphis TN"
+    notes: >
+      xAI is unique among frontier AI labs in that it OWNS its primary training compute rather
+      than relying on a hyperscaler partner. Colossus (Memphis) reached 555,000+ GPUs across
+      three facilities (Colossus 1, Colossus 2, and 'MACROHARDRR') with ~2GW total power
+      capacity by January 2026. GPU mix: 150K H100 + 50K H200 + 30K GB200 (Colossus 1+2 as
+      of Dec 2025). Trained Grok 4 on 200K H100 GPUs. Funded through Series B, C, and E
+      capital plus debt financing ($12.5B Apollo/Diameter Capital facility Jan 2026).
+      xAI plans to expand to 1 million GPUs.
+    sources:
+      - url: https://introl.com/blog/xai-colossus-2-gigawatt-expansion-555k-gpus-january-2026
+        kind: ir_html
+        description: "Tier 2: Colossus expansion to 555K+ GPUs, ~2GW, January 2026."
+        retrieved_at: "2026-03-30"
+  primary_inference_infrastructure:
+    value: "Mixed — owned Colossus + Azure (Grok 3 partnership)"
+    notes: "xAI serves inference primarily from its own Memphis infrastructure. Azure partnership provides additional distribution channel for enterprise customers."
+    sources: []
+  infrastructure_independence:
+    value: high
+    notes: >
+      xAI has the highest compute independence of any frontier AI lab — it owns and operates
+      its own supercluster rather than renting from AWS, Azure, or GCP. This is a double-edged
+      structural position: (1) it eliminates cloud partnership leverage risk (e.g., if Amazon
+      were to withdraw from Anthropic, Anthropic would face existential compute disruption —
+      no such risk at xAI); (2) it requires enormous sustained capital investment (~$12.5B
+      debt facility just for 2026 expansion); (3) the owned-compute model means depreciation
+      and financing costs are on xAI's balance sheet rather than treated as variable opex.
+      Post-SpaceX acquisition, satellite-based solar-powered data centers in LEO are the
+      long-term compute vision.
+    sources: []
+
+research_profile:
+  orientation:
+    value: frontier_lab
+    notes: "xAI's primary mission is 'to accelerate human scientific discovery.' Research orientation is frontier capability — achieving maximum intelligence per model generation. No explicit safety-first mandate analogous to Anthropic or OpenAI's stated missions."
+    sources:
+      - url: https://x.ai/company
+        kind: vendor_page
+        description: "Tier 1 (xAI company page): Mission statement."
+        retrieved_at: "2026-03-30"
+  openness:
+    value: proprietary
+    notes: "xAI's commercial models (Grok 2, 3, 4) are fully proprietary. Grok 1 was open-sourced in March 2024 (Apache 2.0). No subsequent open-weights releases as of March 2026 — the company has moved entirely to a proprietary commercial model."
+    sources: []
+  safety_approach:
+    value: "RLHF + usage policies. Minimal public safety methodology disclosure. No equivalent to Anthropic's Constitutional AI, OpenAI's o-series safety framework, or Google's Responsibility framework. xAI's Grok is notably more permissive on certain content types vs. competitors."
+    notes: "xAI does not publish a safety/alignment methodology document equivalent to Anthropic's or OpenAI's. Grok models have historically had fewer content restrictions than Claude or GPT, which is a product positioning choice as much as a safety architecture choice."
+    sources: []
+
+commercial_traction:
+  business_model:
+    value: [api_pay_per_token, subscription_chatbot, enterprise_contracts]
+    notes: >
+      Three primary revenue streams: (1) xAI API (pay-per-token) for developers; (2) SuperGrok
+      consumer subscriptions ($30/month standard, $300/month Heavy tier — the latter for Grok 4
+      Heavy access); (3) X Premium subscriptions ($3–$40/month — these fund access to Grok on X).
+      Post-X merger, ad revenue from X's advertising platform is also part of the combined revenue.
+      The SuperGrok Heavy tier ($300/month) is a novel high-ASP consumer tier with no direct
+      equivalent at OpenAI or Anthropic for single-user access to frontier-class reasoning compute.
+    sources: []
+  notable_deployments:
+    value:
+      - "X (formerly Twitter) — Grok natively integrated for all ~600M monthly active users"
+      - "SuperGrok Heavy — exclusive access to Grok 4 Heavy (10x compute per query) for $300/month"
+      - "Aurora (xAI's self-driving AI for Tesla vehicles) — reportedly uses xAI training infrastructure"
+    notes: "X integration is the largest single distribution advantage in the industry — no other AI model company has direct embedded access to a 600M MAU social platform at the product level."
+    sources:
+      - url: https://techcrunch.com/2026/01/06/xai-says-it-raised-20b-in-series-e-funding/
+        kind: news_article
+        description: "Tier 2 (TechCrunch): ~600M monthly active users across X and Grok as of early 2026."
+        retrieved_at: "2026-03-30"
+  api_ecosystem:
+    value: early
+    notes: >
+      xAI's API ecosystem is early relative to OpenAI and Anthropic. The developer ecosystem
+      (third-party integrations, frameworks, SDK breadth) is significantly thinner. Not yet
+      available on AWS Bedrock or Google Vertex AI — the primary enterprise distribution channels
+      that Anthropic and OpenAI benefit from. Azure partnership partially addresses this for
+      Microsoft enterprise customers. Growing, but significant gap vs. OpenAI.
+    sources: []
+
+roadmap:
+  next_generation:
+    value: "Grok 5 — expected H2 2026 or 2027; no confirmed release timeline"
+    notes: >
+      Musk has signaled continued rapid model improvements. xAI's compute expansion to 1M GPUs
+      in Memphis positions for a much larger training run than Grok 4. The SpaceX acquisition
+      introduces a long-term roadmap element: satellite solar-powered data centers in LEO as
+      next-generation AI compute infrastructure. No confirmed Grok 5 specifications or timeline.
+    sources: []
+  release_cadence:
+    value: "~6-12 months for major versions; minor iterations within quarters (Grok 3 Feb 2025 → Grok 4 Jul 2025 → Grok 4.1 Nov 2025 → Grok 4.20 early 2026)"
+    notes: null
+    sources: []
+  roadmap_credibility:
+    value: strong
+    notes: >
+      xAI has demonstrated exceptional execution speed on infrastructure build-out (Colossus
+      Phase 1 in 122 days, doubled in 92 days). Model releases have been consistent with Musk's
+      stated timelines. The shift from Grok 3 (below-frontier) to Grok 4 (frontier-tier, first
+      >50% HLE) in 5 months demonstrated dramatic capability improvement. However, organizational
+      volatility (co-founder departures post-SpaceX acquisition) introduces some execution risk.
+    sources: []
+
+sources:
+  - url: https://x.ai/company
+    kind: vendor_page
+    description: "Tier 1 (xAI company page): Mission, team."
+    retrieved_at: "2026-03-30"
+  - url: https://docs.x.ai/docs/models
+    kind: vendor_page
+    description: "Tier 1 (xAI API docs): Full model catalog, pricing, and specifications."
+    retrieved_at: "2026-03-30"
+  - url: https://artificialanalysis.ai/providers/xai
+    kind: ir_html
+    description: "Tier 2 (Artificial Analysis): xAI model performance benchmarks — intelligence index, speed, pricing."
+    retrieved_at: "2026-03-30"

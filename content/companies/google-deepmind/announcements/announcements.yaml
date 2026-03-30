@@ -1,0 +1,222 @@
+# Google DeepMind — Material Announcements (2025–2026)
+# Scope: models layer only. Excludes Google Cloud infrastructure, Search/Workspace,
+# hardware, and non-AI business news.
+# Coverage window: January 2025 – March 2026.
+
+as_of: "2026-03-30"
+company_slug: google-deepmind
+
+announcements:
+
+  - id: ann_001
+    date: "2026-02-19"
+    category: model_launch
+    headline: "Gemini 3.1 Pro Preview released — highest benchmark scores of any model"
+    significance: high
+    summary: >
+      Google DeepMind released Gemini 3.1 Pro Preview, establishing new vendor-reported
+      record scores: SWE-bench Verified 80.6%, GPQA Diamond 94.3%, ARC-AGI-2 77.1%,
+      Terminal-Bench 2.0 68.5%. Positioned as Google's flagship reasoning and agentic
+      model. Released simultaneously with Gemini 3 Flash Preview ($0.50/$3.00 per M tokens).
+      Priced at $2.00–$4.00/M input, $12.00–$18.00/M output (context-dependent).
+    implications:
+      - "Recaptures frontier position in reasoning benchmarks; pre-2026 leader was o3 (OpenAI)."
+      - "SWE-bench 80.6% (highest yet reported) signals commercial viability in software engineering automation."
+      - "Preview status: enterprise adoption will be limited until GA release, expected Q2 2026."
+    sources:
+      - url: "https://blog.google/products/gemini/google-deepmind-gemini-3-1-pro-preview/"
+        kind: vendor_blog
+        description: "Gemini 3.1 Pro Preview announcement"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_002
+    date: "2025-Q1"
+    category: model_launch
+    headline: "Gemini 2.5 Pro reaches #1 on LMSYS Chatbot Arena (ELO ~1468)"
+    significance: high
+    summary: >
+      Gemini 2.5 Pro debuted at #1 on LMSYS Chatbot Arena with an ELO of approximately
+      1465–1470, the first time Google held the top position on human-preference leaderboard
+      against GPT-4o, Claude 3.7 Sonnet, and o3-mini simultaneously. The model achieved
+      GPQA Diamond 84.0%, SWE-bench Verified 63.8%, and MMLU-Pro 84.0%. 1M-token context
+      at $1.25/$10.00 per M tokens (≤200K context).
+    implications:
+      - "Establishes Gemini 2.5 Pro as the reference model for high-stakes enterprise tasks."
+      - "Arena #1 rank is most credible quality signal available — independent, human-preference-based."
+      - "Competitive positioning: directly displaces GPT-4o and Claude 3.5 Opus for instruction-following workloads."
+    sources:
+      - url: "https://lmarena.ai/leaderboard"
+        kind: independent_eval
+        description: "LMSYS Chatbot Arena — Gemini 2.5 Pro ELO ranking"
+        retrieved_at: "2026-03-30"
+      - url: "https://blog.google/products/gemini/gemini-2-5-pro-tech-report/"
+        kind: vendor_blog
+        description: "Gemini 2.5 Pro technical report"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_003
+    date: "2025-05-20"
+    category: infrastructure
+    headline: "Google I/O 2025: TPU v7 Ironwood announced, AI Mode in Search, Project Astra"
+    significance: high
+    summary: >
+      At Google I/O 2025, Alphabet announced: (1) TPU v7 Ironwood — 9,216 chips per pod,
+      42 exaFLOPS training throughput, 10x performance improvement over v6e Trillium for
+      inference. (2) AI Mode in Google Search — Gemini-powered search experience replacing
+      traditional ten-blue-links for complex queries. (3) Project Astra expanding to more
+      users — persistent multimodal AI agent. (4) Gemini Nano on-device expanding to
+      Android 15 devices. (5) NotebookLM Plus enterprise tier launch.
+    implications:
+      - "TPU v7 Ironwood cements Google's compute independence. 42 exaFLOPS per pod vs H100 cluster equivalents."
+      - "AI Mode in Search is the most commercially sensitive announcement: displaces ad-bearing results for queries. This is the central search cannibalization risk (quantified in structural analysis)."
+      - "NotebookLM Plus signals direct enterprise monetization of Gemini outside the API tier."
+    sources:
+      - url: "https://blog.google/technology/developers/google-io-2025-collection/"
+        kind: vendor_blog
+        description: "Google I/O 2025 — major AI announcements collection"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_004
+    date: "2025-Q2"
+    category: model_launch
+    headline: "Gemini 2.5 Flash GA — 221 t/s, TTFT ~450ms, $0.30/$2.50 per M tokens"
+    significance: high
+    summary: >
+      Gemini 2.5 Flash reached general availability. With Artificial Analysis measuring
+      ~221 tokens/second throughput and ~450ms TTFT, it became the reference model for
+      high-quality, cost-conscious API deployments. GPQA Diamond 79%, MATH-500 98.1%.
+      Priced at $0.30/M input, $2.50/M output — approximately 4x cheaper than GPT-4o
+      and 1.6x cheaper than Claude 3.5 Haiku on output cost. Context caching at
+      $0.075/M further reduces cost for RAG workflows.
+    implications:
+      - "At $2.50/M output with Arena ELO ~1410, quality/$ ratio = 564 ELO/$M — strong developer adoption driver."
+      - "Positions Gemini family as price-performance leaders in the mid-tier (between commodity Flash-Lite and premium Pro)."
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing confirmation — Gemini 2.5 Flash"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_005
+    date: "2025-07-29"
+    category: financial
+    headline: "Alphabet Q2 2025: Google Cloud $13.6B (+32% YoY), OI margin 20.7%"
+    significance: medium
+    summary: >
+      Alphabet Q2 2025 earnings: total revenue $96,428M (+14% YoY), operating income
+      $31,271M (32.4% margin). Google Cloud revenue $13,624M (+32% YoY), operating income
+      $2,826M (20.7% margin, up from 11.3% Q2 2024). Management cited AI Infrastructure
+      (long-duration cloud contracts) and Generative AI Solutions as primary growth drivers.
+      Alphabet issued $12.5B in senior notes (debt offering) in May 2025 to fund continued
+      AI capex. Total FY2025 capex guidance raised to ~$75B at Q2.
+    implications:
+      - "Google Cloud margin expansion (+9.4 ppts YoY) is the clearest signal of AI monetization without direct Gemini API revenue disclosure."
+      - "$12.5B debt issuance confirms capex intensity will continue — management willing to lever the balance sheet for AI investment."
+    sources:
+      - url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q2/2025q2-alphabet-earnings-release.pdf"
+        kind: earnings_release
+        description: "Alphabet Q2 2025 earnings release"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_006
+    date: "2025-10-29"
+    category: financial
+    headline: "Alphabet Q3 2025: Google Cloud $15.2B (+34% YoY), 23.7% margin; $3.5B EU DMA fine"
+    significance: medium
+    summary: >
+      Q3 2025 earnings: revenue $102,346M (+15% YoY), operating income $31,228M.
+      Google Cloud: $15,157M revenue (+34% YoY), $3,594M operating income (23.7% margin).
+      G&A elevated by $3,500M EU Digital Markets Act fine accrual — normalized operating
+      income would be ~$34,728M. Management cited Gemini API and Vertex AI Agents as
+      primary Google Cloud growth drivers. Capex $23,953M for the quarter.
+    implications:
+      - "EU DMA fine is the first material regulatory enforcement of AI-adjacent antitrust concerns in Google's financials."
+      - "Google Cloud trailing 3Q margin trend (17.8% → 20.7% → 23.7%) suggests structural improvement, not cyclical."
+    sources:
+      - url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf"
+        kind: earnings_release
+        description: "Alphabet Q3 2025 earnings release"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_007
+    date: "2026-02-04"
+    category: financial
+    headline: "Alphabet FY2025 / Q4 2025: Google Cloud $17.7B (+48% YoY), $402.8B total revenue"
+    significance: high
+    summary: >
+      Alphabet full-year 2025: revenue $402,836M (+12% YoY), operating income $129,039M
+      (32.0% margin), net income $132,170M. Google Cloud Q4: $17,660M revenue (+48% YoY),
+      $5,310M operating income (30.1% margin). FY2025 Google Cloud: $58,701M (+36% YoY),
+      $13,912M operating income (23.7% margin vs 14.1% FY2024). Total FY2025 capex:
+      $91,447M. Operating cash flow $164,713M. Free cash flow $73,266M.
+    implications:
+      - "FY2025 Google Cloud OI grew 128% YoY — the fastest expansion of any major cloud segment on record."
+      - "$91.4B capex (vs $52.5B FY2024) represents 72% YoY increase — management treating this as an investment supercycle."
+      - "Q4 2025 Cloud margin of 30.1% approaching a structural inflection; implies Cloud could approach $20B+ operating income in FY2026."
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: "Alphabet FY2025 / Q4 2025 earnings release"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_008
+    date: "2025-Q3"
+    category: regulatory
+    headline: "EU Digital Markets Act fine: $3.5B charge related to Search self-preferencing"
+    significance: medium
+    summary: >
+      Alphabet accrued a $3.5B charge in Q3 2025 G&A for a European Commission DMA
+      enforcement action related to Google Search's preferential treatment of its own
+      services. This is the first DMA fine of this magnitude. Separate from ongoing
+      US DOJ antitrust proceedings (which could force Alphabet to divest Chrome or
+      restrict Search distribution agreements, affecting the base revenue pool that
+      funds AI investment).
+    implications:
+      - "DMA enforcement establishes that Google's Search distribution model is under structural regulatory pressure — compounding the AI Mode cannibalization risk."
+      - "US DOJ proceedings have separate risk profile: potential Chrome divestiture or Search exclusivity restrictions could directly reduce Search revenue base."
+    sources:
+      - url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf"
+        kind: earnings_release
+        description: "Q3 2025 earnings release — $3.5B DMA fine disclosure in G&A"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_009
+    date: "2025-04-03"
+    category: corporate
+    headline: "Google DeepMind teams fully merged; Demis Hassabis leads unified lab"
+    significance: medium
+    summary: >
+      Google confirmed full operational integration of Google Brain and DeepMind into
+      a single unified organization under CEO Demis Hassabis. The April 2023 merger
+      announcement was followed by a 12-18 month integration period. By Q1 2025, all
+      AI research teams (language models, multimodal, reinforcement learning, robotics)
+      operate under a single organizational structure. This eliminated duplicated efforts
+      and accelerated the Gemini 2.5/3.x generation cadence.
+    implications:
+      - "Organizational integration is complete — future capability development is unified, not fragmented."
+      - "Hassabis's background in game-playing AI (AlphaGo) and protein folding (AlphaFold) now directly influences Gemini roadmap, particularly in reasoning and agents."
+    sources:
+      - url: "https://deepmind.google/about/"
+        kind: vendor_blog
+        description: "Google DeepMind organizational overview"
+        retrieved_at: "2026-03-30"
+
+  - id: ann_010
+    date: "2025-02-05"
+    category: model_launch
+    headline: "Gemini 2.0 Flash GA — 1M context, multimodal output, $0.10/$0.40 per M tokens"
+    significance: medium
+    summary: >
+      Gemini 2.0 Flash reached general availability, becoming Google's workhorse
+      efficiency model: 1M-token context, text/code/image output, $0.10/M input
+      and $0.40/M output. At launch, it offered the best price-performance ratio
+      of any comparable frontier model. Since superseded by Gemini 2.5 Flash-Lite
+      at the same price point with better capabilities, but remains active in the API.
+    implications:
+      - "At $0.40/M output and quality_index ~67, Gemini 2.0 Flash's efficiency ratio (~167 quality/$) significantly exceeds Claude 3.5 Haiku (~17) at 10x lower output cost."
+      - "This pricing was Google's first explicit signal that it would use its TPU cost advantage to undercut the competition."
+    sources:
+      - url: "https://blog.google/products/gemini/gemini-2-0-flash-ga/"
+        kind: vendor_blog
+        description: "Gemini 2.0 Flash GA announcement"
+        retrieved_at: "2026-03-30"

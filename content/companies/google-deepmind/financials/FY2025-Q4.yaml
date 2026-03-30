@@ -1,0 +1,220 @@
+# Alphabet Inc. — Q4 2025 (October 1 – December 31, 2025)
+# All financial data is Alphabet consolidated. This is the annual 10-K period.
+# Q4 figures are derived as: FY2025 (10-K / XBRL) minus 9M 2025 (Q3 earnings release).
+# Google Cloud segment in extended_notes as commercial proxy for AI model traction.
+
+period:
+  label: "Q4 2025"
+  start: "2025-10-01"
+  end: "2025-12-31"
+  fiscal_year: 2025
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  # Revenue: Derived. FY2025 = $402,836M (XBRL); 9M 2025 = $289,008M (Q3 ER).
+  # Q4 = $402,836M − $289,008M = $113,828M.
+  revenue: 113828000000
+
+  # COGS: Derived. FY2025 = $162,535M (XBRL); 9M 2025 = $116,769M.
+  # Q4 = $162,535M − $116,769M = $45,766M.
+  cost_of_revenue: 45766000000
+
+  # Gross profit: Derived.
+  gross_profit: 68062000000
+
+  # R&D: Derived. FY2025 = $61,087M (XBRL); 9M 2025 = $42,515M.
+  # Q4 = $61,087M − $42,515M = $18,572M.
+  research_and_development: 18572000000
+
+  # SGA: Null. FY2025 S&M and G&A totals not separately available from
+  # XBRL tags fetched (no SellingGeneralAndAdministrativeExpense tag returned).
+  # Requires FY2025 10-K income statement (filed February 2026). Left null pending.
+  selling_general_administrative: null
+
+  # D&A: Null. FY2025 D&A total not separately confirmed; 9M 2025 = $15,096M.
+  # FY2025 D&A would require 10-K cash-flow statement.
+  depreciation_and_amortization: null
+
+  # Operating income: Derived. FY2025 = $129,039M (XBRL); 9M 2025 = $93,105M.
+  # Q4 = $129,039M − $93,105M = $35,934M.
+  operating_income: 35934000000
+
+  interest_income: null
+  interest_expense: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+
+  # Net income: Derived. FY2025 = $132,170M (XBRL); 9M 2025 = $97,715M.
+  # Q4 = $132,170M − $97,715M = $34,455M.
+  net_income: 34455000000
+
+  # --- Cash flows ---
+  # Operating cash flow: Derived. FY2025 = $164,713M (XBRL); 9M 2025 = $112,311M.
+  # Q4 = $164,713M − $112,311M = $52,402M.
+  operating_cash_flow: 52402000000
+
+  # SBC: Null. FY2025 SBC total not separately available from XBRL.
+  # 9M 2025 SBC = $17,882M. Full year requires 10-K cash-flow statement.
+  stock_based_compensation: null
+
+  # Capex: Derived. FY2025 = $91,447M (XBRL); 9M 2025 = $63,596M.
+  # Q4 = $91,447M − $63,596M = $27,851M.
+  capital_expenditures_cash: 27851000000
+
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (December 31, 2025) ---
+  # All year-end balance sheet values: Direct from SEC XBRL, Dec 31, 2025 instant values.
+  cash_and_equivalents: 30708000000
+
+  # Current assets, current liabilities, PP&E net, LT debt:
+  # Available in FY2025 10-K balance sheet but not separately returned by standard XBRL
+  # concept queries fetched during pipeline. Left null pending 10-K full text review.
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+
+  total_assets: 595281000000
+  # Total liabilities: Derived = $595,281M − $415,265M = $180,016M.
+  total_liabilities: 180016000000
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: 415265000000
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null
+
+extended_notes:
+  google_cloud_segment:
+    description: |
+      Google Cloud is the closest commercial proxy for AI model/API traction available
+      in Alphabet's public disclosures. Gemini API revenue, Vertex AI AI-specific revenue,
+      and model-level margins are NOT separately disclosed by Alphabet.
+    q4_2025:
+      revenue_usd: 17660000000
+      revenue_yoy_pct: 47.7
+      prior_year_revenue_usd: 11955000000  # Q4 2024
+      operating_income_usd: 5310000000
+      operating_margin_pct: 30.1
+      prior_year_operating_margin_pct: 17.3  # Q4 2024
+      note: >
+        Revenue and operating income from Q4 2025 / FY2025 earnings release.
+        Q4 2025 is the quarter of largest reported margin (30.1%) in Google Cloud's
+        history, marking a structural inflection — management cited AI Infrastructure
+        commitments (multi-year contracts) as the primary driver of Q4 acceleration.
+    google_cloud_fy2025_summary:
+      fy2025_revenue_usd: 58701000000  # $12,260M + $13,624M + $15,157M + $17,660M (derived sum)
+      fy2025_operating_income_usd: 13912000000  # $2,182M + $2,826M + $3,594M + $5,310M
+      fy2025_operating_margin_pct: 23.7
+      fy2024_revenue_usd: 43202000000   # Q1 $9,574M + Q2 $10,320M + Q3 $11,353M + Q4 $11,955M
+      fy2024_operating_income_usd: 6091000000
+      fy2024_operating_margin_pct: 14.1
+      yoy_revenue_growth_pct: 35.9
+      yoy_oi_growth_pct: 128.4
+      note: >
+        FY2025 Google Cloud revenue ($58.7B) grew 36% YoY. Operating income grew 128%,
+        driven by scale leverage across fixed infrastructure investment. This is the
+        primary commercial indicator of AI model monetization given the lack of Gemini
+        API revenue disclosure.
+    non_disclosed_items:
+      - "Gemini API revenue — not broken out in any Alphabet filing"
+      - "Vertex AI AI-specific revenue — not separately reported"
+      - "Model-level gross margin or contribution margin — not disclosed"
+      - "Number of active Gemini API customers — not disclosed"
+
+sources:
+  - id: s_xbrl_fy25
+    url: "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+    kind: sec_companyfacts_json
+    description: >
+      SEC XBRL company facts API (CIK 0001652044). FY2025 annual (Jan 1 – Dec 31, 2025)
+      flow metrics and Dec 31, 2025 instant values:
+      Revenues FY2025 = $402,836M,
+      OperatingIncomeLoss FY2025 = $129,039M,
+      NetIncomeLoss FY2025 = $132,170M,
+      ResearchAndDevelopmentExpense FY2025 = $61,087M,
+      CostOfRevenue FY2025 = $162,535M,
+      NetCashProvidedByUsedInOperatingActivities FY2025 = $164,713M,
+      PaymentsToAcquirePropertyPlantAndEquipment FY2025 = $91,447M,
+      CashAndCashEquivalentsAtCarryingValue Dec 31 2025 = $30,708M,
+      Assets Dec 31 2025 = $595,281M,
+      StockholdersEquity Dec 31 2025 = $415,265M.
+    covers:
+      - revenue
+      - operating_income
+      - net_income
+      - research_and_development
+      - cost_of_revenue
+      - operating_cash_flow
+      - capital_expenditures_cash
+      - cash_and_equivalents
+      - total_assets
+      - stockholders_equity
+    supports_derivation_of:
+      - gross_profit
+      - total_liabilities
+    retrieved_at: "2026-03-30"
+
+  - id: s_q3_er_ytd
+    url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf"
+    kind: earnings_release
+    description: >
+      Q3 2025 earnings release provides 9M 2025 YTD figures used as subtracted inputs
+      for all Q4 derivations:
+      Revenue 9M = $289,008M, OperatingIncome 9M = $93,105M, NetIncome 9M = $97,715M,
+      CostOfRevenue 9M = $116,769M, R&D 9M = $42,515M,
+      OperatingCF 9M = $112,311M, Capex 9M = $63,596M.
+    supports_derivation_of:
+      - revenue
+      - operating_income
+      - net_income
+      - cost_of_revenue
+      - research_and_development
+      - operating_cash_flow
+      - capital_expenditures_cash
+      - gross_profit
+    retrieved_at: "2026-03-30"
+
+  - id: s_fy25_er
+    url: "https://fortune.com/company-assets/1500/quartr/earnings-release-8-k-d7d50-2026-02-04-09-12-03.pdf"
+    kind: earnings_release
+    description: >
+      FY2025 / Q4 2025 Alphabet earnings release (approximately February 4, 2026).
+      Primary source for Q4 2025 standalone figures in segment table:
+      Google Cloud Q4 revenue = $17,660M (+47.7% YoY), operating income = $5,310M (30.1% margin).
+      FY2025 consolidated results cross-check.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - id: s_nondisclosure
+    url: "https://abc.xyz/investor/"
+    kind: documentation
+    description: >
+      NON-DISCLOSED ITEMS: Alphabet does not separately report Gemini API revenue,
+      Vertex AI AI-specific revenue, or model-level margins. Q4 SGA, D&A, SBC, LT debt,
+      current assets/liabilities, and PP&E require the full FY2025 10-K balance sheet
+      and cash-flow statement (filed February 2026).
+    covers:
+      - selling_general_administrative
+      - depreciation_and_amortization
+      - stock_based_compensation
+      - interest_income
+      - interest_expense
+      - other_income_expense_net
+      - income_tax_expense_benefit
+      - current_assets
+      - current_liabilities
+      - property_plant_equipment_net
+      - long_term_debt
+      - current_portion_of_long_term_debt
+      - total_debt
+      - shares_outstanding_basic
+      - shares_outstanding_diluted
+      - market_cap
+    retrieved_at: "2026-03-30"

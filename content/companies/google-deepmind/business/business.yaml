@@ -1,0 +1,1654 @@
+# Google DeepMind — Models Layer Business Profile
+# Scope: Gemini model family, Imagen, Veo; Google AI Studio + Vertex AI platform.
+# Out of scope: Google Cloud infrastructure capacity, TPU hardware, Search/Workspace AI features.
+# Profile reflects product availability as of 2026-03-30.
+
+layer: models
+profile_version: 1
+as_of: "2026-03-30"
+
+# ─── Model catalog ────────────────────────────────────────────────────────────
+# Models listed in reverse recency order (newest first).
+# For context_window_tokens >200K, pricing tiers differ — see pricing notes.
+
+products:
+
+  # ── Gemini 3.1 Pro Preview ─────────────────────────────────────────────────
+  - name: "Gemini 3.1 Pro Preview"
+    vendor: google-deepmind
+    model_family: "Gemini 3"
+    architecture_type: dense_transformer  # Not publicly confirmed; Google has not disclosed architecture details.
+    weights_access: proprietary
+    status: preview
+    release_date: "2026-02-19"
+    knowledge_cutoff: null  # Not disclosed by Google.
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: "1M-token context window, consistent with Gemini 2.5 Pro. Not separately confirmed for 3.1 Pro by Google docs at time of profile."
+        sources:
+          - url: "https://ai.google.dev/gemini-api/docs/models"
+            kind: vendor_docs
+            description: "Google AI Studio model documentation"
+            retrieved_at: "2026-03-30"
+      max_output_tokens:
+        value: 65536
+        notes: "Maximum output not separately confirmed for preview. Assumed consistent with Gemini 2.5 Pro (65,536 tokens)."
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: "Full multimodal input consistent with Gemini 2.5/3 family."
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: "Text and code generation only. Image generation handled by Imagen separately."
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Function calling and parallel tool execution confirmed in Gemini 2.5+ generation. Assumed consistent for 3.1 Pro."
+        sources: []
+      computer_use:
+        value: yes
+        notes: "Gemini 3.1 Pro supports computer use (GUI browsing) via Project Mariner integration. Vendor-reported."
+        sources:
+          - url: "https://blog.google/products/gemini/google-deepmind-gemini-3-1-pro-preview/"
+            kind: vendor_blog
+            description: "Google DeepMind Gemini 3.1 Pro announcement"
+            retrieved_at: "2026-03-30"
+      structured_output:
+        value: yes
+        notes: "JSON mode and schema-constrained output supported across Gemini 2.5+ family."
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Preview models not available for fine-tuning in Vertex AI at launch."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: >
+          Artificial Analysis Quality Index not yet published for Gemini 3.1 Pro Preview
+          (too new at profile date, 2026-03-30). Vendor-reported benchmarks indicate it
+          exceeds Gemini 2.5 Pro substantially (see below).
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: "Preview models may not be enrolled in LMSYS Chatbot Arena at launch. Check lmarena.ai for current ranking."
+        sources: []
+      gpqa_diamond:
+        value: 94.3
+        notes: >
+          VENDOR-REPORTED. From Gemini 3.1 Pro technical report / announcement.
+          Exceeds reported human expert baseline (~69.7%). Treat as indicative;
+          independent evaluation pending.
+        sources:
+          - url: "https://blog.google/products/gemini/google-deepmind-gemini-3-1-pro-preview/"
+            kind: vendor_blog
+            description: "Gemini 3.1 Pro Preview technical benchmarks — vendor-reported"
+            retrieved_at: "2026-03-30"
+      swe_bench_verified:
+        value: 80.6
+        notes: >
+          VENDOR-REPORTED. SWE-bench Verified (scaffolded). As of release, the highest
+          reported score for any model on this benchmark. Represents meaningful advance
+          in agentic software engineering capability.
+        sources:
+          - url: "https://blog.google/products/gemini/google-deepmind-gemini-3-1-pro-preview/"
+            kind: vendor_blog
+            description: "Gemini 3.1 Pro Preview — SWE-bench Verified score vendor-reported"
+            retrieved_at: "2026-03-30"
+      math_500:
+        value: null
+        notes: "Not separately reported at launch."
+        sources: []
+      mmlu_pro:
+        value: null
+        notes: "Not separately reported at launch."
+        sources: []
+      mmmu:
+        value: null
+        notes: "Not separately reported at launch."
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 2.00
+        notes: "Standard tier ≤200K context. >200K context: $4.00/M input. Google AI Studio / Vertex AI pricing."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing page — Gemini 3.1 Pro Preview"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 12.00
+        notes: "Standard tier ≤200K context. >200K context: $18.00/M output."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing page — Gemini 3.1 Pro Preview"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        notes: "Not confirmed for preview models at launch."
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        notes: "Not confirmed for preview models."
+        sources: []
+      hosted_reference_price:
+        value: null
+        notes: "Proprietary model; only available via Google APIs."
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Artificial Analysis benchmark not yet published for Gemini 3.1 Pro Preview."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: "Artificial Analysis benchmark not yet published for Gemini 3.1 Pro Preview."
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Artificial Analysis quality_index not available for preview model. Cannot compute."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO not available. Cannot compute."
+        sources: []
+
+    sources:
+      - url: "https://blog.google/products/gemini/google-deepmind-gemini-3-1-pro-preview/"
+        kind: vendor_blog
+        description: "Gemini 3.1 Pro Preview announcement (February 19, 2026)"
+        retrieved_at: "2026-03-30"
+      - url: "https://ai.google.dev/gemini-api/docs/models"
+        kind: vendor_docs
+        description: "Google AI Gemini API model documentation"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 3 Flash Preview ─────────────────────────────────────────────────
+  - name: "Gemini 3 Flash Preview"
+    vendor: google-deepmind
+    model_family: "Gemini 3"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: preview
+    release_date: "2026-02-19"  # Released alongside 3.1 Pro Preview
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: "1M context assumed consistent with Gemini 3 family."
+        sources: []
+      max_output_tokens:
+        value: 65536
+        notes: "Assumed consistent with Gemini 2.5 Flash; not separately confirmed."
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: null
+        notes: "Not confirmed for Gemini 3 Flash at preview launch."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Preview status."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Not yet published by Artificial Analysis for this preview model."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: "Not yet enrolled in Arena at preview stage."
+        sources: []
+      gpqa_diamond:
+        value: null
+        notes: "Not separately disclosed at launch."
+        sources: []
+      swe_bench_verified:
+        value: null
+        notes: "Not separately disclosed at launch."
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.50
+        notes: "Standard tier. Google AI Studio / Vertex AI pricing."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 3 Flash Preview"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 3.00
+        notes: null
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 3 Flash Preview"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Artificial Analysis data pending."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "quality_index not available. Cannot compute."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: null
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing page"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 2.5 Pro ─────────────────────────────────────────────────────────
+  - name: "Gemini 2.5 Pro"
+    vendor: google-deepmind
+    model_family: "Gemini 2.5"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-Q2"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: "1M-token context. Context >200K incurs higher pricing tier."
+        sources:
+          - url: "https://ai.google.dev/gemini-api/docs/models/gemini"
+            kind: vendor_docs
+            description: "Gemini 2.5 Pro model card"
+            retrieved_at: "2026-03-30"
+      max_output_tokens:
+        value: 65536
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: "Full multimodal. Natively processes PDFs, images, and video clips."
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: "Parallel function calling, code execution, and structured output all production-grade."
+        sources: []
+      computer_use:
+        value: yes
+        notes: "Supports agentic computer use via Project Mariner integration."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: "Supervised fine-tuning available via Vertex AI."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 85
+        notes: >
+          Approximate Artificial Analysis Quality Index for Gemini 2.5 Pro (~85, reported
+          as top-ranked model on artificialanalysis.ai for multiple weeks). Tier 2 source.
+          Recheck at artificialanalysis.ai — index composition updates frequently.
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-pro"
+            kind: independent_eval
+            description: "Artificial Analysis — Gemini 2.5 Pro quality index and leaderboard"
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1468
+        notes: >
+          LMSYS Chatbot Arena ELO for Gemini 2.5 Pro. Tier 2 source. Ranked #1–2 on
+          overall Arena at time of data collection. ELO is relative — compare to
+          GPT-4o (~1437), Claude 3.7 Sonnet (~1462), o3-mini (~1447) for context.
+        sources:
+          - url: "https://lmarena.ai/leaderboard"
+            kind: independent_eval
+            description: "LMSYS Chatbot Arena ELO — Gemini 2.5 Pro"
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: 84.0
+        notes: "VENDOR-REPORTED. Gemini 2.5 Pro technical report. Independent verification pending."
+        sources:
+          - url: "https://blog.google/products/gemini/gemini-2-5-pro-tech-report/"
+            kind: vendor_blog
+            description: "Gemini 2.5 Pro technical report — GPQA Diamond vendor-reported"
+            retrieved_at: "2026-03-30"
+      swe_bench_verified:
+        value: 63.8
+        notes: "VENDOR-REPORTED. From Gemini 2.5 Pro technical report."
+        sources:
+          - url: "https://blog.google/products/gemini/gemini-2-5-pro-tech-report/"
+            kind: vendor_blog
+            description: "Gemini 2.5 Pro technical report — SWE-bench Verified vendor-reported"
+            retrieved_at: "2026-03-30"
+      math_500:
+        value: null
+        notes: "Not separately published for 2.5 Pro at time of profile."
+        sources: []
+      mmlu_pro:
+        value: 84.0
+        notes: "VENDOR-REPORTED. Gemini 2.5 Pro technical report."
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 1.25
+        notes: "Standard tier ≤200K context. >200K context: $2.50/M input."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Pro"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 10.00
+        notes: "Standard tier ≤200K context. >200K context: $15.00/M output."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Pro"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: 0.31
+        notes: "Context caching at $0.31/M for ≤200K; $0.63/M for >200K. Significant cost reduction for RAG workflows."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — context caching"
+            retrieved_at: "2026-03-30"
+      batch_input_per_million_tokens:
+        value: 0.63
+        notes: "Batch API ~50% discount vs standard tier."
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-30"
+      median_ttft_ms:
+        value: 1200
+        notes: >
+          Approximate median TTFT for Gemini 2.5 Pro (~1.2s) from Artificial Analysis.
+          Higher than Flash models due to model size. Suitable for asynchronous and
+          non-latency-sensitive agentic workloads.
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-pro"
+            kind: independent_eval
+            description: "Artificial Analysis latency benchmarks — Gemini 2.5 Pro"
+            retrieved_at: "2026-03-30"
+      output_tokens_per_second:
+        value: 72
+        notes: "Approximate sustained throughput from Artificial Analysis (~72 t/s). Lower than Flash tier by design."
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-pro"
+            kind: independent_eval
+            description: "Artificial Analysis throughput — Gemini 2.5 Pro"
+            retrieved_at: "2026-03-30"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 8.5
+        notes: >
+          Derived: quality_index (85) / output_per_million_tokens ($10.00) = 8.5.
+          Reflects premium positioning. Lower efficiency ratio than Flash models —
+          appropriate for tasks requiring maximum reasoning quality.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 146.8
+        notes: "Derived: Arena ELO (1,468) / output_per_million_tokens ($10.00) = 146.8."
+        sources: []
+
+    sources:
+      - url: "https://blog.google/products/gemini/gemini-2-5-pro-tech-report/"
+        kind: vendor_blog
+        description: "Gemini 2.5 Pro announcement and technical report"
+        retrieved_at: "2026-03-30"
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing page"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 2.5 Flash ───────────────────────────────────────────────────────
+  - name: "Gemini 2.5 Flash"
+    vendor: google-deepmind
+    model_family: "Gemini 2.5"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-Q2"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: 65536
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: yes
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: "Supervised fine-tuning via Vertex AI."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 79
+        notes: >
+          Artificial Analysis Quality Index ~79 for Gemini 2.5 Flash. Tier 2 source.
+          Best price-performance ratio among models >$1/M output at time of profile.
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-flash"
+            kind: independent_eval
+            description: "Artificial Analysis — Gemini 2.5 Flash quality index"
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1410
+        notes: "Approximate LMSYS Arena ELO ~1410. Tier 2 source. Check lmarena.ai for latest."
+        sources:
+          - url: "https://lmarena.ai/leaderboard"
+            kind: independent_eval
+            description: "LMSYS Chatbot Arena — Gemini 2.5 Flash ELO"
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: 79.0
+        notes: "VENDOR-REPORTED. From Gemini 2.5 Flash technical documentation."
+        sources:
+          - url: "https://ai.google.dev/gemini-api/docs/models/gemini"
+            kind: vendor_docs
+            description: "Gemini 2.5 Flash benchmark — GPQA Diamond vendor-reported"
+            retrieved_at: "2026-03-30"
+      swe_bench_verified:
+        value: null
+        notes: "Not separately disclosed for 2.5 Flash at time of profile."
+        sources: []
+      math_500:
+        value: 98.1
+        notes: "VENDOR-REPORTED. From Gemini 2.5 Flash technical documentation."
+        sources: []
+      mmlu_pro:
+        value: 83.2
+        notes: "VENDOR-REPORTED."
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.30
+        notes: "Standard non-free tier. No context window tier split."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Flash"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 2.50
+        notes: null
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Flash"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: 0.075
+        notes: "Context caching at $0.075/M — especially cost-effective for RAG workflows."
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.15
+        notes: "Batch API discount (50% of standard input rate)."
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-30"
+      median_ttft_ms:
+        value: 450
+        notes: >
+          Artificial Analysis median TTFT ~450ms for Gemini 2.5 Flash. Suitable for
+          interactive applications where sub-500ms TTFT is acceptable.
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-flash"
+            kind: independent_eval
+            description: "Artificial Analysis TTFT — Gemini 2.5 Flash"
+            retrieved_at: "2026-03-30"
+      output_tokens_per_second:
+        value: 221
+        notes: "Artificial Analysis sustained throughput ~221 t/s. Strong for batch/agentic workloads."
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-5-flash"
+            kind: independent_eval
+            description: "Artificial Analysis throughput — Gemini 2.5 Flash"
+            retrieved_at: "2026-03-30"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 31.6
+        notes: >
+          Derived: quality_index (79) / output_per_million_tokens ($2.50) = 31.6.
+          Benchmark: Claude 3.5 Haiku ~17.3 (quality ~69 / $4.00), GPT-4o mini ~108 ($0.60),
+          Gemini 2.0 Flash ~167 ($0.40). Gemini 2.5 Flash occupies the mid-efficiency tier —
+          higher quality than 2.0 Flash at 6x the output cost.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 564.0
+        notes: "Derived: Arena ELO (1,410) / output_per_million_tokens ($2.50) = 564."
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing page"
+        retrieved_at: "2026-03-30"
+      - url: "https://artificialanalysis.ai/models/gemini-2-5-flash"
+        kind: independent_eval
+        description: "Artificial Analysis — Gemini 2.5 Flash full benchmark"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 2.5 Flash-Lite ──────────────────────────────────────────────────
+  - name: "Gemini 2.5 Flash-Lite"
+    vendor: google-deepmind
+    model_family: "Gemini 2.5"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-Q3"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: 32768
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: limited
+        notes: "Function calling available but lower reliability than Pro/Flash tier."
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 66
+        notes: "Approximate Artificial Analysis Quality Index ~66 for Gemini 2.5 Flash-Lite. Recheck at artificialanalysis.ai."
+        sources:
+          - url: "https://artificialanalysis.ai"
+            kind: independent_eval
+            description: "Artificial Analysis quality index — approximate for Flash-Lite tier"
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: null
+        notes: "Not separately tracked in Arena from Gemini 2.5 Flash."
+        sources: []
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.10
+        notes: "Lowest price tier in the Gemini 2.5 family. No context window split."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Flash-Lite"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 0.40
+        notes: null
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.5 Flash-Lite"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: 0.025
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.05
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: "2026-03-30"
+      median_ttft_ms:
+        value: 420
+        notes: "Artificial Analysis TTFT ~420ms — slightly faster than Gemini 2.5 Flash."
+        sources:
+          - url: "https://artificialanalysis.ai"
+            kind: independent_eval
+            description: "Artificial Analysis TTFT — Gemini 2.5 Flash-Lite"
+            retrieved_at: "2026-03-30"
+      output_tokens_per_second:
+        value: 341
+        notes: "Artificial Analysis sustained throughput ~341 t/s — fastest in the Gemini 2.5 family."
+        sources:
+          - url: "https://artificialanalysis.ai"
+            kind: independent_eval
+            description: "Artificial Analysis throughput — Gemini 2.5 Flash-Lite"
+            retrieved_at: "2026-03-30"
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 165.0
+        notes: >
+          Derived: quality_index (~66) / output_per_million_tokens ($0.40) = 165.0.
+          Highest raw price-performance among Gemini family; appropriate for
+          high-volume, cost-sensitive workloads (classification, extraction, summarization).
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        notes: "Arena ELO not separately tracked."
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing page"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 2.0 Flash ──────────────────────────────────────────────────────
+  # Legacy but included per user scope (and key comparison model for narrative).
+  - name: "Gemini 2.0 Flash"
+    vendor: google-deepmind
+    model_family: "Gemini 2.0"
+    architecture_type: dense_transformer
+    weights_access: proprietary
+    status: ga
+    release_date: "2025-02-05"
+    knowledge_cutoff: "2024-08-01"
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: 8192
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: "Computer use not available in 2.0 Flash."
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: "Supervised fine-tuning via Vertex AI."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: 67
+        notes: >
+          Artificial Analysis Quality Index ~67 for Gemini 2.0 Flash at time of 2.5
+          release (approximately Q2 2025). May have been updated since; this model is
+          now legacy. Used as the denominator in Gemini 2.0 Flash price-performance
+          comparisons vs Claude 3.5 Haiku, GPT-4o mini, and Grok 4.1 Fast.
+        sources:
+          - url: "https://artificialanalysis.ai/models/gemini-2-0-flash"
+            kind: independent_eval
+            description: "Artificial Analysis Quality Index — Gemini 2.0 Flash (legacy)"
+            retrieved_at: "2026-03-30"
+      chatbot_arena_elo:
+        value: 1354
+        notes: "LMSYS Arena ELO for Gemini 2.0 Flash. Tier 2 source."
+        sources:
+          - url: "https://lmarena.ai/leaderboard"
+            kind: independent_eval
+            description: "LMSYS Chatbot Arena — Gemini 2.0 Flash ELO"
+            retrieved_at: "2026-03-30"
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.10
+        notes: "Same price as Gemini 2.5 Flash-Lite — Google has not deprecated 2.0 Flash pricing. For new workloads, 2.5 Flash-Lite is recommended at the same price point."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.0 Flash"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 0.40
+        notes: null
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 2.0 Flash"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: 0.025
+        sources: []
+      batch_input_per_million_tokens:
+        value: 0.05
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: "2025-Q2"
+      median_ttft_ms:
+        value: 480
+        notes: "Approximate Artificial Analysis TTFT ~480ms. Superseded by 2.5 Flash-Lite at similar price with faster throughput."
+        sources: []
+      output_tokens_per_second:
+        value: 210
+        notes: "Approximate from Artificial Analysis. Superseded by 2.5 Flash-Lite at ~341 t/s."
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: 167.5
+        notes: >
+          Derived: quality_index (67) / output_per_million_tokens ($0.40) = 167.5.
+          KEY COMPARISON for narrative: vs Claude 3.5 Haiku (output $4.00/M, quality ~69):
+          efficiency 17.3 → Gemini 2.0 Flash is ~9.7x more price-efficient.
+          vs GPT-4o mini (output $0.60/M, quality ~65): efficiency 108 → 2.0 Flash ~1.6x.
+          vs Grok 4.1 Fast (output ~$1.50/M, quality ~67): efficiency 44.7 → 2.0 Flash ~3.7x.
+          This is the price-performance advantage the narrative section analyzes in detail.
+        sources: []
+      arena_elo_per_output_dollar:
+        value: 3385.0
+        notes: "Derived: Arena ELO (1,354) / output_per_million_tokens ($0.40) = 3,385."
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing page"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 1.5 Pro ─────────────────────────────────────────────────────────
+  - name: "Gemini 1.5 Pro"
+    vendor: google-deepmind
+    model_family: "Gemini 1.5"
+    architecture_type: mixture_of_experts
+    weights_access: proprietary
+    status: deprecated
+    release_date: "2024-05-24"
+    knowledge_cutoff: "2023-11-01"
+
+    capabilities:
+      context_window_tokens:
+        value: 2000000
+        notes: "2M-token context was Gemini 1.5 Pro's key differentiator at launch."
+        sources: []
+      max_output_tokens:
+        value: 8192
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: strong
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Artificial Analysis no longer tracks deprecated models in main leaderboard."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: "No longer ranked in active Arena. Peak ELO ~1340 (2024 data)."
+        sources: []
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 1.25
+        notes: "≤128K context. >128K context: $2.50/M. Deprecated; migrate to Gemini 2.5 Pro."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 1.5 Pro (deprecated)"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 5.00
+        notes: "≤128K context. >128K: $10.00/M."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 1.5 Pro (deprecated)"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Not tracked by Artificial Analysis for deprecated model."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Quality_index not available for deprecated model."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing — deprecated model catalog"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Gemini 1.5 Flash ───────────────────────────────────────────────────────
+  - name: "Gemini 1.5 Flash"
+    vendor: google-deepmind
+    model_family: "Gemini 1.5"
+    architecture_type: mixture_of_experts
+    weights_access: proprietary
+    status: deprecated
+    release_date: "2024-05-24"
+    knowledge_cutoff: "2023-11-01"
+
+    capabilities:
+      context_window_tokens:
+        value: 1000000
+        notes: null
+        sources: []
+      max_output_tokens:
+        value: 8192
+        notes: null
+        sources: []
+      modalities_in:
+        value: [text, image, audio, video, file, tool_result]
+        notes: null
+        sources: []
+      modalities_out:
+        value: [text, code]
+        notes: null
+        sources: []
+      tool_use:
+        value: limited
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: yes
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: null
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Not tracked by Artificial Analysis for deprecated model."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        sources: []
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: 0.075
+        notes: "≤128K context. Deprecated; migrate to Gemini 2.5 Flash-Lite at similar pricing."
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 1.5 Flash (deprecated)"
+            retrieved_at: "2026-03-30"
+      output_per_million_tokens:
+        value: 0.30
+        notes: null
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Gemini 1.5 Flash (deprecated)"
+            retrieved_at: "2026-03-30"
+      context_caching_input:
+        value: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        sources: []
+      hosted_reference_price:
+        value: null
+        sources: []
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        sources: []
+      output_tokens_per_second:
+        value: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Deprecated; quality_index not tracked."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        sources: []
+
+    sources:
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing — deprecated model catalog"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Imagen 3 ───────────────────────────────────────────────────────────────
+  - name: "Imagen 3"
+    vendor: google-deepmind
+    model_family: "Imagen"
+    architecture_type: diffusion
+    weights_access: proprietary
+    status: ga
+    release_date: "2024-12-01"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: null
+        notes: "Not applicable for image generation models."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: "Generates images, not tokens."
+        sources: []
+      modalities_in:
+        value: [text, image]
+        notes: "Text prompt + optional reference image for conditioning."
+        sources: []
+      modalities_out:
+        value: [image]
+        notes: "High-resolution photorealistic and artistic image generation."
+        sources: []
+      tool_use:
+        value: none
+        notes: "Image generation only."
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: no
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: yes
+        notes: "Fine-tuning via Vertex AI for custom styles and subject fidelity."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Artificial Analysis Quality Index applies to text/code models only. Image model quality not tracked via this index."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: "Not applicable for image generation."
+        sources: []
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        notes: "Not applicable (Imagen generates images, does not understand multimodal input via MMMU)."
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: null
+        notes: "Imagen 3 is priced per image, not per token."
+        sources: []
+      output_per_million_tokens:
+        value: null
+        notes: "Priced per image generated."
+        sources: []
+      context_caching_input:
+        value: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        sources: []
+      hosted_reference_price:
+        value: 0.04
+        notes: >
+          Approximate price of $0.04 per image via Imagen 3 API (Google AI Studio
+          standard tier). Pricing varies by image resolution. Used as proxy for
+          per-request cost comparison. Label as estimate; verify at ai.google.dev/pricing.
+        sources:
+          - url: "https://ai.google.dev/pricing"
+            kind: vendor_pricing
+            description: "Google AI Studio pricing — Imagen 3 (per-image rate)"
+            retrieved_at: "2026-03-30"
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Not applicable for image generation (measured in seconds per image, not TTFT)."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: "Not applicable."
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Not applicable for image generation models."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        sources: []
+
+    sources:
+      - url: "https://deepmind.google/technologies/imagen-3/"
+        kind: vendor_blog
+        description: "Google DeepMind Imagen 3 product page"
+        retrieved_at: "2026-03-30"
+      - url: "https://ai.google.dev/pricing"
+        kind: vendor_pricing
+        description: "Google AI Studio pricing — Imagen 3"
+        retrieved_at: "2026-03-30"
+
+
+  # ── Veo 2 ──────────────────────────────────────────────────────────────────
+  - name: "Veo 2"
+    vendor: google-deepmind
+    model_family: "Veo"
+    architecture_type: diffusion  # Video diffusion architecture; exact details not disclosed.
+    weights_access: proprietary
+    status: ga
+    release_date: "2024-12-01"
+    knowledge_cutoff: null
+
+    capabilities:
+      context_window_tokens:
+        value: null
+        notes: "Not applicable for video generation."
+        sources: []
+      max_output_tokens:
+        value: null
+        notes: "Generates video clips up to 60 seconds at up to 4K resolution."
+        sources: []
+      modalities_in:
+        value: [text, image]
+        notes: "Text prompt or image + text prompt for video generation."
+        sources: []
+      modalities_out:
+        value: [video]
+        notes: >
+          Generates high-fidelity video (up to 4K, up to 60s). Supports camera motion
+          controls, cinematic styles. Competitive with Sora (OpenAI) and Kling (Kuaishou)
+          on motion coherence benchmarks.
+        sources: []
+      tool_use:
+        value: none
+        notes: null
+        sources: []
+      computer_use:
+        value: no
+        notes: null
+        sources: []
+      structured_output:
+        value: no
+        notes: null
+        sources: []
+      fine_tuning_available:
+        value: no
+        notes: "Fine-tuning not available for Veo 2 at time of profile."
+        sources: []
+
+    benchmarks:
+      quality_index:
+        value: null
+        notes: "Not applicable."
+        sources: []
+      chatbot_arena_elo:
+        value: null
+        notes: "Not applicable."
+        sources: []
+      gpqa_diamond:
+        value: null
+        sources: []
+      swe_bench_verified:
+        value: null
+        sources: []
+      math_500:
+        value: null
+        sources: []
+      mmlu_pro:
+        value: null
+        sources: []
+      mmmu:
+        value: null
+        sources: []
+
+    pricing:
+      snapshot_date: "2026-03-30"
+      input_per_million_tokens:
+        value: null
+        notes: "Veo 2 is priced per second of generated video, not per token."
+        sources: []
+      output_per_million_tokens:
+        value: null
+        notes: null
+        sources: []
+      context_caching_input:
+        value: null
+        sources: []
+      batch_input_per_million_tokens:
+        value: null
+        sources: []
+      hosted_reference_price:
+        value: 0.35
+        notes: >
+          Approximate $0.35 per second of generated video via Vertex AI API (standard tier,
+          720p). 4K pricing higher. Label as estimate; verify at cloud.google.com/vertex-ai/pricing.
+        sources:
+          - url: "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+            kind: vendor_pricing
+            description: "Vertex AI pricing — Veo 2 (per-second video generation)"
+            retrieved_at: "2026-03-30"
+
+    latency:
+      snapshot_date: null
+      median_ttft_ms:
+        value: null
+        notes: "Not applicable (measured in seconds per video clip, not TTFT)."
+        sources: []
+      output_tokens_per_second:
+        value: null
+        notes: null
+        sources: []
+
+    derived_efficiency:
+      quality_per_output_dollar:
+        value: null
+        notes: "Not applicable for video generation models."
+        sources: []
+      arena_elo_per_output_dollar:
+        value: null
+        sources: []
+
+    sources:
+      - url: "https://deepmind.google/technologies/veo/veo-2/"
+        kind: vendor_blog
+        description: "Google DeepMind Veo 2 product page"
+        retrieved_at: "2026-03-30"
+      - url: "https://cloud.google.com/vertex-ai/generative-ai/pricing"
+        kind: vendor_pricing
+        description: "Vertex AI pricing — Veo 2"
+        retrieved_at: "2026-03-30"
+
+
+# ─── Company-level context ────────────────────────────────────────────────────
+
+api_platform:
+  platform_name:
+    value: "Google AI Studio / Vertex AI"
+    notes: >
+      Two-tier access: (1) Google AI Studio — developer-focused, pay-per-token REST API
+      with a free rate-limited tier. (2) Vertex AI — Google Cloud enterprise platform
+      with MLOps tooling, VPC isolation, custom data residency, HIPAA/BAA compliance.
+      Both expose the same Gemini model versions via different SDKs.
+    sources:
+      - url: "https://ai.google.dev"
+        kind: vendor_docs
+        description: "Google AI Studio developer portal"
+        retrieved_at: "2026-03-30"
+      - url: "https://cloud.google.com/vertex-ai/docs/generative-ai/overview"
+        kind: vendor_docs
+        description: "Vertex AI Generative AI overview"
+        retrieved_at: "2026-03-30"
+  deployment_options:
+    value:
+      - "Google AI Studio (direct API)"
+      - "Vertex AI (Google Cloud enterprise)"
+      - "Gemini for Google Workspace (embedded in productivity suite)"
+    notes: "No third-party cloud hosting of Gemini (no Bedrock or Azure equivalents); Google distributes exclusively through its own platforms."
+    sources: []
+  enterprise_features:
+    value:
+      - "SOC 2 Type II"
+      - "ISO/IEC 27001"
+      - "HIPAA BAA (via Vertex AI)"
+      - "Data Processing Addendum"
+      - "No training on customer data (default)"
+      - "VPC Service Controls"
+      - "Customer-managed encryption keys (CMEK)"
+      - "Audit logging via Cloud Audit Logs"
+      - "Regional data residency options"
+      - "SSO/SAML via Google Identity"
+    notes: "Enterprise features are Vertex AI-only; Google AI Studio has minimal enterprise controls."
+    sources:
+      - url: "https://cloud.google.com/vertex-ai/docs/generative-ai/security-compliance"
+        kind: vendor_docs
+        description: "Vertex AI security and compliance documentation"
+        retrieved_at: "2026-03-30"
+  sla_uptime:
+    value: "99.9%"
+    notes: "Vertex AI API SLA. Google AI Studio does not carry an SLA."
+    sources:
+      - url: "https://cloud.google.com/terms/sla"
+        kind: vendor_docs
+        description: "Google Cloud SLA — Vertex AI"
+        retrieved_at: "2026-03-30"
+
+compute_dependency:
+  primary_training_infrastructure:
+    value: "Google TPU v5 / v7 Ironwood (proprietary, internally owned)"
+    notes: >
+      Gemini 2.5 and 3.x models were trained on Google's TPU v5 and v7 Ironwood clusters,
+      entirely within Google's own data centers. Google does not pay Azure, AWS, or any
+      external hyperscaler for training compute. TPU v7 Ironwood (announced I/O 2025) is
+      Google's largest training chip to date — 9,216 chips per pod, 42 exaFLOPS per pod.
+      This is a structural cost advantage: training cost is amortized over Google's hardware
+      capex rather than cloud provider margins.
+    sources:
+      - url: "https://blog.google/products/google-cloud/ironwood-tpu-google-io-2025/"
+        kind: vendor_blog
+        description: "Google TPU v7 Ironwood announcement (Google I/O 2025)"
+        retrieved_at: "2026-03-30"
+  primary_inference_infrastructure:
+    value: "Google TPU v6e Trillium (proprietary, internally owned)"
+    notes: >
+      Gemini inference runs on TPU v6e Trillium clusters in Google's data centers.
+      TPU v6e Trillium delivers 4.7x better cost-per-performance than NVIDIA H100/H200
+      for LLM inference (Google-reported), with 67% lower power per unit of compute.
+      This contrasts sharply with OpenAI (inference on Azure NVIDIA GPUs, paying
+      hyperscaler rates) and Anthropic (inference on AWS GPUs).
+      The structural implication: Google's inference margin floor is structurally below
+      its competitors' — enabling sustained aggressive pricing on Gemini Flash models
+      ($0.10–$0.40/M tokens) that OpenAI or Anthropic cannot profitably match
+      without cross-subsidy from other revenue streams.
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+        kind: vendor_blog
+        description: "Google TPU v6e Trillium GA announcement"
+        retrieved_at: "2026-03-30"
+  infrastructure_independence:
+    value: high
+    notes: >
+      HIGH. Google owns its training and inference compute end-to-end (TPU design,
+      data center construction, networking). It is the only frontier AI lab with this
+      level of vertical integration. OpenAI has LOW independence (Azure-exclusive);
+      Anthropic has LOW (AWS-exclusive). Meta has MEDIUM (owned data centers but runs
+      on NVIDIA GPUs). Google and xAI (Colossus cluster) are the only frontier labs
+      approaching full independence; Google's scale advantage (>$91B FY2025 capex)
+      makes this the most durable structural cost moat in the model layer.
+    sources: []
+
+research_profile:
+  orientation:
+    value: hybrid
+    notes: >
+      Google DeepMind is a frontier lab (Transformer co-invention 2017, AlphaFold,
+      AlphaCode, AlphaStar, Gemini) that also ships production products (Gemini API,
+      Google Search AI Mode, Workspace AI features). The tension between frontier
+      research and product deployment is the central narrative challenge — the
+      innovator's dilemma analyzed in the structural analysis and narrative files.
+    sources: []
+  openness:
+    value: proprietary
+    notes: >
+      Gemini models are fully proprietary — no weights released. Google has not
+      pursued an open-weights strategy for its frontier models (unlike Meta with
+      Llama). Google Gemma (a separate smaller model family) is open-weights but
+      is excluded from this profile (it is not a product of the Google DeepMind
+      commercial models team in the same way).
+    sources: []
+  safety_approach:
+    value: >
+      RLHF + Constitutional AI variant (Gemini model cards describe 'RLHF with
+      human-preference data and red-teaming'). Google published a Frontier Safety
+      Framework (FSF) in May 2024, analogous to Anthropic's Responsible Scaling
+      Policy. DeepMind has dedicated Alignment Science and Responsibility & Safety
+      Research teams. However, Google's safety posture is considered less
+      research-leading than Anthropic's Constitutional AI framework by many
+      third-party AI safety researchers (Tier 3 assessment).
+    notes: null
+    sources:
+      - url: "https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/"
+        kind: vendor_blog
+        description: "Google DeepMind Frontier Safety Framework"
+        retrieved_at: "2026-03-30"
+
+commercial_traction:
+  business_model:
+    value:
+      - api_pay_per_token    # Google AI Studio and Vertex AI
+      - enterprise_contracts # Vertex AI committed use / Google Cloud Enterprise Agreements
+      - subscription_chatbot # Gemini Advanced (Google One AI Premium) at $20/month
+      - platform_revenue_share  # Gemini integration in third-party developer apps via API
+    notes: null
+    sources: []
+  notable_deployments:
+    value:
+      - "Google Search AI Mode (Gemini natively embedded; ~9B daily search queries)"
+      - "Google Workspace AI features (Gmail, Docs, Sheets, Slides — 3B+ active users)"
+      - "Samsung Galaxy AI (on-device Gemini Nano for Samsung flagship phones)"
+      - "Salesforce Einstein AI (Gemini model integration announced 2025)"
+      - "WPP (advertising holding company AI workflow transformation)"
+      - "Snap (Gemini powering My AI chatbot features)"
+      - "Adobe Firefly (Imagen integration confirmed)"
+    notes: >
+      Gemini API customer count not disclosed. Google Cloud CEO Thomas Kurian cited
+      'millions of developers' using Gemini API in Q3 2025 earnings call, but did not
+      provide monetized customer count. Vertex AI Generative AI Solutions are the
+      primary enterprise revenue vehicle — included in Google Cloud segment (not disclosed separately).
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: vendor_docs
+        description: "Alphabet Q3 2025 earnings call transcript and press release"
+        retrieved_at: "2026-03-30"
+  api_ecosystem:
+    value: dominant
+    notes: >
+      Google AI Studio had the largest registered developer base among model APIs as of
+      Q3 2025 (per Google management commentary, Tier 3). Gemini is natively integrated
+      into Android Studio, Firebase, and Google Cloud developer tools — giving it
+      structural developer reach that OpenAI and Anthropic must purchase through
+      partner integrations. The 1M-token context window remains a key enterprise
+      differentiation (competitors cap at 200K for comparably-priced models).
+    sources: []
+
+roadmap:
+  next_generation:
+    value: >
+      Gemini 3.1 Pro Preview released 2026-02-19, establishing the current frontier.
+      Gemini 4 expected H2 2026 based on observed release cadence (major Gemini
+      version approximately every 12 months; 1.0 Dec 2023 → 1.5 Feb 2024 → 2.0 Dec 2024
+      → 2.5 Q1 2025 → 3.x Feb 2026). TPU v8 generation expected 2027.
+    notes: "Next generation timeline is inferred from cadence — not officially announced at profile date."
+    sources: []
+  release_cadence:
+    value: >
+      ~6-month major capability updates (Flash and Pro variants in each generation);
+      ~12-month major architecture generational updates. Google releases preview models
+      before GA at each tier. Flash models lead in price-performance; Pro/Ultra models
+      lead in benchmark rankings. Minor model patches and context window expansions
+      deployed continuously.
+    notes: null
+    sources: []
+  roadmap_credibility:
+    value: strong
+    notes: >
+      Google DeepMind has delivered on multi-year capability roadmaps: Gemini 1.5 2M context
+      (unique in 2024), Gemini 2.5 Arena #1 ranking, Gemini 3.1 Pro GPQA Diamond 94.3%
+      (highest reported). Execution credibility is stronger than at the initial Bard launch
+      (2023), which was seen as rushed. The organizational merger of Google Brain and DeepMind
+      in 2023 consolidated research resources and accelerated the Gemini 2.x/3.x generation.
+    sources: []
+
+sources:
+  - url: "https://ai.google.dev/pricing"
+    kind: vendor_pricing
+    description: "Google AI Studio pricing — all Gemini models. Snapshot: 2026-03-30."
+    retrieved_at: "2026-03-30"
+  - url: "https://artificialanalysis.ai"
+    kind: independent_eval
+    description: "Artificial Analysis — quality index, TTFT, tokens/s for Gemini models. Primary Tier 2 benchmark source."
+    retrieved_at: "2026-03-30"
+  - url: "https://lmarena.ai/leaderboard"
+    kind: independent_eval
+    description: "LMSYS Chatbot Arena — ELO rankings for Gemini 2.5 Pro and Gemini 2.0 Flash."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+    kind: vendor_blog
+    description: "Google TPU v6e Trillium GA announcement — compute independence documentation"
+    retrieved_at: "2026-03-30"
+  - url: "https://deepmind.google"
+    kind: vendor_blog
+    description: "Google DeepMind product and research announcements"
+    retrieved_at: "2026-03-30"

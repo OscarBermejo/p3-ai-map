@@ -1,0 +1,205 @@
+# xAI — Material Announcements
+# Most recent first. Covers founding through March 2026.
+# Source tiers: Tier 1 = official xAI blog/press; Tier 2 = credible press (Reuters, Bloomberg, TechCrunch, The Information).
+
+announcements:
+
+  - date: "2026-02-03"
+    category: acquisition
+    title: "SpaceX acquires xAI in $1.25T all-stock deal — largest M&A transaction in history"
+    summary: >
+      SpaceX completed its acquisition of xAI in a triangular merger structure, creating a
+      combined entity with a declared valuation of $1.25 trillion — the largest M&A transaction
+      ever recorded. xAI was valued at $250 billion in the deal; SpaceX at $1 trillion.
+      xAI shareholders received 0.1433 SpaceX shares per xAI share in a tax-free reorganization.
+      Structurally, xAI operates as a wholly-owned subsidiary of SpaceX, keeping its debts,
+      liabilities, and contracts legally separate from SpaceX's balance sheet. This structure
+      insulates SpaceX from xAI-related investigations and litigation. Strategic rationale:
+      unify AI compute demand with SpaceX's ability to launch solar-powered LEO satellite data
+      centers. xAI CFO Anthony Armstrong was newly hired; SpaceX CFO Bret Johnsen oversees.
+      Multiple xAI co-founders (Jimmy Ba, Tony Wu) departed post-merger.
+    significance: critical
+    sources:
+      - url: https://www.reuters.com/business/musks-spacex-merge-with-xai-combined-valuation-125-trillion-bloomberg-news-2026-02-02/
+        kind: news_article
+        description: "Tier 2 (Reuters): SpaceX acquires xAI at $250B xAI / $1T SpaceX valuation. Combined $1.25T."
+        retrieved_at: "2026-03-30"
+      - url: https://today.reuters.com/business/finance/sale-xai-comes-with-tax-financial-legal-benefits-xai-spacex-investors-2026-02-06/
+        kind: news_article
+        description: "Tier 2 (Reuters): Triangular merger structure details — tax benefits, liability separation."
+        retrieved_at: "2026-03-30"
+
+  - date: "2026-01-06"
+    category: funding
+    title: "$20B Series E at $230B valuation — largest single private funding round in AI history"
+    summary: >
+      xAI closed a $20 billion Series E funding round at a $230 billion post-money valuation —
+      upsized from the original $15 billion target. Simultaneous $12.5 billion debt facility
+      from Apollo Global Management and Diameter Capital. Combined capital raise of $32.5 billion
+      in a single close. Strategic investors included NVIDIA and Cisco Investments. Financial
+      investors: Valor Equity Partners, Stepstone Group, Fidelity, Qatar Investment Authority,
+      MGX, Baron Capital Group. Primary use: continued Colossus GPU infrastructure expansion
+      toward 1 million GPUs. Two weeks later, SpaceX acquired xAI at $250B — a 9% step-up
+      from the Series E valuation in under a month.
+    significance: critical
+    sources:
+      - url: https://techcrunch.com/2026/01/06/xai-says-it-raised-20b-in-series-e-funding/
+        kind: news_article
+        description: "Tier 2 (TechCrunch): Series E $20B closed January 6, 2026."
+        retrieved_at: "2026-03-30"
+      - url: https://www.reuters.com/business/musks-xai-raises-20-billion-upsized-series-e-funding-round-2026-01-06/
+        kind: news_article
+        description: "Tier 2 (Reuters): Series E $20B upsized, $12.5B debt from Apollo/Diameter Capital."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-11-17"
+    category: product_launch
+    title: "Grok 4.1 Fast released — frontier reasoning at $0.20/$0.50 per million tokens"
+    summary: >
+      xAI released Grok 4.1 Fast with a 2M token context window and aggressive pricing:
+      $0.20/M input and $0.50/M output tokens — positioning it directly against Anthropic's
+      Claude 3.5 Haiku and Google's Gemini Flash at 10–30× lower cost per reasoning quality unit.
+      Artificial Analysis Intelligence Index: 39. LMArena text leaderboard: 1465 ELO. This release
+      represented xAI's clearest push into the high-volume cost-efficient segment, a market where
+      Anthropic and Google had the incumbent advantage. The price point undercuts the cost tier
+      established by any prior xAI model by an extreme margin (Grok 3 at $15/M output vs. $0.50/M
+      for Grok 4.1 Fast — a 30× price reduction for similar or better capability).
+    significance: high
+    sources:
+      - url: https://docs.x.ai/docs/release-notes
+        kind: vendor_page
+        description: "Tier 1 (xAI release notes): Grok 4.1 Fast released November 17, 2025."
+        retrieved_at: "2026-03-30"
+      - url: https://mem0.ai/blog/xai-grok-api-pricing
+        kind: ir_html
+        description: "Tier 2: xAI Grok 4.1 Fast pricing details and context window."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-07-09"
+    category: product_launch
+    title: "Grok 4 launched — first AI model to exceed 50% on Humanity's Last Exam (Heavy variant)"
+    summary: >
+      xAI launched Grok 4, a sparse mixture-of-experts model trained on 200,000 H100 GPUs on
+      the Colossus supercluster. Two variants: Grok 4 standard and Grok 4 Heavy (10x compute
+      per query via multi-agent orchestration). Headline achievement: Grok 4 Heavy exceeded
+      50% on Humanity's Last Exam — the first model in the world to cross this threshold on what
+      is considered one of the hardest academic benchmarks available. Additional benchmarks:
+      GPQA Diamond 87.5%, AIME 2025 91.7% (standard; 100% Heavy), SWE-bench Verified 72%,
+      MMLU-Pro 87%. Artificial Analysis Intelligence Index: 42. Arena ELO: 1430. Grok 4 Heavy
+      is available only through the SuperGrok Heavy subscription ($300/month) — a deliberate
+      premium-consumer monetization strategy.
+    significance: critical
+    sources:
+      - url: https://x.ai/news/grok-4
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 4 launch announcement — benchmarks, architecture, SuperGrok Heavy tier."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-03-28"
+    category: acquisition
+    title: "xAI acquires X (Twitter) in $113B all-stock deal — Grok becomes default AI for 600M users"
+    summary: >
+      xAI completed an all-stock acquisition of X (formerly Twitter) in a deal valuing X at
+      $33 billion and xAI at $80 billion (combined: $113 billion). X investors (Andreessen
+      Horowitz, Sequoia, Fidelity, Kingdom Holding) received xAI shares. Strategic rationale:
+      combine X's real-time social graph data and 600 million monthly active users with xAI's
+      frontier model capabilities. The merger instantly made Grok the default AI for the world's
+      third-largest English-language social platform. Post-merger, xAI's combined ARR jumped from
+      ~$100M standalone to a trajectory toward $3.8B by end-2025, primarily via X ad revenue and
+      X Premium subscriptions. Revenue interpretation note: this transaction makes pre- and post-
+      merger xAI revenue figures incomparable without segment-level breakdowns.
+    significance: critical
+    sources:
+      - url: https://www.cnbc.com/2025/03/28/elon-musk-says-xai-has-acquired-x-in-deal-that-values-social-media-site-at-33-billion.html/
+        kind: news_article
+        description: "Tier 2 (CNBC): xAI acquires X at $33B X / $80B xAI valuation. All-stock."
+        retrieved_at: "2026-03-30"
+      - url: https://www.reuters.com/markets/deals/musks-xai-buys-social-media-platform-x-45-billion-2025-03-28/
+        kind: news_article
+        description: "Tier 2 (Reuters): xAI acquires X for $45B including $12B in X debt. All-stock deal."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-02-19"
+    category: product_launch
+    title: "Grok 3 released — 'Think' mode, 1M context, 10x compute vs prior SOTA"
+    summary: >
+      xAI launched Grok 3 and Grok 3 Mini with the debut of 'Think' mode — an extended
+      chain-of-thought reasoning capability analogous to OpenAI's o1/o3 series. Key specs:
+      1M token context window, trained with 10x the compute of prior state-of-the-art models
+      on the Colossus supercluster via large-scale reinforcement learning. Benchmarks at launch:
+      GPQA Diamond 84.6% (Think), MMMU 78%, AIME 2025 93.3% (Think, cons@64), Arena ELO 1402.
+      Artificial Analysis placed Grok 3 at quality index 25 — above average for its price tier
+      but not at the frontier (Claude 3.5 Sonnet and GPT-4o were higher at similar price points).
+      The $3/$15 per million token pricing positioned Grok 3 as 'expensive-for-quality' relative
+      to its price-tier peers at launch.
+    significance: high
+    sources:
+      - url: https://x.ai/news/grok-3
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 3 Beta launch post 'The Age of Reasoning Agents.' Benchmarks and architecture details."
+        retrieved_at: "2026-03-30"
+      - url: https://artificialanalysis.ai/models/grok-3
+        kind: ir_html
+        description: "Tier 2 (Artificial Analysis): Independent Grok 3 performance evaluation — quality index 25, 74.8 t/s, $311 to evaluate."
+        retrieved_at: "2026-03-30"
+
+  - date: "2024-12-23"
+    category: funding
+    title: "$6B Series C at $50B valuation — NVIDIA and AMD as strategic investors"
+    summary: >
+      xAI closed a $6 billion Series C funding round at approximately $50 billion post-money
+      valuation. Notable structural elements: both NVIDIA and AMD participated as strategic
+      investors — unique for a company that is simultaneously a major customer of both. Primary
+      financial investors: Andreessen Horowitz, BlackRock, Fidelity, Sequoia Capital, Kingdom
+      Holdings, Lightspeed, MGX, Morgan Stanley, QIA, Valor Equity Partners, Vy Capital, OIA.
+      Capital directed primarily toward continued Colossus infrastructure build-out. At the
+      time of closing, xAI's Colossus supercluster had reached 200,000 GPUs.
+    significance: high
+    sources:
+      - url: https://x.ai/blog/series-c
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Series C $6B announcement. Full investor list. Capital directed to Colossus build-out."
+        retrieved_at: "2026-03-30"
+
+  - date: "2024-09-01"
+    category: infrastructure
+    title: "Colossus Phase 1 online — 100,000 H100 GPU supercluster built in 122 days"
+    summary: >
+      xAI brought Colossus Phase 1 online in Memphis, Tennessee — a 100,000 H100 GPU
+      supercluster built in a converted Electrolux factory in 122 days, described as the
+      world's most powerful AI training system at the time. Power draw: ~250 megawatts,
+      supported by 35 gas turbines (420 MW capacity) and 208 Tesla Megapacks for battery
+      backup. Networking: NVIDIA Spectrum-X Ethernet at 95% throughput efficiency vs 60%
+      on traditional Ethernet. Musk announced plans to double to 200K GPUs within 90 days
+      by adding 50K H100 and 50K H200 GPUs. The 122-day build time was cited as the fastest
+      construction of a supercomputer of this scale ever achieved.
+    significance: high
+    sources:
+      - url: https://www.tomshardware.com/tech-industry/artificial-intelligence/xai-colossus-supercomputer-with-100k-h100-gpus-comes-online-musk-lays-out-plans-to-double-gpu-count-to-200k-with-50k-h100-and-50k-h200
+        kind: news_article
+        description: "Tier 2 (Tom's Hardware): Colossus 100K H100 online, expansion plans to 200K."
+        retrieved_at: "2026-03-30"
+      - url: https://introl.com/blog/xai-memphis-colossus-100000-gpu-supercomputer-infrastructure
+        kind: ir_html
+        description: "Tier 2: Detailed Colossus Phase 1 infrastructure breakdown."
+        retrieved_at: "2026-03-30"
+
+  - date: "2024-03-17"
+    category: product_launch
+    title: "Grok 1 open-sourced under Apache 2.0 — 314B MoE model"
+    summary: >
+      xAI open-sourced the weights of Grok 1 under an Apache 2.0 license — a 314B parameter
+      mixture-of-experts model with 25% active parameters per forward pass, 8K context window.
+      The release made xAI the first frontier AI lab to release a large MoE model as open weights.
+      The decision was notable as it came one week after Elon Musk had filed a lawsuit against
+      OpenAI alleging breach of its founding mission to develop open AI for humanity's benefit —
+      positioning the Grok 1 release as a contrast to OpenAI's proprietary strategy. The model
+      was not state-of-the-art at release (trailing GPT-4 and Claude 3) but established xAI's
+      open-weights credential. All subsequent Grok releases (Grok 2, 3, 4) have been fully
+      proprietary with no open-weights release.
+    significance: medium
+    sources:
+      - url: https://x.ai/blog/grok-os
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Grok 1 open-source announcement. Apache 2.0, 314B MoE."
+        retrieved_at: "2026-03-30"
