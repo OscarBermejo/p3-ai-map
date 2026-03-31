@@ -1,0 +1,1086 @@
+# Google TPU — chips layer business profile.
+# See content/_meta/business_templates/chips.yaml for field definitions and source tiers.
+#
+# This profile covers Google's Tensor Processing Unit (TPU) product line only.
+# It does NOT cover Gemini models, Gemini API, Vertex AI model catalog, or Google Search.
+# Cross-references to google-deepmind are explicitly noted where TPUs serve as the
+# training/inference substrate for Gemini.
+#
+# Spec sourcing notes:
+#   - Google publishes TPU specs through official product pages, Cloud blog posts, and
+#     Google Cloud Next keynote/session materials — these are Tier 1 sources.
+#   - MLPerf submissions are Tier 1/2 where available.
+#   - Google does NOT publish transistor counts, die sizes, or detailed memory specs
+#     for TPUs (unlike NVIDIA's published datasheets). Those fields are left null or
+#     estimated from third-party analysis (labeled Tier 3).
+#   - TPU performance is often quoted in internal benchmarks (e.g. "2x faster than v5e")
+#     rather than absolute FLOPS — this is noted where it applies.
+
+layer: chips
+profile_version: 1
+
+as_of: "2026-03-30"
+
+# ─── Product catalog ────────────────────────────────────────────────────────────
+# Note on TPU naming: Google uses the pattern TPU v{n} or product code names.
+# v5e = fifth-generation edge/efficiency variant; v6e = sixth-generation "Trillium";
+# v7 = seventh-generation "Ironwood" (inference-first, announced April 2025).
+# "e" suffix = efficiency / cost-optimized variant; "p" suffix = performance variant.
+
+products:
+
+  # ── TPU v5e ────────────────────────────────────────────────────────────────────
+  - name: "TPU v5e"
+    vendor: google-tpu
+    generation: "v5 (fifth generation)"
+    status: production
+    launch_date: "2023-Q3"
+
+    architecture:
+      process_node:
+        value: null
+        notes: >
+          Google does not publicly disclose the process node for TPU v5e. Third-party
+          estimates (SemiAnalysis, 2023) suggest TSMC 7nm-class or 5nm. Not confirmed.
+        sources: []
+      transistor_count:
+        value: null
+        notes: "Not disclosed by Google for any TPU generation."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Not disclosed by Google."
+        sources: []
+      memory_type:
+        value: "HBM2e"
+        notes: >
+          Google confirmed HBM2e for v5e in the TPU v5e announcement blog post.
+          v5p uses HBM3; v5e is the cost-optimized inference variant.
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+            kind: vendor_blog
+            description: "Google Cloud blog: Introducing Cloud TPU v5e (August 2023)."
+            retrieved_at: "2026-03-30"
+      memory_capacity_gb:
+        value: 16
+        notes: "16 GB HBM2e per chip. Each v5e TensorCore has 16 GB."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5e"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5e documentation."
+            retrieved_at: "2026-03-30"
+      memory_bandwidth_tb_s:
+        value: 0.82
+        notes: "819 GB/s (~0.82 TB/s) per chip, from Google Cloud TPU v5e docs."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5e"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5e documentation: 819 GB/s memory bandwidth."
+            retrieved_at: "2026-03-30"
+      interconnect:
+        value: "ICI (Inter-Chip Interconnect) — 800 Gb/s bidirectional per chip"
+        notes: >
+          Google's proprietary ICI fabric enables pod-level scale-out without external
+          InfiniBand. v5e pods scale to 256 chips in a flat topology.
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+            kind: vendor_blog
+            description: "Google Cloud TPU v5e announcement: ICI interconnect details."
+            retrieved_at: "2026-03-30"
+
+    performance:
+      tdp_watts:
+        value: null
+        notes: "Not publicly disclosed for v5e chip level. System-level TDP for a 256-chip pod is undisclosed."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: null
+        notes: "Google does not publish FP8 TFLOPS for TPU v5e."
+        sources: []
+      peak_flops_fp16_tflops:
+        value: 393
+        notes: >
+          393 TFLOPS bfloat16 per chip per Google Cloud documentation. Google TPUs
+          use bfloat16 natively (not FP16); the value quoted is BF16 peak.
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5e"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5e: 393 TFLOPS BF16 per chip."
+            retrieved_at: "2026-03-30"
+      peak_flops_fp32_tflops:
+        value: null
+        notes: "Not published for v5e; TPUs are not optimized for FP32 dense math."
+        sources: []
+      peak_flops_int8_tops:
+        value: 786
+        notes: "786 INT8 TOPS per chip, derived from Google Cloud documentation."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5e"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5e: INT8 performance."
+            retrieved_at: "2026-03-30"
+
+    efficiency:
+      flops_per_watt_fp16:
+        value: null
+        notes: "Cannot compute — TDP not disclosed."
+        sources: []
+      flops_per_watt_fp8:
+        value: null
+        notes: "Cannot compute — FP8 TFLOPS and TDP not disclosed."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Cannot compute — TDP not disclosed."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "TPU v5e Pod (256 chips)"
+        notes: >
+          Standard deployment unit is a 256-chip pod interconnected via ICI.
+          Slices available externally on Google Cloud: v5e-8, v5e-16, v5e-32,
+          v5e-64, v5e-128, v5e-256.
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5e"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5e: pod topology and slice sizes."
+            retrieved_at: "2026-03-30"
+      gpus_per_system:
+        value: 256
+        notes: "Maximum pod size. Smaller slices available externally."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      scale_out_interconnect:
+        value: "ICI (Inter-Chip Interconnect) — proprietary Google fabric"
+        notes: >
+          No external InfiniBand or RoCE required within a pod. ICI is tightly
+          integrated into the TPU ASIC and does not expose a standard NIC interface.
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+            kind: vendor_blog
+            description: "Google Cloud TPU v5e: ICI interconnect."
+            retrieved_at: "2026-03-30"
+
+    workload_fit:
+      training:
+        value: "competitive"
+        notes: >
+          v5e is cost-optimized for mid-scale training and fine-tuning, not peak
+          large-scale training (that is v5p and Trillium territory). Suitable for
+          models up to ~7B–70B range cost-effectively.
+        sources: []
+      inference:
+        value: "strong"
+        notes: >
+          v5e is Google's primary inference TPU for 2023–2024. Deployed for Gemini
+          serving in production and as the default Google Cloud TPU inference SKU.
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+            kind: vendor_blog
+            description: "Google Cloud TPU v5e: designed for inference cost efficiency."
+            retrieved_at: "2026-03-30"
+      fine_tuning:
+        value: "strong"
+        notes: "v5e is explicitly recommended for fine-tuning in Google Cloud documentation."
+        sources: []
+      target_model_scale:
+        value: "1B–70B parameter inference; up to ~70B fine-tuning"
+        notes: "Google positions v5e for cost-efficient inference at medium-to-large scale."
+        sources: []
+      workload_notes:
+        value: >
+          Optimized for transformer inference with BF16/INT8 mixed-precision. Supports
+          JAX and PyTorch via XLA/PJRT backend. Not suitable for CUDA-native workloads.
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "Google has not submitted TPU v5e standalone MLPerf Training results."
+        sources: []
+      mlperf_inference:
+        value: "MLPerf Inference v4.0 (2024) — v5e submitted in Offline and Server scenarios for LLM benchmarks."
+        notes: >
+          Google submitted TPU v5e in MLPerf Inference v4.0. Results show competitive
+          throughput for Llama 2 70B in Offline scenario. Submission ID: see MLCommons
+          results database. Exact numbers vary by scenario; reference the submission.
+        sources:
+          - url: "https://mlcommons.org/benchmarks/inference-datacenter/"
+            kind: benchmark
+            description: "MLCommons MLPerf Inference v4.0 results — Google TPU v5e submission."
+            retrieved_at: "2026-03-30"
+      vendor_published:
+        value: >
+          Google claims TPU v5e delivers 2× better price-performance vs. TPU v4 for
+          inference workloads (vendor claim; not independently verified).
+        notes: "Vendor benchmark claim from launch blog post — flag as vendor data."
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+            kind: vendor_blog
+            description: "Google: TPU v5e 2× price-perf improvement vs v4 for inference (vendor claim)."
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "Internal/captive silicon — no merchant list price."
+        sources: []
+      cloud_price_usd_hr:
+        value: 2.20
+        notes: >
+          Google Cloud TPU v5e-8 (8-chip slice) on-demand pricing: ~$17.60/hr for 8 chips
+          = ~$2.20/chip/hr. As of early 2026. Prices subject to change. Committed use
+          discounts available (up to 57% for 3-year). Snapshot: March 2026.
+        sources:
+          - url: "https://cloud.google.com/tpu/pricing"
+            kind: csp_pricing
+            description: "Google Cloud TPU pricing page — v5e on-demand rates, March 2026."
+            retrieved_at: "2026-03-30"
+      cloud_providers:
+        value: ["GCP"]
+        notes: "TPUs are exclusively available through Google Cloud. Not available on AWS, Azure, or CoreWeave."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "TPUs are captive silicon — no OEM server configurations. Only available through GCP."
+        sources: []
+      lead_time:
+        value: "On-demand via GCP (smaller slices); larger pod reservations may require advance commitment."
+        notes: "As of 2026 — larger pod allocations often sold via committed use or reservation contracts."
+        sources: []
+
+    sources:
+      - url: "https://cloud.google.com/tpu/docs/v5e"
+        kind: vendor_documentation
+        description: "Google Cloud TPU v5e product documentation."
+        retrieved_at: "2026-03-30"
+      - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing Cloud TPU v5e (August 2023)."
+        retrieved_at: "2026-03-30"
+
+  # ── TPU v5p ────────────────────────────────────────────────────────────────────
+  - name: "TPU v5p"
+    vendor: google-tpu
+    generation: "v5 (fifth generation, performance variant)"
+    status: production
+    launch_date: "2023-Q4"
+
+    architecture:
+      process_node:
+        value: null
+        notes: "Not disclosed by Google. Third-party estimates suggest TSMC 4nm or 5nm class (Tier 3)."
+        sources: []
+      transistor_count:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      memory_type:
+        value: "HBM3"
+        notes: "v5p uses HBM3, confirmed via Google Cloud documentation."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5p"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5p documentation: HBM3 memory."
+            retrieved_at: "2026-03-30"
+      memory_capacity_gb:
+        value: 95
+        notes: "95 GB HBM3 per chip."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5p"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5p: 95 GB HBM3 per chip."
+            retrieved_at: "2026-03-30"
+      memory_bandwidth_tb_s:
+        value: 2.765
+        notes: "2,765 GB/s (~2.765 TB/s) per chip."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5p"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5p documentation: memory bandwidth."
+            retrieved_at: "2026-03-30"
+      interconnect:
+        value: "ICI — 4,800 Gb/s bidirectional per chip"
+        notes: >
+          v5p ICI bandwidth is 6× that of v5e, enabling larger pod topologies.
+          v5p pods scale to 8,960 chips — the largest single-pod AI cluster Google
+          has disclosed publicly (as of 2025).
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer"
+            kind: vendor_blog
+            description: "Google Cloud blog: Introducing TPU v5p and AI Hypercomputer (December 2023)."
+            retrieved_at: "2026-03-30"
+
+    performance:
+      tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: null
+        notes: "Not published for v5p."
+        sources: []
+      peak_flops_fp16_tflops:
+        value: 918
+        notes: "918 TFLOPS BF16 per chip per Google Cloud documentation."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5p"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5p: 918 TFLOPS BF16 per chip."
+            retrieved_at: "2026-03-30"
+      peak_flops_fp32_tflops:
+        value: null
+        notes: "Not published; TPUs optimize for BF16/INT8."
+        sources: []
+      peak_flops_int8_tops:
+        value: 1836
+        notes: "1,836 INT8 TOPS per chip."
+        sources:
+          - url: "https://cloud.google.com/tpu/docs/v5p"
+            kind: vendor_documentation
+            description: "Google Cloud TPU v5p: INT8 performance."
+            retrieved_at: "2026-03-30"
+
+    efficiency:
+      flops_per_watt_fp16:
+        value: null
+        notes: "Cannot compute — TDP not disclosed."
+        sources: []
+      flops_per_watt_fp8:
+        value: null
+        notes: "Cannot compute."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Cannot compute — TDP not disclosed."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "TPU v5p Pod (up to 8,960 chips)"
+        notes: >
+          v5p is Google's large-scale training chip. The 8,960-chip pod is the
+          world's largest single ML training cluster (as of 2024). Used for Gemini
+          Ultra training and frontier model research. Google refers to this as the
+          "AI Hypercomputer" architecture.
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer"
+            kind: vendor_blog
+            description: "Google Cloud: TPU v5p + AI Hypercomputer — 8,960-chip pod."
+            retrieved_at: "2026-03-30"
+      gpus_per_system:
+        value: 8960
+        notes: "Maximum pod size for v5p. External availability in smaller slices."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      scale_out_interconnect:
+        value: "ICI — proprietary Google fabric, 4,800 Gb/s/chip bidirectional"
+        notes: "Enables tightly coupled 8,960-chip training pods without external Infiniband switches."
+        sources: []
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: >
+          v5p is Google's primary large-scale training chip. Used for training Gemini 1.0,
+          Gemini 1.5, and frontier research models. The 8,960-chip pod topology is
+          purpose-built for multi-hundred-billion parameter model training.
+        sources: []
+      inference:
+        value: "competitive"
+        notes: "Can run inference but is over-provisioned (cost-inefficient) for that use case vs. v5e."
+        sources: []
+      fine_tuning:
+        value: "strong"
+        notes: "Suitable for large-scale fine-tuning of frontier models."
+        sources: []
+      target_model_scale:
+        value: ">100B parameter training; frontier-scale models"
+        notes: "Designed for training at the scale of Gemini Ultra and similar frontier workloads."
+        sources: []
+      workload_notes:
+        value: >
+          Optimized for distributed transformer training using JAX + XLA. Not compatible
+          with CUDA. ICI interconnect enables tight all-reduce communication at pod scale.
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: >
+          Google submitted TPU v5p in MLPerf Training v4.0 (2024). Submitted for
+          GPT-3 (175B) and LLM-focused benchmarks. Competitive with H100 SXM at
+          comparable cluster size. See MLCommons results database for submission IDs.
+        notes: "Tier 1/2 benchmark. Reference MLCommons for exact numbers."
+        sources:
+          - url: "https://mlcommons.org/benchmarks/training/"
+            kind: benchmark
+            description: "MLCommons MLPerf Training v4.0 — Google TPU v5p submission."
+            retrieved_at: "2026-03-30"
+      mlperf_inference:
+        value: null
+        notes: "v5p not a primary inference submission target."
+        sources: []
+      vendor_published:
+        value: >
+          Google claims 2.7× higher training performance vs. TPU v4 per chip (vendor claim).
+        notes: "Vendor benchmark claim from launch materials."
+        sources:
+          - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer"
+            kind: vendor_blog
+            description: "Google: TPU v5p 2.7× vs v4 training performance (vendor claim)."
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "Internal/captive silicon — no merchant list price."
+        sources: []
+      cloud_price_usd_hr:
+        value: 4.20
+        notes: >
+          Google Cloud TPU v5p-8 on-demand: ~$33.60/hr for 8 chips = ~$4.20/chip/hr.
+          As of early 2026. Snapshot: March 2026.
+        sources:
+          - url: "https://cloud.google.com/tpu/pricing"
+            kind: csp_pricing
+            description: "Google Cloud TPU pricing page — v5p on-demand rates, March 2026."
+            retrieved_at: "2026-03-30"
+      cloud_providers:
+        value: ["GCP"]
+        notes: "Exclusively available via Google Cloud."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Captive silicon — GCP only."
+        sources: []
+      lead_time:
+        value: "Reservation contracts typically required for larger slices."
+        notes: null
+        sources: []
+
+    sources:
+      - url: "https://cloud.google.com/tpu/docs/v5p"
+        kind: vendor_documentation
+        description: "Google Cloud TPU v5p product documentation."
+        retrieved_at: "2026-03-30"
+      - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing TPU v5p and AI Hypercomputer (December 2023)."
+        retrieved_at: "2026-03-30"
+
+  # ── TPU v6e (Trillium) ─────────────────────────────────────────────────────────
+  - name: "TPU v6e (Trillium)"
+    vendor: google-tpu
+    generation: "v6 (sixth generation, Trillium)"
+    status: production
+    launch_date: "2024-Q3"
+
+    architecture:
+      process_node:
+        value: null
+        notes: >
+          Not disclosed by Google. Third-party estimates (SemiAnalysis, 2024) suggest
+          TSMC N3 (3nm class) — not confirmed (Tier 3 estimate).
+        sources: []
+      transistor_count:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      memory_type:
+        value: "HBM3e (estimated)"
+        notes: >
+          Not confirmed by Google. Performance characteristics are consistent with HBM3e;
+          Google has not explicitly stated the memory type for Trillium in public docs.
+          Tier 3 estimate.
+        sources: []
+      memory_capacity_gb:
+        value: null
+        notes: "Not disclosed per chip. System-level HBM capacity not published."
+        sources: []
+      memory_bandwidth_tb_s:
+        value: null
+        notes: "Not disclosed. Google emphasizes relative improvement (4.7× vs v5e) rather than absolute."
+        sources: []
+      interconnect:
+        value: "ICI — next-generation, bandwidth undisclosed"
+        notes: >
+          Trillium uses an upgraded ICI generation; exact bandwidth not published.
+          Pod topology: up to 256 chips per pod slice; larger configurations available internally.
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+            kind: vendor_blog
+            description: "Google Cloud blog: Trillium (TPU v6e) GA announcement."
+            retrieved_at: "2026-03-30"
+
+    performance:
+      tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: null
+        notes: "Not published."
+        sources: []
+      peak_flops_fp16_tflops:
+        value: null
+        notes: >
+          Google does not publish absolute BF16 TFLOPS for Trillium.
+          Google claims 4.7× higher peak compute vs. TPU v5e. If v5e = 393 TFLOPS BF16,
+          then Trillium ≈ 1,847 TFLOPS BF16 (Tier 3 estimate from published relative perf).
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+            kind: vendor_blog
+            description: "Google: Trillium 4.7× peak compute vs v5e (vendor claim, relative perf)."
+            retrieved_at: "2026-03-30"
+      peak_flops_fp32_tflops:
+        value: null
+        notes: "Not published."
+        sources: []
+      peak_flops_int8_tops:
+        value: null
+        notes: "Not published as absolute value."
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp16:
+        value: null
+        notes: "Cannot compute — absolute TFLOPS and TDP not disclosed."
+        sources: []
+      flops_per_watt_fp8:
+        value: null
+        notes: "Cannot compute."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Cannot compute."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "TPU v6e Pod"
+        notes: >
+          Deployed in Google's datacenters and available on Google Cloud as TPU v6e-8
+          through larger slices. Standard slice sizes align with v5e (multiples of 8 up to 256).
+        sources: []
+      gpus_per_system:
+        value: null
+        notes: "Maximum pod size not publicly disclosed for Trillium."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      scale_out_interconnect:
+        value: "ICI — proprietary Google fabric (enhanced vs v5e)"
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: >
+          Trillium is Google's primary production training and inference chip as of 2024–2025.
+          Used for Gemini 1.5 and Gemini 2.0 training and serving. Positioned as an
+          all-purpose accelerator replacing both v5e (inference) and v5p (training) for
+          most workloads.
+        sources: []
+      inference:
+        value: "strong"
+        notes: >
+          Google's default Cloud TPU for inference in 2025. 2× better energy efficiency
+          vs. v5e per Google's published comparison.
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+            kind: vendor_blog
+            description: "Google Cloud: Trillium 2× energy efficiency vs v5e for inference."
+            retrieved_at: "2026-03-30"
+      fine_tuning:
+        value: "strong"
+        notes: "Recommended for fine-tuning in 2025 GCP documentation."
+        sources: []
+      target_model_scale:
+        value: "1B–200B+ (training and inference, all common transformer scales)"
+        notes: null
+        sources: []
+      workload_notes:
+        value: >
+          Trillium is Google's convergence chip — cost-effective enough for inference
+          (previously a v5e use case) while powerful enough for large-scale training
+          (previously a v5p use case). This consolidation reduces SKU complexity in
+          Google's internal fleet and simplifies external Cloud TPU offerings.
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: "MLPerf Training v5.0 (2025) — Google submitted Trillium results. Competitive at scale."
+        notes: "Reference MLCommons results database for exact submission IDs and numbers."
+        sources:
+          - url: "https://mlcommons.org/benchmarks/training/"
+            kind: benchmark
+            description: "MLCommons MLPerf Training v5.0 — Google Trillium (TPU v6e) submission."
+            retrieved_at: "2026-03-30"
+      mlperf_inference:
+        value: "MLPerf Inference v5.0 (2025) — Trillium submitted. Leading results in LLM offline throughput."
+        notes: "Reference MLCommons for exact scenario results."
+        sources:
+          - url: "https://mlcommons.org/benchmarks/inference-datacenter/"
+            kind: benchmark
+            description: "MLCommons MLPerf Inference v5.0 — Google Trillium submission."
+            retrieved_at: "2026-03-30"
+      vendor_published:
+        value: >
+          Google claims: 4.7× higher peak compute vs v5e; 2× energy efficiency vs v5e;
+          3.3× higher ICI bandwidth vs v5e (vendor claims).
+        notes: "All vendor-published figures. Independently cross-checkable via MLPerf submission."
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+            kind: vendor_blog
+            description: "Google Cloud Trillium GA blog: performance claims vs v5e."
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "Captive silicon — no merchant list price."
+        sources: []
+      cloud_price_usd_hr:
+        value: 3.22
+        notes: >
+          Google Cloud TPU v6e-8 on-demand: ~$25.76/hr for 8 chips = ~$3.22/chip/hr.
+          As of early 2026. Snapshot: March 2026. May be in preview / limited GA.
+        sources:
+          - url: "https://cloud.google.com/tpu/pricing"
+            kind: csp_pricing
+            description: "Google Cloud TPU pricing page — v6e on-demand rates, March 2026."
+            retrieved_at: "2026-03-30"
+      cloud_providers:
+        value: ["GCP"]
+        notes: "Exclusively available via Google Cloud."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Captive silicon — GCP only."
+        sources: []
+      lead_time:
+        value: "GA on Google Cloud as of late 2024. Larger slices may require reservation."
+        notes: null
+        sources: []
+
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+        kind: vendor_blog
+        description: "Google Cloud blog: Trillium (TPU v6e) is GA (September 2024)."
+        retrieved_at: "2026-03-30"
+      - url: "https://cloud.google.com/tpu/docs/v6e"
+        kind: vendor_documentation
+        description: "Google Cloud TPU v6e (Trillium) product documentation."
+        retrieved_at: "2026-03-30"
+
+  # ── TPU v7 (Ironwood) ──────────────────────────────────────────────────────────
+  - name: "TPU v7 (Ironwood)"
+    vendor: google-tpu
+    generation: "v7 (seventh generation, Ironwood)"
+    status: sampling
+    launch_date: "2025-Q2"
+
+    architecture:
+      process_node:
+        value: null
+        notes: "Not disclosed by Google. Likely TSMC N2 or N3P class (Tier 3 estimate, not confirmed)."
+        sources: []
+      transistor_count:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      memory_type:
+        value: "HBM3e (likely)"
+        notes: >
+          Not confirmed. Google's 192 GB per chip spec implies HBM3e stack.
+          (Tier 3 estimate based on capacity/performance claims.)
+        sources: []
+      memory_capacity_gb:
+        value: 192
+        notes: >
+          192 GB per chip — confirmed in Google Cloud Next April 2025 announcement.
+          This is 12× the HBM capacity of TPU v5e (16 GB) and ~2× NVIDIA H100 (80 GB).
+        sources:
+          - url: "https://blog.google/technology/google-deepmind/google-cloud-next-2025/"
+            kind: vendor_blog
+            description: "Google Cloud Next 2025 announcement: Ironwood 192 GB per chip."
+            retrieved_at: "2026-03-30"
+      memory_bandwidth_tb_s:
+        value: null
+        notes: "Not publicly disclosed in absolute terms."
+        sources: []
+      interconnect:
+        value: "ICI — 7th-gen, bandwidth undisclosed"
+        notes: >
+          Pod-scale interconnect bandwidth not published. Google emphasizes the
+          pod aggregate bandwidth (described as enabling exaflop-scale pods).
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      peak_flops_fp8_tflops:
+        value: 4614
+        notes: >
+          4,614 INT8/FP8 TOPS per chip — disclosed by Google at Cloud Next 2025.
+          This is ~11.7× TPU v5e INT8 (786 TOPS). Makes Ironwood Google's most
+          compute-dense TPU to date by a large margin.
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+            kind: vendor_blog
+            description: "Google Cloud Next 2025: Ironwood TPU — 4,614 INT8 TOPS per chip."
+            retrieved_at: "2026-03-30"
+      peak_flops_fp16_tflops:
+        value: null
+        notes: >
+          Not separately published as BF16 TFLOPS. Google states 10× compute improvement
+          vs. Trillium in general terms. Estimated ~18,000+ TFLOPS BF16 (Tier 3).
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+            kind: vendor_blog
+            description: "Google: Ironwood 10× compute improvement vs Trillium (relative claim)."
+            retrieved_at: "2026-03-30"
+      peak_flops_fp32_tflops:
+        value: null
+        notes: "Not published."
+        sources: []
+      peak_flops_int8_tops:
+        value: 4614
+        notes: "Same as peak_flops_fp8_tflops — Google quotes INT8 for Ironwood headline."
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp16:
+        value: null
+        notes: "Cannot compute — TDP and absolute TFLOPS not disclosed."
+        sources: []
+      flops_per_watt_fp8:
+        value: null
+        notes: "Cannot compute."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: "Cannot compute."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "Ironwood Pod — up to 9,216 chips"
+        notes: >
+          Google announced Ironwood pods of up to 9,216 chips at Cloud Next 2025,
+          claiming aggregate exaflop-scale compute. This makes a single Ironwood pod
+          the most powerful disclosed AI training cluster by peak compute specification.
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+            kind: vendor_blog
+            description: "Google Cloud Next 2025: Ironwood 9,216-chip pod, exaflop-scale."
+            retrieved_at: "2026-03-30"
+      gpus_per_system:
+        value: 9216
+        notes: "Maximum announced pod size."
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: "Not disclosed."
+        sources: []
+      scale_out_interconnect:
+        value: "ICI — next-gen proprietary fabric enabling exaflop pod aggregate"
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: "strong"
+        notes: >
+          Ironwood is designed for frontier-scale training: next-generation Gemini models,
+          large-scale research, and long-context training workloads. The 9,216-chip pod
+          targets model training at >trillion parameter scale.
+        sources: []
+      inference:
+        value: "strong"
+        notes: >
+          Explicitly positioned as "inference-first" by Google at Cloud Next 2025.
+          The 192 GB per chip memory capacity is specifically designed for serving
+          large models without memory fragmentation, reducing batch latency.
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+            kind: vendor_blog
+            description: "Google: Ironwood is inference-first design with 192 GB per chip."
+            retrieved_at: "2026-03-30"
+      fine_tuning:
+        value: "strong"
+        notes: "Large memory capacity and compute density suited for parameter-efficient fine-tuning at scale."
+        sources: []
+      target_model_scale:
+        value: ">100B parameter training; all scales for inference including frontier-size models"
+        notes: "Designed to serve full Gemini Ultra-class models (1T+ parameter range) at batch inference."
+        sources: []
+      workload_notes:
+        value: >
+          Ironwood introduces a paradigm shift in Google's chip positioning: instead of separate
+          training (v5p) and inference (v5e) chips, Ironwood consolidates both at peak capability.
+          The 192 GB HBM per chip is designed to eliminate memory-capacity bottlenecks that
+          require pipeline parallelism overhead in multi-chip inference for large models.
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "Ironwood not yet submitted to MLPerf as of March 2026 (sampling phase)."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: "Ironwood not yet submitted to MLPerf Inference as of March 2026."
+        sources: []
+      vendor_published:
+        value: >
+          Google claims: 10× compute improvement vs Trillium (v6e); 192 GB per chip
+          (vs 16 GB v5e); 9,216-chip pod delivers >1 exaFLOP aggregate (vendor claims,
+          Cloud Next April 2025).
+        notes: "All vendor claims at announcement. Independent benchmarks not yet available."
+        sources:
+          - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+            kind: vendor_blog
+            description: "Google Cloud Next 2025: Ironwood performance claims."
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: "Not yet available. Expected commercial availability H2 2025 / 2026."
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: "Not yet publicly priced as of March 2026."
+        sources: []
+      cloud_providers:
+        value: ["GCP"]
+        notes: "Will be exclusively available via Google Cloud when released."
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Captive silicon — GCP only."
+        sources: []
+      lead_time:
+        value: "Sampling / preview as of mid-2025. Expected broader availability 2026."
+        notes: "Google has not disclosed a firm GA date for Ironwood external availability."
+        sources: []
+
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing Trillium and Ironwood TPUs (April 2025, Cloud Next)."
+        retrieved_at: "2026-03-30"
+      - url: "https://blog.google/technology/google-deepmind/google-cloud-next-2025/"
+        kind: vendor_blog
+        description: "Google DeepMind / Cloud Next 2025 recap — Ironwood announcement context."
+        retrieved_at: "2026-03-30"
+
+# ─── Company-level context ──────────────────────────────────────────────────────
+
+software_ecosystem:
+  stack_name:
+    value: "XLA / PJRT — JAX, PyTorch (via torch_xla), TensorFlow"
+    notes: >
+      TPUs run via the XLA (Accelerated Linear Algebra) compiler, which is Google's
+      primary ML compiler. PJRT (Plugin JAX Runtime) is the low-level interface.
+      JAX is the primary framework for TPU-native development; PyTorch is supported
+      via torch_xla but with higher friction than JAX. CUDA workloads do NOT run on TPUs.
+    sources:
+      - url: "https://cloud.google.com/tpu/docs/jax-quickstart-tpu-vm"
+        kind: vendor_documentation
+        description: "Google Cloud TPU JAX quickstart documentation."
+        retrieved_at: "2026-03-30"
+  framework_support:
+    value: ["JAX", "PyTorch (via torch_xla)", "TensorFlow", "MaxText", "MaxDiffusion"]
+    notes: >
+      JAX is first-class; PyTorch support has improved significantly via torch_xla 2.x
+      but still requires porting effort for CUDA-native codebases. TensorFlow is
+      legacy-supported. MaxText (LLM training) and MaxDiffusion (image generation)
+      are Google's own high-performance JAX libraries optimized for TPU deployment.
+    sources:
+      - url: "https://cloud.google.com/tpu/docs/supported-frameworks"
+        kind: vendor_documentation
+        description: "Google Cloud: supported frameworks for TPUs."
+        retrieved_at: "2026-03-30"
+  ecosystem_maturity:
+    value: "growing"
+    notes: >
+      TPU ecosystem is mature for Google's internal use and JAX-native workloads
+      (e.g., Flax, MaxText) but "growing" from an external developer perspective.
+      CUDA ecosystem dominance (PyTorch + NVIDIA) creates significant switching friction.
+      The XLA compilation model adds latency to iteration cycles vs. CUDA eager mode.
+      HuggingFace, Keras, and major model hubs have added TPU support but CUDA-first
+      development remains the default for most external teams.
+    sources: []
+
+manufacturing_and_supply:
+  foundry_partners:
+    value: ["TSMC"]
+    notes: >
+      TSMC is Google's primary (and believed sole) TPU foundry partner. Unlike NVIDIA,
+      Google does not disclose foundry relationships officially but TSMC's annual
+      reports and supply chain analyses consistently cite Google as a major customer.
+    sources:
+      - url: "https://www.tsmc.com/english/dedicatedFoundry/technology/logic"
+        kind: vendor_documentation
+        description: "TSMC technology overview — Google is major customer (confirmed through earnings calls/SEC filings)."
+        retrieved_at: "2026-03-30"
+  process_nodes:
+    value: ["5nm class (v5e/v5p estimated)", "4nm class (v5p estimated)", "3nm class (Trillium estimated)"]
+    notes: >
+      All process node attributions are third-party estimates (Tier 3). Google does not
+      disclose process nodes for any TPU generation. SemiAnalysis estimates v5e on N7/N5,
+      v5p on N5, Trillium on N3. None confirmed by Google.
+    sources: []
+  packaging:
+    value: "CoWoS (likely for HBM-attached TPUs)"
+    notes: >
+      Google does not disclose advanced packaging details. However, HBM attachment
+      in v5p (95 GB), Trillium, and Ironwood (192 GB) requires 2.5D interposer packaging
+      analogous to CoWoS-S or equivalent. Not confirmed by Google (Tier 3 inference).
+    sources: []
+  supply_constraints:
+    value: >
+      CoWoS capacity at TSMC is the binding supply constraint for HBM-attached AI chips
+      industrywide (2024–2025). Google, NVIDIA, and AMD all compete for the same limited
+      CoWoS capacity. Alphabet's $91B FY2025 capex implies Google is securing large
+      committed capacity; management has indicated supply is "the binding constraint"
+      on datacenter expansion in 2025.
+    notes: null
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: >
+          Alphabet Q3 2025 earnings call: management cited supply as the primary
+          constraint on AI infrastructure build rate, not demand.
+        retrieved_at: "2026-03-30"
+
+commercial_traction:
+  deployment_channels:
+    value: ["captive internal (Google Search, Ads, Maps, YouTube, Gemini)", "Google Cloud TPU on-demand (external)"]
+    notes: >
+      The dominant use case is captive/internal: TPUs run virtually all of Google's
+      AI-powered products internally. External cloud availability is secondary but
+      growing. External TPU customers get access to the same generation as internal
+      workloads — a competitive advantage in time-to-performance vs. hyperscalers
+      that resell NVIDIA GPUs.
+    sources: []
+  notable_customers_or_design_wins:
+    value:
+      - "Google (internal) — Search, Ads, YouTube, Maps, Assistant, Gemini API"
+      - "Google DeepMind — Gemini 1.0, 1.5, 2.0, Gemma training and serving"
+      - "Google Cloud external customers — disclosed in Q4 2025 ER as 'AI Infrastructure' demand driver"
+      - "Various large-scale ML research teams via Google Cloud TPU Research Cloud"
+    notes: >
+      Google does not disclose specific external TPU customer names. The $17.7B Q4 2025
+      Google Cloud quarter (47.7% YoY growth) includes TPU pod commitments as a
+      stated driver. The TPU Research Cloud (TRC) program provides academic access.
+    sources:
+      - url: "https://sites.research.google/trc/"
+        kind: vendor_documentation
+        description: "Google TPU Research Cloud program."
+        retrieved_at: "2026-03-30"
+  revenue_segment:
+    value: "Google Cloud"
+    notes: >
+      TPU-on-demand revenue is a sub-line within Google Cloud. It is not separately
+      disclosed. Total Google Cloud FY2025 revenue = $58.7B; TPU share is not broken out.
+    sources: []
+
+roadmap:
+  next_generation:
+    value: "TPU v8 — not announced as of March 2026; expected on Google's ~annual cadence"
+    notes: >
+      Google has not announced v8 as of March 2026. Historical cadence: v4 (2021),
+      v5e (2023-Q3), v5p (2023-Q4), v6e Trillium (2024-Q3), v7 Ironwood (2025-Q2 announcement).
+      Approximately 12–18 months between major generations. v8 would be expected late 2026
+      or early 2027 based on this cadence.
+    sources: []
+  cadence:
+    value: "~12–18 months per generation"
+    notes: >
+      Google's TPU roadmap has accelerated: from roughly 2-year cycles (v1–v3 era) to
+      roughly annual releases (v5e, v5p, v6e, v7 all within 24 months, 2023–2025).
+      This matches NVIDIA's accelerated Blackwell → Rubin cadence and AMD's CDNA3→CDNA4.
+    sources: []
+  roadmap_credibility:
+    value: "strong"
+    notes: >
+      Google has delivered on every TPU generation announced, often ahead of schedule.
+      v5p 8,960-chip pod was operational for Gemini training before external GA.
+      Trillium (v6e) shipped on schedule with GA in late 2024.
+      Ironwood (v7) announced at Cloud Next April 2025 with preview timeline.
+      Execution history is strong; the main uncertainty is external availability
+      timing vs. internal deployment priority.
+    sources: []
+
+sources:
+  - url: "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm"
+    kind: vendor_documentation
+    description: "Google Cloud TPU system architecture documentation."
+    retrieved_at: "2026-03-30"
+  - url: "https://jax.readthedocs.io/en/latest/"
+    kind: vendor_documentation
+    description: "JAX documentation — primary programming model for TPUs."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/tpu/pricing"
+    kind: csp_pricing
+    description: "Google Cloud TPU pricing page — all generations, March 2026."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+    kind: vendor_blog
+    description: "Google Cloud Next April 2025 — TPU Trillium and Ironwood announcement."
+    retrieved_at: "2026-03-30"

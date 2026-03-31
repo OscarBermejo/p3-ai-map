@@ -178,6 +178,7 @@ body {
 
 .simple-map__detail {
   width: 100%;
+  min-width: 0; /* flex child: allow shrink so inner table overflow-x is contained */
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -223,6 +224,12 @@ body {
   font-weight: 700;
 }
 
+/* Match layer / company: :hover beats single-class --active, so without this the active
+   tab used #888 (inactive-tab hover) and looked lighter than selected layer/company (#333). */
+.simple-map__tab.simple-map__tab--active:hover {
+  color: #333;
+}
+
 .simple-map__tab:focus-visible {
   outline: 1px solid #000;
   outline-offset: 2px;
@@ -233,6 +240,7 @@ body {
   --panel-fs: 0.8125rem;
   --panel-lh: 1.45;
   width: 100%;
+  min-width: 0;
   max-width: 52rem;
   font-family: Helvetica, Geneva, Arial, sans-serif;
   font-size: var(--panel-fs);
@@ -349,7 +357,22 @@ body {
 .simple-map__product-catalog {
   margin: 0;
   width: 100%;
+  min-width: 0;
   max-width: 52rem;
+}
+
+/* Chips / models compare in simple map: horizontal scroll only (no inner vertical scrollbar).
+   - `overflow-y: hidden` avoids the "visible→auto" pairing with `overflow-x: auto` that adds a
+     bogus vertical scroll in some flex layouts — but the horizontal scrollbar would otherwise sit
+     on top of the last row; reserve space below the table for that track. */
+.simple-map__product-catalog > .value-chain__table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: min-content;
+  /* Classic scrollbars consume height inside the scrollport; pad so the final row stays readable. */
+  padding-bottom: max(0.85rem, 12px);
+  scrollbar-gutter: stable;
+  box-sizing: border-box;
 }
 
 #root {

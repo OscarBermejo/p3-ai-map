@@ -1,0 +1,110 @@
+kind: market_perception
+schema_version: 1
+as_of: "2026-03-30"
+company: intel
+layer: chips
+
+consensus_narrative:
+  summary: Intel is navigating a structural turnaround under CEO Lip-Bu Tan, prioritizing manufacturing execution on the 18A node and stabilizing its PC/Data Center product lines while effectively conceding market share in the discrete AI accelerator market.
+  bull_thesis: Lip-Bu Tan’s leadership is driving tangible execution improvements. The 18A node achieved high-volume manufacturing (HVM) for Panther Lake in early 2026, proving the "5 nodes in 4 years" strategy delivered a viable leading-edge process. With yield improvements reaching 7-8% per month, Intel Foundry is positioned to finally attract external customers.
+  bear_thesis: The AI accelerator strategy has failed to gain traction, with Gaudi 3 shipments slashed and revenue projections minimal (~$500M) compared to NVIDIA and AMD. Furthermore, Intel Foundry still lacks publicly disclosed high-volume Tier-1 external customers for 18A/14A, and structural costs remain high, producing negative free cash flow.
+  embedded_assumptions:
+    - "18A yields will continue to improve to profitable levels over 2026."
+    - "Intel will not completely spin off its foundry business, but will selectively divest non-core assets."
+    - "Gaudi 3 will remain a niche, secondary option in AI infrastructure with no real threat to NVIDIA."
+  narrative_shift: "The market narrative shifted from speculation about a total foundry spin-off in late 2025 to a recognition that Lip-Bu Tan intends to fix the foundry from within. Most recently, Tan reconsidered offering 18A more aggressively to external customers after initial skepticism."
+
+key_debates:
+  - id: foundry_viability
+    question: Can Intel Foundry secure high-volume, Tier-1 external customers for its 18A and 14A nodes?
+    bull_case: "Intel has stabilized 18A yields, released the 0.5 PDK, and is seeing 'heavy engagement' from customers, supported by $8.9B in CHIPS Act funding."
+    bear_case: "External customers remain hesitant to commit high-volume designs to Intel Foundry without seeing a sustained track record, maintaining TSMC as the default choice."
+    resolution_evidence: "Public announcement of a major, high-volume external fab customer for 18A or 14A."
+    current_lean: "The market remains highly skeptical but is willing to wait and see if Tan's execution focus bears fruit by late 2026."
+    sources:
+      - url: "https://www.tickerreport.com/banking-finance/13338671/intel-conference-lip-bu-tan-talks-foundry-turnaround-18a-yield-gains-and-14a-roadmap-push.html"
+        kind: news
+
+  - id: gaudi_relevance
+    question: Should Intel abandon the discrete AI accelerator market to focus entirely on CPUs and Foundry?
+    bull_case: "Intel can offer a low-cost, open-ecosystem alternative to NVIDIA with Gaudi, which provides excellent price-to-performance for specific inference workloads."
+    bear_case: "Software ecosystem lock-in (CUDA) and massive scale advantages of NVIDIA mean Intel is burning R&D on a product with minimal commercial traction."
+    resolution_evidence: "Meaningful cloud provider adoption of Gaudi 3 or the explicit cancellation of Falcon Shores."
+    current_lean: "The market overwhelmingly believes Intel has lost the current generation of the AI accelerator race and should cut its losses to focus on foundry and client PC."
+    sources:
+      - url: "https://pitchgrade.com/research/intel-ai-margin-pressure"
+        kind: specialist_analysis
+
+sentiment_signals:
+  sell_side_summary: "Cautiously optimistic on Lip-Bu Tan's operational turnaround but highlighting severe near-term margin and FCF pressures."
+  social_sentiment: "Improving slightly on manufacturing/leadership credibility following Panther Lake HVM, but remaining extremely negative on AI accelerators."
+  notable_shifts:
+    - "Sentiment shifted positively after the Panther Lake 18A HVM announcement at CES 2026, viewed as a validation of the process roadmap that many doubted."
+
+competitive_positioning:
+  key_peers:
+    - "TSMC"
+    - "NVIDIA"
+    - "AMD"
+  where_company_wins:
+    - "x86 Client PCs and enterprise laptop market share"
+    - "US-based advanced manufacturing capacity footprint"
+    - "On-device AI integration (Core Ultra platform)"
+  where_gap_closing:
+    - "Process node technology (18A closing the gap with TSMC's 2nm/3nm offerings)"
+  where_company_loses:
+    - "Discrete AI Accelerators (trailing NVIDIA/AMD severely in both hardware mindshare and software ecosystem)"
+    - "Data Center AI Revenue"
+    - "Foundry market share for external customers"
+  switching_costs: "x86 architecture maintains strong stickiness in traditional enterprise data centers; however, in the foundry business, switching costs are massive, making it extremely difficult for Intel to poach existing TSMC customers."
+  order_changers:
+    - "A major geopolitical event disrupting TSMC's operations in Taiwan."
+    - "A Tier-1 hyperscaler fully committing to Intel 18A/14A for custom silicon volume."
+
+information_asymmetries:
+  - id: gaudi_3_pricing_advantage
+    title: "The market ignores Gaudi 3's cost advantage due to software pessimism"
+    market_believes: "Gaudi 3 is irrelevant because it lacks CUDA and has poor software support."
+    evidence_suggests: "At $15,000 vs H100's $30,000, Gaudi 3 offers significantly better inference economics for standardized models (like Llama 3) where open-source frameworks abstract away CUDA. The hardware scaling efficiency (96% to 1,024 accelerators) is also highly competitive."
+    gap_reason: "Developer mindshare is heavily skewed toward NVIDIA, and hyperscalers prefer flexible instances over specialized, lower-cost instances that might sit idle if demand shifts."
+    closing_catalyst: "A major enterprise deploying Gaudi 3 at scale for inference and publicly validating the TCO savings."
+    confidence: "medium"
+    sources:
+      - url: "https://introl.com/blog/intel-gaudi-3-deployment-guide-h100-alternative"
+        kind: specialist_analysis
+
+forward_signals:
+  - id: tan_18a_external
+    signal: "CEO Lip-Bu Tan is reconsidering his initial stance of limiting 18A primarily to internal use, recognizing it as a viable offering for external customers as yields have improved."
+    source_tier: "Tier 1"
+    date_observed: "2026-03-04"
+    implication: "If Intel actively markets 18A externally in 2H 2026, it could signal higher internal confidence in yields and potentially secure much-needed external revenue to offset heavy capex."
+    sources:
+      - url: "http://reuters.com/technology/intel-ceo-lip-bu-tan-reconsidering-fate-chipmakers-18a-manufacturing-tech-cfo-2026-03-04/"
+        kind: curated_platform
+
+sources:
+  - url: "https://seekingalpha.com/article/4862077-intel-corporation-intc-q4-2025-earnings-call-transcript"
+    kind: earnings_transcript
+    description: "Earnings transcript: Intel Q4 2025 earnings call detailing financial results, custom ASIC growth, and initial Lip-Bu Tan commentary."
+    retrieved_at: "2026-03-30"
+
+  - url: "https://www.tickerreport.com/banking-finance/13338671/intel-conference-lip-bu-tan-talks-foundry-turnaround-18a-yield-gains-and-14a-roadmap-push.html"
+    kind: conference_qa
+    description: "Specialist analysis: Lip-Bu Tan detailing 18A yield gains (7-8% per month) and the push for 14A at a recent 2026 conference."
+    retrieved_at: "2026-03-30"
+
+  - url: "https://pitchgrade.com/research/intel-ai-margin-pressure"
+    kind: specialist_analysis
+    description: "Specialist analysis: Deep dive into Intel's AI crossroads, noting the struggles of Gaudi 3 adoption against NVIDIA's CUDA ecosystem."
+    retrieved_at: "2026-03-30"
+
+  - url: "https://introl.com/blog/intel-gaudi-3-deployment-guide-h100-alternative"
+    kind: specialist_analysis
+    description: "Specialist analysis: Technical and economic analysis of Gaudi 3 versus H100, highlighting the $15k vs $30k price difference and inference efficiency."
+    retrieved_at: "2026-03-30"
+
+  - url: "http://reuters.com/technology/intel-ceo-lip-bu-tan-reconsidering-fate-chipmakers-18a-manufacturing-tech-cfo-2026-03-04/"
+    kind: curated_platform
+    description: "Curated platform: Reuters reporting on CFO David Zinsner's comments that Lip-Bu Tan is reconsidering 18A for external customers."
+    retrieved_at: "2026-03-30"

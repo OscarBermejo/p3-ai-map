@@ -1,0 +1,363 @@
+# Google TPU — narrative (chips layer capstone).
+# Thesis-driven synthesis: original derived analysis + business model lens.
+# This profile is chips-scoped. Cross-references to google-deepmind are limited
+# to TPU's role as the training/inference substrate for Gemini.
+
+kind: financial_narrative
+schema_version: 1
+
+as_of: "2026-03-30"
+
+based_on_financials:
+  file: financials/FY2025-Q4.yaml
+  period_end: "2025-12-31"
+  period_label: "FY2025 (full year)"
+
+business_profile_as_of: "2026-03-30"
+
+central_questions:
+  - "Is Google's $91B capex cycle building a durable moat or funding a stranded-asset risk?"
+  - "What is the structural economic value of captive silicon at Google's scale?"
+  - "Can Google's TPU strategy translate into a credible external accelerator business?"
+
+sections:
+
+  - id: business_model_lens
+    title: "How to read Google TPU: captive silicon is not a chip company"
+    body: |
+      Google TPU is fundamentally different from every other company in the chips layer
+      of this map. NVIDIA and AMD are merchant silicon vendors — they design chips, sell
+      them to customers, and recognize revenue at the sale. Google TPU is captive silicon:
+      Google designs the chips, manufactures them at TSMC, deploys them in its own
+      datacenters, and uses them to power its own products. The value is never recognized
+      as chip revenue — it flows through as avoided procurement cost, infrastructure
+      utilization margin, and strategic supply independence.
+
+      This distinction determines how every number should be read:
+
+      There is no TPU revenue line. There is no TPU gross margin. There is no TPU segment.
+      The nearest observable financial signal is Google Cloud segment ($58.7B FY2025 revenue,
+      $13.9B operating income) — which includes TPU-on-demand as a subset alongside Vertex AI,
+      BigQuery, and all other Cloud services. Trying to read Google TPU the same way you read
+      NVIDIA's Data Center segment leads to a category error.
+
+      The correct frame is this: Google is a large-scale AI service company that eliminated its
+      supplier by building the supplier itself. The economics of that choice are spread across
+      the entire Alphabet income statement — in the capex line (cost of building the infrastructure),
+      in the cost of revenue (depreciation of deployed TPUs), and in the operating income
+      (the margin on products and services that run on TPUs, including Search, Ads, YouTube,
+      and Google Cloud). The TPU program is a cost structure decision, not a product line decision.
+
+  - id: capex_and_what_it_means
+    title: "The $91B capex: front-loading a durable infrastructure position"
+    body: |
+      Alphabet spent $91.4B on capital expenditures in FY2025 — the largest single-year
+      infrastructure investment in the company's history, up from approximately $52B in FY2024.
+      The quarterly build tells the story more precisely:
+        Q1: $17.2B → Q2: $22.4B → Q3: $24.0B → Q4: $27.9B
+      Sequential capex growth of 30.5%, 6.7%, and 16.3% quarter-over-quarter. This is
+      not a one-time spike — Q4 2025 alone ($27.9B) exceeded any prior single quarter.
+      Management guided FY2026 capex at "$75B minimum" and "could be similar or higher."
+
+      What is driving this? Management's own language: "the majority of 2025 capex went
+      to servers and networking for AI." Servers and networking — TPU pods, high-speed
+      ICI fabric, networking infrastructure — are the operating word. This is the
+      measurable fingerprint of the Trillium (v6e) production ramp and early Ironwood (v7)
+      buildout. Google is acquiring AI compute capacity at a pace that no pure-software AI
+      company (OpenAI, Anthropic) can replicate.
+
+      But here is what the capex number does NOT mean: it is not speculative. The Q4 2025
+      Google Cloud quarter — $17.7B revenue, +47.7% YoY, 30.1% operating margin — contains
+      management language about "multi-year AI infrastructure commitments." The capex is
+      responding to contracted demand plus internal workload growth. Google is not building
+      a warehouse full of chips hoping someone buys access. It is deploying against committed
+      contracts and known internal workload growth for Search, Ads, and Gemini inference.
+
+      The FCF math supports the sustainability: Alphabet generated $73.3B in operating cash
+      flow in FY2025. Capex was $91.4B — financed partially from operations ($73.3B OCF)
+      and partially from debt ($12.5B notes issued in May 2025). FCF (OCF − capex) was
+      approximately $73.3B — wait, that requires correction. FCF = OCF − capex = $164.7B −
+      $91.4B = $73.3B for the full year. At 22.7% of revenue, this capex is the highest in
+      Alphabet's modern history, but FCF of $73.3B at 18.2% of revenue signals the business
+      remains highly cash generative even through the investment cycle. This is a company
+      front-loading infrastructure while comfortably funded — not a distress scenario.
+
+  - id: cost_avoidance_not_visible_in_income_statement
+    title: "The invisible billions: what TPUs save that doesn't show up in the P&L"
+    body: |
+      The most important financial fact about Google's TPU program is not in Alphabet's
+      income statement. It is the cost that Alphabet does NOT incur.
+
+      Consider the structural math. NVIDIA's FY2026 data center revenue was $115.2B at
+      approximately 74.6% gross margin — implying roughly $86B of gross profit for NVIDIA,
+      mostly funded by hyperscalers and large enterprises buying GPUs. Google is largely
+      absent from that $115B. For Alphabet's internal AI workloads — the training runs for
+      Gemini, the inference for Google Search AI features, the recommendation systems for
+      YouTube — Google buys from itself.
+
+      If we estimate (conservatively) that Google's internal AI compute fleet represents the
+      equivalent of 800,000+ H100-class chips, and H100 OEM cost to a volume hyperscaler
+      is approximately $30,000 per chip, the replacement-cost asset would be:
+        800,000 chips × $30,000 = $24B in GPU procurement cost
+      versus Google's estimated TPU manufacturing cost of approximately $4,000–$5,000 per chip:
+        ~1–2 million TPU chips × $4,000 average = $4–8B TPU cost
+
+      The implied cost avoidance is $16–20B on a replacement-cost basis — not a cash flow
+      item (it never flows through the P&L), but a structural economic advantage that
+      permanently improves the competitive position of every Google AI product. When Google
+      Search serves an AI Overview or Gemini API returns a completion, the marginal compute
+      cost is lower than it would be for a competitor running on NVIDIA at merchant prices.
+
+      This is not visible in any ratio analysis of Alphabet's income statement. It is why
+      the TPU investment thesis is fundamentally misread by analysts who look at capex/revenue
+      and see "excessive spend" — they are comparing the cost of building the supplier to the
+      revenue of the products the supplier enables, not the cost of what they replaced.
+
+  - id: trillium_and_ironwood_competitive_specs
+    title: "Where Trillium and Ironwood actually sit vs. NVIDIA H100/H200/Blackwell"
+    body: |
+      Google does not publish absolute TFLOPS and TDP for its TPUs in the way NVIDIA does —
+      a deliberate opacity that makes direct comparison difficult. But we can triangulate
+      from what Google has disclosed and from MLPerf results.
+
+      Trillium (v6e): Google claims 4.7× peak compute vs. v5e. Since v5e is confirmed at
+      393 BF16 TFLOPS per chip (Tier 1: Google documentation), Trillium estimates at
+      approximately 1,847 BF16 TFLOPS per chip (Tier 3 derived). For comparison, NVIDIA H100
+      SXM is 989 BF16 TFLOPS (dense) and H200 SXM is ~989 TFLOPS BF16 (same tensor core,
+      faster memory). If the estimate holds, Trillium has roughly 1.9× the BF16 TFLOPS of
+      H100 SXM per chip — more compute per silicon die.
+
+      Google also claims 2× energy efficiency for Trillium vs. v5e. If v5e's effective
+      TDP is ~350–400W and Trillium achieves 4.7× more compute at the same power envelope,
+      then Trillium is approximately 1.9× more TFLOPS/watt than H100 SXM (1.41 TFLOPS/W).
+      This efficiency advantage matters at datacenter scale — less power and cooling cost
+      per unit of compute.
+
+      Ironwood (v7): The disclosed 4,614 INT8 TOPS per chip is the most revealing published
+      number. H100 SXM is 3,958 INT8 TOPS. Ironwood is approximately 1.2× more INT8 dense
+      compute per chip. More significantly, Ironwood's 192 GB HBM per chip dwarfs H100's
+      80 GB — and is comparable to NVIDIA's GB200 NVL72 which combines two B200 dies with
+      192 GB total. The architectural bet Google is making with Ironwood's large memory:
+      for inference of large models (70B+ parameters), memory capacity is the binding
+      constraint, not compute. Ironwood's 192 GB allows entire model weights to reside
+      on-chip without multi-chip pipeline parallelism overhead — a meaningful latency and
+      throughput advantage for frontier model inference.
+
+      Neither Trillium nor Ironwood has public MLPerf results covering the full range of
+      scenarios as of March 2026. The v6e Trillium submitted MLPerf Inference v4.0–v5.0
+      with competitive LLM offline throughput results. Ironwood has not been submitted.
+      Until MLPerf results are published, the performance claims remain vendor-only data
+      (Tier 1 source, but single-source).
+
+  - id: external_market_and_the_cuda_moat
+    title: "The CUDA moat: why impressive TPU specs have not moved the external market"
+    body: |
+      Google's TPU specs are compelling on paper. So why does NVIDIA maintain 90%+
+      of the external AI accelerator market?
+
+      The answer is not specs. It is ecosystem lock-in at the software layer.
+
+      CUDA has approximately 200 million registered developers. PyTorch, the dominant
+      ML framework, is CUDA-native by default — code written in PyTorch runs on NVIDIA GPUs
+      without modification. To run that same code on a TPU, a developer must either:
+      (a) rewrite in JAX (Google's preferred TPU framework, with its own paradigm: functional
+          transformations, explicit JIT compilation, different array semantics), or
+      (b) use torch_xla, which translates PyTorch to XLA — introducing compilation
+          overhead, debugging complexity, and not-full parity with PyTorch eager mode.
+
+      Neither path is trivial. For a team with a working CUDA-native codebase, the
+      switching cost is measured in engineer-months, not hours. And the switching cost
+      is asymmetric: building new JAX-native code on TPUs is efficient; migrating
+      existing PyTorch code is costly. Most of the world's ML teams are on path (b).
+
+      Google has been chipping at this moat with torch_xla improvements and MaxText
+      (a high-performance JAX library for LLM training that is TPU-native). The academic
+      TPU Research Cloud program builds JAX fluency in research teams that may become
+      practitioners. But CUDA's self-reinforcing flywheel — more CUDA users → more CUDA
+      libraries → more CUDA-native models → more CUDA demand — is not reversing.
+
+      The correct conclusion is not that Google TPU is strategically weak — it is that
+      Google's TPU external market is structurally constrained to customers who are
+      either JAX-native (Google's own developer ecosystem, some academic teams) or
+      willing to pay the XLA migration tax. The external TPU cloud business is a real
+      and growing revenue line, but it will not become a CUDA replacement for the
+      external market in the 2–3 year horizon.
+
+      This matters for how to size the TPU opportunity: the external cloud business is
+      additive, not transformative. The value of TPUs is overwhelmingly internal, not external.
+
+  - id: ironwood_and_the_inference_bet
+    title: "Ironwood's inference-first design: a thesis about where AI compute shifts"
+    body: |
+      The most strategically significant element of Ironwood (v7) is not its 4,614 TOPS
+      per chip — it is the decision to put 192 GB of HBM per chip.
+
+      To understand why that matters, consider the memory math for large model inference.
+      Llama 3 70B at BF16 requires approximately 140 GB just for weights — exceeding
+      a single H100's 80 GB. Serving it on H100 requires at minimum a 2-chip configuration
+      with model parallelism, introducing inter-chip communication overhead and latency.
+      On Ironwood's 192 GB, the entire 70B model fits on one chip. For a 140B model
+      (like Gemini Pro-class), Ironwood likely fits 2 chips vs. 4 H100s — halving the
+      inter-chip communication surface.
+
+      This is a deliberate architectural statement: Ironwood is designed to serve the
+      generation of models that Google is training today (Gemini 2.0 / successor),
+      not the generation it served in 2023. By the time Ironwood reaches peak deployment
+      (2026–2027), Google's frontier models may be 200B–500B parameters — sizes where
+      a per-chip memory of 80 GB becomes a severe bottleneck. Ironwood is designed to
+      remain usable at those scales.
+
+      The competitive comparison is instructive. NVIDIA's B200 (Blackwell) has 192 GB
+      HBM3e per chip (in NVL72 configuration) — the same memory capacity as Ironwood,
+      announced roughly simultaneously. Google and NVIDIA converged on the same
+      architectural insight from different starting points. The difference is ecosystem:
+      B200 runs CUDA natively; Ironwood runs XLA. For inference workloads, where the
+      code is typically a fixed serving stack rather than a research codebase, the
+      ecosystem friction is lower — which is precisely why Google positioned Ironwood
+      as "inference-first."
+
+  - id: risk_assessment
+    title: "Genuine risks vs. expected costs of the strategy"
+    body: |
+      Separating real risks from the expected cost of executing this strategy deliberately:
+
+      Expected costs (not risks):
+      - Capex intensity: 22.7% capex/revenue in FY2025 is high by historical standards
+        but is the explicit investment decision. It is the price of acquiring infrastructure
+        independence. It compresses near-term FCF margins. This is not a risk — it is
+        the stated strategy.
+      - XLA ecosystem friction: TPU's external market limitations from CUDA lock-in
+        are a structural feature, not a recent deterioration. The strategy has always been
+        primarily captive; external sales are upside.
+      - Opacity: Alphabet does not disclose TPU-specific metrics. This limits external
+        analysis but is a deliberate disclosure choice, not a sign of hidden problems.
+
+      Genuine risks:
+      1. Demand normalization before capex returns materialize.
+         If AI model demand growth decelerates sharply (e.g., from 36% Google Cloud growth
+         to sub-15%), the $91.4B FY2025 capex and $75B+ FY2026 guided capex creates an
+         inventory of partially-utilized TPU pods. Unlike NVIDIA, which sells chips and
+         receives cash at delivery, Google owns the infrastructure. A demand slowdown
+         creates underutilization, not a receivables problem — but the depreciation charge
+         continues. At Alphabet's FCF scale ($73.3B), this is survivable — but would
+         materially impair returns for 3–5 years.
+
+      2. Process node / supply chain concentration risk.
+         All evidence points to TSMC as Google's sole TPU foundry. TSMC's advanced nodes
+         (3nm, 2nm) are also the production home for Apple, NVIDIA, AMD, and other large
+         customers. A Taiwan-related disruption would impact all customers simultaneously,
+         but Google's captive nature means it has less flexibility to source from alternative
+         foundries than a merchant vendor like AMD or Qualcomm. This is a low-probability,
+         high-impact risk.
+
+      3. Ironwood execution risk.
+         Ironwood has not yet been submitted to MLPerf. It is currently in sampling phase.
+         The performance claims are vendor-only as of March 2026. Historical TPU performance
+         has generally matched or exceeded vendor claims at the generation level, but the
+         10× vs. Trillium claim for Ironwood is aggressive. If Ironwood's production
+         performance falls materially short, the inference-serving cost advantage for
+         Gemini narrows.
+
+      4. CUDA ecosystem closure of the gap.
+         NVIDIA is not standing still. Blackwell (B200) matches Ironwood's memory spec.
+         If NVIDIA improves CUDA memory efficiency for large-model inference to the point
+         where the memory capacity gap matters less, one of Ironwood's key differentiators
+         is reduced. NVLink-scale and NVIDIA's software stack (TRT-LLM, vLLM integration)
+         continue to advance.
+
+  - id: conclusion
+    title: "Takeaway: the invisible strategic asset"
+    body: |
+      Google's TPU program is one of the most strategically consequential technology
+      investments in the current AI cycle — and one of the least understood by external
+      analysts, precisely because it is engineered to be invisible in the income statement.
+
+      The core thesis: Alphabet has eliminated its dependency on the most dominant
+      supplier in the AI value chain (NVIDIA) for its most critical cost input
+      (AI compute). At Google's scale, this decision was worth tens of billions of
+      dollars in structural cost avoidance and is compounding annually. The $91.4B
+      FY2025 capex is not a bet on external chip sales — it is an investment in
+      owning the compute substrate that every Google AI product runs on, in perpetuity.
+
+      The structural analysis shows:
+      - Capex intensity (22.7% FY2025) is high but funded: $73.3B FCF in FY2025
+        demonstrates the cash generation engine beneath the investment cycle.
+      - Google Cloud's 128% operating income growth in FY2025 is the income statement
+        signal of AI infrastructure returns — TPUs are the engine, even if invisible.
+      - The compute-per-dollar advantage of TPUs over merchant GPUs (estimated 6–10×
+        at manufacturing cost, even with large-volume NVIDIA discounts) justifies
+        the R&D and capex investment decisively at Google's scale.
+      - Ironwood's 192 GB per-chip memory positions Google for the inference economics
+        of 2026–2028 frontier models — a forward bet, not a trailing one.
+
+      What is not working, and genuinely risks the thesis:
+      - External TPU market share is structurally limited by CUDA ecosystem lock-in.
+        Google will not displace NVIDIA in the external market in any near-term horizon.
+      - Disclosure opacity means the market cannot properly value the TPU program.
+        Alphabet's stock reflects a models/cloud business; the chips infrastructure
+        advantage is essentially unpriced as a separate value driver.
+      - The $75B+ FY2026 capex guidance creates a multi-year depreciation overhang
+        that will suppress GAAP margins even if underlying AI returns are strong.
+
+      What to watch:
+      1. Ironwood external GA timing and MLPerf submission (H2 2025 – H1 2026):
+         first independent validation of Google's v7 performance claims.
+      2. Google Cloud revenue growth rate in FY2026: the primary signal of whether
+         AI infrastructure demand justifies the capex cycle.
+      3. Trillium → Ironwood transition timing for internal Gemini inference:
+         when management mentions improved inference efficiency or cost per query
+         improvements in earnings calls, that is Ironwood's impact becoming visible.
+      4. PyTorch/XLA parity improvements: any announcement of substantially reduced
+         CUDA-to-TPU migration friction would structurally expand the external TPU TAM.
+
+      The bottom line: Google TPU is not a chip company — it is a compute independence
+      strategy at hyperscaler scale. Measured correctly, it may be the most cost-efficient
+      AI infrastructure program in existence. But that efficiency is captured inside
+      Alphabet's consolidated P&L and may never be visible as a standalone metric.
+      That is by design. And it is likely the right design for the business.
+
+disclosure_gaps:
+  - "TPU-specific revenue — not disclosed in any Alphabet filing"
+  - "TPU gross margin or contribution margin — not disclosed"
+  - "TPU capex as a share of total Alphabet capex — not disclosed"
+  - "TPU installed base (total chips deployed, total pods) — not disclosed"
+  - "Google Cloud TPU-on-demand revenue as a share of Google Cloud total — not disclosed"
+  - "Internal transfer pricing between TPU supply and Search/Ads workloads — not disclosed"
+  - "TPU manufacturing cost per chip — not disclosed (estimates from SemiAnalysis used; Tier 3)"
+  - "Process nodes for any TPU generation — not disclosed (third-party estimates only)"
+  - "TDP / thermal design power for any current TPU — not disclosed"
+  - "Ironwood production performance (pre-MLPerf) — vendor claims only as of March 2026"
+
+sources:
+  - url: "https://abc.xyz/investor/"
+    kind: earnings_release
+    description: "Alphabet FY2025 / Q4 2025 earnings release — primary financial data source."
+    retrieved_at: "2026-03-30"
+  - url: "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+    kind: sec_companyfacts_json
+    description: "SEC XBRL company facts API — FY2025 flow and Dec 31, 2025 instant metrics."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+    kind: vendor_blog
+    description: "Google Cloud Next 2025: Trillium and Ironwood TPU announcement (April 9, 2025)."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/tpu/docs/v5e"
+    kind: vendor_documentation
+    description: "Google Cloud TPU v5e product documentation — spec source."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/tpu/docs/v5p"
+    kind: vendor_documentation
+    description: "Google Cloud TPU v5p product documentation — spec source."
+    retrieved_at: "2026-03-30"
+  - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+    kind: vendor_blog
+    description: "Google Cloud: Trillium (v6e) GA announcement with performance claims."
+    retrieved_at: "2026-03-30"
+  - url: "https://mlcommons.org/benchmarks/inference-datacenter/"
+    kind: benchmark
+    description: "MLCommons MLPerf Inference results — Google TPU submissions."
+    retrieved_at: "2026-03-30"
+  - url: "https://semianalysis.com"
+    kind: analyst_report
+    description: "SemiAnalysis: TPU cost economics and deployment scale estimates (2024–2025). Tier 2/3 estimates."
+    retrieved_at: "2026-03-30"

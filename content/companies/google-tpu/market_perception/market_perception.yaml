@@ -1,0 +1,302 @@
+# Google TPU — market perception (chips layer).
+# Scope: how the market sees Google's TPU / custom silicon strategy.
+# Cross-references google-deepmind only where TPUs serve as the training/inference substrate.
+# Evidence is tiered: Tier 1 = primary/official, Tier 2 = expert analysis, Tier 3 = sentiment.
+
+as_of: "2026-03-30"
+
+# ─── Consensus view ─────────────────────────────────────────────────────────────
+consensus:
+  summary: >
+    The market consensus treats Google's TPU program as an impressive internal achievement
+    that has not yet translated into a significant external competitive threat to NVIDIA.
+    Analysts broadly acknowledge that TPUs power Google's own AI products efficiently
+    and that captive silicon provides cost advantages at Google's scale. However, the
+    dominant narrative is that the external TPU cloud market remains a rounding error
+    relative to NVIDIA's $115B+ data center revenue (FY2026), and that CUDA ecosystem
+    lock-in ensures NVIDIA's moat persists for the foreseeable future.
+
+  bull_case_consensus: >
+    Google has escaped the NVIDIA supply bottleneck for its internal workloads.
+    TPUs give Alphabet an asymmetric capex efficiency advantage — it does not pay
+    GPU markup, does not depend on NVIDIA's allocation process, and can co-optimize
+    hardware and software for its own models. The $91.4B FY2025 capex is a moat-building
+    exercise: Google is acquiring infrastructure at a pace that pure-cloud competitors
+    (OpenAI, Anthropic) cannot replicate without access to hyperscaler supply.
+
+  bear_case_consensus: >
+    TPUs don't matter to external investors because the financial disclosure is opaque —
+    there is no TPU revenue line, no TPU margin disclosure, and Google Cloud TPU-on-demand
+    is too small to move the needle on the $58.7B Google Cloud total. The capital
+    commitment risk is real: $91.4B capex in FY2025 and $75B+ guided for FY2026 is a
+    bet that AI capex returns materialize. If AI demand disappoints or NVIDIA cuts prices,
+    the investment could become a stranded-asset problem.
+
+  key_debates:
+    - id: tpu_vs_gpu_efficiency
+      question: "Are TPUs materially more cost-efficient than NVIDIA GPUs for Google's workloads?"
+      bull_view: >
+        Yes — and by a substantial margin. SemiAnalysis estimates Google saves
+        $3B–$6B annually in GPU procurement by using TPUs for internal AI inference
+        (FY2024/2025 estimates). The cost per token for Gemini inference on TPUs is
+        lower than equivalent H100 deployment at Google's scale.
+      bear_view: >
+        Efficiency gains are real but overstated because the comparison baseline is
+        NVIDIA's highest-margin GPUs at rack-rate pricing. Google's volume purchasing
+        power would yield significant GPU discounts regardless of custom silicon.
+        The true incremental benefit of TPUs over bulk-discounted GPUs is unclear.
+      evidence_tier: 2
+      sources:
+        - url: "https://semianalysis.com"
+          kind: analyst_report
+          description: "SemiAnalysis: Google TPU cost-savings estimates vs. GPU procurement (2024)."
+          retrieved_at: "2026-03-30"
+
+    - id: external_tpu_market_size
+      question: "Can Google's external TPU cloud business become a meaningful revenue contributor?"
+      bull_view: >
+        Yes — Google Cloud TPU demand is growing with the AI training/inference market.
+        Q4 2025 Google Cloud (+47.7% YoY) is partly driven by TPU commitments from
+        large model developers who want alternatives to NVIDIA. The XLA/JAX ecosystem
+        is maturing and Google is investing in torch_xla to reduce switching friction.
+      bear_view: >
+        The CUDA ecosystem is a near-impenetrable moat for external customers.
+        Most ML codebases are CUDA-native; porting to XLA is expensive.
+        The external TPU market is structurally limited to Google's own customers
+        who trust Google's cloud roadmap and are already in JAX or MaxText.
+        NVIDIA's ecosystem advantage self-reinforces: more CUDA code → more CUDA demand.
+      evidence_tier: 2
+      sources:
+        - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+          kind: vendor_blog
+          description: "Google Cloud: Trillium GA as evidence of external TPU availability expansion."
+          retrieved_at: "2026-03-30"
+
+    - id: capex_roi
+      question: "Is Alphabet's $91B+ annual capex justified by AI infrastructure returns?"
+      bull_view: >
+        Google Cloud operating income grew 128% YoY in FY2025 to $13.9B.
+        The FCF yield on capex investment is improving rapidly. The $91.4B capex is
+        not speculative — it is responding to contracted demand (multi-year AI infrastructure
+        agreements) and internal workload growth (Search, Ads, YouTube all run on TPUs).
+        FCF was $42.6B in FY2025 despite peak capex.
+      bear_view: >
+        The capex cycle creates short-term dilution of returns: FCF/capex ratio fell
+        from historical norms. There is a multi-year lag between TPU pod deployment and
+        revenue recognition. If AI demand normalizes or NVIDIA closes the efficiency gap,
+        the stranded-asset risk on TPU infrastructure is large.
+      evidence_tier: 1
+      sources:
+        - url: "https://abc.xyz/investor/"
+          kind: earnings_release
+          description: "Alphabet FY2025 earnings — Google Cloud OI growth and FCF data."
+          retrieved_at: "2026-03-30"
+
+    - id: nvidia_competitive_threat
+      question: "Do TPUs represent an existential threat to NVIDIA's data center dominance?"
+      bull_view: >
+        Long-term, yes — custom silicon is the secular trend. Google, Meta (MTIA),
+        Amazon (Trainium/Inferentia), and Microsoft (Maia) are all building captive
+        accelerators. If hyperscalers collectively move 40–60% of internal workloads
+        to captive silicon, NVIDIA's addressable market for that segment shrinks.
+        Google is furthest along in deployment scale.
+      bear_view: >
+        Not for external markets. TPUs serve Google's workloads; they do not compete
+        for NVIDIA's enterprise customers. NVIDIA's $115B data center revenue is
+        predominantly external (non-hyperscaler) demand that TPUs cannot address.
+        CUDA ecosystem lock-in ensures hyperscaler custom silicon displacers stay
+        captive for years to come.
+      evidence_tier: 2
+      sources: []
+
+# ─── Competitive positioning ────────────────────────────────────────────────────
+competitive_positioning:
+  primary_peers:
+    - slug: nvidia
+      relationship: "indirect competitor (captive vs. merchant silicon)"
+      where_google_wins: >
+        Internal workloads: Google does not pay NVIDIA's gross margins (~75–78%)
+        on its own AI compute. At Google's training scale, a single frontier model
+        training run on TPUs vs. H100 clusters saves hundreds of millions in equivalent
+        hardware cost. Total cost of ownership over multi-year datacenter lifecycle
+        likely 30–50% lower than H100 equivalent (third-party estimates; not disclosed).
+      where_google_loses: >
+        External market: NVIDIA's CUDA ecosystem (200M+ developers, millions of CUDA-native
+        repos) is the definitive moat. Google cannot easily win external model developers
+        who have CUDA-native codebases. NVIDIA H100/H200 are available from 10+ CSPs
+        and thousands of server vendors; TPUs only from Google Cloud.
+      switching_costs: >
+        High for CUDA-native codebases moving to TPU. XLA compilation introduces new
+        tooling overhead. Framework support is improving but PyTorch/CUDA remains default.
+        Switching cost is asymmetric: lower for Google-native JAX teams, much higher
+        for PyTorch ecosystem developers.
+      sources:
+        - url: "https://cloud.google.com/tpu/docs/pytorch-xla-ug-tpu-vm"
+          kind: vendor_documentation
+          description: "Google Cloud: PyTorch/XLA for TPU — evidence of porting overhead."
+          retrieved_at: "2026-03-30"
+
+    - slug: amd
+      relationship: "distant competitor (external accelerator market)"
+      where_google_wins: >
+        Internal efficiency (same as vs. NVIDIA). Google's custom silicon is more
+        purpose-built for its workloads than any merchant silicon including AMD MI300X.
+      where_google_loses: >
+        External market: AMD offers a CUDA-alternative with HIP/ROCm that can run
+        PyTorch natively. TPUs require XLA. For customers seeking NVIDIA alternatives,
+        AMD is a lower-friction option than TPUs.
+      switching_costs: >
+        Lower to switch from NVIDIA to AMD (HIP port) than to TPU (full XLA migration).
+      sources: []
+
+  order_changers:
+    - id: pytorch_on_tpu_friction_reduction
+      description: >
+        If Google substantially reduces the friction of running PyTorch natively on TPUs
+        (better torch_xla parity, automatic CUDA-to-XLA compilation), the external TAM
+        for TPU expands dramatically. This is the single largest addressable expansion
+        opportunity in the near-term.
+      probability: medium
+      sources:
+        - url: "https://pytorch.org/xla/release/r2.5/index.html"
+          kind: vendor_documentation
+          description: "PyTorch/XLA 2.5 release — ongoing improvements to CUDA parity."
+          retrieved_at: "2026-03-30"
+
+    - id: ironwood_external_availability
+      description: >
+        When Ironwood (v7, 192 GB/chip) becomes broadly available externally on Google Cloud,
+        it changes the high-end inference conversation. A 192 GB chip fits entire Llama 3
+        70B or Gemini 7B batches without memory fragmentation. If priced competitively
+        vs. H200 (80 GB), it could attract large-scale inference operators.
+      probability: medium
+      sources: []
+
+    - id: ai_capex_demand_normalization
+      description: >
+        If AI model demand growth decelerates (over-investment narrative materializes),
+        Alphabet's $91B+ capex cycle creates stranded-asset risk on TPU infrastructure.
+        This is the primary bear-case scenario for the chips layer.
+      probability: low_to_medium
+      sources: []
+
+# ─── Sentiment survey ───────────────────────────────────────────────────────────
+sentiment:
+  tier_1_institutional:
+    direction: "cautiously positive"
+    summary: >
+      Institutional coverage frames TPUs as "strategic value creation" for Alphabet
+      consolidated but not a standalone investment thesis. JPMorgan, Goldman, and MS
+      research notes (2025) credit TPU ownership for Alphabet's AI infrastructure cost
+      advantage but focus on Google Cloud revenue growth as the primary signal.
+      No analyst explicitly models TPU unit economics because data is not available.
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: "Q4 2025 earnings call analyst questions — institutional sentiment on capex ROI."
+        retrieved_at: "2026-03-30"
+
+  tier_2_tech_press:
+    direction: "positive with skepticism on external market"
+    summary: >
+      SemiAnalysis, Anandtech, and similar deep-dive publications are positive on TPU
+      technical execution (SemiAnalysis praised Trillium's performance/watt) but consistently
+      note the CUDA moat. The Verge and Wired coverage of Cloud Next 2025 focused on
+      Ironwood's specs and Google's "unprecedented" memory capacity claim. General tech
+      press is positive on specs; skeptical on market share implications.
+    sources:
+      - url: "https://semianalysis.com"
+        kind: analyst_report
+        description: "SemiAnalysis: TPU Trillium analysis — technical positive, ecosystem skepticism."
+        retrieved_at: "2026-03-30"
+
+  tier_3_community:
+    direction: "mixed"
+    summary: >
+      ML practitioner community (Hacker News, r/MachineLearning, X/Twitter ML discourse)
+      shows mixed sentiment: TPU enthusiasts (primarily JAX/Flax community) are highly
+      positive, citing Google's first-class JAX support and efficient training infrastructure.
+      CUDA-native practitioners are skeptical or dismissive — "I don't have time to port
+      my code to XLA" is a common sentiment. X discourse around Ironwood announcement
+      focused on the 192 GB memory spec as impressive but questioned practical external
+      availability timeline. Academic community (TPU Research Cloud users) is positive.
+    sources: []
+
+# ─── Information asymmetries ─────────────────────────────────────────────────────
+information_asymmetries:
+  - id: tpu_cost_per_token_advantage
+    description: >
+      The market has no reliable data on Google's all-in cost per token for Gemini
+      inference on TPUs vs. equivalent H100/H200 deployment. Google's internal costs
+      are structurally lower (no GPU markup, co-optimized stack) but the exact magnitude
+      is unknown. SemiAnalysis estimated in 2024 that Google's inference cost on TPUs
+      is approximately 40–60% below H100-equivalent deployment for typical transformer
+      workloads — if correct, this is a durable competitive advantage in the AI service
+      market that the income statement does not make visible.
+    market_likely_underestimates: true
+    evidence_quality: 2
+
+  - id: tpu_installed_base
+    description: >
+      The total number of TPU chips deployed in Google's datacenter fleet is unknown.
+      Alphabet reports PP&E and capex but not unit hardware counts. Based on capex
+      trajectory and estimated per-chip cost, SemiAnalysis estimated >2 million TPU
+      v5e equivalents deployed by end of 2025. If accurate, Google's installed AI
+      accelerator base approaches or exceeds NVIDIA's entire H100 shipment cumulative
+      (estimated ~4 million H100s shipped through end of 2025). This comparison is
+      imprecise (different chip capabilities, different use cases) but illustrates
+      the scale of Google's internal fleet.
+    market_likely_underestimates: true
+    evidence_quality: 3
+
+  - id: capex_committed_contracts
+    description: >
+      Google Cloud Q4 2025 (+47.7% YoY) and management commentary on "multi-year AI
+      infrastructure commitments" implies significant backlog. The portion of future
+      capex that is effectively pre-contracted vs. speculative is not disclosed.
+      If a large fraction of the $75B+ 2026 capex is already committed by customer
+      reservations, the bear case (demand normalization) materially weakens.
+    market_likely_underestimates: true
+    evidence_quality: 2
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: "Q4 2025 earnings call — multi-year AI infrastructure commitment language."
+        retrieved_at: "2026-03-30"
+
+  - id: ironwood_deployment_lead
+    description: >
+      Ironwood (v7) is likely already deployed internally for Gemini 2.0 and successor
+      model training before external GA. Google's pattern (TPUs deployed internally
+      6–12 months before external availability) means the gap between Google's internal
+      capability and external AI competitors' available compute is wider than the
+      announced release timeline suggests.
+    market_likely_underestimates: true
+    evidence_quality: 2
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+        kind: vendor_blog
+        description: "Google Cloud Next 2025: Ironwood announcement context."
+        retrieved_at: "2026-03-30"
+
+# ─── Forward signals ─────────────────────────────────────────────────────────────
+forward_signals:
+  - signal: "Ironwood external GA timing will determine whether TPU becomes a credible external AI accelerator option"
+    direction: positive_if_early
+    timeframe: "H2 2025 – H1 2026"
+
+  - signal: "FY2026 capex guidance ($75B+) implies continued Trillium/Ironwood pod buildout — monitoring Q1/Q2 2026 capex actuals for pace"
+    direction: positive_if_sustained
+    timeframe: "Q1–Q4 2026"
+
+  - signal: "MLPerf Ironwood submission will provide first independent performance data — currently only vendor claims available"
+    direction: depends_on_results
+    timeframe: "H2 2025 – H1 2026"
+
+  - signal: "Google Cloud TPU-on-demand reservation fill rate (not disclosed) is the key demand signal for external TPU market"
+    direction: monitoring_required
+    timeframe: "ongoing"
+
+  - signal: "PyTorch/XLA 3.x parity improvements — if Google closes the CUDA friction gap, external TPU TAM expands"
+    direction: positive_if_executed
+    timeframe: "2026"

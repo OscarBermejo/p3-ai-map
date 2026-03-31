@@ -1,0 +1,93 @@
+# Copy to YYYY-Qn.yaml (or FY2026-Q1.yaml-style if using fiscal labels). Remove when file is real data.
+# Monetary amounts: use reporting currency. Use null when unknown.
+#
+# Flow metrics must match period.start / period.end. Instant metrics use period.end as balance-sheet date.
+# Cash flow: investing_cash_flow_net / financing_cash_flow_net — use sign as in the filing.
+# capital_expenditures_cash — always store NON-NEGATIVE = cash PAID for PP&E (and filing equivalent). If the filing shows
+#   outflow as negative, flip sign in YAML so the stored value is >= 0 (cross-company + map UI convention).
+# If the filing only discloses YTD in structured data, use null for a single-quarter file and say so in sources.
+#
+# Extended metrics (cost_of_revenue through financing_cash_flow_net) improve P&L / liquidity / leverage visibility;
+# use null + kind: documentation + covers when a line is not disclosed separately for this issuer or period.
+#
+# sources[] mapping (see agent/instructions/financials.md):
+# - covers: [metric_key, ...]  → primary citation for that metric’s reported value (or the single Derived: row).
+# - supports_derivation_of: [metric_key, ...]  → input row for a derived metric (no covers on pure inputs).
+# - kind: documentation + covers: [metric_key]  → why metrics.<key> is null.
+# Context rows (filing index, IR): omit covers and supports_derivation_of.
+
+period:
+  label: ""
+  start: ""
+  end: ""
+  fiscal_year: null
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement (flow; same duration as period) ---
+  revenue: null
+  cost_of_revenue: null
+  gross_profit: null
+  research_and_development: null
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null
+
+  # --- Cash flows (flow; same duration as period) ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null
+
+sources: []
+# Example shapes:
+# - url: https://www.sec.gov/...
+#   kind: sec_10q
+#   description: "Direct from SEC filing: ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/api/xbrl/companyfacts/CIK....json
+#   kind: sec_companyfacts_json
+#   covers: [revenue]
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   covers: [cost_of_revenue]
+#   supports_derivation_of: [gross_profit]
+#   description: "From SEC company facts API (XBRL): CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://data.sec.gov/...
+#   kind: sec_companyfacts_json
+#   covers: [gross_profit]
+#   description: "Derived: gross_profit = revenue - CostOfRevenue ..."
+#   retrieved_at: ""
+# - url: https://www.sec.gov/...
+#   kind: documentation
+#   covers: [market_cap]
+#   description: "market_cap null: ..."
+#   retrieved_at: ""

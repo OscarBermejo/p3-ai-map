@@ -1,0 +1,218 @@
+# Google TPU — announcements log (chips layer).
+# Scope: material events relevant to TPU hardware, AI accelerator strategy,
+# datacenter capex, and competitive positioning vs. merchant GPUs.
+# Model-layer announcements (Gemini model releases, API updates) are logged
+# under google-deepmind/announcements/announcements.yaml.
+#
+# Each event: one entry, dated, multi-source where available.
+# Sources: Tier 1 = official press releases, SEC filings, earnings calls.
+#          Tier 2 = credible trade press (The Verge, Wired, Ars Technica, SemiAnalysis).
+
+as_of: "2026-03-30"
+
+events:
+
+  - id: ironwood_cloud_next_2025
+    date: "2025-04-09"
+    title: "TPU v7 Ironwood announced at Google Cloud Next 2025"
+    category: product_launch
+    significance: high
+    summary: >
+      Google announced TPU v7, codenamed Ironwood, at Google Cloud Next 2025.
+      Key disclosed specs: 192 GB HBM per chip (12× TPU v5e, 2.4× NVIDIA H100 SXM),
+      4,614 INT8 TOPS per chip (~11.7× TPU v5e), pods of up to 9,216 chips delivering
+      >1 exaFLOP aggregate. Google positioned Ironwood as an "inference-first" chip —
+      the large per-chip memory is intended to fit entire frontier models (Gemini Ultra class)
+      on a single pod without model parallelism overhead. No external GA date disclosed.
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/introducing-trillium-and-ironwood-tpus"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing TPU v7 Ironwood (April 9, 2025)."
+        retrieved_at: "2026-03-30"
+      - url: "https://blog.google/technology/google-deepmind/google-cloud-next-2025/"
+        kind: vendor_blog
+        description: "Google Cloud Next 2025 recap post."
+        retrieved_at: "2026-03-30"
+
+  - id: trillium_ga_2024
+    date: "2024-09-05"
+    title: "TPU v6e Trillium reaches General Availability on Google Cloud"
+    category: product_launch
+    significance: high
+    summary: >
+      Google Cloud declared Trillium (TPU v6e) generally available. Performance claims:
+      4.7× peak compute vs. v5e, 2× energy efficiency improvement, 3.3× higher ICI
+      bandwidth. Trillium became the default Google Cloud TPU generation for new workloads.
+      Available as v6e-8, v6e-16, v6e-32, v6e-64, v6e-128, v6e-256 slices.
+      Internally deployed for Gemini 1.5 training and inference prior to external GA.
+    sources:
+      - url: "https://cloud.google.com/blog/products/compute/trillium-tpu-is-ga"
+        kind: vendor_blog
+        description: "Google Cloud blog: Trillium TPU is GA (September 2024)."
+        retrieved_at: "2026-03-30"
+
+  - id: tpu_v5p_ai_hypercomputer_2023
+    date: "2023-12-06"
+    title: "TPU v5p and AI Hypercomputer architecture announced"
+    category: product_launch
+    significance: high
+    summary: >
+      Google announced TPU v5p — its highest-performance training chip — alongside the
+      "AI Hypercomputer" architecture concept at Google DeepMind Symposium and Google Cloud
+      blog. Key specs: 918 BF16 TFLOPS per chip, 95 GB HBM3, 4,800 Gb/s ICI, pods up to
+      8,960 chips. The 8,960-chip v5p pod was described as the infrastructure used for
+      Gemini training. AI Hypercomputer refers to the hardware/software co-design approach
+      combining TPU pods, custom networking, and JetStream inference runtime.
+    sources:
+      - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing Cloud TPU v5p and AI Hypercomputer (December 2023)."
+        retrieved_at: "2026-03-30"
+
+  - id: tpu_v5e_ga_2023
+    date: "2023-08-29"
+    title: "TPU v5e reaches General Availability"
+    category: product_launch
+    significance: high
+    summary: >
+      Google launched TPU v5e at Google Cloud Next 2023. Designed for cost-optimized
+      inference and fine-tuning. Spec highlights: 393 BF16 TFLOPS per chip, 16 GB HBM2e,
+      819 GB/s memory bandwidth, 256-chip pod capacity. Google described it as the
+      "most versatile and cost-efficient Cloud TPU yet." On-demand pricing made
+      available same day. v5e became the primary external inference SKU for 2023–2024.
+    sources:
+      - url: "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5e"
+        kind: vendor_blog
+        description: "Google Cloud blog: Introducing Cloud TPU v5e (August 2023)."
+        retrieved_at: "2026-03-30"
+
+  - id: alphabet_fy2025_capex_record
+    date: "2026-02-04"
+    title: "Alphabet reports $91.4B FY2025 capex — single largest AI infrastructure spend in company history"
+    category: financial
+    significance: high
+    summary: >
+      Alphabet's FY2025 earnings release (February 4, 2026) disclosed $91.4B in total
+      capital expenditures for calendar year 2025, vs. guidance of $75B provided in Q1 2025.
+      The $16.4B overrun was attributed to accelerated AI infrastructure demand.
+      Q4 2025 alone was $27.9B capex. Management stated that "the majority of 2025 capex
+      went to servers and networking for AI" — consistent with TPU pod deployment and
+      datacenter expansion. Capex breakdown by asset type (TPU vs. other servers vs.
+      land/buildings) is not disclosed.
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: "Alphabet FY2025 / Q4 2025 earnings release (February 4, 2026): capex disclosure."
+        retrieved_at: "2026-03-30"
+      - url: "https://fortune.com/company-assets/1500/quartr/earnings-release-8-k-d7d50-2026-02-04-09-12-03.pdf"
+        kind: earnings_release
+        description: "FY2025 earnings release PDF — full capex and segment data."
+        retrieved_at: "2026-03-30"
+
+  - id: alphabet_2026_capex_guidance
+    date: "2026-02-04"
+    title: "Alphabet guides 2026 capex at $75B minimum; 'similar or higher' than 2025"
+    category: financial
+    significance: high
+    summary: >
+      On the FY2025 earnings call, Alphabet CFO Anat Ashkenazi stated that 2026 capex
+      is expected to be "at least $75B" and "could be similar or higher to 2025's $91.4B."
+      This signals a sustained, multi-year AI accelerator and datacenter build cycle.
+      The guidance implies TPU pod deployments (primarily Trillium and Ironwood) will
+      continue as the primary capex driver. Google Cloud Q4 2025 revenue (+47.7% YoY)
+      and backlog indicate demand justifies the continued spend.
+    sources:
+      - url: "https://abc.xyz/investor/"
+        kind: earnings_release
+        description: "Alphabet FY2025 earnings call transcript — CFO 2026 capex guidance."
+        retrieved_at: "2026-03-30"
+
+  - id: alphabet_q2_2025_debt_issuance
+    date: "2025-05-15"
+    title: "Alphabet issues $12.5B senior unsecured notes"
+    category: financial
+    significance: medium
+    summary: >
+      Alphabet issued $12.5B in senior unsecured notes in May 2025, raising long-term debt
+      from $10.9B to $23.6B. While not TPU-specific, this is Alphabet's largest debt raise
+      and coincides with peak capex quarter (Q2 2025: $22.4B). The proceeds are general
+      purpose but the timing is consistent with financing accelerated AI infrastructure
+      (TPU pod) buildout. Context: Alphabet had $30B+ cash at year-end; the debt raise
+      suggests a preference to preserve cash flexibility while funding the capex surge.
+    sources:
+      - url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q2/2025q2-alphabet-earnings-release.pdf"
+        kind: earnings_release
+        description: "Q2 2025 earnings release — long-term debt increased to $23,607M."
+        retrieved_at: "2026-03-30"
+
+  - id: mlperf_training_v40_tpu_submission
+    date: "2024-06-12"
+    title: "Google submits TPU v5p to MLPerf Training v4.0"
+    category: benchmark
+    significance: medium
+    summary: >
+      Google submitted TPU v5p results to MLPerf Training v4.0, covering LLM pretraining
+      benchmarks. Results showed competitive throughput vs. NVIDIA H100 SXM clusters at
+      comparable chip counts. This is one of the few public third-party benchmarks where
+      TPU performance is directly comparable to NVIDIA. Exact submission IDs available
+      at MLCommons; Google typically submits under "Google" in the results database.
+    sources:
+      - url: "https://mlcommons.org/benchmarks/training/"
+        kind: benchmark
+        description: "MLCommons MLPerf Training v4.0 results — Google TPU v5p submission (June 2024)."
+        retrieved_at: "2026-03-30"
+
+  - id: jetstream_inference_runtime_2024
+    date: "2024-03-14"
+    title: "Google open-sources JetStream — high-throughput TPU inference runtime"
+    category: product_launch
+    significance: medium
+    summary: >
+      Google open-sourced JetStream, its high-throughput inference runtime for TPUs.
+      JetStream uses continuous batching and speculative decoding to maximize TPU
+      utilization for LLM serving. It is the production inference runtime for Gemini API
+      on TPU infrastructure. Open-sourcing JetStream is part of Google's strategy to
+      reduce the ecosystem friction of TPU deployment for external developers.
+    sources:
+      - url: "https://github.com/google/jetstream"
+        kind: vendor_documentation
+        description: "JetStream GitHub repository — open-source release March 2024."
+        retrieved_at: "2026-03-30"
+      - url: "https://developers.googleblog.com/en/jetstream-a-new-inference-runtime-for-cloud-tpu/"
+        kind: vendor_blog
+        description: "Google Developers Blog: JetStream — high-throughput LLM inference for Cloud TPU."
+        retrieved_at: "2026-03-30"
+
+  - id: eu_dma_fine_q3_2025
+    date: "2025-09-30"
+    title: "EU Digital Markets Act fine ($3.5B) accrued — Q3 2025 G&A impact"
+    category: regulatory
+    significance: medium
+    summary: >
+      Alphabet accrued a $3.5B EU Digital Markets Act (DMA) fine in Q3 2025 G&A.
+      This is a one-time charge unrelated to TPU/chips operations but materially
+      affected reported operating income ($31.2B vs. normalized ~$34.7B).
+      Noted here because it distorts the FY2025 Q3 financial proxy for AI infrastructure
+      returns. Normalized Q3 operating margin would be ~34% vs. reported ~30%.
+    sources:
+      - url: "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q3/2025q3-alphabet-earnings-release.pdf"
+        kind: earnings_release
+        description: "Q3 2025 Alphabet earnings release — $3.5B EU DMA fine in G&A."
+        retrieved_at: "2026-03-30"
+
+  - id: tpu_research_cloud_program
+    date: "2024-01-01"
+    title: "TPU Research Cloud (TRC) program — ongoing academic access to TPU infrastructure"
+    category: ecosystem
+    significance: low
+    summary: >
+      Google's TPU Research Cloud program provides free TPU compute to academic researchers.
+      As of 2024–2025, TRC covers v4, v5e, and Trillium access. The program supports
+      publication of results using TPUs (often published in NeurIPS, ICML, ICLR papers),
+      expanding the academic evidence base for TPU performance. This is part of Google's
+      strategy to build ecosystem around JAX/TPU in research communities.
+    sources:
+      - url: "https://sites.research.google/trc/"
+        kind: vendor_documentation
+        description: "Google TPU Research Cloud program page."
+        retrieved_at: "2026-03-30"

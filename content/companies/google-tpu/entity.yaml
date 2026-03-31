@@ -1,0 +1,61 @@
+# Google TPU / Alphabet Inc. — profile scoped to chips layer only.
+# This profile covers Alphabet's Tensor Processing Unit (TPU) product line:
+# custom AI accelerator design, datacenter deployment, and competitive positioning
+# vs. merchant silicon (NVIDIA/AMD). It does NOT cover Gemini models, Gemini API,
+# Vertex AI model catalog, or Google Search AI features — those belong to google-deepmind.
+# Legal / reporting entity is Alphabet Inc. (same as google-deepmind).
+
+slug: google-tpu
+legal_name: Alphabet Inc.
+
+tickers:
+  - symbol: GOOGL
+    exchange: NASDAQ
+  - symbol: GOOG
+    exchange: NASDAQ
+
+summary: |
+  Google TPU is the internal silicon program at Alphabet that designs and deploys
+  Tensor Processing Units — custom AI accelerators purpose-built for Google's
+  training and inference workloads. TPUs are first-party captive silicon: designed
+  in-house at Google DeepMind / Google Research, manufactured at TSMC, and deployed
+  exclusively in Google's own datacenters and through Google Cloud's TPU-on-demand
+  service. The TPU line spans v5e (cost-optimized inference), v6e Trillium (peak
+  efficiency general-purpose), and the announced v7 Ironwood (inference-first, 2025).
+  By building its own accelerators, Alphabet eliminates dependency on merchant GPUs
+  (primarily NVIDIA) for its largest AI workloads — training Gemini and running
+  Google Search, Ads, and Assistant at scale. Google Cloud TPU pods are also
+  available to third-party customers, providing a limited external revenue signal.
+  TPU-specific revenue, gross margin, and capex attribution are not separately
+  disclosed by Alphabet; Google Cloud segment ($58.7B FY2025, +36% YoY) is the
+  nearest commercial proxy.
+
+  Profile scope: chips layer — TPU hardware, silicon architecture, datacenter
+  deployment, and competitive positioning vs. merchant GPUs. Cross-references
+  google-deepmind where TPUs serve as the training/inference substrate for Gemini.
+
+links:
+  investor_relations: "https://abc.xyz/investor/"
+  press_releases_index: "https://cloud.google.com/blog/topics/google-cloud-next"
+  sec_cik: "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-K&dateb=&owner=include&count=10"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: "FY{year}-Q{n}.yaml"
+  fiscal_year_end: "December 31"
+  sec_cik_number: "0001652044"
+  filing_types:
+    - 10-K
+    - 10-Q
+  notes:
+    - "Legal entity is Alphabet Inc. (CIK 0001652044), identical to google-deepmind profile."
+    - "Financials are Alphabet consolidated — no TPU-specific revenue or margin segment disclosed."
+    - "Google Cloud segment is the commercial proxy; TPU-on-demand is a subset not separately broken out."
+    - "Capex includes datacenter build-out; TPU hardware attribution is not disclosed."
+    - "Financial files are shared with google-deepmind. See financials/README.md."
+
+notes:
+  - "TPUs are captive silicon — designed by Google, manufactured at TSMC, deployed only in Google DCs."
+  - "Profile entity is Alphabet Inc. (GOOGL/GOOG); TPU design team is part of Google DeepMind / Google Research."
+  - "This profile is chips-layer scoped; for model-layer analysis of Gemini see google-deepmind profile."
+  - "v7 Ironwood announced at Google Cloud Next 2025; commercial availability expected 2025–2026."

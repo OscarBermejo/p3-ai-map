@@ -1,0 +1,215 @@
+period:
+  label: "FY2024-annual"
+  start: "2024-01-01"
+  end: "2024-12-31"
+  fiscal_year: 2024
+  period_type: annual_estimate  # xAI does not publish audited financials; data from press/funding disclosures
+
+currency_reporting: USD
+
+metrics:
+  # --- Income statement ---
+  revenue: null  # ~$100M ARR at Dec 2024 (standalone xAI — API + SuperGrok); full-year recognized revenue lower; see sources
+  cost_of_revenue: null
+  gross_profit: null
+  research_and_development: null
+  selling_general_administrative: null
+  depreciation_and_amortization: null
+  operating_income: null
+  interest_expense: null
+  interest_income: null
+  other_income_expense_net: null
+  income_tax_expense_benefit: null
+  net_income: null
+
+  # --- Cash flows ---
+  operating_cash_flow: null
+  stock_based_compensation: null
+  capital_expenditures_cash: null  # Substantial — Colossus Phase 1 (100K H100 GPUs) completed Sep 2024; exact capex not disclosed
+  investing_cash_flow_net: null
+  financing_cash_flow_net: null
+
+  # --- Balance sheet (instant at period.end) ---
+  cash_and_equivalents: null
+  current_assets: null
+  current_liabilities: null
+  property_plant_equipment_net: null  # Very significant — see Colossus compute note
+  total_assets: null
+  total_liabilities: null
+  long_term_debt: null
+  current_portion_of_long_term_debt: null
+  total_debt: null
+  stockholders_equity: null
+
+  # --- Capital / market ---
+  shares_outstanding_basic: null
+  shares_outstanding_diluted: null
+  market_cap: null  # Private; see extended_metrics for last-round valuation
+
+sources:
+  - url: https://sacra.com/c/xai/
+    kind: ir_html
+    description: >
+      Tier 2 (Sacra research): xAI ~$100M ARR at end-2024 (standalone, before X merger). This is
+      the primary anchor for FY2024 revenue discussion. Sacra estimates xAI exited 2025 at ~$3.8B ARR
+      on a combined basis after the March 2025 X acquisition, and that on a standalone basis
+      xAI's own API/SuperGrok revenue was ~$500M annualized at end-2025.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - url: https://www.theinformation.com/briefings/musks-xai-burning-1-billion-month
+    kind: ir_html
+    description: >
+      Tier 2 (The Information): xAI burn rate approximately $1B/month. Management targeting
+      profitability by 2027. This burn rate is the highest of any private AI lab as of early 2026.
+    covers: []
+    retrieved_at: "2026-03-30"
+
+  - url: null
+    kind: documentation
+    description: >
+      revenue: No credible single-point FY2024 full-year recognized revenue figure available.
+      Working context: xAI launched commercially mid-2024 (Grok 2 in August 2024; API opened
+      in late 2024). The company was pre-revenue for much of H1 2024. End-of-year ARR of ~$100M
+      (Sacra Tier 2) implies full-year 2024 recognized revenue was significantly below $100M —
+      likely in the $20M–$80M range given ramp timing. Standard field null per protocol.
+    covers: [revenue]
+    retrieved_at: "2026-03-30"
+
+  - url: null
+    kind: documentation
+    description: >
+      All P&L, cash flow, and balance sheet fields: not disclosed by company; no Tier 1 or
+      credible Tier 2 source provides these for FY2024. Fields null. Notable exception: capital
+      expenditures are known to have been very large in 2024 — the Colossus Phase 1 supercluster
+      (100K H100 GPUs built in 122 days, online September 2024) required massive capex; the
+      Series B ($6B, May 2024) and Series C ($6B, December 2024) were primarily directed at
+      compute procurement. Exact capex figure not publicly disclosed.
+    covers: [cost_of_revenue, gross_profit, research_and_development, selling_general_administrative,
+             depreciation_and_amortization, operating_income, interest_expense, interest_income,
+             other_income_expense_net, income_tax_expense_benefit, net_income, operating_cash_flow,
+             stock_based_compensation, capital_expenditures_cash, investing_cash_flow_net,
+             financing_cash_flow_net, cash_and_equivalents, current_assets, current_liabilities,
+             property_plant_equipment_net, total_assets, total_liabilities, long_term_debt,
+             current_portion_of_long_term_debt, total_debt, stockholders_equity]
+    retrieved_at: "2026-03-30"
+
+data_quality:
+  overall: low
+  confirmed_fields: []
+  estimated_fields: []
+  unavailable_fields:
+    - revenue
+    - cost_of_revenue
+    - gross_profit
+    - research_and_development
+    - selling_general_administrative
+    - depreciation_and_amortization
+    - operating_income
+    - interest_expense
+    - interest_income
+    - other_income_expense_net
+    - income_tax_expense_benefit
+    - net_income
+    - operating_cash_flow
+    - stock_based_compensation
+    - capital_expenditures_cash
+    - investing_cash_flow_net
+    - financing_cash_flow_net
+    - cash_and_equivalents
+    - current_assets
+    - current_liabilities
+    - property_plant_equipment_net
+    - total_assets
+    - total_liabilities
+    - long_term_debt
+    - total_debt
+    - stockholders_equity
+  notes: >
+    FY2024 is xAI's early commercial year. The company launched the Grok 1 open-weights model
+    (March 2024), began commercializing via API in late 2024, and built the Colossus Phase 1
+    supercluster (100K H100s, online September 2024). No revenue or P&L figures are confirmable
+    from any public source. The ~$100M end-of-year ARR figure (Sacra, Tier 2) is the best
+    available anchor for understanding scale; it implies negligible full-year recognized revenue.
+    The file exists primarily to document the funding history and establish the base from which
+    2025 ARR growth is measured. Quality rating is 'low'.
+
+extended_metrics:
+  total_funding_raised_usd:
+    value: 12135000000  # $135M Series A + $6B Series B + $6B Series C = $12.135B as of Dec 31, 2024
+    notes: >
+      Confirmed: Series A $135M (Jan 2024, TechCrunch); Series B $6B (May 2024, Reuters/xAI blog);
+      Series C $6B (Dec 2024, xAI blog). Total equity raised as of Dec 31, 2024: $12.135B.
+      Excludes debt rounds in 2025 and Series E in January 2026.
+    sources:
+      - url: https://x.ai/blog/series-c
+        kind: vendor_page
+        description: "Tier 1 (xAI official blog): Series C $6B closed December 2024. Lead investors A16Z, BlackRock, Fidelity, Sequoia, NVIDIA, AMD, QIA, Lightspeed, Kingdom Holdings, MGX, Morgan Stanley, OIA, Valor, Vy Capital."
+        retrieved_at: "2026-03-30"
+      - url: https://techcrunch.com/2024/05/26/elon-musks-xai-raises-6b-in-series-b-funding/
+        kind: news_article
+        description: "Tier 2 (TechCrunch): Series B $6B closed May 2024 at ~$24B valuation."
+        retrieved_at: "2026-03-30"
+
+  last_round_amount_usd:
+    value: 6000000000  # $6B Series C, December 2024
+    notes: "Series C closed December 23, 2024. $6B equity raise at ~$50B post-money valuation."
+    sources:
+      - url: https://x.ai/blog/series-c
+        kind: vendor_page
+        description: "Tier 1 (xAI official): Series C $6B, December 23, 2024."
+        retrieved_at: "2026-03-30"
+
+  last_round_valuation_usd:
+    value: 50000000000  # ~$50B post-money valuation at Series C
+    notes: >
+      Multiple press reports (Reuters, Bloomberg, TechCrunch) confirmed ~$50B post-money valuation
+      for the December 2024 Series C. Tier 2 consensus figure.
+    sources:
+      - url: https://techcrunch.com/2024/12/23/xai-raises-6b-series-c-at-50b-valuation/
+        kind: news_article
+        description: "Tier 2 (TechCrunch): Series C $6B at $50B post-money valuation."
+        retrieved_at: "2026-03-30"
+
+  last_round_date: "2024-12-23"
+  last_round_type: series_c
+
+  arr_usd:
+    value: null  # ~$100M ARR at December 2024 — Tier 2 estimate; field null per protocol
+    notes: >
+      Sacra research estimates xAI at approximately $100M ARR at end-2024 (standalone — API
+      revenue and SuperGrok subscriptions, before X merger). This compares to Anthropic's ~$1B
+      ARR and OpenAI's ~$3.7B ARR at the same period end. xAI was 24–36 months behind commercial
+      peers on revenue ramp as of end-2024. Standard field null per protocol.
+    sources:
+      - url: https://sacra.com/c/xai/
+        kind: ir_html
+        description: "Tier 2 (Sacra): xAI ~$100M ARR at end-2024 (standalone)."
+        retrieved_at: "2026-03-30"
+
+  monthly_burn_rate_usd:
+    value: null
+    notes: >
+      Burn rate in 2024 was very high due to Colossus build-out, but the $1B/month figure
+      cited by The Information is a 2025/2026 figure. 2024 burn rate is not separately disclosed.
+      Given $12B in funding as of Dec 2024 with no significant revenue, the implied cumulative
+      burn is in the billions.
+    sources: []
+
+  cash_runway_months:
+    value: null
+    notes: "Not calculable from available data."
+    sources: []
+
+  headcount:
+    value: null
+    notes: >
+      xAI headcount as of end-2024 estimated in the hundreds (likely 500–1,500). Company was
+      in aggressive hiring phase, recruiting primarily from Google DeepMind, OpenAI, and academia.
+      No confirmed figure for 2024.
+    sources: []
+
+  revenue_per_employee_usd:
+    value: null
+    notes: "Not calculable: both revenue and headcount uncertain for FY2024."
+    sources: []

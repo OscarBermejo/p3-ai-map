@@ -33,3 +33,7 @@ companies:
     layer: models
   - slug: google-deepmind
     layer: models
+  - slug: google-tpu
+    layer: chips
+  - slug: intel
+    layer: chips

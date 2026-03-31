@@ -1,0 +1,69 @@
+kind: company_announcements
+schema_version: 1
+as_of: "2026-03-30"
+items:
+  - date: "2026-01-06"
+    title: "Intel Launches Core Ultra Series 3 'Panther Lake' at CES 2026"
+    category: product
+    summary: >
+      Intel introduced the Core Ultra Series 3 processors, its first consumer computing platform built on the Intel 18A process node, featuring up to 50 NPU TOPS for AI applications and over 200 partner designs.
+    sources:
+      - url: https://www.intc.com/news-events/press-releases/detail/1757/ces-2026-intel-core-ultra-series-3-debuts-as-first-built
+        kind: ir_html
+        description: "Primary source: official company press release announcing the CES 2026 product launch."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-12-10"
+    title: "Intel Announces Senior Leadership Appointments"
+    category: leadership
+    summary: >
+      Intel appointed Robin Colwell as Senior Vice President of Government Affairs, Annie Shea Weckesser as Senior Vice President and Chief Marketing & Communications Officer, and named Pushkar Ranade as Interim Chief Technology Officer.
+    sources:
+      - url: https://newsroom.intel.com/corporate/intel-announces-senior-leadership-appointments-in-government-affairs-marketing-communications-and-advanced-technology-strategy
+        kind: company_web
+        description: "Primary source: official company newsroom release outlining the new appointments."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-10-09"
+    title: "Intel Unveils Panther Lake Architecture Built on 18A"
+    category: product
+    summary: >
+      Intel unveiled the architecture for its next-generation Panther Lake processors, confirming they are built on the 18A process node with high-volume manufacturing at Fab 52 in Arizona.
+    sources:
+      - url: https://www.intc.com/news-events/press-releases/detail/1752/intel-unveils-panther-lake-architecture-first-ai-pc
+        kind: ir_html
+        description: "Primary source: official investor relations release detailing the architectural unveiling."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-09-15"
+    title: "Intel Announces Key Leadership Appointments to Strengthen Execution"
+    category: leadership
+    summary: >
+      Intel reorganized its executive leadership structure, appointing Kevork Kechichian to lead the Data Center Group, Jim Johnson to lead Client Computing, Srini Iyengar to lead a new Central Engineering Group, and expanding Naga Chandrasekaran's role over Foundry Services.
+    sources:
+      - url: https://newsroom.intel.com/corporate/intel-announces-key-leadership-appointments
+        kind: company_web
+        description: "Primary source: official company newsroom release regarding core organizational changes."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-04-15"
+    title: "Intel Announces Strategic Investment by Silver Lake in Altera"
+    category: restructuring
+    summary: >
+      Intel agreed to sell a 51% majority stake in its Altera FPGA business to Silver Lake for $8.75 billion, spinning out Altera as an independent entity while retaining a 49% minority ownership position.
+    sources:
+      - url: https://newsroom.intel.com/corporate/intel-partner-deal-news-april2025
+        kind: company_web
+        description: "Primary source: official company newsroom release announcing the Altera sale transaction."
+        retrieved_at: "2026-03-30"
+
+  - date: "2025-03-10"
+    title: "Intel Appoints Lip-Bu Tan as Chief Executive Officer"
+    category: leadership
+    summary: >
+      Intel appointed semiconductor industry veteran and former board member Lip-Bu Tan as its Chief Executive Officer, succeeding interim co-CEOs David Zinsner and Michelle Holthaus following Pat Gelsinger's departure.
+    sources:
+      - url: https://www.intc.com/news-events/press-releases/detail/1730/intel-appoints-lip-bu-tan-as-chief-executive-officer
+        kind: ir_html
+        description: "Primary source: official investor relations release announcing the CEO appointment."
+        retrieved_at: "2026-03-30"

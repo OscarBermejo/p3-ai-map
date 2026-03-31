@@ -290,6 +290,14 @@ type ChipsProps = {
   mode?: ProductCatalogTableMode;
 };
 
+function productTableScrollClass(mode: ProductCatalogTableMode) {
+  /* --biz uses overflow:visible so tooltips escape; that also lets the table widen the whole
+   * page on horizontal scroll. Simple map business tab must scroll only inside this wrapper. */
+  return mode === "simple"
+    ? "value-chain__table-scroll"
+    : "value-chain__table-scroll value-chain__table-scroll--biz";
+}
+
 export function ChipsProductsCompareTable({
   products,
   mode = "layer",
@@ -297,7 +305,7 @@ export function ChipsProductsCompareTable({
   if (products.length === 0) return null;
 
   const table = (
-    <div className="value-chain__table-scroll value-chain__table-scroll--biz">
+    <div className={productTableScrollClass(mode)}>
       <table className="value-chain__compare-table">
         <thead>
           <tr>
@@ -421,7 +429,7 @@ export function ModelsProductsCompareTable({
   if (products.length === 0) return null;
 
   const table = (
-    <div className="value-chain__table-scroll value-chain__table-scroll--biz">
+    <div className={productTableScrollClass(mode)}>
       <table className="value-chain__compare-table">
         <thead>
           <tr>

@@ -7,7 +7,7 @@ Copy-paste these into a new agent session. Replace `<COMPANY>`, `<slug>`, and `<
 ## Full deep dive (new company)
 
 ```
-Read agent/instructions/company_deep_dive.md and run the full pipeline for AMD.
+Read agent/instructions/company_deep_dive.md and run the full pipeline for Intel.
 Scaffold the company, pull financials for the last 4 quarters, build the chips
 business profile, scan for recent announcements, build market perception, run the
 structural analysis (cost structure, cash flow decomposition, capital stress test,

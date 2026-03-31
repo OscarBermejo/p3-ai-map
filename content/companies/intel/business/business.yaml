@@ -1,0 +1,463 @@
+layer: chips
+profile_version: 1
+
+as_of: "2026-03-30"
+
+products:
+  - name: "Gaudi 3"
+    vendor: intel
+    generation: "Gaudi 3"
+    status: production
+    launch_date: "2024-10"
+
+    architecture:
+      process_node:
+        value: "5nm"
+        notes: "Manufactured on TSMC 5nm process."
+        sources: 
+          - url: "https://www.intel.com/content/www/us/en/content-details/817486/intel-gaudi-3-ai-accelerator-white-paper.html"
+            kind: "whitepaper"
+            description: "Intel Gaudi 3 Whitepaper"
+            retrieved_at: "2026-03-30"
+      transistor_count:
+        value: null
+        notes: null
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: null
+        sources: []
+      memory_type:
+        value: "HBM2e"
+        notes: null
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      memory_capacity_gb:
+        value: 128
+        notes: null
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      memory_bandwidth_tb_s:
+        value: 3.7
+        notes: null
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      interconnect:
+        value: "24 x 200GbE RoCE"
+        notes: "Uses industry-standard Ethernet for scale-out rather than proprietary fabric."
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+
+    performance:
+      tdp_watts:
+        value: 900
+        notes: "Standard OAM configuration is 900W; PCIe CEM card is 600W."
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      peak_flops_fp8_tflops:
+        value: 1835
+        notes: "FP8 Matrix operations."
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      peak_flops_fp16_tflops:
+        value: 1835
+        notes: "BF16 Matrix operations."
+        sources: 
+          - url: "https://cdrdv2-public.intel.com/845118/gaudi-3-ai-accelerator-30-3-30.pdf"
+            kind: "datasheet"
+            description: "Intel Gaudi 3 Datasheet"
+            retrieved_at: "2026-03-30"
+      peak_flops_fp32_tflops:
+        value: null
+        notes: null
+        sources: []
+      peak_flops_int8_tops:
+        value: null
+        notes: null
+        sources: []
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: 2.04
+        notes: "Derived: 1835 TFLOPS / 900W."
+        sources: []
+      flops_per_watt_fp16:
+        value: 2.04
+        notes: "Derived: 1835 TFLOPS / 900W."
+        sources: []
+      memory_bandwidth_per_watt:
+        value: 0.0041
+        notes: "Derived: 3.7 TB/s / 900W."
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "Universal Baseboard (UBB)"
+        notes: "Standard configuration supports 8 Gaudi 3 accelerators."
+        sources: []
+      gpus_per_system:
+        value: 8
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: 7200
+        notes: "Derived for 8x 900W accelerators alone (excluding host CPU and networking)."
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: "Ethernet RoCEv2"
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: "competitive"
+        notes: "Demonstrated LLaMA V2 70B training at 78,082 tokens/sec on 64 HPUs."
+        sources: 
+          - url: "https://www.intel.cn/content/www/cn/zh/developer/platform/gaudi/model-performance-gaudi3-training.html"
+            kind: "vendor_data"
+            description: "Training Model Performance Data"
+            retrieved_at: "2026-03-30"
+      inference:
+        value: "strong"
+        notes: "Competitive LLaMA 3.1 8B/70B performance with strong price-to-performance relative to H100."
+        sources: 
+          - url: "https://www.intel.com/content/www/us/en/developer/platform/gaudi/model-performance.html"
+            kind: "vendor_data"
+            description: "Inference Model Performance Data"
+            retrieved_at: "2026-03-30"
+      fine_tuning:
+        value: "competitive"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "7B–70B inference"
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Marketed as a high value-to-performance alternative with open-standard Ethernet networking."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: "No official MLPerf v4.0 results found; relying on vendor-published specs."
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: "LLaMA 3.1 70B inference up to 21,448 tokens/sec on 8 HPUs"
+        notes: "Using Optimum-Habana and Hugging Face models."
+        sources: 
+          - url: "https://www.intel.com/content/www/us/en/developer/platform/gaudi/model-performance.html"
+            kind: "vendor_data"
+            description: "Gaudi 3 Inference Performance"
+            retrieved_at: "2026-03-30"
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: ["IBM Cloud"]
+        notes: null
+        sources: 
+          - url: "https://newsroom.intel.com/client-computing/intel-gaudi-3-expands-availability-drive-ai-innovation-scale"
+            kind: "press_release"
+            description: "Intel Gaudi 3 Expansion"
+            retrieved_at: "2026-03-30"
+
+    availability:
+      oem_systems:
+        value: ["Dell PowerEdge XE9680", "Supermicro systems"]
+        notes: null
+        sources: 
+          - url: "https://newsroom.intel.com/client-computing/intel-gaudi-3-expands-availability-drive-ai-innovation-scale"
+            kind: "press_release"
+            description: "Intel Gaudi 3 Expansion"
+            retrieved_at: "2026-03-30"
+      lead_time:
+        value: null
+        notes: "Generally available since October 2024."
+        sources: []
+
+    sources: []
+
+  - name: "Core Ultra 300 Series"
+    vendor: intel
+    generation: "Panther Lake"
+    status: "sampling"
+    launch_date: "2026"
+
+    architecture:
+      process_node:
+        value: "Intel 18A"
+        notes: "Panther Lake is one of the flagship products for Intel 18A."
+        sources: 
+          - url: "https://investor.wedbush.com/wedbush/article/tokenring-2026-2-5-intel-officially-launches-high-volume-manufacturing-for-18a-node-fulfilling-5-nodes-in-4-years-promise"
+            kind: "news"
+            description: "Intel 18A HVM Announcement"
+            retrieved_at: "2026-03-30"
+      transistor_count:
+        value: null
+        notes: null
+        sources: []
+      die_size_mm2:
+        value: null
+        notes: null
+        sources: []
+      memory_type:
+        value: null
+        notes: null
+        sources: []
+      memory_capacity_gb:
+        value: null
+        notes: null
+        sources: []
+      memory_bandwidth_tb_s:
+        value: null
+        notes: null
+        sources: []
+      interconnect:
+        value: null
+        notes: null
+        sources: []
+
+    performance:
+      tdp_watts:
+        value: 25
+        notes: "Base power 25W, max turbo up to 80W for high-end models."
+        sources: 
+          - url: "https://www.igeekphone.com/the-most-advanced-in-intel-history-the-core-ultra-300-series-vpro-platform-is-released/"
+            kind: "news"
+            description: "Core Ultra 300 specs"
+            retrieved_at: "2026-03-30"
+      peak_flops_fp8_tflops:
+        value: null
+        notes: null
+        sources: []
+      peak_flops_fp16_tflops:
+        value: null
+        notes: null
+        sources: []
+      peak_flops_fp32_tflops:
+        value: null
+        notes: null
+        sources: []
+      peak_flops_int8_tops:
+        value: 50
+        notes: "Flagship NPU achieves 50 TOPS. Mid-range hits 47 TOPS."
+        sources: 
+          - url: "https://www.igeekphone.com/the-most-advanced-in-intel-history-the-core-ultra-300-series-vpro-platform-is-released/"
+            kind: "news"
+            description: "Core Ultra 300 specs"
+            retrieved_at: "2026-03-30"
+
+    efficiency:
+      flops_per_watt_fp8:
+        value: null
+        notes: null
+        sources: []
+      flops_per_watt_fp16:
+        value: null
+        notes: null
+        sources: []
+      memory_bandwidth_per_watt:
+        value: null
+        notes: null
+        sources: []
+
+    system_context:
+      reference_system:
+        value: "AI PC"
+        notes: "Targeting commercial and business laptops/desktops."
+        sources: []
+      gpus_per_system:
+        value: null
+        notes: null
+        sources: []
+      system_tdp_watts:
+        value: null
+        notes: null
+        sources: []
+      rack_density_kw:
+        value: null
+        notes: null
+        sources: []
+      scale_out_interconnect:
+        value: null
+        notes: null
+        sources: []
+
+    workload_fit:
+      training:
+        value: "not_applicable"
+        notes: null
+        sources: []
+      inference:
+        value: "strong"
+        notes: "On-device AI inference for Windows Copilot+ PC features."
+        sources: []
+      fine_tuning:
+        value: "limited"
+        notes: null
+        sources: []
+      target_model_scale:
+        value: "Local client models (<10B parameters)"
+        notes: null
+        sources: []
+      workload_notes:
+        value: "Optimized for client-side AI, battery efficiency, and vPro security."
+        notes: null
+        sources: []
+
+    benchmarks:
+      mlperf_training:
+        value: null
+        notes: null
+        sources: []
+      mlperf_inference:
+        value: null
+        notes: null
+        sources: []
+      vendor_published:
+        value: null
+        notes: null
+        sources: []
+
+    pricing:
+      list_price_usd:
+        value: null
+        notes: null
+        sources: []
+      cloud_price_usd_hr:
+        value: null
+        notes: null
+        sources: []
+      cloud_providers:
+        value: []
+        notes: null
+        sources: []
+
+    availability:
+      oem_systems:
+        value: []
+        notes: "Expected in over 125 commercial PC products in 2026."
+        sources: 
+          - url: "https://www.igeekphone.com/the-most-advanced-in-intel-history-the-core-ultra-300-series-vpro-platform-is-released/"
+            kind: "news"
+            description: "Core Ultra 300 Launch"
+            retrieved_at: "2026-03-30"
+      lead_time:
+        value: null
+        notes: null
+        sources: []
+
+    sources: []
+
+software_ecosystem:
+  stack_name:
+    value: "oneAPI / OpenVINO / Intel Gaudi Software"
+    notes: "Intel supports AI through Gaudi-specific Optimum-Habana stack and OpenVINO for general inference."
+    sources: []
+  framework_support:
+    value: ["PyTorch", "TensorFlow", "Hugging Face"]
+    notes: null
+    sources: []
+  ecosystem_maturity:
+    value: "growing"
+    notes: "OpenVINO is mature for CPU/integrated GPU inference. Gaudi ecosystem is growing with deep Hugging Face integration."
+    sources: []
+
+manufacturing_and_supply:
+  foundry_partners:
+    value: ["Intel Foundry", "TSMC"]
+    notes: "Gaudi 3 is produced on TSMC 5nm, while modern CPUs like Panther Lake and Clearwater Forest leverage Intel 18A."
+    sources: []
+  process_nodes:
+    value: ["Intel 18A", "Intel 3", "TSMC 5nm"]
+    notes: "Intel 18A entered High-Volume Manufacturing in January 2026."
+    sources: 
+      - url: "https://investor.wedbush.com/wedbush/article/tokenring-2026-1-30-intel-reclaims-the-silicon-throne-18a-enters-high-volume-production-completing-the-5-nodes-in-4-years-odyssey"
+        kind: "news"
+        description: "Intel 18A HVM Announcement"
+        retrieved_at: "2026-03-30"
+  packaging:
+    value: "EMIB + Foveros 3D"
+    notes: "Intel leverages Advanced Packaging technologies like Foveros 3D and EMIB for complex system-on-chips and multi-tile designs, serving as an alternative to CoWoS."
+    sources: 
+      - url: "https://www.intel.com/content/dam/www/central-libraries/us/en/documents/2025-03/foundry-18a-platform-brief.pdf"
+        kind: "whitepaper"
+        description: "Intel 18A Platform Brief"
+        retrieved_at: "2026-03-30"
+  supply_constraints:
+    value: null
+    notes: "Intel's internal foundry and packaging capacity offers potential supply chain resilience compared to TSMC-exclusive competitors."
+    sources: []
+
+commercial_traction:
+  deployment_channels:
+    value: ["OEM servers", "CSP instances", "Enterprise PCs"]
+    notes: "Gaudi 3 sold via OEMs (Dell, Supermicro) and CSPs (IBM Cloud). Core Ultra sold via PC OEMs."
+    sources: []
+  notable_customers_or_design_wins:
+    value: ["IBM Cloud"]
+    notes: "IBM Cloud adopted Gaudi 3."
+    sources: 
+      - url: "https://newsroom.intel.com/client-computing/intel-gaudi-3-expands-availability-drive-ai-innovation-scale"
+        kind: "press_release"
+        description: "Intel Gaudi 3 Expansion"
+        retrieved_at: "2026-03-30"
+  revenue_segment:
+    value: "Data Center and AI (DCAI), Client Computing Group (CCG), Intel Foundry"
+    notes: null
+    sources: []
+
+roadmap:
+  next_generation:
+    value: "Falcon Shores"
+    notes: "Upcoming GPU intended to unify the Gaudi and Data Center Max GPU architectures."
+    sources: []
+  cadence:
+    value: "annual"
+    notes: "Aiming for an annual cadence across product lines, specifically realizing '5 nodes in 4 years' on the foundry side."
+    sources: 
+      - url: "https://investor.wedbush.com/wedbush/article/tokenring-2026-1-30-intel-reclaims-the-silicon-throne-18a-enters-high-volume-production-completing-the-5-nodes-in-4-years-odyssey"
+        kind: "news"
+        description: "Intel 18A HVM Announcement"
+        retrieved_at: "2026-03-30"
+  roadmap_credibility:
+    value: "moderate"
+    notes: "Successfully achieved '5 Nodes in 4 Years' with 18A HVM in early 2026, improving credibility, though Gaudi's market share trails NVIDIA."
+    sources: []
+
+sources: []

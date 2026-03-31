@@ -1,0 +1,20 @@
+slug: intel
+legal_name: Intel Corporation
+
+tickers:
+  - symbol: INTC
+    exchange: NASDAQ
+
+summary: |
+  Intel designs, manufactures, and sells computer components and related products for business and consumer markets. In the AI value chain, Intel provides CPU and AI accelerator chips (such as Gaudi) and operates foundries.
+
+links:
+  investor_relations: "https://www.intc.com/investor-relations/default.aspx"
+  press_releases_index: "https://www.intc.com/news-events/press-releases"
+  sec_cik: "0000050863"
+
+reporting:
+  financials_root: financials/
+  quarter_filename_pattern: YYYY-Qn.yaml
+
+notes: []

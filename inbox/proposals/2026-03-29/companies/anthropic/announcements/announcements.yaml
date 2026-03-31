@@ -1,0 +1,190 @@
+# Anthropic — Material Announcements
+# Most recent first. Each entry covers a distinct material event.
+# Source tiers: Tier 1 = official Anthropic blog/press release; Tier 2 = credible press.
+
+announcements:
+
+  - date: "2026-03-12"
+    category: partnership
+    title: "$100M investment in Claude Partner Network"
+    summary: >
+      Anthropic announced a $100 million investment in the Claude Partner Network to accelerate
+      enterprise adoption. The program includes technical certifications, dedicated support,
+      training courses, and a Code Modernization starter kit for partners helping enterprises
+      migrate legacy codebases — identified as the highest-demand enterprise workload. The
+      Partner Network investment signals Anthropic's move toward an enterprise software distribution
+      model rather than direct API sales only, competing with Microsoft's partner ecosystem and
+      AWS's systems integrator network.
+    significance: medium
+    sources:
+      - url: https://www.anthropic.com/news/claude-partner-network
+        kind: vendor_page
+        description: "Anthropic official: Claude Partner Network $100M investment announcement."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-03-19"
+    category: market_milestone
+    title: "Claude reaches ~70% of first-time enterprise AI spending; Register reports market share dominance"
+    summary: >
+      The Register reported Anthropic's Claude has captured approximately 70% of first-time
+      enterprise AI spending, based on Ramp Economics Lab data, up from roughly 10% in
+      February 2025. Claude's business subscription share grew 4.9% month-over-month in
+      February 2026 while OpenAI's fell 1.5%. 44% enterprise production deployment rate
+      and 63% testing inclusion rate. This is the most significant competitive marker in
+      the models layer as of Q1 2026.
+    significance: high
+    sources:
+      - url: https://www.theregister.com/2026/03/19/anthropic_claude_market_share/
+        kind: news_article
+        description: "The Register: Anthropic Claude market share dominance — 70% first-time enterprise AI spending."
+        retrieved_at: "2026-03-29"
+      - url: https://aigazette.com/markets/anthropic-claude-captures-70-of-enterprise-ai-market-dethroning-chatgpt--s
+        kind: news_article
+        description: "AI Gazette: Claude captures 70% of enterprise AI market; Claude Code growth driver."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-17"
+    category: product_launch
+    title: "Claude Sonnet 4.6 launched — agentic coding leader"
+    summary: >
+      Anthropic launched Claude Sonnet 4.6 on February 17, 2026, 12 days after Opus 4.6.
+      Sonnet 4.6 achieved rank #2 in the Artificial Analysis Intelligence Index and LEADS
+      all models on GDPval-AA (agentic real-world work tasks) and TerminalBench — the
+      benchmarks most directly relevant to Claude Code's enterprise coding use case.
+      This creates an unusual dynamic: Sonnet 4.6 is technically cheaper than Opus 4.6
+      ($15 vs $25/M output) yet outperforms it on the tasks that drive 18%+ of Anthropic's ARR.
+    significance: high
+    sources:
+      - url: https://artificialanalysis.ai/articles/sonnet-4-6-everything-you-need-to-know
+        kind: independent_eval
+        description: "Artificial Analysis: Sonnet 4.6 leads GDPval-AA and TerminalBench, rank #2 Intelligence Index."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-12"
+    category: funding
+    title: "$30B Series G at $380B valuation — GIC and Coatue lead"
+    summary: >
+      Anthropic raised $30B in its Series G round at a $380B post-money valuation, led by
+      GIC (Singapore Government Investment Corporation) and Coatue. The round more than doubled
+      the company's valuation from the Series F ($183B, September 2025) in approximately five
+      months. Concurrent with the round, Anthropic announced: $14B run-rate revenue, Claude Code
+      exceeding $2.5B ARR (more than doubling since start of 2026), and 300,000+ businesses
+      using Claude. GIC's participation represents the first major sovereign wealth fund investment
+      in an AI frontier lab at this scale.
+    significance: high
+    sources:
+      - url: https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation
+        kind: vendor_page
+        description: "Anthropic official: Series G announcement — $30B at $380B, $14B ARR, Claude Code $2.5B+ ARR."
+        retrieved_at: "2026-03-29"
+      - url: https://reuters.com/technology/anthropic-valued-380-billion-latest-funding-round-2026-02-12/
+        kind: news_article
+        description: "Reuters: Series G at $380B — 2.1x step-up from Series F."
+        retrieved_at: "2026-03-29"
+
+  - date: "2026-02-05"
+    category: product_launch
+    title: "Claude Opus 4.6 launched — ranks #1 in Artificial Analysis Intelligence Index"
+    summary: >
+      Anthropic launched Claude Opus 4.6 on February 5, 2026, achieving the #1 position in
+      the Artificial Analysis Intelligence Index v4.0 among comparable proprietary models.
+      Key improvements from Opus 4.5: 1M token context window at standard pricing (no long-context
+      surcharge), Fast Mode availability (6× standard speed at 6× price), data residency options
+      via inference_geo parameter. Pricing: $5/$25 per MTok — significantly cheaper than the
+      $15/$75 per MTok pricing of earlier Opus 4.1 generation.
+    significance: high
+    sources:
+      - url: https://artificialanalysis.ai/models/claude-opus-4-6
+        kind: independent_eval
+        description: "Artificial Analysis: Opus 4.6 rank #1/63, Intelligence Index 46, released Feb 5, 2026."
+        retrieved_at: "2026-03-29"
+      - url: https://docs.anthropic.com/en/about-claude/pricing
+        kind: vendor_page
+        description: "Anthropic pricing: Opus 4.6 $5/$25 vs Opus 4.1 $15/$75 — 3x price reduction."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-11-24"
+    category: product_launch
+    title: "Claude Opus 4.5 — first model to break 80% SWE-bench Verified"
+    summary: >
+      Anthropic launched Claude Opus 4.5 with an 80.9% score on SWE-bench Verified, the first
+      model to exceed 80% and the first to outperform human software engineers on Anthropic's
+      internal coding assessments. Additional benchmarks: GPQA Diamond 87%, MATH 95.2%, MMLU 90.8%.
+      Opus 4.5 introduced the 'effort' parameter for controlling reasoning depth. The 80.9% SWE-bench
+      score was a pivotal commercial moment — it validated Claude Code's enterprise coding agent
+      value proposition and accelerated the enterprise market share shift that pushed Anthropic to
+      40%+ total enterprise LLM spend by early 2026.
+    significance: high
+    sources:
+      - url: https://www.anthropic.com/news/claude-opus-4-5
+        kind: vendor_page
+        description: "Anthropic: Claude Opus 4.5 launch — 80.9% SWE-bench, 87% GPQA, first to beat human engineers."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-10-23"
+    category: infrastructure
+    title: "Google Cloud deal — tens of billions, up to 1M TPUs"
+    summary: >
+      Google and Anthropic announced a multi-year compute partnership worth tens of billions of
+      dollars. The deal provides Anthropic access to up to one million Google custom TPUs (seventh-
+      generation 'Ironwood' accelerators), with over a gigawatt of AI compute capacity expected
+      online by 2026. Google Cloud CEO Thomas Kurian cited Ironwood's price-performance advantage.
+      This deal makes Anthropic's training and inference compute diversification (AWS Trainium +
+      Google TPUs + NVIDIA GPUs) one of the most sophisticated multi-chip strategies in the frontier
+      AI landscape. Combined AWS ($8B) + Google (tens of billions) commitments exceed any other
+      frontier lab's infrastructure partnerships by multiple.
+    significance: high
+    sources:
+      - url: https://stg-aws01pub.cnbc.com/2025/10/23/anthropic-google-cloud-deal-tpu.html
+        kind: news_article
+        description: "CNBC: Google-Anthropic cloud deal — 1M TPUs, 1GW+ capacity, tens of billions."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-09"
+    category: funding
+    title: "$13B Series F at $183B post-money valuation"
+    summary: >
+      Anthropic raised $13B in its Series F round at a $183B post-money valuation.
+      The round represented a roughly 3× step-up from the March 2025 Series E ($61.5B valuation).
+      This was Anthropic's largest round prior to the Series G and set the stage for the $380B
+      valuation achieved five months later.
+    significance: medium
+    sources:
+      - url: https://hiringhello.com/blog/from-seed-to-380b-anthropic-complete-investment-journey-2021-to-february-2026
+        kind: ir_html
+        description: "Tier 2: hiringhello.com: Anthropic Series F $13B at $183B post-money, September 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2025-03"
+    category: funding
+    title: "$3.5B Series E at $61.5B valuation"
+    summary: >
+      Anthropic raised $3.5B at a $61.5B post-money valuation. This round followed a period of
+      explosive growth driven by Claude 3.5 Sonnet (June 2024) and the Amazon strategic partnership
+      deepening (November 2024). The $61.5B valuation was a 3.4× step-up from the $18.1B Series D.
+    significance: medium
+    sources:
+      - url: https://hiringhello.com/blog/from-seed-to-380b-anthropic-complete-investment-journey-2021-to-february-2026
+        kind: ir_html
+        description: "Tier 2: Anthropic Series E $3.5B at $61.5B post-money, March 2025."
+        retrieved_at: "2026-03-29"
+
+  - date: "2024-11-22"
+    category: partnership
+    title: "Amazon investment increased to $8B total; AWS designated primary cloud and training partner"
+    summary: >
+      Amazon deepened its Anthropic investment to a total of $8B and formalized AWS as Anthropic's
+      'primary cloud and training partner.' The arrangement includes collaboration with Annapurna Labs
+      on next-generation Trainium accelerator development. Project Rainier, AWS's dedicated Anthropic
+      training cluster with nearly 500,000 Trainium2 chips, was announced as operational. This
+      relationship is the compute backbone for Anthropic's frontier model training.
+    significance: high
+    sources:
+      - url: https://techcrunch.com/2024/11/22/anthropic-raises-an-additional-4b-from-amazon-makes-aws-is-primary-cloud-partner/
+        kind: news_article
+        description: "TechCrunch: Amazon $4B additional; total $8B; AWS primary training partner; Project Rainier."
+        retrieved_at: "2026-03-29"
+      - url: https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster
+        kind: vendor_page
+        description: "Amazon: Project Rainier operational — ~500K Trainium2 chips."
+        retrieved_at: "2026-03-29"
